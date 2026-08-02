@@ -23,7 +23,6 @@ body{
     margin:auto;
 }
 
-
 /* LOGO */
 
 .logo-box{
@@ -37,6 +36,13 @@ body{
     margin-bottom:25px;
 }
 
+.logo{
+    width:220px;
+    max-width:100%;
+    height:auto;
+    display:block;
+    margin:0 auto 15px auto;
+}
 
 /* CATEGORIE */
 
@@ -50,14 +56,12 @@ body{
     cursor:pointer;
 }
 
-
 /* PRODOTTI */
 
 .products{
     display:none;
     margin-top:15px;
 }
-
 
 .product{
     background:#303030;
@@ -68,7 +72,6 @@ body{
     cursor:pointer;
 }
 
-
 /* CARRELLO */
 
 .cart{
@@ -78,29 +81,22 @@ body{
     margin-top:30px;
 }
 
-
 </style>
 
 </head>
 
-
 <body>
 
-
 <div class="container">
-
 
 <!-- LOGO -->
 
 <div class="logo-box">
-  <div>
-    <img src="IMG_9609.png" alt="Oasis del Sur" style="max-width: 220px; width: 100%; height: auto; display: block; margin: 0 auto;" onerror="this.src='https://raw.githubusercontent.com/oasisdelsur/oasisdelsur/main/IMG_9609.png'">
-    <p>Premium Experience</p>
-  </div>
+    <div>
+        <img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
+        <p>Premium Experience</p>
+    </div>
 </div>
-
-
-
 
 <!-- WEED -->
 
@@ -126,9 +122,6 @@ Prodotto 3
 
 </div>
 
-
-
-
 <!-- FROZEN -->
 
 <div class="category" onclick="openCategory('frozen')">
@@ -152,9 +145,6 @@ Prodotto 3
 </div>
 
 </div>
-
-
-
 
 <!-- DRY -->
 
@@ -180,9 +170,6 @@ Prodotto 3
 
 </div>
 
-
-
-
 <!-- EXTRACT -->
 
 <div class="category" onclick="openCategory('extract')">
@@ -207,9 +194,6 @@ Prodotto 3
 
 </div>
 
-
-
-
 <!-- CARRELLO -->
 
 <div class="cart">
@@ -222,29 +206,23 @@ Nessun prodotto
 
 </div>
 
-
 </div>
-
-
 
 <script>
 
 let cart=[];
-
 
 function openCategory(id){
 
 let box=document.getElementById(id);
 
 if(box.style.display==="block"){
-box.style.display="none";
+    box.style.display="none";
 }else{
-box.style.display="block";
+    box.style.display="block";
 }
 
 }
-
-
 
 function addCart(product){
 
@@ -256,7 +234,6 @@ cart.join("<br>");
 }
 
 </script>
-
 
 </body>
 
