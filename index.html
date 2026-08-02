@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,10 +11,11 @@
 <style>
 
 body{
+    margin:0;
+    padding:20px;
     background:#0b0b0b;
     color:white;
-    font-family:Arial;
-    padding:20px;
+    font-family:Arial,sans-serif;
 }
 
 .container{
@@ -24,13 +26,13 @@ body{
 
 /* LOGO */
 
-.logo{
+.logo-box{
     height:230px;
     background:#181818;
     border-radius:30px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
     margin-bottom:25px;
 }
@@ -40,10 +42,11 @@ body{
 
 .category{
     background:#1f1f1f;
-    padding:20px;
     border-radius:20px;
+    padding:20px;
     margin-bottom:15px;
     font-size:22px;
+    text-align:center;
     cursor:pointer;
 }
 
@@ -60,32 +63,19 @@ body{
     background:#303030;
     padding:15px;
     border-radius:15px;
-    margin:8px 0;
+    margin:10px 0;
+    font-size:16px;
     cursor:pointer;
-}
-
-
-.product:hover{
-    background:#444;
 }
 
 
 /* CARRELLO */
 
 .cart{
-    margin-top:30px;
     background:#181818;
-    padding:20px;
     border-radius:20px;
-}
-
-
-button{
-    width:100%;
-    padding:15px;
-    border-radius:15px;
-    border:0;
-    font-size:18px;
+    padding:20px;
+    margin-top:30px;
 }
 
 
@@ -100,12 +90,15 @@ button{
 <div class="container">
 
 
-<div class="logo">
+<!-- LOGO -->
+
+<div class="logo-box">
 
 <div>
 
 <h1>🌴</h1>
 <h2>Oasis del Sur</h2>
+<p>Premium Experience</p>
 
 </div>
 
@@ -113,21 +106,23 @@ button{
 
 
 
-<div class="category" onclick="openBox('cat1')">
+<!-- WEED -->
 
-🌿 Categoria 1
+<div class="category" onclick="openCategory('weed')">
 
-<div class="products" id="cat1">
+🌿 Weed
 
-<div class="product" onclick="addCart('Prodotto 1')">
+<div id="weed" class="products">
+
+<div class="product" onclick="addCart('Weed prodotto 1')">
 Prodotto 1
 </div>
 
-<div class="product" onclick="addCart('Prodotto 2')">
+<div class="product" onclick="addCart('Weed prodotto 2')">
 Prodotto 2
 </div>
 
-<div class="product" onclick="addCart('Prodotto 3')">
+<div class="product" onclick="addCart('Weed prodotto 3')">
 Prodotto 3
 </div>
 
@@ -138,22 +133,24 @@ Prodotto 3
 
 
 
-<div class="category" onclick="openBox('cat2')">
+<!-- FROZEN -->
 
-❄️ Categoria 2
+<div class="category" onclick="openCategory('frozen')">
 
-<div class="products" id="cat2">
+❄️ Frozen / Static
 
-<div class="product" onclick="addCart('Prodotto 4')">
-Prodotto 4
+<div id="frozen" class="products">
+
+<div class="product" onclick="addCart('Frozen prodotto 1')">
+Prodotto 1
 </div>
 
-<div class="product" onclick="addCart('Prodotto 5')">
-Prodotto 5
+<div class="product" onclick="addCart('Frozen prodotto 2')">
+Prodotto 2
 </div>
 
-<div class="product" onclick="addCart('Prodotto 6')">
-Prodotto 6
+<div class="product" onclick="addCart('Frozen prodotto 3')">
+Prodotto 3
 </div>
 
 </div>
@@ -162,23 +159,72 @@ Prodotto 6
 
 
 
+
+<!-- DRY -->
+
+<div class="category" onclick="openCategory('dry')">
+
+🌱 Dry
+
+<div id="dry" class="products">
+
+<div class="product" onclick="addCart('Dry prodotto 1')">
+Prodotto 1
+</div>
+
+<div class="product" onclick="addCart('Dry prodotto 2')">
+Prodotto 2
+</div>
+
+<div class="product" onclick="addCart('Dry prodotto 3')">
+Prodotto 3
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<!-- EXTRACT -->
+
+<div class="category" onclick="openCategory('extract')">
+
+💎 Extract
+
+<div id="extract" class="products">
+
+<div class="product" onclick="addCart('Extract prodotto 1')">
+Prodotto 1
+</div>
+
+<div class="product" onclick="addCart('Extract prodotto 2')">
+Prodotto 2
+</div>
+
+<div class="product" onclick="addCart('Extract prodotto 3')">
+Prodotto 3
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<!-- CARRELLO -->
 
 <div class="cart">
 
 <h3>🛒 Carrello</h3>
 
 <div id="cart">
-Vuoto
+Nessun prodotto
 </div>
 
-<br>
-
-<button>
-Invia ordine
-</button>
-
 </div>
-
 
 
 </div>
@@ -190,14 +236,13 @@ Invia ordine
 let cart=[];
 
 
-function openBox(id){
+function openCategory(id){
 
 let box=document.getElementById(id);
 
-if(box.style.display=="block"){
+if(box.style.display==="block"){
 box.style.display="none";
-}
-else{
+}else{
 box.style.display="block";
 }
 
@@ -214,10 +259,9 @@ cart.join("<br>");
 
 }
 
-
 </script>
 
 
-
 </body>
+
 </html>
