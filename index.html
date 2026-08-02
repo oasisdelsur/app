@@ -8,80 +8,7 @@
 
 <title>Oasis del Sur</title>
 
-<style>
-
-body{
-    margin:0;
-    padding:20px;
-    background:#0b0b0b;
-    color:white;
-    font-family:Arial,sans-serif;
-}
-
-.container{
-    max-width:500px;
-    margin:auto;
-}
-
-/* LOGO */
-
-.logo-box{
-    height:230px;
-    background:#181818;
-    border-radius:30px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.logo{
-    width:220px;
-    max-width:100%;
-    height:auto;
-    display:block;
-    margin:0 auto 15px auto;
-}
-
-/* CATEGORIE */
-
-.category{
-    background:#1f1f1f;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:15px;
-    font-size:22px;
-    text-align:center;
-    cursor:pointer;
-}
-
-/* PRODOTTI */
-
-.products{
-    display:none;
-    margin-top:15px;
-}
-
-.product{
-    background:#303030;
-    padding:15px;
-    border-radius:15px;
-    margin:10px 0;
-    font-size:16px;
-    cursor:pointer;
-}
-
-/* CARRELLO */
-
-.cart{
-    background:#181818;
-    border-radius:20px;
-    padding:20px;
-    margin-top:30px;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -89,108 +16,239 @@ body{
 
 <div class="container">
 
-<!-- LOGO -->
+    <!-- HEADER -->
 
-<div class="logo-box">
-    <div>
+    <div class="header">
+
         <img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
-        <p>Premium Experience</p>
+
+        <div class="subtitle">
+            PREMIUM EXPERIENCE
+        </div>
+
     </div>
-</div>
 
-<!-- WEED -->
+    <!-- CATEGORIE -->
 
-<div class="category" onclick="openCategory('weed')">
+    <div class="section-title">
+        Catalogo
+    </div>
 
-🌿 Weed
+    <!-- WEED -->
 
-<div id="weed" class="products">
+    <div class="category" onclick="toggleCategory('weed')">
 
-<div class="product" onclick="addCart('Weed prodotto 1')">
-Prodotto 1
-</div>
+        <div class="category-left">
 
-<div class="product" onclick="addCart('Weed prodotto 2')">
-Prodotto 2
-</div>
+            <div class="category-icon">
+                🌿
+            </div>
 
-<div class="product" onclick="addCart('Weed prodotto 3')">
-Prodotto 3
-</div>
+            <div>
 
-</div>
+                <div class="category-name">
+                    Weed
+                </div>
 
-</div>
+                <div class="category-count">
+                    3 prodotti
+                </div>
 
-<!-- FROZEN -->
+            </div>
 
-<div class="category" onclick="openCategory('frozen')">
+        </div>
 
-❄️ Frozen / Static
+        <div class="arrow">
+            ›
+        </div>
 
-<div id="frozen" class="products">
+    </div>
 
-<div class="product" onclick="addCart('Frozen prodotto 1')">
-Prodotto 1
-</div>
+    <div id="weed" class="products">
 
-<div class="product" onclick="addCart('Frozen prodotto 2')">
-Prodotto 2
-</div>
+        <div class="product">
 
-<div class="product" onclick="addCart('Frozen prodotto 3')">
-Prodotto 3
-</div>
+            <div class="product-name">
+                Cali OG
+            </div>
 
-</div>
+            <div class="product-price">
+                €20
+            </div>
 
-</div>
+            <button class="add-btn" onclick="addCart('Cali OG - €20')">
+                Aggiungi al carrello
+            </button>
 
-<!-- DRY -->
+        </div>
 
-<div class="category" onclick="openCategory('dry')">
+        <div class="product">
 
-🌱 Dry
+            <div class="product-name">
+                Lemon Haze
+            </div>
 
-<div id="dry" class="products">
+            <div class="product-price">
+                €18
+            </div>
 
-<div class="product" onclick="addCart('Dry prodotto 1')">
-Prodotto 1
-</div>
+            <button class="add-btn" onclick="addCart('Lemon Haze - €18')">
+                Aggiungi al carrello
+            </button>
 
-<div class="product" onclick="addCart('Dry prodotto 2')">
-Prodotto 2
-</div>
+        </div>
 
-<div class="product" onclick="addCart('Dry prodotto 3')">
-Prodotto 3
-</div>
+    </div>
 
-</div>
+    <!-- FROZEN -->
 
-</div>
+    <div class="category" onclick="toggleCategory('frozen')">
 
-<!-- EXTRACT -->
+        <div class="category-left">
 
-<div class="category" onclick="openCategory('extract')">
+            <div class="category-icon">
+                ❄️
+            </div>
 
-💎 Extract
+            <div>
 
-<div id="extract" class="products">
+                <div class="category-name">
+                    Frozen
+                </div>
 
-<div class="product" onclick="addCart('Extract prodotto 1')">
-Prodotto 1
-</div>
+                <div class="category-count">
+                    3 prodotti
+                </div>
 
-<div class="product" onclick="addCart('Extract prodotto 2')">
-Prodotto 2
-</div>
+            </div>
 
-<div class="product" onclick="addCart('Extract prodotto 3')">
-Prodotto 3
-</div>
+        </div>
 
-</div>
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+    <div id="frozen" class="products">
+
+        <div class="product">
+
+            <div class="product-name">
+                Frozen Dry
+            </div>
+
+            <div class="product-price">
+                €35
+            </div>
+
+            <button class="add-btn" onclick="addCart('Frozen Dry - €35')">
+                Aggiungi al carrello
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- DRY -->
+
+    <div class="category" onclick="toggleCategory('dry')">
+
+        <div class="category-left">
+
+            <div class="category-icon">
+                🌱
+            </div>
+
+            <div>
+
+                <div class="category-name">
+                    Dry
+                </div>
+
+                <div class="category-count">
+                    3 prodotti
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+    <div id="dry" class="products">
+
+        <div class="product">
+
+            <div class="product-name">
+                Dry Premium
+            </div>
+
+            <div class="product-price">
+                €15
+            </div>
+
+            <button class="add-btn" onclick="addCart('Dry Premium - €15')">
+                Aggiungi al carrello
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- EXTRACT -->
+
+    <div class="category" onclick="toggleCategory('extract')">
+
+        <div class="category-left">
+
+            <div class="category-icon">
+                💎
+            </div>
+
+            <div>
+
+                <div class="category-name">
+                    Extract
+                </div>
+
+                <div class="category-count">
+                    2 prodotti
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+    <div id="extract" class="products">
+
+        <div class="product">
+
+            <div class="product-name">
+                Rosin Premium
+            </div>
+
+            <div class="product-price">
+                €50
+            </div>
+
+            <button class="add-btn" onclick="addCart('Rosin Premium - €50')">
+                Aggiungi al carrello
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -198,13 +256,17 @@ Prodotto 3
 
 <div class="cart">
 
-<h3>🛒 Carrello</h3>
+    <div class="cart-title">
+        🛒 Carrello
+    </div>
 
-<div id="cart">
-Nessun prodotto
-</div>
+    <div id="cart">
+        Nessun prodotto
+    </div>
 
-</div>
+    <button class="checkout">
+        Invia Ordine
+    </button>
 
 </div>
 
@@ -212,14 +274,18 @@ Nessun prodotto
 
 let cart=[];
 
-function openCategory(id){
+function toggleCategory(id){
 
 let box=document.getElementById(id);
 
 if(box.style.display==="block"){
-    box.style.display="none";
+
+box.style.display="none";
+
 }else{
-    box.style.display="block";
+
+box.style.display="block";
+
 }
 
 }
@@ -228,8 +294,7 @@ function addCart(product){
 
 cart.push(product);
 
-document.getElementById("cart").innerHTML =
-cart.join("<br>");
+document.getElementById("cart").innerHTML=cart.join("<br>");
 
 }
 
