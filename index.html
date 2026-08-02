@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,93 +9,83 @@
 
 <style>
 
-body {
-    margin:0;
-    padding:20px;
+body{
     background:#0b0b0b;
     color:white;
-    font-family:Arial, sans-serif;
+    font-family:Arial;
+    padding:20px;
 }
 
-.container {
+.container{
     max-width:500px;
     margin:auto;
 }
 
 
-/* LOGO GRANDE */
+/* LOGO */
 
-.logo-box {
+.logo{
     height:230px;
-    background:#171717;
+    background:#181818;
     border-radius:30px;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     text-align:center;
     margin-bottom:25px;
-    border:1px solid #333;
 }
-
-.logo-box img {
-    max-width:150px;
-}
-
-.logo-text {
-    font-size:28px;
-}
-
 
 
 /* CATEGORIE */
 
-.category {
-    background:#1c1c1c;
-    border-radius:20px;
+.category{
+    background:#1f1f1f;
     padding:20px;
+    border-radius:20px;
     margin-bottom:15px;
-    text-align:center;
     font-size:22px;
     cursor:pointer;
 }
 
 
-/* PRODOTTI NASCOSTI */
+/* PRODOTTI */
 
-.products {
+.products{
     display:none;
     margin-top:15px;
-    gap:10px;
-    grid-template-columns:repeat(3,1fr);
 }
 
 
-.product {
-    background:#292929;
+.product{
+    background:#303030;
+    padding:15px;
     border-radius:15px;
-    padding:15px 5px;
-    font-size:14px;
+    margin:8px 0;
+    cursor:pointer;
 }
 
+
+.product:hover{
+    background:#444;
+}
 
 
 /* CARRELLO */
 
-.cart {
-    margin-top:25px;
-    background:#222;
-    border-radius:20px;
+.cart{
+    margin-top:30px;
+    background:#181818;
     padding:20px;
-    text-align:center;
+    border-radius:20px;
 }
 
 
-button {
-    background:white;
-    border:0;
+button{
+    width:100%;
+    padding:15px;
     border-radius:15px;
-    padding:12px 25px;
-    font-size:16px;
+    border:0;
+    font-size:18px;
 }
 
 
@@ -110,29 +100,12 @@ button {
 <div class="container">
 
 
-<!-- LOGO -->
+<div class="logo">
 
-<div class="logo-box">
+<div>
 
-    <div>
-        <img src="logo.png">
-        <div class="logo-text">Oasis del Sur</div>
-    </div>
-
-</div>
-
-
-
-<!-- WEED -->
-
-<div class="category" onclick="openCategory('weed')">
-🌿 Weed
-
-<div id="weed" class="products">
-
-<div class="product">Prodotto 1</div>
-<div class="product">Prodotto 2</div>
-<div class="product">Prodotto 3</div>
+<h1>🌴</h1>
+<h2>Oasis del Sur</h2>
 
 </div>
 
@@ -140,18 +113,23 @@ button {
 
 
 
+<div class="category" onclick="openBox('cat1')">
 
-<!-- FROZEN -->
+🌿 Categoria 1
 
-<div class="category" onclick="openCategory('frozen')">
+<div class="products" id="cat1">
 
-❄️ Frozen / Static
+<div class="product" onclick="addCart('Prodotto 1')">
+Prodotto 1
+</div>
 
-<div id="frozen" class="products">
+<div class="product" onclick="addCart('Prodotto 2')">
+Prodotto 2
+</div>
 
-<div class="product">Prodotto 1</div>
-<div class="product">Prodotto 2</div>
-<div class="product">Prodotto 3</div>
+<div class="product" onclick="addCart('Prodotto 3')">
+Prodotto 3
+</div>
 
 </div>
 
@@ -160,51 +138,43 @@ button {
 
 
 
-<!-- DRY -->
+<div class="category" onclick="openBox('cat2')">
 
-<div class="category" onclick="openCategory('dry')">
+❄️ Categoria 2
 
-🌱 Dry
+<div class="products" id="cat2">
 
-<div id="dry" class="products">
+<div class="product" onclick="addCart('Prodotto 4')">
+Prodotto 4
+</div>
 
-<div class="product">Prodotto 1</div>
-<div class="product">Prodotto 2</div>
-<div class="product">Prodotto 3</div>
+<div class="product" onclick="addCart('Prodotto 5')">
+Prodotto 5
+</div>
 
+<div class="product" onclick="addCart('Prodotto 6')">
+Prodotto 6
 </div>
 
 </div>
 
-
-
-
-<!-- EXTRACT -->
-
-<div class="category" onclick="openCategory('extract')">
-
-💎 Extract
-
-<div id="extract" class="products">
-
-<div class="product">Prodotto 1</div>
-<div class="product">Prodotto 2</div>
-<div class="product">Prodotto 3</div>
-
 </div>
 
-</div>
 
 
 
 <div class="cart">
 
-🛒 Carrello
+<h3>🛒 Carrello</h3>
 
-<br><br>
+<div id="cart">
+Vuoto
+</div>
+
+<br>
 
 <button>
-Vai al carrello
+Invia ordine
 </button>
 
 </div>
@@ -215,26 +185,39 @@ Vai al carrello
 
 
 
-
 <script>
 
-function openCategory(id){
+let cart=[];
 
-let box = document.getElementById(id);
 
-if(box.style.display === "grid"){
-    box.style.display="none";
+function openBox(id){
+
+let box=document.getElementById(id);
+
+if(box.style.display=="block"){
+box.style.display="none";
 }
 else{
-    box.style.display="grid";
+box.style.display="block";
 }
 
 }
+
+
+
+function addCart(product){
+
+cart.push(product);
+
+document.getElementById("cart").innerHTML =
+cart.join("<br>");
+
+}
+
 
 </script>
 
 
 
 </body>
-
 </html>
