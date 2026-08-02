@@ -3,70 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Oasis del Sur</title>
-<link rel="stylesheet" href="stile.css">
+
+<style>
+
+body {
+    margin:0;
+    padding:20px;
+    background:#0b0b0b;
+    color:white;
+    font-family:Arial, sans-serif;
+}
+
+.container {
+    max-width:500px;
+    margin:auto;
+}
+
+
+/* LOGO GRANDE */
+.logo-box {
+    height:240px;
+    background:#181818;
+    border-radius:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    margin-bottom:30px;
+    border:1px solid #333;
+}
+
+.logo-box h1 {
+    font-size:45px;
+    margin:0;
+}
+
+.logo-box h2 {
+    font-size:32px;
+    margin:10px 0;
+}
+
+
+/* CATEGORIE */
+
+.category-title {
+    margin:25px 0 15px;
+    font-size:22px;
+}
+
+
+/* CASELLE */
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+
+.box {
+    height:100px;
+    background:#1c1c1c;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    font-size:15px;
+    border:1px solid #333;
+}
+
+
+.box:hover {
+    transform:scale(1.03);
+}
+
+
+</style>
+
 </head>
+
 
 <body>
 
 <div class="container">
 
-    <!-- LOGO PRINCIPALE -->
-    <div class="main-logo">
-        <div class="logo-content">
-            🌴
-            <h1>Oasis del Sur</h1>
-            <p>Premium Experience</p>
-        </div>
-    </div>
+
+<!-- LOGO -->
+
+<div class="logo-box">
+
+<div>
+
+<h1>🌴</h1>
+<h2>Oasis del Sur</h2>
+<p>Premium Club</p>
+
+</div>
+
+</div>
 
 
-    <!-- WEED -->
-    <div class="category">
-        <h2>🌿 Weed</h2>
 
-        <div class="products">
-            <div class="product-box">Prodotto 1</div>
-            <div class="product-box">Prodotto 2</div>
-            <div class="product-box">Prodotto 3</div>
-        </div>
-    </div>
+<!-- WEED -->
 
+<div class="category-title">
+🌿 Weed
+</div>
 
-    <!-- FROZEN STATIC -->
-    <div class="category">
-        <h2>❄️ Frozen / Static</h2>
+<div class="grid">
 
-        <div class="products">
-            <div class="product-box">Prodotto 1</div>
-            <div class="product-box">Prodotto 2</div>
-            <div class="product-box">Prodotto 3</div>
-        </div>
-    </div>
+<div class="box">Weed 1</div>
+<div class="box">Weed 2</div>
+<div class="box">Weed 3</div>
+
+</div>
 
 
-    <!-- DRY -->
-    <div class="category">
-        <h2>🌱 Dry</h2>
 
-        <div class="products">
-            <div class="product-box">Prodotto 1</div>
-            <div class="product-box">Prodotto 2</div>
-            <div class="product-box">Prodotto 3</div>
-        </div>
-    </div>
+<!-- FROZEN -->
+
+<div class="category-title">
+❄️ Frozen / Static
+</div>
+
+<div class="grid">
+
+<div class="box">Frozen 1</div>
+<div class="box">Frozen 2</div>
+<div class="box">Static 3</div>
+
+</div>
 
 
-    <!-- EXTRACT -->
-    <div class="category">
-        <h2>💎 Extract</h2>
 
-        <div class="products">
-            <div class="product-box">Prodotto 1</div>
-            <div class="product-box">Prodotto 2</div>
-            <div class="product-box">Prodotto 3</div>
-        </div>
-    </div>
+<!-- DRY -->
+
+<div class="category-title">
+🌱 Dry
+</div>
+
+<div class="grid">
+
+<div class="box">Dry 1</div>
+<div class="box">Dry 2</div>
+<div class="box">Dry 3</div>
+
+</div>
+
+
+
+<!-- EXTRACT -->
+
+<div class="category-title">
+💎 Extract
+</div>
+
+<div class="grid">
+
+<div class="box">Extract 1</div>
+<div class="box">Extract 2</div>
+<div class="box">Extract 3</div>
+
+</div>
 
 
 </div>
