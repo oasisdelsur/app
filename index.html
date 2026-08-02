@@ -7,63 +7,232 @@
 
 <title>Oasis del Sur</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+body {
+    margin:0;
+    padding:20px;
+    background:#0b0b0b;
+    color:white;
+    font-family:Arial, sans-serif;
+}
+
+.container {
+    max-width:500px;
+    margin:auto;
+}
+
+
+/* LOGO GRANDE */
+
+.logo-box {
+    height:230px;
+    background:#171717;
+    border-radius:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    margin-bottom:25px;
+    border:1px solid #333;
+}
+
+.logo-box img {
+    max-width:150px;
+}
+
+.logo-text {
+    font-size:28px;
+}
+
+
+
+/* CATEGORIE */
+
+.category {
+    background:#1c1c1c;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:15px;
+    text-align:center;
+    font-size:22px;
+    cursor:pointer;
+}
+
+
+/* PRODOTTI NASCOSTI */
+
+.products {
+    display:none;
+    margin-top:15px;
+    gap:10px;
+    grid-template-columns:repeat(3,1fr);
+}
+
+
+.product {
+    background:#292929;
+    border-radius:15px;
+    padding:15px 5px;
+    font-size:14px;
+}
+
+
+
+/* CARRELLO */
+
+.cart {
+    margin-top:25px;
+    background:#222;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+}
+
+
+button {
+    background:white;
+    border:0;
+    border-radius:15px;
+    padding:12px 25px;
+    font-size:16px;
+}
+
+
+</style>
 
 </head>
 
 
 <body>
 
+
 <div class="container">
 
 
-<!-- LOGO GRANDE -->
+<!-- LOGO -->
 
 <div class="logo-box">
 
     <div>
-        <div class="logo">🌴</div>
-        <h1>Oasis del Sur</h1>
-        <p>Premium Experience</p>
+        <img src="logo.png">
+        <div class="logo-text">Oasis del Sur</div>
     </div>
 
 </div>
 
 
 
-<!-- CATEGORIE -->
+<!-- WEED -->
 
-<div class="menu">
+<div class="category" onclick="openCategory('weed')">
+🌿 Weed
 
+<div id="weed" class="products">
 
-<a href="weed.html" class="category-box">
-🌿<br>
-Weed
-</a>
+<div class="product">Prodotto 1</div>
+<div class="product">Prodotto 2</div>
+<div class="product">Prodotto 3</div>
 
+</div>
 
-<a href="frozen.html" class="category-box">
-❄️<br>
-Frozen / Static
-</a>
-
-
-<a href="dry.html" class="category-box">
-🌱<br>
-Dry
-</a>
+</div>
 
 
-<a href="extract.html" class="category-box">
-💎<br>
-Extract
-</a>
+
+
+<!-- FROZEN -->
+
+<div class="category" onclick="openCategory('frozen')">
+
+❄️ Frozen / Static
+
+<div id="frozen" class="products">
+
+<div class="product">Prodotto 1</div>
+<div class="product">Prodotto 2</div>
+<div class="product">Prodotto 3</div>
+
+</div>
+
+</div>
+
+
+
+
+<!-- DRY -->
+
+<div class="category" onclick="openCategory('dry')">
+
+🌱 Dry
+
+<div id="dry" class="products">
+
+<div class="product">Prodotto 1</div>
+<div class="product">Prodotto 2</div>
+<div class="product">Prodotto 3</div>
+
+</div>
+
+</div>
+
+
+
+
+<!-- EXTRACT -->
+
+<div class="category" onclick="openCategory('extract')">
+
+💎 Extract
+
+<div id="extract" class="products">
+
+<div class="product">Prodotto 1</div>
+<div class="product">Prodotto 2</div>
+<div class="product">Prodotto 3</div>
+
+</div>
+
+</div>
+
+
+
+<div class="cart">
+
+🛒 Carrello
+
+<br><br>
+
+<button>
+Vai al carrello
+</button>
+
+</div>
+
 
 
 </div>
 
 
-</div>
+
+
+<script>
+
+function openCategory(id){
+
+let box = document.getElementById(id);
+
+if(box.style.display === "grid"){
+    box.style.display="none";
+}
+else{
+    box.style.display="grid";
+}
+
+}
+
+</script>
+
 
 
 </body>
