@@ -1,15 +1,18 @@
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
 body {
     margin: 0;
-    background: #0f0f0f;
+    background: #080808;
     color: white;
 }
 
+
+
+/* CONTENITORE */
 
 .container {
     width: 100%;
@@ -17,172 +20,373 @@ body {
 }
 
 
-/* HEADER */
+
+/* HEADER STILE NETFLIX */
 
 .header {
+
     text-align: center;
-    margin-bottom: 20px;
+
+    padding: 35px 15px 25px;
+
+    background: linear-gradient(
+        to bottom,
+        #181818,
+        #080808
+    );
+
 }
+
 
 
 .logo {
-    width: 150px;
-    max-width: 80%;
+
+    width: 230px;
+
+    max-width: 90%;
+
+    filter:
+    drop-shadow(0 0 25px rgba(255,255,255,0.25));
+
+    animation: logoShow 1s ease;
+
 }
+
+
+
+@keyframes logoShow {
+
+    from {
+
+        opacity:0;
+
+        transform:scale(.7);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
 
 
 
 /* TITOLO */
 
 .section-title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 15px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    margin:20px 0;
+
+    letter-spacing:1px;
+
 }
 
 
 
-/* GRIGLIA CATALOGO */
 
-.container {
-    display: block;
-}
-
-
-/* CATEGORIE */
+/* CATEGORIE 2 COLONNE */
 
 .category {
-    background: #1c1c1c;
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    width: calc(50% - 8px);
-    float: left;
-    margin-right: 8px;
+    width:calc(50% - 8px);
 
-    min-height: 90px;
+    float:left;
+
+    margin-right:8px;
+
+    margin-bottom:15px;
+
+
+    min-height:110px;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #222,
+        #111
+    );
+
+
+    border-radius:20px;
+
+
+    padding:18px;
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+    box-shadow:
+
+    0 8px 25px rgba(0,0,0,.6);
+
+
+    transition:.3s;
+
+
 }
+
+
+
+.category:hover {
+
+    transform:translateY(-5px);
+
+}
+
+
 
 
 .category-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
 }
+
 
 
 .category-icon {
-    font-size: 30px;
+
+    font-size:38px;
+
 }
+
 
 
 .category-name {
-    font-size: 18px;
-    font-weight: bold;
+
+    font-size:20px;
+
+    font-weight:bold;
+
 }
+
 
 
 .category-count {
-    font-size: 13px;
-    color: #aaa;
+
+    color:#999;
+
+    font-size:13px;
+
 }
+
 
 
 .arrow {
-    font-size: 28px;
+
+    font-size:30px;
+
 }
+
 
 
 
 /* PRODOTTI */
 
 .products {
-    display: none;
-    clear: both;
+
+    clear:both;
+
+    display:none;
+
 }
+
 
 
 .product {
-    background: #222;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 10px 0;
+
+    background:#181818;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin:12px 0;
+
+
+    border:1px solid #292929;
+
 }
+
 
 
 .product-name {
-    font-size: 18px;
-    font-weight: bold;
+
+    font-size:19px;
+
+    font-weight:bold;
+
 }
+
 
 
 .product-price {
-    margin-top: 5px;
-    color: #00ff88;
-    font-size: 17px;
+
+    color:#00e676;
+
+    font-size:21px;
+
+    font-weight:bold;
+
+    margin-top:5px;
+
 }
 
 
 
-/* PULSANTI */
+
+/* BOTTONI */
 
 .add-btn {
-    margin-top: 10px;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    background: #00a86b;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
+
+    width:100%;
+
+    margin-top:12px;
+
+    padding:14px;
+
+
+    background:#e50914;
+
+    color:white;
+
+
+    border:none;
+
+    border-radius:30px;
+
+
+    font-size:16px;
+
+    font-weight:bold;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
 }
+
+
+
+.add-btn:hover {
+
+    background:#ff3038;
+
+    transform:scale(1.03);
+
+}
+
 
 
 
 /* CARRELLO */
 
 .cart {
-    clear: both;
-    margin: 20px 15px;
-    padding: 15px;
-    background: #1c1c1c;
-    border-radius: 15px;
+
+
+    clear:both;
+
+
+    margin:25px 15px;
+
+
+    padding:20px;
+
+
+    background:#111;
+
+
+    border-radius:22px;
+
+
+    box-shadow:
+
+    0 10px 30px #000;
+
+
 }
+
 
 
 .cart-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin-bottom:15px;
+
 }
+
+
 
 
 .checkout {
-    margin-top: 15px;
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 12px;
-    background: #0088cc;
-    color: white;
-    font-size: 16px;
+
+
+    width:100%;
+
+
+    margin-top:15px;
+
+
+    padding:15px;
+
+
+    background:#e50914;
+
+
+    color:white;
+
+
+    border:none;
+
+
+    border-radius:30px;
+
+
+    font-size:17px;
+
+    font-weight:bold;
+
 }
 
 
 
-/* TELEFONI PICCOLI */
+/* TELEFONI */
 
 @media(max-width:500px){
 
-    .category {
-        width: calc(50% - 8px);
+
+    .logo {
+
+        width:200px;
+
     }
+
 
 }
