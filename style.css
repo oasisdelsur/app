@@ -5,88 +5,66 @@
 
 
 body {
-
-    margin:0;
-
-    background:#050505;
-
-    color:white;
-
+    margin: 0;
+    background: #080808;
+    color: white;
 }
-
 
 
 /* CONTENITORE */
 
 .container {
-
-    width:100%;
-
-    padding:15px;
-
+    width: 100%;
+    padding: 15px;
 }
 
 
 
-
-/* HEADER CINEMA */
+/* HEADER */
 
 .header {
 
-    text-align:center;
+    text-align: center;
 
-    padding:60px 10px 40px;
+    padding: 40px 15px 30px;
 
-
-    background:
-
-    linear-gradient(
-
+    background: linear-gradient(
         to bottom,
-
-        #202020 0%,
-
-        #080808 90%
-
+        #181818,
+        #080808
     );
-
 
 }
 
 
 
-
-/* LOGO GIGANTE */
+/* LOGO GRANDE */
 
 .logo {
 
-    width:430px;
+    width: 380px;
 
-    max-width:100%;
+    max-width: 95%;
 
 
     filter:
 
-    drop-shadow(0 0 50px rgba(255,255,255,0.45));
+    drop-shadow(0 0 35px rgba(255,255,255,0.35));
 
 
-    animation:
-
-    logoOpen 1.2s ease;
+    animation: logoShow 1s ease;
 
 }
 
 
 
-
-@keyframes logoOpen {
-
+@keyframes logoShow {
 
     from {
 
         opacity:0;
 
-        transform:scale(.6);
+        transform:scale(.8);
 
     }
 
@@ -107,12 +85,11 @@ body {
 
 .section-title {
 
-    font-size:30px;
+    font-size:28px;
 
-    font-weight:900;
+    font-weight:800;
 
-    margin:25px 0;
-
+    margin:20px 0;
 
     letter-spacing:1px;
 
@@ -120,45 +97,35 @@ body {
 
 
 
-/* CATEGORIE */
+/* CATEGORIE 2 COLONNE */
 
 .category {
 
-
     width:calc(50% - 8px);
 
-
     float:left;
-
 
     margin-right:8px;
 
     margin-bottom:15px;
 
 
-    min-height:120px;
-
+    min-height:110px;
 
 
     background:
 
     linear-gradient(
-
         145deg,
-
-        #242424,
-
-        #101010
-
+        #222,
+        #111
     );
 
 
+    border-radius:20px;
 
-    border-radius:22px;
 
-
-    padding:20px;
-
+    padding:18px;
 
 
     display:flex;
@@ -168,15 +135,12 @@ body {
     align-items:center;
 
 
-
     box-shadow:
 
-    0 10px 30px rgba(0,0,0,.8);
-
+    0 8px 25px rgba(0,0,0,.6);
 
 
     transition:.3s;
-
 
 }
 
@@ -184,17 +148,13 @@ body {
 
 .category:hover {
 
-
-    transform:translateY(-6px);
-
+    transform:translateY(-5px);
 
 }
 
 
 
-
 .category-left {
-
 
     display:flex;
 
@@ -202,17 +162,13 @@ body {
 
     gap:12px;
 
-
 }
-
 
 
 
 .category-icon {
 
-
-    font-size:42px;
-
+    font-size:38px;
 
 }
 
@@ -220,11 +176,9 @@ body {
 
 .category-name {
 
-
-    font-size:21px;
+    font-size:20px;
 
     font-weight:bold;
-
 
 }
 
@@ -232,11 +186,9 @@ body {
 
 .category-count {
 
-
-    color:#aaa;
+    color:#999;
 
     font-size:13px;
-
 
 }
 
@@ -244,9 +196,7 @@ body {
 
 .arrow {
 
-
-    font-size:32px;
-
+    font-size:30px;
 
 }
 
@@ -256,11 +206,9 @@ body {
 
 .products {
 
-
     clear:both;
 
     display:none;
-
 
 }
 
@@ -268,22 +216,16 @@ body {
 
 .product {
 
-
     background:#181818;
 
+    border-radius:18px;
 
-    border-radius:20px;
-
-
-    padding:20px;
-
+    padding:18px;
 
     margin:12px 0;
 
 
-
-    border:1px solid #303030;
-
+    border:1px solid #292929;
 
 }
 
@@ -291,11 +233,9 @@ body {
 
 .product-name {
 
-
-    font-size:20px;
+    font-size:19px;
 
     font-weight:bold;
-
 
 }
 
@@ -303,27 +243,83 @@ body {
 
 .product-price {
 
+    color:#00e676;
 
-    color:#00ff88;
-
-
-    font-size:22px;
+    font-size:21px;
 
     font-weight:bold;
-
-
-    margin-top:5px;
-
 
 }
 
 
 
-
-/* BOTTONI ROSSI NETFLIX */
+/* BOTTONI */
 
 .add-btn {
 
+    width:100%;
+
+    margin-top:12px;
+
+    padding:14px;
+
+
+    background:#e50914;
+
+    color:white;
+
+
+    border:none;
+
+    border-radius:30px;
+
+
+    font-size:16px;
+
+    font-weight:bold;
+
+}
+
+
+
+/* CARRELLO */
+
+.cart {
+
+    clear:both;
+
+    margin:25px 15px;
+
+    padding:20px;
+
+
+    background:#111;
+
+
+    border-radius:22px;
+
+
+    box-shadow:
+
+    0 10px 30px #000;
+
+}
+
+
+
+.cart-title {
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+
+
+/* ORDINE */
+
+.checkout {
 
     width:100%;
 
@@ -334,128 +330,23 @@ body {
     padding:15px;
 
 
-
     background:#e50914;
 
 
     color:white;
 
 
-
     border:none;
 
 
     border-radius:30px;
-
 
 
     font-size:17px;
 
-
     font-weight:bold;
 
-
-
-    transition:.3s;
-
-
 }
-
-
-
-.add-btn:hover {
-
-
-    background:#ff3038;
-
-
-    transform:scale(1.04);
-
-
-}
-
-
-
-/* CARRELLO */
-
-.cart {
-
-
-    clear:both;
-
-
-    margin:30px 15px;
-
-
-    padding:22px;
-
-
-    background:#111;
-
-
-    border-radius:25px;
-
-
-
-    box-shadow:
-
-    0 15px 40px #000;
-
-
-}
-
-
-
-.cart-title {
-
-
-    font-size:24px;
-
-    font-weight:bold;
-
-
-}
-
-
-
-
-/* ORDINE */
-
-.checkout {
-
-
-    width:100%;
-
-
-    margin-top:18px;
-
-
-    padding:16px;
-
-
-
-    background:#e50914;
-
-
-    color:white;
-
-
-
-    border:none;
-
-
-    border-radius:30px;
-
-
-
-    font-size:18px;
-
-
-    font-weight:bold;
-
-
-}
-
 
 
 
@@ -466,19 +357,7 @@ body {
 
     .logo {
 
-
         width:380px;
-
-
-    }
-
-
-
-    .header {
-
-
-        padding-top:45px;
-
 
     }
 
