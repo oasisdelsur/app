@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<div class="header">
-    <img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
-</div>
+<html lang="it">
 
 <head>
 
@@ -24,15 +22,15 @@
 
         <img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
 
-    
-
     </div>
+
 
     <!-- CATEGORIE -->
 
     <div class="section-title">
         Catalogo
     </div>
+
 
     <!-- WEED -->
 
@@ -64,6 +62,7 @@
 
     </div>
 
+
     <div id="weed" class="products">
 
         <div class="product">
@@ -82,6 +81,7 @@
 
         </div>
 
+
         <div class="product">
 
             <div class="product-name">
@@ -99,6 +99,8 @@
         </div>
 
     </div>
+
+
 
     <!-- FROZEN -->
 
@@ -130,6 +132,8 @@
 
     </div>
 
+
+
     <div id="frozen" class="products">
 
         <div class="product">
@@ -149,6 +153,9 @@
         </div>
 
     </div>
+
+
+
 
     <!-- DRY -->
 
@@ -180,6 +187,8 @@
 
     </div>
 
+
+
     <div id="dry" class="products">
 
         <div class="product">
@@ -199,6 +208,9 @@
         </div>
 
     </div>
+
+
+
 
     <!-- EXTRACT -->
 
@@ -230,6 +242,8 @@
 
     </div>
 
+
+
     <div id="extract" class="products">
 
         <div class="product">
@@ -250,7 +264,10 @@
 
     </div>
 
+
 </div>
+
+
 
 <!-- CARRELLO -->
 
@@ -260,23 +277,30 @@
         🛒 Carrello
     </div>
 
+
     <div id="cart">
         Nessun prodotto
     </div>
+
 
     <button class="checkout">
         Invia Ordine
     </button>
 
+
 </div>
+
+
 
 <script>
 
 let cart=[];
 
+
 function toggleCategory(id){
 
 let box=document.getElementById(id);
+
 
 if(box.style.display==="block"){
 
@@ -290,6 +314,8 @@ box.style.display="block";
 
 }
 
+
+
 function addCart(product){
 
 cart.push(product);
@@ -298,7 +324,9 @@ document.getElementById("cart").innerHTML=cart.join("<br>");
 
 }
 
+
 </script>
+
 
 </body>
 
