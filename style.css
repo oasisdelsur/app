@@ -11,9 +11,6 @@ body {
 }
 
 
-
-/* CONTENITORE */
-
 .container {
     width: 100%;
     padding: 15px;
@@ -27,7 +24,7 @@ body {
 
     text-align: center;
 
-    padding: 35px 15px 25px;
+    padding: 45px 15px 35px;
 
     background: linear-gradient(
         to bottom,
@@ -41,12 +38,12 @@ body {
 
 .logo {
 
-    width: 230px;
+    width: 320px;
 
-    max-width: 90%;
+    max-width: 95%;
 
     filter:
-    drop-shadow(0 0 25px rgba(255,255,255,0.25));
+    drop-shadow(0 0 40px rgba(255,255,255,0.35));
 
     animation: logoShow 1s ease;
 
@@ -57,24 +54,16 @@ body {
 @keyframes logoShow {
 
     from {
-
         opacity:0;
-
         transform:scale(.7);
-
     }
 
-
     to {
-
         opacity:1;
-
         transform:scale(1);
-
     }
 
 }
-
 
 
 
@@ -94,8 +83,7 @@ body {
 
 
 
-
-/* CATEGORIE 2 COLONNE */
+/* CATEGORIE */
 
 .category {
 
@@ -112,7 +100,6 @@ body {
 
 
     background:
-
     linear-gradient(
         145deg,
         #222,
@@ -134,12 +121,10 @@ body {
 
 
     box-shadow:
-
     0 8px 25px rgba(0,0,0,.6);
 
 
     transition:.3s;
-
 
 }
 
@@ -150,7 +135,6 @@ body {
     transform:translateY(-5px);
 
 }
-
 
 
 
@@ -202,7 +186,6 @@ body {
 
 
 
-
 /* PRODOTTI */
 
 .products {
@@ -224,7 +207,6 @@ body {
     padding:18px;
 
     margin:12px 0;
-
 
     border:1px solid #292929;
 
@@ -250,10 +232,7 @@ body {
 
     font-weight:bold;
 
-    margin-top:5px;
-
 }
-
 
 
 
@@ -282,24 +261,7 @@ body {
 
     font-weight:bold;
 
-
-    cursor:pointer;
-
-
-    transition:.3s;
-
 }
-
-
-
-.add-btn:hover {
-
-    background:#ff3038;
-
-    transform:scale(1.03);
-
-}
-
 
 
 
@@ -307,26 +269,18 @@ body {
 
 .cart {
 
-
     clear:both;
-
 
     margin:25px 15px;
 
-
     padding:20px;
-
 
     background:#111;
 
-
     border-radius:22px;
 
-
     box-shadow:
-
     0 10px 30px #000;
-
 
 }
 
@@ -338,33 +292,27 @@ body {
 
     font-weight:bold;
 
-    margin-bottom:15px;
-
 }
 
 
 
+/* BOTTONE ORDINE */
 
 .checkout {
 
-
     width:100%;
 
-
     margin-top:15px;
-
 
     padding:15px;
 
 
     background:#e50914;
 
-
     color:white;
 
 
     border:none;
-
 
     border-radius:30px;
 
@@ -377,16 +325,14 @@ body {
 
 
 
-/* TELEFONI */
+/* TELEFONO */
 
 @media(max-width:500px){
 
-
     .logo {
 
-        width:200px;
+        width:320px;
 
     }
-
 
 }
