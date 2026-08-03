@@ -12,9 +12,12 @@
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
     <!-- HEADER -->
 
@@ -25,22 +28,27 @@
     </div>
 
 
+
     <!-- CATEGORIE -->
 
     <div class="section-title">
-        Catalogo
+        🌿 Dispensario
     </div>
+
 
 
     <!-- WEED -->
 
     <div class="category" onclick="toggleCategory('weed')">
 
+
         <div class="category-left">
+
 
             <div class="category-icon">
                 🌿
             </div>
+
 
             <div>
 
@@ -48,234 +56,314 @@
                     Weed
                 </div>
 
+
                 <div class="category-count">
                     3 prodotti
                 </div>
 
+
             </div>
 
+
         </div>
+
 
         <div class="arrow">
             ›
         </div>
 
+
     </div>
+
 
 
     <div id="weed" class="products">
 
+
         <div class="product">
+
 
             <div class="product-name">
                 Cali OG
             </div>
 
+
             <div class="product-price">
                 €20
             </div>
+
 
             <button class="add-btn" onclick="addCart('Cali OG - €20')">
                 Aggiungi al carrello
             </button>
 
+
         </div>
 
 
+
         <div class="product">
+
 
             <div class="product-name">
                 Lemon Haze
             </div>
 
+
             <div class="product-price">
                 €18
             </div>
+
 
             <button class="add-btn" onclick="addCart('Lemon Haze - €18')">
                 Aggiungi al carrello
             </button>
 
+
         </div>
 
+
     </div>
+
+
 
 
 
     <!-- FROZEN -->
 
+
     <div class="category" onclick="toggleCategory('frozen')">
 
+
         <div class="category-left">
+
 
             <div class="category-icon">
                 ❄️
             </div>
 
+
             <div>
+
 
                 <div class="category-name">
                     Frozen
                 </div>
 
+
                 <div class="category-count">
                     3 prodotti
                 </div>
 
+
             </div>
 
+
         </div>
+
 
         <div class="arrow">
             ›
         </div>
 
+
     </div>
+
 
 
 
     <div id="frozen" class="products">
 
+
         <div class="product">
+
 
             <div class="product-name">
                 Frozen Dry
             </div>
 
+
             <div class="product-price">
                 €35
             </div>
+
 
             <button class="add-btn" onclick="addCart('Frozen Dry - €35')">
                 Aggiungi al carrello
             </button>
 
+
         </div>
 
+
     </div>
+
 
 
 
 
     <!-- DRY -->
 
+
     <div class="category" onclick="toggleCategory('dry')">
 
+
         <div class="category-left">
+
 
             <div class="category-icon">
                 🌱
             </div>
 
+
             <div>
+
 
                 <div class="category-name">
                     Dry
                 </div>
 
+
                 <div class="category-count">
                     3 prodotti
                 </div>
 
+
             </div>
 
+
         </div>
+
 
         <div class="arrow">
             ›
         </div>
 
+
     </div>
+
+
 
 
 
     <div id="dry" class="products">
 
+
         <div class="product">
+
 
             <div class="product-name">
                 Dry Premium
             </div>
 
+
             <div class="product-price">
                 €15
             </div>
+
 
             <button class="add-btn" onclick="addCart('Dry Premium - €15')">
                 Aggiungi al carrello
             </button>
 
+
         </div>
 
+
     </div>
+
 
 
 
 
     <!-- EXTRACT -->
 
+
     <div class="category" onclick="toggleCategory('extract')">
 
+
         <div class="category-left">
+
 
             <div class="category-icon">
                 💎
             </div>
 
+
             <div>
+
 
                 <div class="category-name">
                     Extract
                 </div>
 
+
                 <div class="category-count">
                     2 prodotti
                 </div>
 
+
             </div>
 
+
         </div>
+
 
         <div class="arrow">
             ›
         </div>
 
+
     </div>
+
+
 
 
 
     <div id="extract" class="products">
 
+
         <div class="product">
+
 
             <div class="product-name">
                 Rosin Premium
             </div>
 
+
             <div class="product-price">
                 €50
             </div>
+
 
             <button class="add-btn" onclick="addCart('Rosin Premium - €50')">
                 Aggiungi al carrello
             </button>
 
+
         </div>
 
+
     </div>
+
 
 
 </div>
 
 
 
+
+
 <!-- CARRELLO -->
 
+
 <div class="cart">
+
 
     <div class="cart-title">
         🛒 Carrello
     </div>
+
 
 
     <div id="cart">
@@ -283,49 +371,72 @@
     </div>
 
 
+
     <button class="checkout">
         Invia Ordine
     </button>
+
 
 
 </div>
 
 
 
+
+
+
 <script>
+
 
 let cart=[];
 
 
+
 function toggleCategory(id){
+
 
 let box=document.getElementById(id);
 
 
+
 if(box.style.display==="block"){
+
 
 box.style.display="none";
 
+
 }else{
+
 
 box.style.display="block";
 
-}
 
 }
+
+
+}
+
+
 
 
 
 function addCart(product){
 
+
 cart.push(product);
 
+
+
 document.getElementById("cart").innerHTML=cart.join("<br>");
+
+
 
 }
 
 
+
 </script>
+
 
 
 </body>
