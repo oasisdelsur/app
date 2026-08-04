@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gas Mint - Oasis del Sur</title>
+<title>Highland Terps</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,11 +16,12 @@
 <body>
 
 
-
 <div class="back-button">
 
-<a href="#" onclick="history.back(); return false;">
-← Indietro
+<a href="dry.html" id="back">
+
+← Torna ai Dry
+
 </a>
 
 </div>
@@ -32,13 +33,11 @@
 <div class="container">
 
 
-
 <div class="section-title">
 
-🌱 Gas Mint
+🌱 Highland Terps
 
 </div>
-
 
 
 
@@ -47,50 +46,62 @@
 <div class="product">
 
 
-
-<img src="" class="product-image" alt="Gas Mint">
-
+<img src="IMG_9708.png" class="product-image">
 
 
-
-
-<video class="product-video" controls>
-
-<source src="" type="video/mp4">
-
-</video>
+<img src="IMG_9709.png" class="product-image">
 
 
 
 
+<h2 id="choose">
 
-<div class="coming-soon">
+Scegli quantità
 
-
-<div class="hourglass">
-⏳
-</div>
-
-
-<h2>
-Prodotto in arrivo
 </h2>
 
 
-<p>
-Gas Mint sarà disponibile a breve...
-</p>
+
+
+<div class="sizes">
+
+
+<button onclick="addToCart('Highland Terps - 10g')">
+10g
+</button>
+
+
+<button onclick="addToCart('Highland Terps - 20g')">
+20g
+</button>
+
+
+<button onclick="addToCart('Highland Terps - 30g')">
+30g
+</button>
+
+
+<button onclick="addToCart('Highland Terps - 40g')">
+40g
+</button>
+
+
+<button onclick="addToCart('Highland Terps - 50g')">
+50g
+</button>
+
+
+<button onclick="addToCart('Highland Terps - 100g')">
+100g
+</button>
+
+
+<button onclick="addToCart('Highland Terps - 500g')">
+500g
+</button>
 
 
 </div>
-
-
-
-
-
-</div>
-
-
 
 
 </div>
@@ -106,25 +117,18 @@ Gas Mint sarà disponibile a breve...
 
 <div class="cart-title">
 
-🛒 Carrello
+🛒 <span id="cartText">Il tuo ordine</span>
 
 </div>
 
 
 
-<div id="cart">
+<div id="mini-cart">
 
-Nessun prodotto
+Carrello vuoto
 
 </div>
 
-
-
-<button class="checkout" onclick="sendOrder()">
-
-📲 Invia Ordine
-
-</button>
 
 
 </div>
@@ -133,6 +137,44 @@ Nessun prodotto
 
 
 
+
+
+<a href="index.html" class="category-link">
+
+<div class="category">
+
+🛒 Vai al carrello
+
+</div>
+
+</a>
+
+
+
+
+
+<a href="index.html" class="category-link">
+
+<div class="category">
+
+🏠 Torna al menu principale
+
+</div>
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script src="language.js"></script>
 
 
 <script>
@@ -142,16 +184,37 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 
-function showCart(){
+function addToCart(product){
 
 
-let box=document.getElementById("cart");
+cart.push(product);
+
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+
+showMiniCart();
+
+
+alert("✅ " + product + " aggiunto al carrello");
+
+
+}
+
+
+
+
+
+function showMiniCart(){
+
+
+let box=document.getElementById("mini-cart");
 
 
 
 if(cart.length===0){
 
-box.innerHTML="Nessun prodotto";
+box.innerHTML="Carrello vuoto";
 
 return;
 
@@ -162,19 +225,21 @@ return;
 box.innerHTML="";
 
 
-cart.forEach((item,index)=>{
+cart.forEach(function(item,index){
 
 
 box.innerHTML +=
 
-item +
+"• " + item +
 
-' <button onclick="removeItem('+index+')">❌</button><br><br>';
+" <button onclick='removeItem("+index+")'>❌</button><br><br>";
+
 
 });
 
 
 }
+
 
 
 
@@ -188,7 +253,7 @@ cart.splice(index,1);
 localStorage.setItem("cart",JSON.stringify(cart));
 
 
-showCart();
+showMiniCart();
 
 
 }
@@ -196,27 +261,30 @@ showCart();
 
 
 
-function sendOrder(){
+
+window.onload=function(){
 
 
-if(cart.length===0){
+let lang=localStorage.getItem("language") || "it";
 
-alert("Il carrello è vuoto");
 
-return;
+let t=translations[lang];
+
+
+document.getElementById("back").innerHTML=t.back;
+
+
+document.getElementById("choose").innerHTML=t.choose || "Scegli quantità";
+
+
+document.getElementById("cartText").innerHTML=t.cart;
+
+
+showMiniCart();
+
 
 }
 
-
-window.location.href="https://t.me/wordex17";
-
-
-}
-
-
-
-
-showCart();
 
 
 </script>
