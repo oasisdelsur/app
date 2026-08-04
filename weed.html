@@ -43,13 +43,26 @@
 
 <div class="language-menu" id="languageMenu">
 
-<button onclick="changeLanguage('it')">🇮🇹 Italiano</button>
 
-<button onclick="changeLanguage('es')">🇪🇸 Español</button>
+<button onclick="changeLanguage('it')">
+🇮🇹 Italiano
+</button>
 
-<button onclick="changeLanguage('en')">🇬🇧 English</button>
 
-<button onclick="changeLanguage('de')">🇩🇪 Deutsch</button>
+<button onclick="changeLanguage('es')">
+🇪🇸 Español
+</button>
+
+
+<button onclick="changeLanguage('en')">
+🇬🇧 English
+</button>
+
+
+<button onclick="changeLanguage('de')">
+🇩🇪 Deutsch
+</button>
+
 
 </div>
 
@@ -113,6 +126,7 @@ Prodotti in arrivo...
 
 
 
+
 <div class="cart">
 
 
@@ -147,72 +161,6 @@ Nessun prodotto
 
 
 <script src="language.js"></script>
-
-
-<script>
-
-
-function openLanguage(){
-
-document.getElementById("languageMenu").classList.toggle("show");
-
-}
-
-
-
-
-
-function changeLanguage(lang){
-
-
-localStorage.setItem("language",lang);
-
-
-let t=translations[lang];
-
-
-
-document.getElementById("weedTitle").innerHTML="🌿 "+t.weed;
-
-document.getElementById("back").innerHTML=t.back;
-
-document.getElementById("coming").innerHTML=t.coming;
-
-document.getElementById("arrival").innerHTML=t.arrival;
-
-document.getElementById("cartTitle").innerHTML=t.cart;
-
-document.getElementById("orderButton").innerHTML=t.order;
-
-
-
-document.getElementById("languageMenu").classList.remove("show");
-
-
-}
-
-
-
-
-
-window.onload=function(){
-
-
-let saved=localStorage.getItem("language");
-
-
-if(saved){
-
-changeLanguage(saved);
-
-}
-
-
-}
-
-
-</script>
-
 
 
 </body>
