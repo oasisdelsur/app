@@ -16,17 +16,17 @@
 <body>
 
 
-<!-- FRECCIA INDIETRO -->
-
 <div class="back-button">
 
-<a href="dry.html">
+<a href="dry.html" id="back">
 
 ← Torna ai Dry
 
 </a>
 
 </div>
+
+
 
 
 
@@ -42,6 +42,7 @@
 
 
 
+
 <div class="product">
 
 
@@ -52,7 +53,13 @@
 
 
 
-<h2>Scegli quantità</h2>
+
+<h2 id="choose">
+
+Scegli quantità
+
+</h2>
+
 
 
 
@@ -103,12 +110,14 @@
 
 
 
+
+
 <div class="cart">
 
 
 <div class="cart-title">
 
-🛒 Il tuo ordine
+🛒 <span id="cartText">Il tuo ordine</span>
 
 </div>
 
@@ -128,8 +137,6 @@ Carrello vuoto
 
 
 
-<br>
-
 
 
 <a href="index.html" class="category-link">
@@ -142,10 +149,6 @@ Carrello vuoto
 
 </a>
 
-
-
-
-<br>
 
 
 
@@ -168,6 +171,10 @@ Carrello vuoto
 
 
 
+
+
+
+<script src="language.js"></script>
 
 
 <script>
@@ -197,14 +204,15 @@ alert("✅ " + product + " aggiunto al carrello");
 
 
 
+
 function showMiniCart(){
 
 
-let box = document.getElementById("mini-cart");
+let box=document.getElementById("mini-cart");
 
 
 
-if(cart.length === 0){
+if(cart.length===0){
 
 box.innerHTML="Carrello vuoto";
 
@@ -215,7 +223,6 @@ return;
 
 
 box.innerHTML="";
-
 
 
 cart.forEach(function(item,index){
@@ -243,7 +250,7 @@ function removeItem(index){
 cart.splice(index,1);
 
 
-localStorage.setItem("cart", JSON.stringify(cart));
+localStorage.setItem("cart",JSON.stringify(cart));
 
 
 showMiniCart();
@@ -254,7 +261,29 @@ showMiniCart();
 
 
 
+
+window.onload=function(){
+
+
+let lang=localStorage.getItem("language") || "it";
+
+
+let t=translations[lang];
+
+
+document.getElementById("back").innerHTML=t.back;
+
+
+document.getElementById("choose").innerHTML=t.choose || "Scegli quantità";
+
+
+document.getElementById("cartText").innerHTML=t.cart;
+
+
 showMiniCart();
+
+
+}
 
 
 
