@@ -3,143 +3,116 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
 body {
     margin: 0;
     background: #080808;
     color: white;
 }
 
-
-/* CONTENITORE */
-
 .container {
-
     width: 100%;
-
     padding: 15px;
-
 }
-
 
 
 /* HEADER */
 
 .header {
-
-    text-align: center;
-
-    padding: 0;
-
-    background: #000;
-
-    overflow: hidden;
-
+    text-align:center;
+    padding:0;
+    background:#000;
+    overflow:hidden;
 }
 
 
-
-/* LOGO CINEMA */
+/* LOGO TONDO */
 
 .logo {
 
-    width: 100%;
+    width:280px;
 
-    height: 70vh;
+    height:280px;
 
-    max-width: none;
+    object-fit:cover;
 
-    object-fit: contain;
+    border-radius:50%;
 
-    display: block;
+    display:block;
 
+    margin:20px auto;
+
+    background:#000;
 
     filter:
-
     drop-shadow(0 0 40px rgba(255,255,255,0.35));
 
-
-    animation: logoShow 1s ease;
+    animation:logoShow 1s ease;
 
 }
-
 
 
 @keyframes logoShow {
 
     from {
-
-        opacity: 0;
-
-        transform: scale(.85);
-
+        opacity:0;
+        transform:scale(.85);
     }
 
-
     to {
-
-        opacity: 1;
-
-        transform: scale(1);
-
+        opacity:1;
+        transform:scale(1);
     }
 
 }
 
 
-
-
-/* TITOLO DISPENSARIO */
+/* TITOLO */
 
 .section-title {
 
-    font-size: 28px;
+    font-size:28px;
 
-    font-weight: 800;
+    font-weight:800;
 
-    margin: 20px 0;
+    margin:20px 0;
 
-    letter-spacing: 1px;
+    letter-spacing:1px;
 
 }
 
 
-
-
-/* LINK CATEGORIE */
+/* LINK */
 
 .category-link {
 
-    text-decoration: none;
+    text-decoration:none;
 
-    color: white;
+    color:white;
 
-    display: block;
+    display:block;
 
 }
-
-
 
 
 /* CATEGORIE */
 
 .category {
 
-    width: calc(50% - 8px);
+    width:calc(50% - 8px);
 
-    float: left;
+    float:left;
 
-    margin-right: 8px;
+    margin-right:8px;
 
-    margin-bottom: 15px;
+    margin-bottom:15px;
 
-    min-height: 220px;
+    min-height:220px;
 
-    background: linear-gradient(145deg,#222,#111);
+    background:linear-gradient(145deg,#222,#111);
 
-    border-radius: 20px;
+    border-radius:20px;
 
-    padding: 18px;
+    padding:18px;
 
     display:flex;
 
@@ -161,7 +134,6 @@ body {
 }
 
 
-
 .category:hover {
 
     transform:translateY(-5px);
@@ -169,10 +141,7 @@ body {
 }
 
 
-
-
 @keyframes categoryShow {
-
 
 from {
 
@@ -182,7 +151,6 @@ from {
 
 }
 
-
 to {
 
     opacity:1;
@@ -191,32 +159,7 @@ to {
 
 }
 
-
 }
-
-
-
-
-/* ICONA */
-
-.category-left {
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-
-
-.category-icon {
-
-    font-size:38px;
-
-}
-
 
 
 .category-name {
@@ -228,26 +171,19 @@ to {
 }
 
 
+.category-image {
 
-.category-count {
+    width:100%;
 
-    color:#999;
+    height:140px;
 
-    font-size:13px;
+    object-fit:cover;
 
-}
+    border-radius:15px;
 
-
-
-.arrow {
-
-    font-size:30px;
+    margin-bottom:12px;
 
 }
-
-
-
-
 
 /* PRODOTTI */
 
@@ -256,7 +192,6 @@ to {
     clear:both;
 
 }
-
 
 
 .product {
@@ -269,11 +204,9 @@ to {
 
     margin:12px 0;
 
-
     border:1px solid #292929;
 
 }
-
 
 
 .product-name {
@@ -283,7 +216,6 @@ to {
     font-weight:bold;
 
 }
-
 
 
 .product-price {
@@ -297,10 +229,6 @@ to {
 }
 
 
-
-
-/* FOTO PRODOTTO */
-
 .product-image {
 
     width:100%;
@@ -312,9 +240,6 @@ to {
 }
 
 
-
-/* VIDEO */
-
 .product-video {
 
     width:100%;
@@ -324,44 +249,29 @@ to {
 }
 
 
-
-
-
-/* PULSANTE */
+/* PULSANTI */
 
 .add-btn {
 
-
     width:100%;
-
 
     margin-top:12px;
 
-
     padding:14px;
-
 
     background:#e50914;
 
-
     color:white;
-
 
     border:none;
 
-
     border-radius:30px;
-
 
     font-size:16px;
 
-
     font-weight:bold;
 
-
 }
-
-
 
 
 /* CARRELLO */
@@ -374,19 +284,14 @@ to {
 
     padding:20px;
 
-
     background:#111;
-
 
     border-radius:22px;
 
-
     box-shadow:
-
     0 10px 30px #000;
 
 }
-
 
 
 .cart-title {
@@ -398,47 +303,30 @@ to {
 }
 
 
-
-
-/* BOTTONE ORDINE */
-
 .checkout {
-
 
     width:100%;
 
-
     margin-top:15px;
-
 
     padding:15px;
 
-
     background:#e50914;
-
 
     color:white;
 
-
     border:none;
-
 
     border-radius:30px;
 
-
     font-size:17px;
 
-
     font-weight:bold;
-
 
 }
 
 
-
-
-
-/* PULIZIA FLOAT */
+/* PULIZIA */
 
 .container::after {
 
@@ -451,91 +339,117 @@ to {
 }
 
 
-
-
-
 /* MOBILE */
 
 @media(max-width:500px){
 
-
     .logo {
 
-        height:55vh;
+        width:220px;
+
+        height:220px;
 
     }
 
-
 }
-/* ===========================
-   SFONDO VERDE ANIMATO
-=========================== */
+
+
+/* SFONDO VERDE ANIMATO */
 
 body{
+
     background:#050505;
+
     position:relative;
+
     overflow-x:hidden;
+
 }
+
 
 body::before,
 body::after{
+
     content:"";
+
     position:fixed;
+
     width:700px;
+
     height:700px;
+
     border-radius:50%;
+
     z-index:-1;
+
     filter:blur(140px);
+
     opacity:.35;
+
 }
+
 
 body::before{
+
     background:#00ff88;
+
     top:-250px;
+
     left:-250px;
+
     animation:greenMove1 12s ease-in-out infinite alternate;
+
 }
 
+
 body::after{
+
     background:#00ff44;
+
     bottom:-250px;
+
     right:-250px;
+
     animation:greenMove2 16s ease-in-out infinite alternate;
+
 }
+
 
 @keyframes greenMove1{
 
-    0%{
-        transform:translate(0,0) scale(1);
-    }
+0%{
+transform:translate(0,0) scale(1);
+}
 
-    50%{
-        transform:translate(180px,120px) scale(1.3);
-    }
+50%{
+transform:translate(180px,120px) scale(1.3);
+}
 
-    100%{
-        transform:translate(-80px,220px) scale(.9);
-    }
+100%{
+transform:translate(-80px,220px) scale(.9);
+}
 
 }
+
 
 @keyframes greenMove2{
 
-    0%{
-        transform:translate(0,0) scale(1);
-    }
+0%{
+transform:translate(0,0) scale(1);
+}
 
-    50%{
-        transform:translate(-220px,-120px) scale(1.4);
-    }
+50%{
+transform:translate(-220px,-120px) scale(1.4);
+}
 
-    100%{
-        transform:translate(120px,-220px) scale(.95);
-    }
+100%{
+transform:translate(120px,-220px) scale(.95);
+}
 
 }
 
-/* Effetto vetro sulle card */
+
+/* VETRO */
 
 .category,
 .product,
@@ -548,21 +462,7 @@ body::after{
     border:1px solid rgba(0,255,120,.15);
 
     box-shadow:
-        0 0 20px rgba(0,255,120,.08),
-        0 10px 30px rgba(0,0,0,.7);
-
-}
-
-.category-image{
-
-    width:100%;
-
-    height:140px;
-
-    object-fit:cover;
-
-    border-radius:15px;
-
-    margin-bottom:12px;
+    0 0 20px rgba(0,255,120,.08),
+    0 10px 30px rgba(0,0,0,.7);
 
 }
