@@ -13,41 +13,182 @@
 
 </head>
 
+
 <body>
+
+
+<div class="back-button">
+
+<a href="#" onclick="history.back(); return false;">
+← Indietro
+</a>
+
+</div>
+
+
 
 <div class="container">
 
-    <div class="section-title">
-        🌿 Weed
-    </div>
 
-    <div class="coming-soon">
+<div class="section-title">
 
-        <div class="hourglass">⏳</div>
-
-        <h2>Ancora non disponibili</h2>
-
-        <p>Prodotti in arrivo...</p>
-
-    </div>
+🌿 Weed
 
 </div>
+
+
+
+<div class="coming-soon">
+
+
+<div class="hourglass">
+⏳
+</div>
+
+
+<h2>
+Ancora non disponibili
+</h2>
+
+
+<p>
+Prodotti in arrivo...
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
 
 <div class="cart">
 
-    <div class="cart-title">
-        🛒 Carrello
-    </div>
 
-    <div id="cart">
-        Nessun prodotto
-    </div>
+<div class="cart-title">
 
-    <button class="checkout">
-        Invia Ordine
-    </button>
+🛒 Carrello
 
 </div>
+
+
+
+<div id="cart">
+
+Nessun prodotto
+
+</div>
+
+
+
+<button class="checkout" onclick="sendOrder()">
+
+📲 Invia Ordine
+
+</button>
+
+
+</div>
+
+
+
+
+<script>
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+function showCart(){
+
+
+let box=document.getElementById("cart");
+
+
+if(cart.length===0){
+
+box.innerHTML="Nessun prodotto";
+
+return;
+
+}
+
+
+box.innerHTML="";
+
+
+cart.forEach((item,index)=>{
+
+
+box.innerHTML +=
+
+item +
+
+' <button onclick="removeItem('+index+')">❌</button><br><br>';
+
+
+});
+
+
+}
+
+
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+showCart();
+
+}
+
+
+
+function sendOrder(){
+
+
+if(cart.length===0){
+
+alert("Il carrello è vuoto");
+
+return;
+
+}
+
+
+let ordine=cart.join("\n");
+
+
+let messaggio=
+
+"Ciao Oasis del Sur, vorrei ordinare:\n\n"+ordine;
+
+
+
+let telegram=
+
+"https://t.me/wordex17";
+
+
+
+window.location.href=telegram;
+
+
+}
+
+
+
+showCart();
+
+
+</script>
+
+
 
 </body>
 
