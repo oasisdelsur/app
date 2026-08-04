@@ -16,7 +16,20 @@
 <body>
 
 
+
+<div class="back-button">
+
+<a href="#" onclick="history.back(); return false;">
+← Indietro
+</a>
+
+</div>
+
+
+
+
 <div class="container">
+
 
 
 <div class="section-title">
@@ -27,7 +40,11 @@
 
 
 
+
+
 <div class="products">
+
+
 
 
 
@@ -50,6 +67,9 @@ Highland Terps
 
 
 
+
+
+
 <!-- ROCKET SEEDS -->
 
 <div class="product">
@@ -65,6 +85,8 @@ Rocket Seeds
 </a>
 
 </div>
+
+
 
 
 
@@ -90,6 +112,8 @@ Gas Mint
 
 
 
+
+
 <!-- ARCADE -->
 
 <div class="product">
@@ -108,11 +132,150 @@ Arcade
 
 
 
+
+
 </div>
 
 
 
+
 </div>
+
+
+
+
+
+
+
+<div class="cart">
+
+
+<div class="cart-title">
+
+🛒 Carrello
+
+</div>
+
+
+
+<div id="cart">
+
+Nessun prodotto
+
+</div>
+
+
+
+<button class="checkout" onclick="sendOrder()">
+
+📲 Invia Ordine
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+function showCart(){
+
+
+let box=document.getElementById("cart");
+
+
+
+if(cart.length===0){
+
+box.innerHTML="Nessun prodotto";
+
+return;
+
+}
+
+
+
+box.innerHTML="";
+
+
+
+cart.forEach((item,index)=>{
+
+
+box.innerHTML +=
+
+item +
+
+' <button onclick="removeItem('+index+')">❌</button><br><br>';
+
+
+});
+
+
+}
+
+
+
+
+
+function removeItem(index){
+
+
+cart.splice(index,1);
+
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+
+showCart();
+
+
+}
+
+
+
+
+
+function sendOrder(){
+
+
+if(cart.length===0){
+
+alert("Il carrello è vuoto");
+
+return;
+
+}
+
+
+
+let telegram="https://t.me/wordex17";
+
+
+window.location.href=telegram;
+
+
+}
+
+
+
+
+
+showCart();
+
+
+</script>
+
 
 
 </body>
