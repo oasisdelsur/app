@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Weed - Oasis del Sur</title>
@@ -17,20 +16,13 @@
 <body>
 
 
-<div class="back-button">
-
-<a href="#" onclick="history.back(); return false;">
-← Indietro
-</a>
-
-</div>
-
-
-
 <div class="container">
 
 
-<div class="section-title">
+<div class="section-header">
+
+
+<div class="section-title" id="weedTitle">
 
 🌿 Weed
 
@@ -38,28 +30,85 @@
 
 
 
+<div class="language-box">
+
+
+<button class="language-button" onclick="openLanguage()">
+
+🌐 Language ▾
+
+</button>
+
+
+
+<div class="language-menu" id="languageMenu">
+
+<button onclick="changeLanguage('it')">🇮🇹 Italiano</button>
+
+<button onclick="changeLanguage('es')">🇪🇸 Español</button>
+
+<button onclick="changeLanguage('en')">🇬🇧 English</button>
+
+<button onclick="changeLanguage('de')">🇩🇪 Deutsch</button>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="back-button">
+
+<a href="index.html" id="back">
+
+← Indietro
+
+</a>
+
+</div>
+
+
+
+
+
 <div class="coming-soon">
 
 
 <div class="hourglass">
+
 ⏳
+
 </div>
 
 
-<h2>
+
+<h2 id="coming">
+
 Ancora non disponibili
+
 </h2>
 
 
-<p>
+
+<p id="arrival">
+
 Prodotti in arrivo...
+
 </p>
 
 
 </div>
 
 
+
 </div>
+
 
 
 
@@ -67,7 +116,7 @@ Prodotti in arrivo...
 <div class="cart">
 
 
-<div class="cart-title">
+<div class="cart-title" id="cartTitle">
 
 🛒 Carrello
 
@@ -83,9 +132,9 @@ Nessun prodotto
 
 
 
-<button class="checkout" onclick="sendOrder()">
+<button class="checkout" id="orderButton">
 
-📲 Invia Ordine
+📲 Conferma ordine
 
 </button>
 
@@ -95,95 +144,71 @@ Nessun prodotto
 
 
 
+
+
+<script src="language.js"></script>
+
+
 <script>
 
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function openLanguage(){
 
-
-
-function showCart(){
-
-
-let box=document.getElementById("cart");
-
-
-if(cart.length===0){
-
-box.innerHTML="Nessun prodotto";
-
-return;
-
-}
-
-
-box.innerHTML="";
-
-
-cart.forEach((item,index)=>{
-
-
-box.innerHTML +=
-
-item +
-
-' <button onclick="removeItem('+index+')">❌</button><br><br>';
-
-
-});
-
+document.getElementById("languageMenu").classList.toggle("show");
 
 }
 
 
 
-function removeItem(index){
-
-cart.splice(index,1);
-
-localStorage.setItem("cart",JSON.stringify(cart));
-
-showCart();
-
-}
 
 
-
-function sendOrder(){
-
-
-if(cart.length===0){
-
-alert("Il carrello è vuoto");
-
-return;
-
-}
+function changeLanguage(lang){
 
 
-let ordine=cart.join("\n");
+localStorage.setItem("language",lang);
 
 
-let messaggio=
-
-"Ciao Oasis del Sur, vorrei ordinare:\n\n"+ordine;
+let t=translations[lang];
 
 
 
-let telegram=
+document.getElementById("weedTitle").innerHTML="🌿 "+t.weed;
 
-"https://t.me/wordex17";
+document.getElementById("back").innerHTML=t.back;
+
+document.getElementById("coming").innerHTML=t.coming;
+
+document.getElementById("arrival").innerHTML=t.arrival;
+
+document.getElementById("cartTitle").innerHTML=t.cart;
+
+document.getElementById("orderButton").innerHTML=t.order;
 
 
 
-window.location.href=telegram;
+document.getElementById("languageMenu").classList.remove("show");
 
 
 }
 
 
 
-showCart();
+
+
+window.onload=function(){
+
+
+let saved=localStorage.getItem("language");
+
+
+if(saved){
+
+changeLanguage(saved);
+
+}
+
+
+}
 
 
 </script>
