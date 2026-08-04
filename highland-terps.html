@@ -81,19 +81,133 @@
 </div>
 
 
+<div class="cart">
+
+
+<div class="cart-title">
+
+🛒 Carrello
+
+</div>
+
+
+<div id="cart">
+
+Nessun prodotto
+
+</div>
+
+
+<button class="checkout" onclick="sendOrder()">
+
+Invia Ordine
+
+</button>
+
+
+</div>
+
+
 </div>
 
 
 
 <script>
 
+
+let cart = [];
+
+
 function addToCart(product){
 
-localStorage.setItem("ordine", product);
 
-alert(product + " aggiunto al carrello");
+cart.push(product);
+
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+
+showCart();
+
 
 }
+
+
+
+function showCart(){
+
+
+let box = document.getElementById("cart");
+
+
+if(cart.length === 0){
+
+box.innerHTML="Nessun prodotto";
+
+return;
+
+}
+
+
+box.innerHTML="";
+
+
+cart.forEach(function(item,index){
+
+
+box.innerHTML +=
+
+item +
+
+" <button onclick='removeItem("+index+")'>❌</button><br><br>";
+
+
+});
+
+
+}
+
+
+
+function removeItem(index){
+
+
+cart.splice(index,1);
+
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+
+showCart();
+
+
+}
+
+
+
+function sendOrder(){
+
+
+let ordine = cart.join("\n");
+
+
+alert("Ordine:\n\n" + ordine);
+
+
+}
+
+
+
+if(localStorage.getItem("cart")){
+
+
+cart = JSON.parse(localStorage.getItem("cart"));
+
+
+}
+
+
+showCart();
 
 
 </script>
