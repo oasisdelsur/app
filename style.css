@@ -106,6 +106,71 @@ to {
 
 }
 
+/* ==========================
+   PRODOTTI IN ARRIVO
+========================== */
+
+.coming-soon{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    min-height:60vh;
+
+    background:rgba(20,20,20,.75);
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(0,255,120,.20);
+    border-radius:22px;
+
+    padding:45px 30px;
+
+    box-shadow:
+        0 0 25px rgba(0,255,120,.12),
+        0 10px 35px rgba(0,0,0,.7);
+}
+
+.hourglass{
+    font-size:90px;
+    margin-bottom:25px;
+    filter:drop-shadow(0 0 20px rgba(0,255,120,.5));
+    animation:hourglass 2.5s ease-in-out infinite;
+}
+
+.coming-soon h2{
+    margin:0;
+    font-size:32px;
+    font-weight:800;
+    color:#00ff88;
+    text-shadow:0 0 12px rgba(0,255,120,.4);
+}
+
+.coming-soon p{
+    margin-top:15px;
+    font-size:19px;
+    color:#d6d6d6;
+    letter-spacing:.5px;
+}
+
+@keyframes hourglass{
+    0%{
+        transform:rotate(0deg) scale(1);
+    }
+
+    45%{
+        transform:rotate(180deg) scale(1.08);
+    }
+
+    55%{
+        transform:rotate(180deg) scale(1.08);
+    }
+
+    100%{
+        transform:rotate(360deg) scale(1);
+    }
+}
 
 
 
