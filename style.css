@@ -3,28 +3,46 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+
 body {
+
     margin:0;
-    background:#080808;
+
+    background:#050505;
+
     color:white;
+
+    overflow-x:hidden;
+
 }
 
+
+
 .container {
+
     width:100%;
+
     padding:15px;
+
 }
+
 
 
 /* HEADER */
 
 .header {
+
     text-align:center;
+
     background:#000;
+
     overflow:hidden;
+
 }
 
 
-/* LOGO TONDO */
+
+/* LOGO */
 
 .logo {
 
@@ -40,32 +58,39 @@ body {
 
     margin:20px auto;
 
-    background:#000;
-
-    filter:
-    drop-shadow(0 0 40px rgba(255,255,255,0.35));
+    filter:drop-shadow(0 0 40px rgba(255,255,255,.35));
 
     animation:logoShow 1s ease;
 
 }
 
 
+
 @keyframes logoShow {
 
-    from {
-        opacity:0;
-        transform:scale(.85);
-    }
+from {
 
-    to {
-        opacity:1;
-        transform:scale(1);
-    }
+    opacity:0;
+
+    transform:scale(.85);
 
 }
 
 
-/* TITOLO */
+to {
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+}
+
+
+
+
+/* TITOLI */
 
 .section-title {
 
@@ -75,9 +100,8 @@ body {
 
     margin:20px 0;
 
-    letter-spacing:1px;
-
 }
+
 
 
 /* LINK */
@@ -91,6 +115,8 @@ body {
     display:block;
 
 }
+
+
 
 
 /* CATEGORIE */
@@ -107,11 +133,9 @@ body {
 
     min-height:220px;
 
-    background:linear-gradient(145deg,#222,#111);
+    padding:18px;
 
     border-radius:20px;
-
-    padding:18px;
 
     display:flex;
 
@@ -123,14 +147,22 @@ body {
 
     text-align:center;
 
+    background:rgba(20,20,20,.75);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(0,255,120,.15);
+
     box-shadow:
-    0 8px 25px rgba(0,0,0,.6);
+
+    0 0 20px rgba(0,255,120,.08),
+
+    0 10px 30px rgba(0,0,0,.7);
 
     transition:.3s;
 
-    animation:categoryShow .5s ease;
-
 }
+
 
 
 .category:hover {
@@ -139,20 +171,6 @@ body {
 
 }
 
-
-@keyframes categoryShow {
-
-from {
-    opacity:0;
-    transform:translateY(20px);
-}
-
-to {
-    opacity:1;
-    transform:translateY(0);
-}
-
-}
 
 
 .category-name {
@@ -164,13 +182,6 @@ to {
 }
 
 
-.category-count {
-
-    color:#999;
-
-    font-size:13px;
-
-}
 
 
 .category-image {
@@ -188,21 +199,9 @@ to {
 }
 
 
-.category-icon {
 
-    font-size:38px;
-
-}
-
-
-.arrow {
-
-    font-size:30px;
-
-}
-
- 
 /* PRODOTTI */
+
 
 .products {
 
@@ -211,9 +210,12 @@ to {
 }
 
 
+
 .product {
 
-    background:#181818;
+    background:rgba(20,20,20,.75);
+
+    backdrop-filter:blur(14px);
 
     border-radius:18px;
 
@@ -221,29 +223,16 @@ to {
 
     margin:12px 0;
 
-    border:1px solid #292929;
+    border:1px solid rgba(0,255,120,.15);
+
+    box-shadow:
+
+    0 0 20px rgba(0,255,120,.08),
+
+    0 10px 30px rgba(0,0,0,.7);
 
 }
 
-
-.product-name {
-
-    font-size:19px;
-
-    font-weight:bold;
-
-}
-
-
-.product-price {
-
-    color:#00e676;
-
-    font-size:21px;
-
-    font-weight:bold;
-
-}
 
 
 .product-image {
@@ -254,7 +243,10 @@ to {
 
     margin-bottom:15px;
 
+    object-fit:cover;
+
 }
+
 
 
 .product-video {
@@ -265,30 +257,6 @@ to {
 
 }
 
-
-/* PULSANTE */
-
-.add-btn {
-
-    width:100%;
-
-    margin-top:12px;
-
-    padding:14px;
-
-    background:#e50914;
-
-    color:white;
-
-    border:none;
-
-    border-radius:30px;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-}
 
 
 /* CARRELLO */
@@ -301,14 +269,14 @@ to {
 
     padding:20px;
 
-    background:#111;
-
     border-radius:22px;
 
-    box-shadow:
-    0 10px 30px #000;
+    background:rgba(20,20,20,.75);
+
+    backdrop-filter:blur(14px);
 
 }
+
 
 
 .cart-title {
@@ -318,6 +286,265 @@ to {
     font-weight:bold;
 
 }
+
+
+
+.container::after {
+
+    content:"";
+
+    display:table;
+
+    clear:both;
+
+}
+
+/* ==========================
+   SFONDO VERDE ANIMATO
+========================== */
+
+
+body::before,
+body::after {
+
+    content:"";
+
+    position:fixed;
+
+    width:700px;
+
+    height:700px;
+
+    border-radius:50%;
+
+    z-index:-1;
+
+    filter:blur(140px);
+
+    opacity:.35;
+
+}
+
+
+
+body::before {
+
+    background:#00ff88;
+
+    top:-250px;
+
+    left:-250px;
+
+    animation:greenMove1 12s infinite alternate;
+
+}
+
+
+
+body::after {
+
+    background:#00ff44;
+
+    bottom:-250px;
+
+    right:-250px;
+
+    animation:greenMove2 16s infinite alternate;
+
+}
+
+
+
+@keyframes greenMove1 {
+
+0% {
+
+transform:translate(0,0) scale(1);
+
+}
+
+50% {
+
+transform:translate(180px,120px) scale(1.3);
+
+}
+
+100% {
+
+transform:translate(-80px,220px) scale(.9);
+
+}
+
+}
+
+
+
+@keyframes greenMove2 {
+
+0% {
+
+transform:translate(0,0) scale(1);
+
+}
+
+50% {
+
+transform:translate(-220px,-120px) scale(1.4);
+
+}
+
+100% {
+
+transform:translate(120px,-220px) scale(.95);
+
+}
+
+}
+
+
+
+
+
+/* ==========================
+   FRECCIA INDIETRO
+========================== */
+
+
+.back-button {
+
+    padding:15px;
+
+}
+
+
+
+.back-button a {
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    display:inline-block;
+
+    background:#111;
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    border:1px solid rgba(0,255,120,.25);
+
+}
+
+
+
+.back-button a:hover {
+
+    transform:translateX(-5px);
+
+}
+
+
+
+
+
+/* ==========================
+   PULSANTI GRAMMI
+========================== */
+
+
+.sizes {
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+
+
+.sizes button {
+
+    background:#111;
+
+    color:white;
+
+    border:1px solid rgba(0,255,120,.3);
+
+    padding:12px 18px;
+
+    border-radius:25px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+
+.sizes button:hover {
+
+    background:#00e676;
+
+    color:black;
+
+}
+
+
+
+
+
+/* ==========================
+   MINI CARRELLO PRODOTTO
+========================== */
+
+
+#mini-cart {
+
+    margin-top:15px;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+}
+
+
+
+#mini-cart button {
+
+    background:#e50914;
+
+    color:white;
+
+    border:none;
+
+    border-radius:50%;
+
+    width:25px;
+
+    height:25px;
+
+}
+
+
+
+
+
+/* ==========================
+   BOTTONI FINALI
+========================== */
 
 
 .checkout {
@@ -343,304 +570,30 @@ to {
 }
 
 
-/* PULIZIA */
 
-.container::after {
-
-    content:"";
-
-    display:table;
-
-    clear:both;
-
-}
 
 
 /* MOBILE */
 
 @media(max-width:500px){
 
-    .logo {
 
-        width:220px;
+.logo {
 
-        height:220px;
+    width:220px;
 
-    }
-
-}
-
-
-/* SFONDO VERDE ANIMATO */
-
-
-body {
-
-    background:#050505;
-
-    position:relative;
-
-    overflow-x:hidden;
+    height:220px;
 
 }
 
 
-body::before,
-body::after {
-
-    content:"";
-
-    position:fixed;
-
-    width:700px;
-
-    height:700px;
-
-    border-radius:50%;
-
-    z-index:-1;
-
-    filter:blur(140px);
-
-    opacity:.35;
-
-}
-
-
-body::before {
-
-    background:#00ff88;
-
-    top:-250px;
-
-    left:-250px;
-
-    animation:greenMove1 12s ease-in-out infinite alternate;
-
-}
-
-
-body::after {
-
-    background:#00ff44;
-
-    bottom:-250px;
-
-    right:-250px;
-
-    animation:greenMove2 16s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes greenMove1 {
-
-0% {
-    transform:translate(0,0) scale(1);
-}
-
-50% {
-    transform:translate(180px,120px) scale(1.3);
-}
-
-100% {
-    transform:translate(-80px,220px) scale(.9);
-}
-
-}
-
-
-@keyframes greenMove2 {
-
-0% {
-    transform:translate(0,0) scale(1);
-}
-
-50% {
-    transform:translate(-220px,-120px) scale(1.4);
-}
-
-100% {
-    transform:translate(120px,-220px) scale(.95);
-}
-
-}
-
-
-/* EFFETTO VETRO */
-
-.category,
-.product,
-.cart {
-
-    background:rgba(20,20,20,.75);
-
-    backdrop-filter:blur(14px);
-
-    border:1px solid rgba(0,255,120,.15);
-
-    /* ==========================
-   FRECCIA TORNA INDIETRO
-========================== */
-
-
-.back-button{
-
-    padding:15px;
+.category {
 
     width:100%;
 
-}
-
-
-
-.back-button a{
-
-    color:white;
-
-    text-decoration:none;
-
-    font-size:20px;
-
-    font-weight:bold;
-
-    display:inline-block;
-
-    background:rgba(20,20,20,.85);
-
-    padding:12px 22px;
-
-    border-radius:30px;
-
-    border:1px solid rgba(0,255,120,.25);
-
-    box-shadow:
-    0 5px 20px rgba(0,0,0,.5);
-
-    transition:.3s;
+    margin-right:0;
 
 }
 
-
-
-.back-button a:hover{
-
-    transform:translateX(-5px);
-
-}
-
-
-
-/* ==========================
-   PULSANTI GRAMMI
-========================== */
-
-
-.sizes{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-top:20px;
-
-}
-
-
-
-.sizes button{
-
-    background:#111;
-
-    color:white;
-
-    border:1px solid rgba(0,255,120,.3);
-
-    padding:12px 18px;
-
-    border-radius:25px;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-
-.sizes button:hover{
-
-    background:#00e676;
-
-    color:black;
-
-    transform:scale(1.05);
-
-}
-
-
-
-/* ==========================
-   ANTEPRIMA CARRELLO PRODOTTO
-========================== */
-
-
-#mini-cart{
-
-    margin-top:15px;
-
-    font-size:16px;
-
-    line-height:1.8;
-
-}
-
-
-
-#mini-cart button{
-
-    background:#e50914;
-
-    color:white;
-
-    border:none;
-
-    border-radius:50%;
-
-    width:25px;
-
-    height:25px;
-
-    cursor:pointer;
-
-}
-
-
-
-/* ==========================
-   IMMAGINI PRODOTTO
-========================== */
-
-
-.product-image{
-
-    width:100%;
-
-    border-radius:18px;
-
-    margin-bottom:15px;
-
-    object-fit:cover;
-
-}
-    box-shadow:
-    0 0 20px rgba(0,255,120,.08),
-    0 10px 30px rgba(0,0,0,.7);
 
 }
