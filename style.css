@@ -60,6 +60,8 @@ body {
 
     margin:20px auto;
 
+    background:#000;
+
     filter:drop-shadow(0 0 40px rgba(255,255,255,.35));
 
     animation:logoShow 1s ease;
@@ -78,6 +80,7 @@ from {
 
 }
 
+
 to {
 
     opacity:1;
@@ -87,6 +90,7 @@ to {
 }
 
 }
+
 
 
 
@@ -101,6 +105,8 @@ to {
     margin:20px 0;
 
 }
+
+
 
 
 
@@ -155,11 +161,13 @@ to {
 
     border:1px solid rgba(0,255,120,.15);
 
+
     box-shadow:
 
     0 0 20px rgba(0,255,120,.08),
 
     0 10px 30px rgba(0,0,0,.7);
+
 
     transition:.3s;
 
@@ -182,6 +190,7 @@ to {
     font-weight:bold;
 
 }
+
 
 
 
@@ -226,6 +235,7 @@ to {
     margin:12px 0;
 
     border:1px solid rgba(0,255,120,.15);
+
 
     box-shadow:
 
@@ -274,6 +284,7 @@ to {
 
     border-radius:22px;
 
+
     background:rgba(20,20,20,.75);
 
     backdrop-filter:blur(14px);
@@ -300,7 +311,9 @@ to {
 
     clear:both;
 
-}/* ==========================
+}
+
+/* ==========================
    SFONDO VERDE ANIMATO
 ========================== */
 
@@ -360,19 +373,19 @@ body::after {
 
 0% {
 
-transform:translate(0,0) scale(1);
+    transform:translate(0,0) scale(1);
 
 }
 
 50% {
 
-transform:translate(180px,120px) scale(1.3);
+    transform:translate(180px,120px) scale(1.3);
 
 }
 
 100% {
 
-transform:translate(-80px,220px) scale(.9);
+    transform:translate(-80px,220px) scale(.9);
 
 }
 
@@ -384,24 +397,23 @@ transform:translate(-80px,220px) scale(.9);
 
 0% {
 
-transform:translate(0,0) scale(1);
+    transform:translate(0,0) scale(1);
 
 }
 
 50% {
 
-transform:translate(-220px,-120px) scale(1.4);
+    transform:translate(-220px,-120px) scale(1.4);
 
 }
 
 100% {
 
-transform:translate(120px,-220px) scale(.95);
+    transform:translate(120px,-220px) scale(.95);
 
 }
 
 }
-
 
 
 
@@ -438,8 +450,6 @@ transform:translate(120px,-220px) scale(.95);
     border-radius:30px;
 
     border:1px solid rgba(0,255,120,.25);
-
-    box-shadow:0 5px 20px rgba(0,0,0,.5);
 
 }
 
@@ -509,7 +519,7 @@ transform:translate(120px,-220px) scale(.95);
 
 
 /* ==========================
-   MINI CARRELLO PRODOTTO
+   MINI CARRELLO
 ========================== */
 
 
@@ -540,7 +550,6 @@ transform:translate(120px,-220px) scale(.95);
     height:25px;
 
 }
-
 
 
 
@@ -590,6 +599,7 @@ transform:translate(120px,-220px) scale(.95);
 }
 
 
+
 .category {
 
     width:100%;
@@ -598,3 +608,5 @@ transform:translate(120px,-220px) scale(.95);
 
 }
 
+
+}
