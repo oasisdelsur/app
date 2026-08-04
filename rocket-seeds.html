@@ -12,26 +12,17 @@
 
 </head>
 
-
 <body>
-
-
 
 <div class="back-button">
 
-<a href="#" onclick="history.back(); return false;">
-← Indietro
+<a href="dry.html">
+← Torna ai Dry
 </a>
 
 </div>
 
-
-
-
-
 <div class="container">
-
-
 
 <div class="section-title">
 
@@ -39,19 +30,9 @@
 
 </div>
 
-
-
-
-
 <div class="product">
 
-
-
 <img src="" class="product-image" alt="Rocket Seeds">
-
-
-
-
 
 <video class="product-video" controls>
 
@@ -59,179 +40,27 @@
 
 </video>
 
-
-
-
-
 <div class="coming-soon">
 
-
 <div class="hourglass">
-
 ⏳
-
 </div>
-
 
 <h2>
-
 Prodotto in arrivo
-
 </h2>
 
-
 <p>
-
 Rocket Seeds sarà disponibile a breve...
-
 </p>
 
+</div>
 
 </div>
 
-
-
-
 </div>
 
-
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="cart">
-
-
-<div class="cart-title">
-
-🛒 Carrello
-
-</div>
-
-
-
-<div id="cart">
-
-Nessun prodotto
-
-</div>
-
-
-
-<button class="checkout" onclick="sendOrder()">
-
-📲 Invia Ordine
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-<script>
-
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-
-
-function showCart(){
-
-
-let box=document.getElementById("cart");
-
-
-
-if(cart.length===0){
-
-box.innerHTML="Nessun prodotto";
-
-return;
-
-}
-
-
-
-box.innerHTML="";
-
-
-
-cart.forEach((item,index)=>{
-
-
-box.innerHTML +=
-
-item +
-
-' <button onclick="removeItem('+index+')">❌</button><br><br>';
-
-
-});
-
-
-}
-
-
-
-
-
-function removeItem(index){
-
-
-cart.splice(index,1);
-
-
-localStorage.setItem("cart",JSON.stringify(cart));
-
-
-showCart();
-
-
-}
-
-
-
-
-
-function sendOrder(){
-
-
-if(cart.length===0){
-
-alert("Il carrello è vuoto");
-
-return;
-
-}
-
-
-window.location.href="https://t.me/wordex17";
-
-
-}
-
-
-
-
-
-showCart();
-
-
-</script>
-
-
+<script src="language.js"></script>
 
 </body>
 
