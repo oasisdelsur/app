@@ -479,6 +479,166 @@ body::after {
 
     border:1px solid rgba(0,255,120,.15);
 
+    /* ==========================
+   FRECCIA TORNA INDIETRO
+========================== */
+
+
+.back-button{
+
+    padding:15px;
+
+    width:100%;
+
+}
+
+
+
+.back-button a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    display:inline-block;
+
+    background:rgba(20,20,20,.85);
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    border:1px solid rgba(0,255,120,.25);
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.5);
+
+    transition:.3s;
+
+}
+
+
+
+.back-button a:hover{
+
+    transform:translateX(-5px);
+
+}
+
+
+
+/* ==========================
+   PULSANTI GRAMMI
+========================== */
+
+
+.sizes{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+
+
+.sizes button{
+
+    background:#111;
+
+    color:white;
+
+    border:1px solid rgba(0,255,120,.3);
+
+    padding:12px 18px;
+
+    border-radius:25px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.sizes button:hover{
+
+    background:#00e676;
+
+    color:black;
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* ==========================
+   ANTEPRIMA CARRELLO PRODOTTO
+========================== */
+
+
+#mini-cart{
+
+    margin-top:15px;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+}
+
+
+
+#mini-cart button{
+
+    background:#e50914;
+
+    color:white;
+
+    border:none;
+
+    border-radius:50%;
+
+    width:25px;
+
+    height:25px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* ==========================
+   IMMAGINI PRODOTTO
+========================== */
+
+
+.product-image{
+
+    width:100%;
+
+    border-radius:18px;
+
+    margin-bottom:15px;
+
+    object-fit:cover;
+
+}
     box-shadow:
     0 0 20px rgba(0,255,120,.08),
     0 10px 30px rgba(0,0,0,.7);
