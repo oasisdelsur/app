@@ -20,43 +20,9 @@
 
 
 
-<div class="section-header">
-
-
 <div class="section-title" id="dryTitle">
 
 🌱 Dry
-
-</div>
-
-
-
-<div class="language-box">
-
-
-<button class="language-button" onclick="openLanguage()">
-
-🌐 Language ▾
-
-</button>
-
-
-
-<div class="language-menu" id="languageMenu">
-
-<button onclick="changeLanguage('it')">🇮🇹 Italiano</button>
-
-<button onclick="changeLanguage('es')">🇪🇸 Español</button>
-
-<button onclick="changeLanguage('en')">🇬🇧 English</button>
-
-<button onclick="changeLanguage('de')">🇩🇪 Deutsch</button>
-
-</div>
-
-
-</div>
-
 
 </div>
 
@@ -163,6 +129,7 @@ Arcade
 
 
 
+
 <div class="cart">
 
 
@@ -197,25 +164,17 @@ Nessun prodotto
 
 
 
+
 <script src="language.js"></script>
 
 
 <script>
 
 
-function openLanguage(){
-
-document.getElementById("languageMenu").classList.toggle("show");
-
-}
+window.onload=function(){
 
 
-
-
-function changeLanguage(lang){
-
-
-localStorage.setItem("language",lang);
+let lang=localStorage.getItem("language") || "it";
 
 
 let t=translations[lang];
@@ -224,34 +183,15 @@ let t=translations[lang];
 
 document.getElementById("dryTitle").innerHTML="🌱 "+t.dry;
 
+
 document.getElementById("back").innerHTML=t.back;
+
 
 document.getElementById("cartTitle").innerHTML=t.cart;
 
+
 document.getElementById("orderButton").innerHTML=t.order;
 
-
-
-document.getElementById("languageMenu").classList.remove("show");
-
-
-}
-
-
-
-
-
-window.onload=function(){
-
-
-let saved=localStorage.getItem("language");
-
-
-if(saved){
-
-changeLanguage(saved);
-
-}
 
 
 }
