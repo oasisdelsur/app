@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 
@@ -46,6 +47,7 @@
 🌐 Language ▾
 
 </button>
+
 
 
 <div class="language-menu" id="languageMenu">
@@ -157,6 +159,7 @@ Extract
 
 
 
+
 <div class="cart">
 
 
@@ -190,6 +193,7 @@ Nessun prodotto
 
 
 
+
 <script src="language.js"></script>
 
 
@@ -198,9 +202,7 @@ Nessun prodotto
 
 function openLanguage(){
 
-let menu=document.getElementById("languageMenu");
-
-menu.classList.toggle("show");
+document.getElementById("languageMenu").classList.toggle("show");
 
 }
 
@@ -246,8 +248,6 @@ document.getElementById("languageMenu").classList.remove("show");
 
 
 
-
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
@@ -256,7 +256,6 @@ function showCart(){
 
 
 let box=document.getElementById("cart");
-
 
 
 if(cart.length===0){
@@ -268,9 +267,7 @@ return;
 }
 
 
-
 box.innerHTML="";
-
 
 
 cart.forEach((item,index)=>{
@@ -285,6 +282,7 @@ box.innerHTML += item +
 
 
 }
+
 
 
 
@@ -343,7 +341,6 @@ window.onload=function(){
 showCart();
 
 
-
 let saved=localStorage.getItem("language");
 
 
@@ -365,3 +362,4 @@ changeLanguage(saved);
 </body>
 
 </html>
+```
