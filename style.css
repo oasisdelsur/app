@@ -12,6 +12,8 @@ body {
 
     color:white;
 
+    position:relative;
+
     overflow-x:hidden;
 
 }
@@ -76,7 +78,6 @@ from {
 
 }
 
-
 to {
 
     opacity:1;
@@ -86,7 +87,6 @@ to {
 }
 
 }
-
 
 
 
@@ -119,6 +119,7 @@ to {
 
 
 
+
 /* CATEGORIE */
 
 .category {
@@ -146,6 +147,7 @@ to {
     align-items:center;
 
     text-align:center;
+
 
     background:rgba(20,20,20,.75);
 
@@ -183,7 +185,6 @@ to {
 
 
 
-
 .category-image {
 
     width:100%;
@@ -200,8 +201,9 @@ to {
 
 
 
-/* PRODOTTI */
 
+
+/* PRODOTTI */
 
 .products {
 
@@ -259,6 +261,7 @@ to {
 
 
 
+
 /* CARRELLO */
 
 .cart {
@@ -297,9 +300,7 @@ to {
 
     clear:both;
 
-}
-
-/* ==========================
+}/* ==========================
    SFONDO VERDE ANIMATO
 ========================== */
 
@@ -335,7 +336,7 @@ body::before {
 
     left:-250px;
 
-    animation:greenMove1 12s infinite alternate;
+    animation:greenMove1 12s ease-in-out infinite alternate;
 
 }
 
@@ -349,7 +350,7 @@ body::after {
 
     right:-250px;
 
-    animation:greenMove2 16s infinite alternate;
+    animation:greenMove2 16s ease-in-out infinite alternate;
 
 }
 
@@ -437,6 +438,8 @@ transform:translate(120px,-220px) scale(.95);
     border-radius:30px;
 
     border:1px solid rgba(0,255,120,.25);
+
+    box-shadow:0 5px 20px rgba(0,0,0,.5);
 
 }
 
@@ -543,7 +546,7 @@ transform:translate(120px,-220px) scale(.95);
 
 
 /* ==========================
-   BOTTONI FINALI
+   PULSANTE ORDINE
 ========================== */
 
 
@@ -595,5 +598,3 @@ transform:translate(120px,-220px) scale(.95);
 
 }
 
-
-}
