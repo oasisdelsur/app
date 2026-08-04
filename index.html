@@ -19,9 +19,6 @@
 <div class="container">
 
 
-
-<!-- HEADER -->
-
 <div class="header">
 
 <img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
@@ -30,14 +27,10 @@
 
 
 
-
-
-<!-- TITOLO + LINGUA -->
-
 <div class="section-header">
 
 
-<div class="section-title">
+<div class="section-title" id="dispensario">
 
 🌿 Dispensario
 
@@ -55,28 +48,16 @@
 </button>
 
 
-
 <div class="language-menu" id="languageMenu">
 
 
-<button onclick="changeLanguage('it')">
-🇮🇹 Italiano
-</button>
+<button onclick="changeLanguage('it')">🇮🇹 Italiano</button>
 
+<button onclick="changeLanguage('es')">🇪🇸 Español</button>
 
-<button onclick="changeLanguage('es')">
-🇪🇸 Español
-</button>
+<button onclick="changeLanguage('en')">🇬🇧 English</button>
 
-
-<button onclick="changeLanguage('en')">
-🇬🇧 English
-</button>
-
-
-<button onclick="changeLanguage('de')">
-🇩🇪 Deutsch
-</button>
+<button onclick="changeLanguage('de')">🇩🇪 Deutsch</button>
 
 
 </div>
@@ -90,10 +71,6 @@
 
 
 
-
-
-
-<!-- WEED -->
 
 <a href="weed.html" class="category-link">
 
@@ -101,7 +78,7 @@
 
 <img src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif" class="category-image">
 
-<div class="category-name">
+<div class="category-name" id="weed">
 
 Weed
 
@@ -115,17 +92,13 @@ Weed
 
 
 
-
-
-<!-- FROZEN -->
-
 <a href="frozen.html" class="category-link">
 
 <div class="category">
 
 <img src="frozen.jpg" class="category-image">
 
-<div class="category-name">
+<div class="category-name" id="frozen">
 
 Frozen
 
@@ -139,17 +112,13 @@ Frozen
 
 
 
-
-
-<!-- DRY -->
-
 <a href="dry.html" class="category-link">
 
 <div class="category">
 
 <img src="dry.webp" class="category-image">
 
-<div class="category-name">
+<div class="category-name" id="dry">
 
 Dry
 
@@ -163,17 +132,13 @@ Dry
 
 
 
-
-
-<!-- EXTRACT -->
-
 <a href="extract.html" class="category-link">
 
 <div class="category">
 
 <img src="images.jpg" class="category-image">
 
-<div class="category-name">
+<div class="category-name" id="extract">
 
 Extract
 
@@ -185,8 +150,6 @@ Extract
 
 
 
-
-
 </div>
 
 
@@ -194,13 +157,10 @@ Extract
 
 
 
-
-<!-- CARRELLO -->
-
 <div class="cart">
 
 
-<div class="cart-title">
+<div class="cart-title" id="cartTitle">
 
 🛒 Carrello
 
@@ -216,7 +176,7 @@ Nessun prodotto
 
 
 
-<button class="checkout" onclick="sendOrder()">
+<button class="checkout" onclick="sendOrder()" id="orderButton">
 
 📲 Conferma ordine
 
@@ -230,14 +190,10 @@ Nessun prodotto
 
 
 
-
-
 <script src="language.js"></script>
 
 
-
 <script>
-
 
 
 function openLanguage(){
@@ -247,6 +203,47 @@ let menu=document.getElementById("languageMenu");
 menu.classList.toggle("show");
 
 }
+
+
+
+
+
+function changeLanguage(lang){
+
+
+localStorage.setItem("language",lang);
+
+
+let t=translations[lang];
+
+
+
+document.getElementById("dispensario").innerHTML=t.dispensario;
+
+document.getElementById("weed").innerHTML=t.weed;
+
+document.getElementById("frozen").innerHTML=t.frozen;
+
+document.getElementById("dry").innerHTML=t.dry;
+
+document.getElementById("extract").innerHTML=t.extract;
+
+document.getElementById("cartTitle").innerHTML=t.cart;
+
+document.getElementById("orderButton").innerHTML=t.order;
+
+
+
+document.documentElement.lang=lang;
+
+
+document.getElementById("languageMenu").classList.remove("show");
+
+
+}
+
+
+
 
 
 
@@ -262,7 +259,7 @@ let box=document.getElementById("cart");
 
 
 
-if(cart.length === 0){
+if(cart.length===0){
 
 box.innerHTML="Nessun prodotto";
 
@@ -279,9 +276,7 @@ box.innerHTML="";
 cart.forEach((item,index)=>{
 
 
-box.innerHTML +=
-
-item +
+box.innerHTML += item +
 
 ' <button onclick="removeItem('+index+')">❌</button><br><br>';
 
@@ -294,23 +289,19 @@ item +
 
 
 
-
-
 function removeItem(index){
 
 
 cart.splice(index,1);
 
 
-localStorage.setItem("cart", JSON.stringify(cart));
+localStorage.setItem("cart",JSON.stringify(cart));
 
 
 showCart();
 
 
 }
-
-
 
 
 
@@ -328,23 +319,13 @@ return;
 }
 
 
-
 let ordine=cart.join("\n");
 
 
-
-let messaggio=
-
-"Ciao Oasis del Sur, vorrei ordinare:\n\n"+ordine;
+let messaggio="Ciao Oasis del Sur, vorrei ordinare:\n\n"+ordine;
 
 
-
-let telegram=
-
-"https://t.me/wordex17?text="
-
-+encodeURIComponent(messaggio);
-
+let telegram="https://t.me/wordex17?text="+encodeURIComponent(messaggio);
 
 
 window.location.href=telegram;
@@ -356,7 +337,25 @@ window.location.href=telegram;
 
 
 
+window.onload=function(){
+
+
 showCart();
+
+
+
+let saved=localStorage.getItem("language");
+
+
+if(saved){
+
+changeLanguage(saved);
+
+}
+
+
+}
+
 
 
 </script>
