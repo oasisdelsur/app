@@ -19,59 +19,12 @@
 <div class="container">
 
 
-<div class="section-header">
-
 
 <div class="section-title" id="weedTitle">
 
 🌿 Weed
 
 </div>
-
-
-
-<div class="language-box">
-
-
-<button class="language-button" onclick="openLanguage()">
-
-🌐 Language ▾
-
-</button>
-
-
-
-<div class="language-menu" id="languageMenu">
-
-
-<button onclick="changeLanguage('it')">
-🇮🇹 Italiano
-</button>
-
-
-<button onclick="changeLanguage('es')">
-🇪🇸 Español
-</button>
-
-
-<button onclick="changeLanguage('en')">
-🇬🇧 English
-</button>
-
-
-<button onclick="changeLanguage('de')">
-🇩🇪 Deutsch
-</button>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
 
 
 
@@ -116,11 +69,14 @@ Prodotti in arrivo...
 </p>
 
 
+
+</div>
+
+
+
 </div>
 
 
-
-</div>
 
 
 
@@ -160,7 +116,47 @@ Nessun prodotto
 
 
 
+
 <script src="language.js"></script>
+
+
+<script>
+
+
+window.onload=function(){
+
+
+let lang=localStorage.getItem("language") || "it";
+
+
+let t=translations[lang];
+
+
+
+document.getElementById("weedTitle").innerHTML="🌿 "+t.weed;
+
+
+document.getElementById("back").innerHTML=t.back;
+
+
+document.getElementById("coming").innerHTML=t.coming;
+
+
+document.getElementById("arrival").innerHTML=t.arrival;
+
+
+document.getElementById("cartTitle").innerHTML=t.cart;
+
+
+document.getElementById("orderButton").innerHTML=t.order;
+
+
+
+}
+
+
+</script>
+
 
 
 </body>
