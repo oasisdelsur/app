@@ -34,10 +34,69 @@
 <img src="IMG_9709.png" class="product-image">
 
 
+<h2>Scegli quantità</h2>
+
+
+<div class="sizes">
+
+
+<button onclick="addToCart('Highland Terps 10g')">
+10g
+</button>
+
+
+<button onclick="addToCart('Highland Terps 20g')">
+20g
+</button>
+
+
+<button onclick="addToCart('Highland Terps 30g')">
+30g
+</button>
+
+
+<button onclick="addToCart('Highland Terps 40g')">
+40g
+</button>
+
+
+<button onclick="addToCart('Highland Terps 50g')">
+50g
+</button>
+
+
+<button onclick="addToCart('Highland Terps 100g')">
+100g
+</button>
+
+
+<button onclick="addToCart('Highland Terps 500g')">
+500g
+</button>
+
+
 </div>
 
 
 </div>
+
+
+</div>
+
+
+
+<script>
+
+function addToCart(product){
+
+localStorage.setItem("ordine", product);
+
+alert(product + " aggiunto al carrello");
+
+}
+
+
+</script>
 
 
 </body>
