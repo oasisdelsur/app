@@ -15,6 +15,7 @@
 
 <body>
 
+
 <div class="container">
 
 
@@ -23,6 +24,7 @@
 🌱 Highland Terps
 
 </div>
+
 
 
 <div class="product">
@@ -34,7 +36,9 @@
 <img src="IMG_9709.png" class="product-image">
 
 
+
 <h2>Scegli quantità</h2>
+
 
 
 <div class="sizes">
@@ -81,6 +85,8 @@
 </div>
 
 
+
+
 <div class="cart">
 
 
@@ -98,9 +104,10 @@ Nessun prodotto
 </div>
 
 
+
 <button class="checkout" onclick="sendOrder()">
 
-Invia Ordine
+📲 Invia Ordine Telegram
 
 </button>
 
@@ -108,14 +115,18 @@ Invia Ordine
 </div>
 
 
+
 </div>
+
+
 
 
 
 <script>
 
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 
 
 function addToCart(product){
@@ -134,10 +145,12 @@ showCart();
 
 
 
+
 function showCart(){
 
 
 let box = document.getElementById("cart");
+
 
 
 if(cart.length === 0){
@@ -149,23 +162,27 @@ return;
 }
 
 
+
 box.innerHTML="";
 
 
-cart.forEach(function(item,index){
+
+cart.forEach((item,index)=>{
 
 
 box.innerHTML +=
 
 item +
 
-" <button onclick='removeItem("+index+")'>❌</button><br><br>";
+' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+
 
 
 });
 
 
 }
+
 
 
 
@@ -185,32 +202,55 @@ showCart();
 
 
 
+
+
 function sendOrder(){
+
+
+
+if(cart.length === 0){
+
+
+alert("Il carrello è vuoto");
+
+
+return;
+
+
+}
+
 
 
 let ordine = cart.join("\n");
 
 
-alert("Ordine:\n\n" + ordine);
+
+let messaggio =
+
+"Ciao Oasis del Sur, vorrei ordinare:\n\n" + ordine;
+
+
+
+let telegram =
+
+"https://t.me/wordex17?text=" + encodeURIComponent(messaggio);
+
+
+
+window.open(telegram,"_blank");
+
 
 
 }
 
 
-
-if(localStorage.getItem("cart")){
-
-
-cart = JSON.parse(localStorage.getItem("cart"));
-
-
-}
 
 
 showCart();
 
 
 </script>
+
 
 
 </body>
