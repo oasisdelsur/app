@@ -44,37 +44,37 @@
 <div class="sizes">
 
 
-<button onclick="addToCart('Highland Terps 10g')">
+<button onclick="addToCart('Highland Terps - 10g')">
 10g
 </button>
 
 
-<button onclick="addToCart('Highland Terps 20g')">
+<button onclick="addToCart('Highland Terps - 20g')">
 20g
 </button>
 
 
-<button onclick="addToCart('Highland Terps 30g')">
+<button onclick="addToCart('Highland Terps - 30g')">
 30g
 </button>
 
 
-<button onclick="addToCart('Highland Terps 40g')">
+<button onclick="addToCart('Highland Terps - 40g')">
 40g
 </button>
 
 
-<button onclick="addToCart('Highland Terps 50g')">
+<button onclick="addToCart('Highland Terps - 50g')">
 50g
 </button>
 
 
-<button onclick="addToCart('Highland Terps 100g')">
+<button onclick="addToCart('Highland Terps - 100g')">
 100g
 </button>
 
 
-<button onclick="addToCart('Highland Terps 500g')">
+<button onclick="addToCart('Highland Terps - 500g')">
 500g
 </button>
 
@@ -83,7 +83,6 @@
 
 
 </div>
-
 
 
 
@@ -103,13 +102,6 @@ Nessun prodotto
 
 </div>
 
-
-
-<button class="checkout" onclick="sendOrder()">
-
-📲 Invia Ordine Telegram
-
-</button>
 
 
 </div>
@@ -141,6 +133,9 @@ localStorage.setItem("cart", JSON.stringify(cart));
 showCart();
 
 
+alert(product + " aggiunto al carrello");
+
+
 }
 
 
@@ -152,30 +147,24 @@ function showCart(){
 let box = document.getElementById("cart");
 
 
-
 if(cart.length === 0){
 
-box.innerHTML="Nessun prodotto";
+box.innerHTML = "Nessun prodotto";
 
 return;
 
 }
 
 
-
-box.innerHTML="";
-
+box.innerHTML = "";
 
 
 cart.forEach((item,index)=>{
 
 
-box.innerHTML +=
-
-item +
-
-' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
-
+box.innerHTML += 
+item + 
+" <button onclick='removeItem("+index+")'>❌</button><br><br>";
 
 
 });
@@ -199,50 +188,6 @@ showCart();
 
 
 }
-
-
-
-
-
-function sendOrder(){
-
-
-
-if(cart.length === 0){
-
-
-alert("Il carrello è vuoto");
-
-
-return;
-
-
-}
-
-
-
-let ordine = cart.join("\n");
-
-
-
-let messaggio =
-
-"Ciao Oasis del Sur, vorrei ordinare:\n\n" + ordine;
-
-
-
-let telegram =
-
-"https://t.me/wordex17?text=" + encodeURIComponent(messaggio);
-
-
-
-window.open(telegram,"_blank");
-
-
-
-}
-
 
 
 
