@@ -90,6 +90,34 @@
 
 
 
+<div class="cart">
+
+
+<div class="cart-title">
+
+🛒 Il tuo ordine
+
+</div>
+
+
+
+<div id="mini-cart">
+
+Carrello vuoto
+
+</div>
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
 <a href="index.html" class="category-link">
 
 <div class="category">
@@ -124,13 +152,16 @@
 
 
 
+
+
 <script>
 
 
-function addToCart(product){
-
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+function addToCart(product){
 
 
 cart.push(product);
@@ -139,10 +170,79 @@ cart.push(product);
 localStorage.setItem("cart", JSON.stringify(cart));
 
 
+showMiniCart();
+
+
 alert("✅ " + product + " aggiunto al carrello");
 
 
 }
+
+
+
+
+
+function showMiniCart(){
+
+
+let box = document.getElementById("mini-cart");
+
+
+
+if(cart.length === 0){
+
+
+box.innerHTML="Carrello vuoto";
+
+
+return;
+
+
+}
+
+
+
+box.innerHTML="";
+
+
+
+cart.forEach(function(item,index){
+
+
+box.innerHTML +=
+
+"• " + item +
+
+" <button onclick='removeItem("+index+")'>❌</button><br><br>";
+
+
+});
+
+
+}
+
+
+
+
+function removeItem(index){
+
+
+cart.splice(index,1);
+
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+
+showMiniCart();
+
+
+}
+
+
+
+
+showMiniCart();
+
 
 
 </script>
