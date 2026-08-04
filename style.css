@@ -4,14 +4,14 @@
 }
 
 body {
-    margin: 0;
-    background: #080808;
-    color: white;
+    margin:0;
+    background:#080808;
+    color:white;
 }
 
 .container {
-    width: 100%;
-    padding: 15px;
+    width:100%;
+    padding:15px;
 }
 
 
@@ -171,6 +171,15 @@ to {
 }
 
 
+.category-count {
+
+    color:#999;
+
+    font-size:13px;
+
+}
+
+
 .category-image {
 
     width:100%;
@@ -182,6 +191,20 @@ to {
     border-radius:15px;
 
     margin-bottom:12px;
+
+}
+
+
+.category-icon {
+
+    font-size:38px;
+
+}
+
+
+.arrow {
+
+    font-size:30px;
 
 }
 
@@ -249,7 +272,7 @@ to {
 }
 
 
-/* PULSANTI */
+/* PULSANTE */
 
 .add-btn {
 
@@ -343,8 +366,6 @@ to {
 
 @media(max-width:500px){
 
-@media(max-width:500px){
-
     .logo {
 
         width:220px;
@@ -355,10 +376,9 @@ to {
 
 }
 
-}
-
 
 /* SFONDO VERDE ANIMATO */
+
 
 body{
 
@@ -453,11 +473,11 @@ transform:translate(120px,-220px) scale(.95);
 }
 
 
-/* VETRO */
+/* EFFETTO VETRO */
 
 .category,
 .product,
-.cart{
+.cart {
 
     background:rgba(20,20,20,.75);
 
