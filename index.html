@@ -19,6 +19,7 @@
 <div class="container">
 
 
+
 <!-- HEADER -->
 
 <div class="header">
@@ -29,13 +30,65 @@
 
 
 
-<!-- TITOLO -->
+
+
+<!-- TITOLO + LINGUA -->
+
+<div class="section-header">
+
 
 <div class="section-title">
 
 🌿 Dispensario
 
 </div>
+
+
+
+<div class="language-box">
+
+
+<button class="language-button" onclick="openLanguage()">
+
+🌐 Language ▾
+
+</button>
+
+
+
+<div class="language-menu" id="languageMenu">
+
+
+<button onclick="changeLanguage('it')">
+🇮🇹 Italiano
+</button>
+
+
+<button onclick="changeLanguage('es')">
+🇪🇸 Español
+</button>
+
+
+<button onclick="changeLanguage('en')">
+🇬🇧 English
+</button>
+
+
+<button onclick="changeLanguage('de')">
+🇩🇪 Deutsch
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
 
 
 
@@ -61,6 +114,9 @@ Weed
 
 
 
+
+
+
 <!-- FROZEN -->
 
 <a href="frozen.html" class="category-link">
@@ -78,6 +134,9 @@ Frozen
 </div>
 
 </a>
+
+
+
 
 
 
@@ -103,6 +162,9 @@ Dry
 
 
 
+
+
+
 <!-- EXTRACT -->
 
 <a href="extract.html" class="category-link">
@@ -123,14 +185,17 @@ Extract
 
 
 
+
+
 </div>
 
 
 
 
 
-<!-- CARRELLO GENERALE -->
 
+
+<!-- CARRELLO -->
 
 <div class="cart">
 
@@ -158,7 +223,6 @@ Nessun prodotto
 </button>
 
 
-
 </div>
 
 
@@ -166,7 +230,25 @@ Nessun prodotto
 
 
 
+
+
+<script src="language.js"></script>
+
+
+
 <script>
+
+
+
+function openLanguage(){
+
+let menu=document.getElementById("languageMenu");
+
+menu.classList.toggle("show");
+
+}
+
+
 
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -176,7 +258,7 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 function showCart(){
 
 
-let box = document.getElementById("cart");
+let box=document.getElementById("cart");
 
 
 
@@ -213,6 +295,7 @@ item +
 
 
 
+
 function removeItem(index){
 
 
@@ -231,10 +314,12 @@ showCart();
 
 
 
+
+
 function sendOrder(){
 
 
-if(cart.length === 0){
+if(cart.length===0){
 
 alert("Il carrello è vuoto");
 
@@ -244,24 +329,25 @@ return;
 
 
 
-let ordine = cart.join("\n");
-
-
-let messaggio =
-
-"Ciao Oasis del Sur, vorrei ordinare:\n\n" + ordine;
+let ordine=cart.join("\n");
 
 
 
-let telegram =
+let messaggio=
+
+"Ciao Oasis del Sur, vorrei ordinare:\n\n"+ordine;
+
+
+
+let telegram=
 
 "https://t.me/wordex17?text="
 
-+ encodeURIComponent(messaggio);
++encodeURIComponent(messaggio);
 
 
 
-window.location.href = telegram;
+window.location.href=telegram;
 
 
 }
