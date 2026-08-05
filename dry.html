@@ -12,196 +12,84 @@
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
-
-
 <div class="section-title" id="dryTitle">
-
 🌱 Dry
-
 </div>
-
-
-
-
 
 <div class="back-button">
-
 <a href="index.html" id="back">
-
 ← Indietro
-
 </a>
-
 </div>
-
-
-
-
 
 <div class="products">
 
-
-
 <div class="product">
-
-<a href="highland-terps.html" class="category-link">
-
-<div class="product-name">
-
-Highland Terps
-
-</div>
-
-</a>
-
-</div>
-
-
-
-
-
-<div class="product">
-
 <a href="rocket-seeds.html" class="category-link">
-
 <div class="product-name">
-
 Rocket Seeds
-
 </div>
-
 </a>
-
 </div>
-
-
-
-
 
 <div class="product">
-
 <a href="gas-mint.html" class="category-link">
-
 <div class="product-name">
-
 Gas Mint
-
 </div>
-
 </a>
-
 </div>
-
-
-
-
 
 <div class="product">
-
 <a href="arcade.html" class="category-link">
-
 <div class="product-name">
-
 Arcade
-
 </div>
-
 </a>
+</div>
 
 </div>
 
-
-
 </div>
-
-
-
-</div>
-
-
-
-
-
-
 
 <div class="cart">
 
-
 <div class="cart-title" id="cartTitle">
-
 🛒 Carrello
-
 </div>
-
-
 
 <div id="cart">
-
 Nessun prodotto
-
 </div>
-
-
 
 <button class="checkout" id="orderButton">
-
 📲 Conferma ordine
-
 </button>
 
-
 </div>
-
-
-
-
-
-
-
 
 <script src="language.js"></script>
 
-
 <script>
-
 
 window.onload=function(){
 
-
 let lang=localStorage.getItem("language") || "it";
-
 
 let t=translations[lang];
 
-
-
 document.getElementById("dryTitle").innerHTML="🌱 "+t.dry;
-
-
 document.getElementById("back").innerHTML=t.back;
-
-
 document.getElementById("cartTitle").innerHTML=t.cart;
-
-
 document.getElementById("orderButton").innerHTML=t.order;
-
-
 
 }
 
-
-
 </script>
 
-
-
 </body>
-
 </html>
