@@ -32,29 +32,44 @@
 
 </div>
 
-<div class="coming-soon">
 
-<div class="hourglass">
+<div class="product">
 
-⏳
+<img src="IMG_9798.png" class="product-image">
 
-</div>
+<img src="IMG_9800.png" class="product-image">
+
+<img src="IMG_9801.png" class="product-image">
+
+
+<video class="product-image" controls autoplay muted loop>
+
+<source src="IMG_8774.mov" type="video/quicktime">
+
+Il tuo browser non supporta il video.
+
+</video>
+
 
 <h2 id="coming">
 
-Ancora non disponibili
+Prodotti Vape
 
 </h2>
 
+
 <p id="arrival">
 
-Prodotti in arrivo...
+Scegli il prodotto disponibile
 
 </p>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 <div class="cart">
 
@@ -64,11 +79,13 @@ Prodotti in arrivo...
 
 </div>
 
+
 <div id="cart">
 
 Nessun prodotto
 
 </div>
+
 
 <button class="checkout" id="orderButton">
 
@@ -78,7 +95,9 @@ Nessun prodotto
 
 </div>
 
+
 <script src="language.js"></script>
+
 
 <script>
 
@@ -87,6 +106,7 @@ window.onload=function(){
 let lang=localStorage.getItem("language") || "it";
 
 let t=translations[lang];
+
 
 document.getElementById("vapeTitle").innerHTML="💨 "+t.vape;
 
@@ -100,9 +120,11 @@ document.getElementById("cartTitle").innerHTML=t.cart;
 
 document.getElementById("orderButton").innerHTML=t.order;
 
+
 }
 
 </script>
+
 
 </body>
 
