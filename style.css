@@ -47,7 +47,7 @@ body {
 
 
 
-/* LOGO SISTEMATO */
+/* LOGO */
 
 
 .logo {
@@ -71,6 +71,7 @@ body {
     animation:logoShow 1s ease;
 
 }
+
 
 
 @keyframes logoShow {
@@ -114,11 +115,6 @@ to {
 
 
 
-/* ==========================
-   HEADER TITOLO + LINGUA
-========================== */
-
-
 .section-header{
 
     display:flex;
@@ -134,7 +130,7 @@ to {
 
 
 /* ==========================
-   LANGUAGE MENU
+   LINGUA
 ========================== */
 
 
@@ -246,117 +242,10 @@ to {
 
     color:black;
 
-}
-
-
-
-/* ==========================
-   PRODOTTI IN ARRIVO
+}/* ==========================
+   CATEGORIE
 ========================== */
 
-
-.coming-soon{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-
-    min-height:60vh;
-
-
-    background:rgba(20,20,20,.75);
-
-
-    backdrop-filter:blur(14px);
-
-
-    border:1px solid rgba(0,255,120,.20);
-
-
-    border-radius:22px;
-
-
-    padding:45px 30px;
-
-
-    box-shadow:
-
-    0 0 25px rgba(0,255,120,.12),
-
-    0 10px 35px rgba(0,0,0,.7);
-
-}.hourglass{
-
-    font-size:90px;
-
-    margin-bottom:25px;
-
-    filter:drop-shadow(0 0 20px rgba(0,255,120,.5));
-
-    animation:hourglass 2.5s ease-in-out infinite;
-
-}
-
-
-
-.coming-soon h2{
-
-    margin:0;
-
-    font-size:32px;
-
-    font-weight:800;
-
-    color:#00ff88;
-
-}
-
-
-
-.coming-soon p{
-
-    margin-top:15px;
-
-    font-size:19px;
-
-    color:#d6d6d6;
-
-}
-
-
-
-@keyframes hourglass{
-
-0%{
-
-    transform:rotate(0deg);
-
-}
-
-50%{
-
-    transform:rotate(180deg);
-
-}
-
-100%{
-
-    transform:rotate(360deg);
-
-}
-
-}
-
-
-
-/* LINK */
 
 .category-link {
 
@@ -369,8 +258,6 @@ to {
 }
 
 
-
-/* CATEGORIE */
 
 .category {
 
@@ -455,7 +342,28 @@ to {
 
 
 
-/* PRODOTTI */
+/* STICKERS */
+
+.sticker-image{
+
+    width:100px;
+
+    height:100px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    margin-bottom:12px;
+
+}
+
+
+
+/* ==========================
+   PRODOTTI
+========================== */
+
 
 .products{
 
@@ -515,7 +423,10 @@ to {
 
 
 
-/* CARRELLO */
+/* ==========================
+   CARRELLO
+========================== */
+
 
 .cart{
 
@@ -571,11 +482,10 @@ to {
 
     height:25px;
 
-}
+}/* ==========================
+   ORDINE
+========================== */
 
-
-
-/* ORDINE */
 
 .checkout{
 
@@ -607,7 +517,12 @@ to {
 
 
 
-/* INDIETRO */
+
+
+/* ==========================
+   INDIETRO
+========================== */
+
 
 .back-button{
 
@@ -656,7 +571,11 @@ to {
 
 
 
-/* PULSANTI */
+
+/* ==========================
+   PULSANTI GRAMMI
+========================== */
+
 
 .sizes{
 
@@ -709,24 +628,36 @@ to {
 
 
 
-/* SFONDO */
+
+
+/* ==========================
+   SFONDO VERDE
+========================== */
+
 
 body::before,
 body::after{
 
     content:"";
 
+
     position:fixed;
+
 
     width:700px;
 
+
     height:700px;
+
 
     border-radius:50%;
 
+
     z-index:-1;
 
+
     filter:blur(140px);
+
 
     opacity:.35;
 
@@ -738,9 +669,12 @@ body::before{
 
     background:#00ff88;
 
+
     top:-250px;
 
+
     left:-250px;
+
 
     animation:greenMove1 12s infinite alternate;
 
@@ -752,9 +686,12 @@ body::after{
 
     background:#00ff44;
 
+
     bottom:-250px;
 
+
     right:-250px;
+
 
     animation:greenMove2 16s infinite alternate;
 
@@ -769,6 +706,7 @@ body::after{
 transform:translate(0,0) scale(1);
 
 }
+
 
 100%{
 
@@ -788,6 +726,7 @@ transform:translate(0,0) scale(1);
 
 }
 
+
 100%{
 
 transform:translate(-180px,-120px) scale(1.3);
@@ -798,7 +737,12 @@ transform:translate(-180px,-120px) scale(1.3);
 
 
 
-/* MOBILE */
+
+
+/* ==========================
+   MOBILE
+========================== */
+
 
 @media(max-width:500px){
 
@@ -849,16 +793,5 @@ transform:translate(-180px,-120px) scale(1.3);
 
 }
 
-
-.sticker-image{
-
-    width:100px;
-    height:100px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    margin-bottom:12px;
 
 }
