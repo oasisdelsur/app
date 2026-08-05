@@ -12,23 +12,15 @@
 
 </head>
 
-
 <body>
 
-
 <div class="container">
-
-
 
 <div class="section-title" id="frozenTitle">
 
 ❄️ Frozen
 
 </div>
-
-
-
-
 
 <div class="back-button">
 
@@ -40,52 +32,27 @@
 
 </div>
 
+<div class="products">
 
+<div class="product">
 
+<a href="highland-terps.html" class="category-link">
 
+<div class="product-name">
 
-<div class="coming-soon">
-
-
-<div class="hourglass">
-
-⏳
-
-</div>
-
-
-
-<h2 id="coming">
-
-Ancora non disponibili
-
-</h2>
-
-
-
-<p id="arrival">
-
-Prodotti in arrivo...
-
-</p>
-
-
+Highland Terps
 
 </div>
 
-
-
+</a>
 
 </div>
 
+</div>
 
-
-
-
-
+</div>
 
 <div class="cart">
-
 
 <div class="cart-title" id="cartTitle">
 
@@ -93,15 +60,11 @@ Prodotti in arrivo...
 
 </div>
 
-
-
 <div id="cart">
 
 Nessun prodotto
 
 </div>
-
-
 
 <button class="checkout" id="orderButton">
 
@@ -109,58 +72,26 @@ Nessun prodotto
 
 </button>
 
-
 </div>
-
-
-
-
-
-
-
 
 <script src="language.js"></script>
 
-
 <script>
-
 
 window.onload=function(){
 
-
 let lang=localStorage.getItem("language") || "it";
-
 
 let t=translations[lang];
 
-
-
 document.getElementById("frozenTitle").innerHTML="❄️ "+t.frozen;
-
-
 document.getElementById("back").innerHTML=t.back;
-
-
-document.getElementById("coming").innerHTML=t.coming;
-
-
-document.getElementById("arrival").innerHTML=t.arrival;
-
-
 document.getElementById("cartTitle").innerHTML=t.cart;
-
-
 document.getElementById("orderButton").innerHTML=t.order;
-
-
 
 }
 
-
-
 </script>
-
-
 
 </body>
 
