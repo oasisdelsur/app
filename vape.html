@@ -51,47 +51,76 @@ Il tuo browser non supporta il video.
 </video>
 
 
-<h2 id="coming">
+<h2 id="choose">
 
-Prodotti Vape
+Scegli quantità
 
 </h2>
 
 
-<p id="arrival">
+<div class="sizes">
 
-Scegli il prodotto disponibile
+<button onclick="addToCart('Vape - 1 pezzo')">1</button>
+<button onclick="addToCart('Vape - 2 pezzi')">2</button>
+<button onclick="addToCart('Vape - 3 pezzi')">3</button>
+<button onclick="addToCart('Vape - 4 pezzi')">4</button>
+<button onclick="addToCart('Vape - 5 pezzi')">5</button>
+<button onclick="addToCart('Vape - 6 pezzi')">6</button>
+<button onclick="addToCart('Vape - 7 pezzi')">7</button>
+<button onclick="addToCart('Vape - 8 pezzi')">8</button>
+<button onclick="addToCart('Vape - 9 pezzi')">9</button>
+<button onclick="addToCart('Vape - 10 pezzi')">10</button>
 
-</p>
-
+<button onclick="addToCart('Vape - 20 pezzi')">20</button>
+<button onclick="addToCart('Vape - 30 pezzi')">30</button>
+<button onclick="addToCart('Vape - 40 pezzi')">40</button>
+<button onclick="addToCart('Vape - 50 pezzi')">50</button>
 
 </div>
-
 
 </div>
 
 
 <div class="cart">
 
-<div class="cart-title" id="cartTitle">
+<div class="cart-title">
 
-🛒 Carrello
-
-</div>
-
-
-<div id="cart">
-
-Nessun prodotto
+🛒 <span id="cartText">Il tuo ordine</span>
 
 </div>
 
 
-<button class="checkout" id="orderButton">
+<div id="mini-cart">
 
-📲 Conferma ordine
+Carrello vuoto
 
-</button>
+</div>
+
+
+</div>
+
+
+<a href="index.html" class="category-link">
+
+<div class="category">
+
+🛒 Vai al carrello
+
+</div>
+
+</a>
+
+
+<a href="index.html" class="category-link">
+
+<div class="category">
+
+🏠 Torna al menu principale
+
+</div>
+
+</a>
+
 
 </div>
 
@@ -100,6 +129,60 @@ Nessun prodotto
 
 
 <script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+function addToCart(product){
+
+cart.push(product);
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+showMiniCart();
+
+alert("✅ " + product + " aggiunto al carrello");
+
+}
+
+
+function showMiniCart(){
+
+let box=document.getElementById("mini-cart");
+
+
+if(cart.length===0){
+
+box.innerHTML="Carrello vuoto";
+
+return;
+
+}
+
+
+box.innerHTML="";
+
+
+cart.forEach(function(item,index){
+
+box.innerHTML += "• " + item + " <button onclick='removeItem("+index+")'>❌</button><br><br>";
+
+});
+
+
+}
+
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+showMiniCart();
+
+}
+
 
 window.onload=function(){
 
@@ -112,14 +195,12 @@ document.getElementById("vapeTitle").innerHTML="💨 "+t.vape;
 
 document.getElementById("back").innerHTML=t.back;
 
-document.getElementById("coming").innerHTML=t.coming;
+document.getElementById("choose").innerHTML=t.choose || "Scegli quantità";
 
-document.getElementById("arrival").innerHTML=t.arrival;
+document.getElementById("cartText").innerHTML=t.cart;
 
-document.getElementById("cartTitle").innerHTML=t.cart;
 
-document.getElementById("orderButton").innerHTML=t.order;
-
+showMiniCart();
 
 }
 
