@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VAPE - Oasis del Sur</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="section-title" id="vapeTitle">
+
+💨 VAPE
+
+</div>
+
+<div class="back-button">
+
+<a href="index.html" id="back">
+
+← Indietro
+
+</a>
+
+</div>
+
+<div class="coming-soon">
+
+<div class="hourglass">
+
+⏳
+
+</div>
+
+<h2 id="coming">
+
+Ancora non disponibili
+
+</h2>
+
+<p id="arrival">
+
+Prodotti in arrivo...
+
+</p>
+
+</div>
+
+</div>
+
+<div class="cart">
+
+<div class="cart-title" id="cartTitle">
+
+🛒 Carrello
+
+</div>
+
+<div id="cart">
+
+Nessun prodotto
+
+</div>
+
+<button class="checkout" id="orderButton">
+
+📲 Conferma ordine
+
+</button>
+
+</div>
+
+<script src="language.js"></script>
+
+<script>
+
+window.onload=function(){
+
+let lang=localStorage.getItem("language") || "it";
+
+let t=translations[lang];
+
+document.getElementById("vapeTitle").innerHTML="💨 "+t.vape;
+
+document.getElementById("back").innerHTML=t.back;
+
+document.getElementById("coming").innerHTML=t.coming;
+
+document.getElementById("arrival").innerHTML=t.arrival;
+
+document.getElementById("cartTitle").innerHTML=t.cart;
+
+document.getElementById("orderButton").innerHTML=t.order;
+
+}
+
+</script>
+
+</body>
+
+</html>
