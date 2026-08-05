@@ -6,15 +6,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Highland Terps</title>
+<title>Gas Mint</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
-
 
 <div class="back-button">
 
@@ -26,33 +24,21 @@
 
 </div>
 
-
-
-
-
 <div class="container">
-
 
 <div class="section-title">
 
-🌱 Highland Terps
+🌱 Gas Mint
 
 </div>
 
-
-
-
-
 <div class="product">
 
+<img src="IMG_9794.png" class="product-image">
 
-<img src="IMG_9708.png" class="product-image">
+<img src="IMG_9795.png" class="product-image">
 
-
-<img src="IMG_9709.png" class="product-image">
-
-
-
+<img src="IMG_9796.png" class="product-image">
 
 <h2 id="choose">
 
@@ -60,60 +46,27 @@ Scegli quantità
 
 </h2>
 
-
-
-
 <div class="sizes">
 
+<button onclick="addToCart('Gas Mint - 10g')">10g</button>
 
-<button onclick="addToCart('Highland Terps - 10g')">
-10g
-</button>
+<button onclick="addToCart('Gas Mint - 20g')">20g</button>
 
+<button onclick="addToCart('Gas Mint - 30g')">30g</button>
 
-<button onclick="addToCart('Highland Terps - 20g')">
-20g
-</button>
+<button onclick="addToCart('Gas Mint - 40g')">40g</button>
 
+<button onclick="addToCart('Gas Mint - 50g')">50g</button>
 
-<button onclick="addToCart('Highland Terps - 30g')">
-30g
-</button>
+<button onclick="addToCart('Gas Mint - 100g')">100g</button>
 
-
-<button onclick="addToCart('Highland Terps - 40g')">
-40g
-</button>
-
-
-<button onclick="addToCart('Highland Terps - 50g')">
-50g
-</button>
-
-
-<button onclick="addToCart('Highland Terps - 100g')">
-100g
-</button>
-
-
-<button onclick="addToCart('Highland Terps - 500g')">
-500g
-</button>
-
+<button onclick="addToCart('Gas Mint - 500g')">500g</button>
 
 </div>
 
-
 </div>
-
-
-
-
-
-
 
 <div class="cart">
-
 
 <div class="cart-title">
 
@@ -121,23 +74,13 @@ Scegli quantità
 
 </div>
 
-
-
 <div id="mini-cart">
 
 Carrello vuoto
 
 </div>
 
-
-
 </div>
-
-
-
-
-
-
 
 <a href="index.html" class="category-link">
 
@@ -149,10 +92,6 @@ Carrello vuoto
 
 </a>
 
-
-
-
-
 <a href="index.html" class="category-link">
 
 <div class="category">
@@ -163,54 +102,29 @@ Carrello vuoto
 
 </a>
 
-
-
 </div>
-
-
-
-
-
-
-
 
 <script src="language.js"></script>
 
-
 <script>
-
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-
-
 function addToCart(product){
-
 
 cart.push(product);
 
-
 localStorage.setItem("cart", JSON.stringify(cart));
-
 
 showMiniCart();
 
-
 alert("✅ " + product + " aggiunto al carrello");
-
 
 }
 
-
-
-
-
 function showMiniCart(){
 
-
 let box=document.getElementById("mini-cart");
-
-
 
 if(cart.length===0){
 
@@ -220,77 +134,43 @@ return;
 
 }
 
-
-
 box.innerHTML="";
-
 
 cart.forEach(function(item,index){
 
-
-box.innerHTML +=
-
-"• " + item +
-
-" <button onclick='removeItem("+index+")'>❌</button><br><br>";
-
+box.innerHTML += "• " + item + " <button onclick='removeItem("+index+")'>❌</button><br><br>";
 
 });
 
-
 }
-
-
-
-
 
 function removeItem(index){
 
-
 cart.splice(index,1);
-
 
 localStorage.setItem("cart",JSON.stringify(cart));
 
-
 showMiniCart();
 
-
 }
-
-
-
-
 
 window.onload=function(){
 
-
 let lang=localStorage.getItem("language") || "it";
-
 
 let t=translations[lang];
 
-
 document.getElementById("back").innerHTML=t.back;
-
 
 document.getElementById("choose").innerHTML=t.choose || "Scegli quantità";
 
-
 document.getElementById("cartText").innerHTML=t.cart;
-
 
 showMiniCart();
 
-
 }
-
-
 
 </script>
 
-
-
 </body>
-
 </html>
