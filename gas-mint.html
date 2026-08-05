@@ -17,9 +17,7 @@
 <div class="back-button">
 
 <a href="dry.html" id="back">
-
 ← Torna ai Dry
-
 </a>
 
 </div>
@@ -27,9 +25,7 @@
 <div class="container">
 
 <div class="section-title">
-
 🌱 Gas Mint
-
 </div>
 
 <div class="product">
@@ -40,10 +36,13 @@
 
 <img src="IMG_9796.png" class="product-image">
 
+<video class="product-image" controls autoplay muted loop>
+<source src="IMG_8834.mov" type="video/quicktime">
+Il tuo browser non supporta il video.
+</video>
+
 <h2 id="choose">
-
 Scegli quantità
-
 </h2>
 
 <div class="sizes">
@@ -66,6 +65,7 @@ Scegli quantità
 
 </div>
 
+
 <div class="cart">
 
 <div class="cart-title">
@@ -82,6 +82,7 @@ Carrello vuoto
 
 </div>
 
+
 <a href="index.html" class="category-link">
 
 <div class="category">
@@ -91,6 +92,7 @@ Carrello vuoto
 </div>
 
 </a>
+
 
 <a href="index.html" class="category-link">
 
@@ -102,13 +104,17 @@ Carrello vuoto
 
 </a>
 
+
 </div>
 
+
 <script src="language.js"></script>
+
 
 <script>
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 
 function addToCart(product){
 
@@ -122,9 +128,11 @@ alert("✅ " + product + " aggiunto al carrello");
 
 }
 
+
 function showMiniCart(){
 
 let box=document.getElementById("mini-cart");
+
 
 if(cart.length===0){
 
@@ -134,7 +142,9 @@ return;
 
 }
 
+
 box.innerHTML="";
+
 
 cart.forEach(function(item,index){
 
@@ -143,6 +153,7 @@ box.innerHTML += "• " + item + " <button onclick='removeItem("+index+")'>❌</
 });
 
 }
+
 
 function removeItem(index){
 
@@ -154,11 +165,13 @@ showMiniCart();
 
 }
 
+
 window.onload=function(){
 
 let lang=localStorage.getItem("language") || "it";
 
 let t=translations[lang];
+
 
 document.getElementById("back").innerHTML=t.back;
 
@@ -166,11 +179,14 @@ document.getElementById("choose").innerHTML=t.choose || "Scegli quantità";
 
 document.getElementById("cartText").innerHTML=t.cart;
 
+
 showMiniCart();
 
 }
 
 </script>
 
+
 </body>
+
 </html>
