@@ -96,11 +96,7 @@ Dry
 
 </div>
 
-</a>
-
-
-
-<a href="extract.html" class="category-link">
+</a><a href="extract.html" class="category-link">
 
 <div class="category">
 
@@ -144,7 +140,10 @@ VAPE
 
 </div>
 
-</a></div>
+</a>
+
+</div>
+
 
 
 <div class="cart">
@@ -163,6 +162,7 @@ Nessun prodotto
 </div>
 
 
+
 <button class="checkout" onclick="sendOrder()" id="orderButton">
 
 📲 Conferma ordine
@@ -170,10 +170,24 @@ Nessun prodotto
 </button>
 
 
+
+<a href="bitcoin.html">
+
+<button class="checkout">
+
+₿ Paga in Bitcoin
+
+</button>
+
+</a>
+
+
 </div>
 
 
+
 <script src="language.js"></script>
+
 
 
 <script>
@@ -221,12 +235,7 @@ document.documentElement.lang=lang;
 document.getElementById("languageMenu").classList.remove("show");
 
 
-}
-
-
-
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+}let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 
