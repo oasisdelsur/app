@@ -53,6 +53,7 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 <div class="products">
 
 
+
 <div class="product">
 
 <img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="product-image">
@@ -91,7 +92,11 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 ➕ Aggiungi sticker
 </button>
 
-</div><div class="product">
+</div>
+
+
+
+<div class="product">
 
 <img src="IMG_0529.JPG" class="product-image">
 
@@ -101,11 +106,7 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 ➕ Aggiungi sticker
 </button>
 
-</div>
-
-
-
-<div class="product">
+</div><div class="product">
 
 <img src="IMG_0530.JPG" class="product-image">
 
@@ -195,7 +196,7 @@ let stickers = cart.filter(item => item.includes("Sticker"));
 
 if(stickers.length >= 3){
 
-alert("Hai già scelto il massimo di 3 sticker");
+alert("Hai massimo 3 sticker");
 
 return;
 
@@ -216,21 +217,22 @@ showStickerCart();
 let disponibili = 3 - cart.filter(item => item.includes("Sticker")).length;
 
 
+
 if(disponibili === 2){
 
-alert("Ti sono rimasti 2 sticker disponibili");
+alert("Ti restano 2 sticker disponibili");
 
 }
 
 else if(disponibili === 1){
 
-alert("Ti è rimasto 1 sticker disponibile");
+alert("Ti resta 1 sticker disponibile");
 
 }
 
 else if(disponibili === 0){
 
-alert("Hai utilizzato tutti e 3 gli sticker disponibili");
+alert("Questo era il tuo ultimo sticker");
 
 }
 
