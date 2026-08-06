@@ -143,23 +143,43 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 
 
 
+
 <div class="cart">
+
 
 <div class="cart-title">
 🏷️ Sticker scelti
 </div>
 
 
+
 <div id="stickerCart">
+
 Nessun sticker scelto
-</div>
-
 
 </div>
 
 
 
+
+<a href="index.html">
+
+<button class="checkout">
+
+🛒 Vai al carrello
+
+</button>
+
+</a>
+
+
+
 </div>
+
+
+
+</div>
+
 
 
 
@@ -190,7 +210,7 @@ return;
 cart.push(name);
 
 
-localStorage.setItem("cart",JSON.stringify(cart));
+localStorage.setItem("cart", JSON.stringify(cart));
 
 
 showStickerCart();
@@ -208,6 +228,7 @@ let box=document.getElementById("stickerCart");
 
 
 let stickers = cart.filter(item => item.includes("Sticker"));
+
 
 
 if(stickers.length===0){
@@ -238,6 +259,7 @@ box.innerHTML +=
 ' <button onclick="removeSticker('+index+')">❌</button><br><br>';
 
 
+
 });
 
 
@@ -252,7 +274,7 @@ function removeSticker(index){
 cart.splice(index,1);
 
 
-localStorage.setItem("cart",JSON.stringify(cart));
+localStorage.setItem("cart", JSON.stringify(cart));
 
 
 showStickerCart();
