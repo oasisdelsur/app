@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -7,64 +6,250 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stickers - Oasis del Sur</title>
+<title>Oasis del Sur - Stickers</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
+
+<div class="header">
+
+<img src="IMG_9609.png" class="logo">
+
+</div>
+
 
 
 <div class="back-button">
 
 <a href="index.html">
-← Torna al menu
+⬅️ Torna indietro
 </a>
 
 </div>
 
 
-<div class="section-title">
 
-🏷️ Stickers Oasis
+<div class="coming-soon">
+
+<h2>🏷️ Stickers Oasis</h2>
+
+<p>
+Con ogni ordine hai diritto a scegliere fino a 3 stickers gratuiti.
+Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
+</p>
 
 </div>
+
+
+
+<div class="products">
+
 
 
 <div class="product">
 
-<h2>
-Un regalo per i nostri clienti 🎁
-</h2>
+<img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="product-image">
 
+<h2>Sticker 1</h2>
 
-<p>
-
-Con ogni ordine hai diritto a ricevere fino a <b>3 stickers gratuiti</b> a tua scelta.
-
-Scegli i tuoi preferiti tra la nostra collezione e aggiungili al tuo ordine.
-
-</p>
-
-
-<a href="stickers-list.html" class="category-link">
-
-<div class="category">
-
-➡️ Vai alla collezione stickers
-
-</div>
-
-</a>
-
+<button class="checkout" onclick="addSticker('Sticker 1')">
+➕ Aggiungi sticker
+</button>
 
 </div>
 
 
+
+
+<div class="product">
+
+<img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="product-image">
+
+<h2>Sticker 2</h2>
+
+<button class="checkout" onclick="addSticker('Sticker 2')">
+➕ Aggiungi sticker
+</button>
+
 </div>
+
+
+
+
+<div class="product">
+
+<img src="IMG_9804.jpeg" class="product-image">
+
+<h2>Sticker 3</h2>
+
+<button class="checkout" onclick="addSticker('Sticker 3')">
+➕ Aggiungi sticker
+</button>
+
+</div>
+
+
+
+
+<div class="product">
+
+<img src="IMG_0529.JPG" class="product-image">
+
+<h2>Sticker 4</h2>
+
+<button class="checkout" onclick="addSticker('Sticker 4')">
+➕ Aggiungi sticker
+</button>
+
+</div>
+
+
+
+
+<div class="product">
+
+<img src="IMG_0530.JPG" class="product-image">
+
+<h2>Sticker 5</h2>
+
+<button class="checkout" onclick="addSticker('Sticker 5')">
+➕ Aggiungi sticker
+</button>
+
+</div>
+
+
+
+
+<div class="product">
+
+<img src="OASIS.png" class="product-image">
+
+<h2>Sticker Logo Oasis</h2>
+
+<button class="checkout" onclick="addSticker('Sticker Logo Oasis')">
+➕ Aggiungi sticker
+</button>
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="cart">
+
+<div class="cart-title">
+🏷️ Sticker scelti
+</div>
+
+
+<div id="stickerCart">
+Nessun sticker scelto
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<script>
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+function addSticker(name){
+
+
+let stickers = cart.filter(item => item.includes("Sticker"));
+
+
+if(stickers.length >= 3){
+
+alert("Puoi scegliere massimo 3 sticker per ordine");
+
+return;
+
+}
+
+
+
+cart.push(name);
+
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+
+showStickerCart();
+
+
+}
+
+
+
+
+function showStickerCart(){
+
+
+let box=document.getElementById("stickerCart");
+
+
+let stickers = cart.filter(item => item.includes("Sticker"));
+
+
+if(stickers.length===0){
+
+box.innerHTML="Nessun sticker scelto";
+
+return;
+
+}
+
+
+
+box.innerHTML="";
+
+
+stickers.forEach((item)=>{
+
+
+box.innerHTML += "🏷️ "+item+"<br><br>";
+
+
+});
+
+
+}
+
+
+
+window.onload=function(){
+
+showStickerCart();
+
+}
+
+
+
+</script>
+
+
 
 </body>
 
