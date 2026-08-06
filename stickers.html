@@ -68,7 +68,6 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 
 
 
-
 <div class="product">
 
 <img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="product-image">
@@ -80,7 +79,6 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 </button>
 
 </div>
-
 
 
 
@@ -98,7 +96,6 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 
 
 
-
 <div class="product">
 
 <img src="IMG_0529.JPG" class="product-image">
@@ -113,7 +110,6 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 
 
 
-
 <div class="product">
 
 <img src="IMG_0530.JPG" class="product-image">
@@ -125,7 +121,6 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 </button>
 
 </div>
-
 
 
 
@@ -147,6 +142,7 @@ Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
 
 
 
+
 <div class="cart">
 
 <div class="cart-title">
@@ -164,6 +160,7 @@ Nessun sticker scelto
 
 
 </div>
+
 
 
 
@@ -226,16 +223,43 @@ return;
 box.innerHTML="";
 
 
+
 stickers.forEach((item)=>{
 
 
-box.innerHTML += "🏷️ "+item+"<br><br>";
+let index = cart.indexOf(item);
+
+
+
+box.innerHTML +=
+
+"🏷️ " + item +
+
+' <button onclick="removeSticker('+index+')">❌</button><br><br>';
 
 
 });
 
 
 }
+
+
+
+
+function removeSticker(index){
+
+
+cart.splice(index,1);
+
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+
+showStickerCart();
+
+
+}
+
 
 
 
