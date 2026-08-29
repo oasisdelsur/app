@@ -1,159 +1,175 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oasis del Sur</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <div class="container">
-
-    <div class="header">
-      <img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
-    </div>
-
-    <div class="section-header">
-      <div class="section-title" id="dispensario">
+<div class="container">
+<!-- HEADER -->
+<div class="header">
+    <img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
+</div>
+<!-- TITOLO + LINGUA -->
+<div class="section-header">
+    <div class="section-title" id="dispensario">
         🌿 Dispensario
-      </div>
-
-      <div class="language-box">
+    </div>
+    <div class="language-box">
         <button class="language-button" onclick="openLanguage()">
-          🌐 Language ▾
+            🌐 Language ▾
         </button>
-
         <div class="language-menu" id="languageMenu">
-          <button onclick="changeLanguage('it')">🇮🇹 Italiano</button>
-          <button onclick="changeLanguage('es')">🇪🇸 Español</button>
-          <button onclick="changeLanguage('en')">🇬🇧 English</button>
-          <button onclick="changeLanguage('de')">🇩🇪 Deutsch</button>
+            <button onclick="changeLanguage('it')">🇮🇹 Italiano</button>
+            <button onclick="changeLanguage('es')">🇪🇸 Español</button>
+            <button onclick="changeLanguage('en')">🇬🇧 English</button>
+            <button onclick="changeLanguage('de')">🇩🇪 Deutsch</button>
         </div>
-      </div>
     </div>
-
-    <a href="weed.html" class="category-link">
-      <div class="category">
-        <img src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif" class="category-image">
+</div>
+<!-- CATEGORIE -->
+<a href="weed.html" class="category-link">
+    <div class="category">
+        <img
+            src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
+            alt="Weed"
+            class="category-image"
+        >
         <div class="category-name" id="weed">
-          Weed
+            Weed
         </div>
-      </div>
-    </a>
-
-    <a href="frozen.html" class="category-link">
-      <div class="category">
-        <img src="frozen.jpg" class="category-image">
+    </div>
+</a>
+<a href="frozen.html" class="category-link">
+    <div class="category">
+        <img
+            src="frozen.jpg"
+            alt="Frozen"
+            class="category-image"
+        >
         <div class="category-name" id="frozen">
-          Frozen
+            Frozen
         </div>
-      </div>
-    </a>
-
-    <a href="dry.html" class="category-link">
-      <div class="category">
-        <img src="dry.webp" class="category-image">
+    </div>
+</a>
+<a href="dry.html" class="category-link">
+    <div class="category">
+        <img
+            src="dry.webp"
+            alt="Dry"
+            class="category-image"
+        >
         <div class="category-name" id="dry">
-          Dry
+            Dry
         </div>
-      </div>
-    </a>
-
-    <a href="extract.html" class="category-link">
-      <div class="category">
-        <img src="images.jpg" class="category-image">
+    </div>
+</a>
+<a href="extract.html" class="category-link">
+    <div class="category">
+        <img
+            src="images.jpg"
+            alt="Extract"
+            class="category-image"
+        >
         <div class="category-name" id="extract">
-          Extract
+            Extract
         </div>
-      </div>
-    </a>
-
-    <a href="VAPE.html" class="category-link">
-      <div class="category">
-        <img src="IMG_9790.jpeg" class="category-image">
+    </div>
+</a>
+<a href="VAPE.html" class="category-link">
+    <div class="category">
+        <img
+            src="IMG_9790.jpeg"
+            alt="VAPE"
+            class="category-image"
+        >
         <div class="category-name" id="vape">
-          VAPE
+            VAPE
         </div>
-      </div>
-    </a>
-
-    <a href="stickers.html" class="category-link">
-      <div class="category sticker-category">
-        <img src="IMG_9804.jpeg" class="sticker-image">
+    </div>
+</a>
+<a href="stickers.html" class="category-link">
+    <div class="category sticker-category">
+        <img
+            src="IMG_9804.jpeg"
+            alt="Stickers"
+            class="sticker-image"
+        >
         <div class="category-name" id="stickers">
-          🏷️ Stickers
+            🏷️ Stickers
         </div>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="cart">
-    <div class="cart-title" id="cartTitle">
-      🛒 Carrello
     </div>
-
-    <div id="cart">
-      Nessun prodotto
-    </div>
-
-    <button class="checkout" onclick="sendOrder()" id="orderButton">
-      📲 Conferma ordine
-    </button>
-
-    <a href="bitcoin.html">
-      <button class="checkout">
+</a>
+</div>
+<!-- CARRELLO -->
+<div class="cart">
+<div class="cart-title" id="cartTitle">
+    🛒 Carrello
+</div>
+<div id="cart">
+    Nessun prodotto
+</div>
+<button
+    class="checkout"
+    onclick="sendOrder()"
+    id="orderButton"
+>
+    📲 Conferma ordine
+</button>
+<a href="bitcoin.html">
+    <button class="checkout">
         ₿ Paga in Bitcoin
-      </button>
-    </a>
-  </div>
-
-  <script src="language.js"></script>
-  <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    function showCart() {
-      let box = document.getElementById("cart");
-      if (cart.length === 0) {
+    </button>
+</a>
+</div>
+<script src="language.js"></script>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function showCart() {
+    const box = document.getElementById("cart");
+    if (cart.length === 0) {
         box.innerHTML = "Nessun prodotto";
         return;
-      }
-      box.innerHTML = "";
-      cart.forEach((item, index) => {
-        box.innerHTML += item +
-          ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
-      });
     }
-
-    function removeItem(index) {
-      cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      showCart();
-    }
-
-    function sendOrder() {
-      if (cart.length === 0) {
+    box.innerHTML = "";
+    cart.forEach((item, index) => {
+        box.innerHTML +=
+            item +
+            ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+    });
+}
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    showCart();
+}
+function sendOrder() {
+    if (cart.length === 0) {
         alert("Il carrello è vuoto");
         return;
-      }
-      let ordine = cart.join("\n");
-      let messaggio = "Ciao Oasis del Sur, vorrei ordinare:\n\n" + ordine;
-      let telegram = "https://t.me/wordex17?text=" + encodeURIComponent(messaggio);
-      window.location.href = telegram;
     }
-
-    window.addEventListener("load", function () {
-      showCart();
-      let saved = localStorage.getItem("language");
-      if (saved && typeof changeLanguage === "function") {
-        changeLanguage(saved);
-      }
-    });
-  </script>
-
+    const ordine = cart.join("\n");
+    const messaggio =
+        "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
+        ordine;
+    const telegram =
+        "https://t.me/wordex17?text=" +
+        encodeURIComponent(messaggio);
+    window.location.href = telegram;
+}
+window.addEventListener("load", function () {
+    showCart();
+    const savedLanguage =
+        localStorage.getItem("language");
+    if (savedLanguage) {
+        changeLanguage(savedLanguage);
+    }
+});
+</script>
 </body>
-
 </html>
