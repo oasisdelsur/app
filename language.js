@@ -68,7 +68,7 @@ de: {
 };
 
 /* ==========================
-SCELTA LINGUA INIZIALE
+LINGUA SCELTA
 ========================== */
 
 let selectedWelcomeLanguage =
@@ -84,10 +84,12 @@ const welcomeText =
     document.getElementById("welcomeText");
 const enterButton =
     document.getElementById("enterButton");
-if (welcomeText)
+if (welcomeText) {
     welcomeText.innerHTML = t.welcome;
-if (enterButton)
+}
+if (enterButton) {
     enterButton.innerHTML = t.enter;
+}
 document
     .querySelectorAll(".welcome-languages button")
     .forEach(button => {
@@ -95,19 +97,24 @@ document
     });
 const selectedButton =
     document.getElementById("lang-" + lang);
-if (selectedButton)
+if (selectedButton) {
     selectedButton.classList.add("selected");
+}
 
 }
 
 /* ==========================
-ENTRA NEL SITO
+ENTRA
 ========================== */
 
 function enterSite() {
 
 if (!selectedWelcomeLanguage) {
-    selectWelcomeLanguage("it");
+    selectedWelcomeLanguage = "it";
+    localStorage.setItem(
+        "language",
+        "it"
+    );
 }
 applyLanguage(selectedWelcomeLanguage);
 const welcome =
@@ -119,15 +126,24 @@ if (welcome) {
 }
 
 /* ==========================
-TRADUZIONE DELLA PAGINA
+TRADUZIONE
 ========================== */
 
 function applyLanguage(lang) {
 
 const t = translations[lang];
 if (!t) return;
-localStorage.setItem("language", lang);
+localStorage.setItem(
+    "language",
+    lang
+);
 document.documentElement.lang = lang;
+if (document.getElementById("welcomeText"))
+    document.getElementById("welcomeText").innerHTML =
+        t.welcome;
+if (document.getElementById("enterButton"))
+    document.getElementById("enterButton").innerHTML =
+        t.enter;
 if (document.getElementById("dispensario"))
     document.getElementById("dispensario").innerHTML =
         t.dispensario;
@@ -195,7 +211,8 @@ const box =
     document.getElementById("cart");
 if (!box) return;
 if (cart.length === 0) {
-    box.innerHTML = "Nessun prodotto";
+    box.innerHTML =
+        "Nessun prodotto";
     return;
 }
 box.innerHTML = "";
@@ -226,11 +243,12 @@ if (cart.length === 0) {
     alert("Il carrello è vuoto");
     return;
 }
-let ordine = cart.join("\n");
-let messaggio =
+const ordine =
+    cart.join("\n");
+const messaggio =
     "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
     ordine;
-let telegram =
+const telegram =
     "https://t.me/wordex17?text=" +
     encodeURIComponent(messaggio);
 window.location.href = telegram;
@@ -247,16 +265,17 @@ showCart();
 const saved =
     localStorage.getItem("language");
 /*
-   Se l'utente ha già scelto una lingua,
-   la schermata di benvenuto non viene
-   mostrata nuovamente.
+   Se esiste già una lingua salvata,
+   viene applicata automaticamente.
 */
 if (saved && translations[saved]) {
+    selectedWelcomeLanguage = saved;
     applyLanguage(saved);
     const welcome =
         document.getElementById("welcomeScreen");
-    if (welcome)
+    if (welcome) {
         welcome.classList.add("hidden");
+    }
 }
 
 });
