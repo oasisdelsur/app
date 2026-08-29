@@ -2,113 +2,159 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-
-<meta
-name=“viewport”
-content=“width=device-width, initial-scale=1.0”
-
-<title>Highland Terps</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Highland Terps - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* ==========================
+   IMMAGINI HIGHLAND TERPS
+========================== */
+.product-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 500px;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 18px;
+    object-fit: contain;
+}
+/* ==========================
+   CARRELLO MINI
+========================== */
+#mini-cart {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+#mini-cart button {
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+/* ==========================
+   MOBILE
+========================== */
+@media (max-width: 500px) {
+    .product-image {
+        width: 100%;
+        max-width: 100%;
+        max-height: 400px;
+        object-fit: contain;
+    }
+}
+</style>
 </head>
 <body>
-<!-- INDIETRO -->
+<!-- ==========================
+     INDIETRO
+========================== -->
 <div class="back-button">
 <a href="frozen.html" id="back">
-
-← Torna ai Frozen
-
+    ← Torna ai Frozen
 </a>
 </div>
 <div class="container">
-<!-- TITOLO -->
+<!-- ==========================
+     TITOLO
+========================== -->
 <div class="section-title">
-
 🌱 Highland Terps
-
 </div>
-<!-- PRODOTTO -->
+<!-- ==========================
+     PRODOTTO
+========================== -->
 <div class="product">
-
+<!-- IMMAGINE 1 -->
 <img
-src=“IMG_9708.png”
-class=“product-image”
-alt=“Highland Terps”
-
+    src="IMG_9708.png"
+    class="product-image"
+    alt="Highland Terps"
+>
+<!-- IMMAGINE 2 -->
 <img
-src=“IMG_9709.png”
-class=“product-image”
-alt=“Highland Terps”
-
-<h2 id="choose">
-
-Scegli quantità
-
-</h2>
+    src="IMG_9709.png"
+    class="product-image"
+    alt="Highland Terps"
+>
 <!-- QUANTITÀ -->
+<h2 id="choose">
+    Scegli quantità
+</h2>
 <div class="sizes">
-<button onclick="addToCart('Highland Terps - 10g')">
-10g
-</button>
-<button onclick="addToCart('Highland Terps - 20g')">
-20g
-</button>
-<button onclick="addToCart('Highland Terps - 30g')">
-30g
-</button>
-<button onclick="addToCart('Highland Terps - 40g')">
-40g
-</button>
-<button onclick="addToCart('Highland Terps - 50g')">
-50g
-</button>
-<button onclick="addToCart('Highland Terps - 100g')">
-100g
-</button>
-<button onclick="addToCart('Highland Terps - 500g')">
-500g
-</button>
+    <button onclick="addToCart('Highland Terps - 10g')">
+        10g
+    </button>
+    <button onclick="addToCart('Highland Terps - 20g')">
+        20g
+    </button>
+    <button onclick="addToCart('Highland Terps - 30g')">
+        30g
+    </button>
+    <button onclick="addToCart('Highland Terps - 40g')">
+        40g
+    </button>
+    <button onclick="addToCart('Highland Terps - 50g')">
+        50g
+    </button>
+    <button onclick="addToCart('Highland Terps - 100g')">
+        100g
+    </button>
+    <button onclick="addToCart('Highland Terps - 500g')">
+        500g
+    </button>
 </div>
 </div>
-<!-- CARRELLO -->
+<!-- ==========================
+     CARRELLO
+========================== -->
 <div class="cart">
 <div class="cart-title">
-
-🛒 
-Il tuo ordine
+    🛒 <span id="cartText">
+        Il tuo ordine
+    </span>
 </div>
 <div id="mini-cart">
-
-Carrello vuoto
-
+    Carrello vuoto
 </div>
 </div>
-<!-- VAI AL CARRELLO -->
+<!-- ==========================
+     VAI AL CARRELLO
+========================== -->
 
 <a
 href=“index.html”
 class=“category-link”
 
 <div class="category">
-
-🛒 Vai al carrello
-
+    🛒 Vai al carrello
 </div>
 </a>
-<!-- MENU PRINCIPALE -->
+<!-- ==========================
+     MENU PRINCIPALE
+========================== -->
 
 <a
 href=“index.html”
 class=“category-link”
 
 <div class="category">
-
-🏠 Torna al menu principale
-
+    🏠 Torna al menu principale
 </div>
 </a>
 </div>
+<!-- ==========================
+     LINGUA
+========================== -->
 <script src="language.js"></script>
 <script>
+/* ==========================
+   CARRELLO
+========================== */
 let cart =
     JSON.parse(localStorage.getItem("cart")) || [];
 /* ==========================
@@ -146,14 +192,14 @@ function showMiniCart() {
         box.innerHTML +=
             "• " +
             item +
-            " <button onclick=\"removeItem(" +
+            ' <button onclick="removeItem(' +
             index +
-            ")\">❌</button>" +
+            ')">❌</button>' +
             "<br><br>";
     });
 }
 /* ==========================
-   RIMUOVI
+   RIMUOVI DAL CARRELLO
 ========================== */
 function removeItem(index) {
     cart.splice(index, 1);
@@ -164,34 +210,37 @@ function removeItem(index) {
     showMiniCart();
 }
 /* ==========================
-   AVVIO
+   CARICAMENTO PAGINA
 ========================== */
-window.addEventListener("load", function() {
-    const lang =
-        localStorage.getItem("language") || "it";
-    const t =
-        translations[lang] ||
-        translations.it;
-    document.documentElement.lang =
-        lang;
-    /* Pulsante indietro */
-    document.getElementById(
-        "back"
-    ).innerHTML =
-        t.back;
-    /* Scegli quantità */
-    document.getElementById(
-        "choose"
-    ).innerHTML =
-        t.choose ||
-        "Scegli quantità";
-    /* Carrello */
-    document.getElementById(
-        "cartText"
-    ).innerHTML =
-        t.cart;
-    showMiniCart();
-});
+window.addEventListener(
+    "load",
+    function() {
+        const lang =
+            localStorage.getItem("language") || "it";
+        const t =
+            translations[lang] ||
+            translations.it;
+        document.documentElement.lang =
+            lang;
+        /* Pulsante indietro */
+        document.getElementById(
+            "back"
+        ).innerHTML =
+            t.back;
+        /* Scegli quantità */
+        document.getElementById(
+            "choose"
+        ).innerHTML =
+            t.choose ||
+            "Scegli quantità";
+        /* Carrello */
+        document.getElementById(
+            "cartText"
+        ).innerHTML =
+            t.cart;
+        showMiniCart();
+    }
+);
 </script>
 </body>
 </html>
