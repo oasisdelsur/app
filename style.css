@@ -32,6 +32,7 @@ margin-bottom: 15px;
 min-height: 220px;
 padding: 18px;
 border-radius: 20px;
+
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -41,9 +42,10 @@ background: rgba(20,20,20,.75);
 backdrop-filter: blur(14px);
 border: 1px solid rgba(0,255,120,.15);
 box-shadow:
-0 0 20px rgba(0,255,120,.08),
-0 10px 30px rgba(0,0,0,.7);
+    0 0 20px rgba(0,255,120,.08),
+    0 10px 30px rgba(0,0,0,.7);
 transition: .3s;
+
 }
 
 .category:hover {
@@ -62,8 +64,6 @@ object-fit: cover;
 border-radius: 15px;
 margin-bottom: 12px;
 }
-
-/* STICKERS */
 
 .sticker-image {
 width: 100px;
@@ -178,7 +178,7 @@ transform: translate(0,0) scale(1);
 
 /* MOBILE */
 
-@media(max-width:500px) {
+@media (max-width: 500px) {
 
 .category {
     width: 100%;
