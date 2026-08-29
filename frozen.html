@@ -1,79 +1,68 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Frozen - Oasis del Sur</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
 <div class="container">
-
 <div class="section-title" id="frozenTitle">
-❄️ Frozen
-</div>
 
+❄️ Frozen
+
+</div>
 <div class="back-button">
 <a href="index.html" id="back">
+
 ← Indietro
+
 </a>
 </div>
-
 <div class="products">
-
 <div class="product">
 <a href="highland-terps.html" class="category-link">
 <div class="product-name">
+
 Highland Terps 90U
+
 </div>
 </a>
 </div>
-
 </div>
-
 </div>
-
 <div class="cart">
-
 <div class="cart-title" id="cartTitle">
+
 🛒 Carrello
-</div>
 
+</div>
 <div id="cart">
+
 Nessun prodotto
-</div>
 
+</div>
 <button class="checkout" id="orderButton">
+
 📲 Conferma ordine
+
 </button>
-
 </div>
-
 <script src="language.js"></script>
-
 <script>
-
 window.onload=function(){
-
 let lang=localStorage.getItem("language") || "it";
-
 let t=translations[lang];
-
-document.getElementById("frozenTitle").innerHTML="❄️ "+t.frozen;
-document.getElementById("back").innerHTML=t.back;
-document.getElementById("cartTitle").innerHTML=t.cart;
-document.getElementById("orderButton").innerHTML=t.order;
-
+document.getElementById("frozenTitle").innerHTML=
+"❄️ "+t.frozen;
+document.getElementById("back").innerHTML=
+t.back;
+document.getElementById("cartTitle").innerHTML=
+t.cart;
+document.getElementById("orderButton").innerHTML=
+t.order;
 }
-
 </script>
-
 </body>
 </html>
