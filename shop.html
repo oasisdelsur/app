@@ -8,9 +8,14 @@
 </head>
 <body>
 <div class="container">
-<!-- FRECCIA INDIETRO -->
-<div class="back-button">
-    <a href="index.html">←</a>
+<!-- FRECCIA AL POSTO DI DISPENSARIO -->
+<div class="section-header">
+<div class="section-title">
+    <a href="index.html"
+       style="color:white; text-decoration:none; font-size:28px;">
+        ←
+    </a>
+</div>
 </div>
 <!-- CATEGORIE -->
 <a href="weed.html" class="category-link">
@@ -18,7 +23,6 @@
 
 <img
 src=“a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif”
-alt=“Weed”
 class=“category-image”
 
 <div class="category-name">
@@ -31,7 +35,6 @@ Weed
 
 <img
 src=“frozen.jpg”
-alt=“Frozen”
 class=“category-image”
 
 <div class="category-name">
@@ -44,7 +47,6 @@ Frozen
 
 <img
 src=“dry.webp”
-alt=“Dry”
 class=“category-image”
 
 <div class="category-name">
@@ -57,7 +59,6 @@ Dry
 
 <img
 src=“images.jpg”
-alt=“Extract”
 class=“category-image”
 
 <div class="category-name">
@@ -70,7 +71,6 @@ Extract
 
 <img
 src=“IMG_9790.jpeg”
-alt=“VAPE”
 class=“category-image”
 
 <div class="category-name">
@@ -83,7 +83,6 @@ VAPE
 
 <img
 src=“IMG_9804.jpeg”
-alt=“Stickers”
 class=“sticker-image”
 
 <div class="category-name">
@@ -124,10 +123,11 @@ onclick=“sendOrder()”
 let cart =
 JSON.parse(localStorage.getItem("cart")) || [];
 function showCart(){
-const box =
+let box =
 document.getElementById("cart");
 if(cart.length === 0){
-box.innerHTML = "Nessun prodotto";
+box.innerHTML =
+"Nessun prodotto";
 return;
 }
 box.innerHTML = "";
@@ -152,21 +152,20 @@ if(cart.length === 0){
 alert("Il carrello è vuoto");
 return;
 }
-const ordine =
+let ordine =
 cart.join("\n");
-const messaggio =
+let messaggio =
 "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
 ordine;
-const telegram =
+let telegram =
 "https://t.me/wordex17?text=" +
 encodeURIComponent(messaggio);
-window.location.href = telegram;
+window.location.href =
+telegram;
 }
-window.addEventListener(
-"load",
-function(){
+window.onload=function(){
 showCart();
-});
+};
 </script>
 </body>
 </html>
