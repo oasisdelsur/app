@@ -6,6 +6,9 @@
 <title>Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 <style>
+/* ==========================
+   PAGINA DI BENVENUTO
+========================== */
 #welcomeScreen {
     position:fixed;
     inset:0;
@@ -87,7 +90,9 @@
         class="welcome-logo"
         alt="Oasis del Sur"
     >
-    <h1>OASIS DEL SUR</h1>
+    <h1>
+        OASIS DEL SUR
+    </h1>
     <p id="welcomeText">
         Benvenuto
     </p>
@@ -127,7 +132,7 @@
 </div>
 </div>
 <!-- ==========================
-     SITO
+     PAGINA PRINCIPALE
 ========================== -->
 <div class="container">
 <div class="header">
@@ -145,7 +150,11 @@
         🌿 Dispensario
     </div>
 </div>
-<a href="weed.html" class="category-link">
+<!-- WEED -->
+<a
+    href="weed.html"
+    class="category-link"
+>
     <div class="category">
         <img
             src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
@@ -159,7 +168,11 @@
         </div>
     </div>
 </a>
-<a href="frozen.html" class="category-link">
+<!-- FROZEN -->
+<a
+    href="frozen.html"
+    class="category-link"
+>
     <div class="category">
         <img
             src="frozen.jpg"
@@ -173,7 +186,11 @@
         </div>
     </div>
 </a>
-<a href="dry.html" class="category-link">
+<!-- DRY -->
+<a
+    href="dry.html"
+    class="category-link"
+>
     <div class="category">
         <img
             src="dry.webp"
@@ -187,7 +204,11 @@
         </div>
     </div>
 </a>
-<a href="extract.html" class="category-link">
+<!-- EXTRACT -->
+<a
+    href="extract.html"
+    class="category-link"
+>
     <div class="category">
         <img
             src="images.jpg"
@@ -201,7 +222,11 @@
         </div>
     </div>
 </a>
-<a href="VAPE.html" class="category-link">
+<!-- VAPE -->
+<a
+    href="VAPE.html"
+    class="category-link"
+>
     <div class="category">
         <img
             src="IMG_9790.jpeg"
@@ -215,7 +240,11 @@
         </div>
     </div>
 </a>
-<a href="stickers.html" class="category-link">
+<!-- STICKERS -->
+<a
+    href="stickers.html"
+    class="category-link"
+>
     <div class="category sticker-category">
         <img
             src="IMG_9804.jpeg"
@@ -314,8 +343,15 @@ const translations = {
         order:"📲 Bestellung bestätigen"
     }
 };
-let selectedLanguage = "it";
+/* ==========================
+   LINGUA
+========================== */
+let selectedLanguage =
+    localStorage.getItem("language") || "it";
 function selectLanguage(lang) {
+    if (!translations[lang]) {
+        return;
+    }
     selectedLanguage = lang;
     const t = translations[lang];
     document.getElementById("welcomeText").textContent =
@@ -327,12 +363,21 @@ function selectLanguage(lang) {
         .forEach(function(button) {
             button.classList.remove("selected");
         });
-    document
-        .getElementById("lang-" + lang)
-        .classList.add("selected");
+    const selectedButton =
+        document.getElementById("lang-" + lang);
+    if (selectedButton) {
+        selectedButton.classList.add("selected");
+    }
 }
+/* ==========================
+   TRADUZIONE SITO
+========================== */
 function applyLanguage(lang) {
     const t = translations[lang];
+    if (!t) {
+        return;
+    }
+    document.documentElement.lang = lang;
     document.getElementById("dispensario").textContent =
         t.dispensario;
     document.getElementById("weed").textContent =
@@ -351,27 +396,39 @@ function applyLanguage(lang) {
         t.cart;
     document.getElementById("orderButton").textContent =
         t.order;
-    document.documentElement.lang = lang;
 }
+/* ==========================
+   ENTRA
+========================== */
 function enterSite() {
     localStorage.setItem(
         "language",
         selectedLanguage
     );
-    applyLanguage(selectedLanguage);
-    /* NASCONDE LA SCHERMATA */
-    document.getElementById("welcomeScreen").style.display =
-        "none";
+    localStorage.setItem(
+        "entered",
+        "yes"
+    );
+    applyLanguage(
+        selectedLanguage
+    );
+    document.getElementById(
+        "welcomeScreen"
+    ).style.display = "none";
 }
 /* ==========================
    CARRELLO
 ========================== */
 let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
 function showCart() {
     const box =
         document.getElementById("cart");
-    if (!box) return;
+    if (!box) {
+        return;
+    }
     if (cart.length === 0) {
         box.textContent =
             "Nessun prodotto";
@@ -407,11 +464,53 @@ function sendOrder() {
     const telegram =
         "https://t.me/wordex17?text=" +
         encodeURIComponent(messaggio);
-    window.location.href = telegram;
+    window.location.href =
+        telegram;
 }
-window.addEventListener("load", function() {
-    showCart();
-});
+/* ==========================
+   AVVIO
+========================== */
+window.addEventListener(
+    "load",
+    function() {
+        showCart();
+        const entered =
+            localStorage.getItem("entered");
+        const savedLanguage =
+            localStorage.getItem("language");
+        /*
+           SE L'UTENTE È GIÀ ENTRATO:
+           salta direttamente la schermata
+           di benvenuto.
+        */
+        if (
+            entered === "yes" &&
+            savedLanguage &&
+            translations[savedLanguage]
+        ) {
+            selectedLanguage =
+                savedLanguage;
+            applyLanguage(
+                savedLanguage
+            );
+            document.getElementById(
+                "welcomeScreen"
+            ).style.display = "none";
+        }
+        /*
+           PRIMA VISITA:
+           mostra il benvenuto.
+        */
+        else {
+            document.getElementById(
+                "welcomeScreen"
+            ).style.display = "flex";
+            selectLanguage(
+                selectedLanguage
+            );
+        }
+    }
+);
 </script>
 </body>
 </html>
