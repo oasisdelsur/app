@@ -8,12 +8,6 @@
 </head>
 <body>
 <div class="container">
-<!-- TITOLO -->
-<div class="section-title" id="dispensario">
-
-🌿 Dispensario
-
-</div>
 <!-- CATEGORIE -->
 <a href="weed.html" class="category-link">
 <div class="category">
@@ -22,7 +16,7 @@
         alt="Weed"
         class="category-image"
     >
-    <div class="category-name" id="weed">
+    <div class="category-name">
         Weed
     </div>
 </div>
@@ -34,7 +28,7 @@
         alt="Frozen"
         class="category-image"
     >
-    <div class="category-name" id="frozen">
+    <div class="category-name">
         Frozen
     </div>
 </div>
@@ -46,7 +40,7 @@
         alt="Dry"
         class="category-image"
     >
-    <div class="category-name" id="dry">
+    <div class="category-name">
         Dry
     </div>
 </div>
@@ -58,7 +52,7 @@
         alt="Extract"
         class="category-image"
     >
-    <div class="category-name" id="extract">
+    <div class="category-name">
         Extract
     </div>
 </div>
@@ -70,7 +64,7 @@
         alt="VAPE"
         class="category-image"
     >
-    <div class="category-name" id="vape">
+    <div class="category-name">
         VAPE
     </div>
 </div>
@@ -82,7 +76,7 @@
         alt="Stickers"
         class="sticker-image"
     >
-    <div class="category-name" id="stickers">
+    <div class="category-name">
         🏷️ Stickers
     </div>
 </div>
@@ -90,7 +84,7 @@
 </div>
 <!-- CARRELLO -->
 <div class="cart">
-<div class="cart-title" id="cartTitle">
+<div class="cart-title">
     🛒 Carrello
 </div>
 <div id="cart">
@@ -99,7 +93,6 @@
 <button
     class="checkout"
     onclick="sendOrder()"
-    id="orderButton"
 >
     📲 Conferma ordine
 </button>
@@ -109,7 +102,6 @@
     </button>
 </a>
 </div>
-<script src="language.js"></script>
 <script>
 let cart =
     JSON.parse(localStorage.getItem("cart")) || [];
