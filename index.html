@@ -77,26 +77,6 @@
 .enter-button:active {
     transform:scale(.97);
 }
-/* ==========================
-   FRECCIA PER TORNARE AL WELCOME
-========================== */
-.language-back {
-    display:block;
-    width:max-content;
-    margin:10px 0 20px;
-    padding:10px 18px;
-    background:#111;
-    color:white;
-    border:1px solid rgba(0,255,120,.25);
-    border-radius:30px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-}
-.language-back:hover {
-    background:#00e676;
-    color:black;
-}
 </style>
 </head>
 <body>
@@ -105,168 +85,178 @@
 ========================== -->
 <div id="welcomeScreen">
 <div class="welcome-box">
-<img
-    src="IMG_9609.png"
-    class="welcome-logo"
-    alt="Oasis del Sur"
->
-<h1>
-    OASIS DEL SUR
-</h1>
-<p id="welcomeText">
-    Benvenuto
-</p>
-<div class="welcome-languages">
-    <button
-        id="lang-it"
-        onclick="selectLanguage('it')"
+    <img
+        src="IMG_9609.png"
+        class="welcome-logo"
+        alt="Oasis del Sur"
     >
-        🇮🇹 Italiano
-    </button>
+    <h1>
+        OASIS DEL SUR
+    </h1>
+    <p id="welcomeText">
+        Benvenuto
+    </p>
+    <div class="welcome-languages">
+        <button
+            id="lang-it"
+            onclick="selectLanguage('it')"
+        >
+            🇮🇹 Italiano
+        </button>
+        <button
+            id="lang-es"
+            onclick="selectLanguage('es')"
+        >
+            🇪🇸 Español
+        </button>
+        <button
+            id="lang-en"
+            onclick="selectLanguage('en')"
+        >
+            🇬🇧 English
+        </button>
+        <button
+            id="lang-de"
+            onclick="selectLanguage('de')"
+        >
+            🇩🇪 Deutsch
+        </button>
+    </div>
     <button
-        id="lang-es"
-        onclick="selectLanguage('es')"
+        class="enter-button"
+        id="enterButton"
+        onclick="enterSite()"
     >
-        🇪🇸 Español
+        ENTRA
     </button>
-    <button
-        id="lang-en"
-        onclick="selectLanguage('en')"
-    >
-        🇬🇧 English
-    </button>
-    <button
-        id="lang-de"
-        onclick="selectLanguage('de')"
-    >
-        🇩🇪 Deutsch
-    </button>
-</div>
-<button
-    class="enter-button"
-    id="enterButton"
-    onclick="enterSite()"
->
-    ENTRA
-</button>
 </div>
 </div>
 <!-- ==========================
      PAGINA PRINCIPALE
 ========================== -->
 <div class="container">
-<!-- FRECCIA WELCOME -->
-
-<button
-class=“language-back”
-onclick=“openWelcome()”
-
-← Cambia lingua
-</button>
 <div class="header">
-<img
-    src="IMG_9609.png"
-    alt="Oasis del Sur"
-    class="logo"
->
+    <img
+        src="IMG_9609.png"
+        alt="Oasis del Sur"
+        class="logo"
+    >
 </div>
 <div class="section-header">
-<div
-    class="section-title"
-    id="dispensario"
->
-    🌿 Dispensario
-</div>
+    <div
+        class="section-title"
+        id="dispensario"
+    >
+        🌿 Dispensario
+    </div>
 </div>
 <!-- WEED -->
-<a href="weed.html" class="category-link">
-<div class="category">
-<img
-    src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
-    class="category-image"
+<a
+    href="weed.html"
+    class="category-link"
 >
-<div
-    class="category-name"
-    id="weed"
->
-    Weed
-</div>
-</div>
+    <div class="category">
+        <img
+            src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
+            class="category-image"
+        >
+        <div
+            class="category-name"
+            id="weed"
+        >
+            Weed
+        </div>
+    </div>
 </a>
 <!-- FROZEN -->
-<a href="frozen.html" class="category-link">
-<div class="category">
-<img
-    src="frozen.jpg"
-    class="category-image"
+<a
+    href="frozen.html"
+    class="category-link"
 >
-<div
-    class="category-name"
-    id="frozen"
->
-    Frozen
-</div>
-</div>
+    <div class="category">
+        <img
+            src="frozen.jpg"
+            class="category-image"
+        >
+        <div
+            class="category-name"
+            id="frozen"
+        >
+            Frozen
+        </div>
+    </div>
 </a>
 <!-- DRY -->
-<a href="dry.html" class="category-link">
-<div class="category">
-<img
-    src="dry.webp"
-    class="category-image"
+<a
+    href="dry.html"
+    class="category-link"
 >
-<div
-    class="category-name"
-    id="dry"
->
-    Dry
-</div>
-</div>
+    <div class="category">
+        <img
+            src="dry.webp"
+            class="category-image"
+        >
+        <div
+            class="category-name"
+            id="dry"
+        >
+            Dry
+        </div>
+    </div>
 </a>
 <!-- EXTRACT -->
-<a href="extract.html" class="category-link">
-<div class="category">
-<img
-    src="images.jpg"
-    class="category-image"
+<a
+    href="extract.html"
+    class="category-link"
 >
-<div
-    class="category-name"
-    id="extract"
->
-    Extract
-</div>
-</div>
+    <div class="category">
+        <img
+            src="images.jpg"
+            class="category-image"
+        >
+        <div
+            class="category-name"
+            id="extract"
+        >
+            Extract
+        </div>
+    </div>
 </a>
 <!-- VAPE -->
-<a href="VAPE.html" class="category-link">
-<div class="category">
-<img
-    src="IMG_9790.jpeg"
-    class="category-image"
+<a
+    href="VAPE.html"
+    class="category-link"
 >
-<div
-    class="category-name"
-    id="vape"
->
-    VAPE
-</div>
-</div>
+    <div class="category">
+        <img
+            src="IMG_9790.jpeg"
+            class="category-image"
+        >
+        <div
+            class="category-name"
+            id="vape"
+        >
+            VAPE
+        </div>
+    </div>
 </a>
 <!-- STICKERS -->
-<a href="stickers.html" class="category-link">
-<div class="category sticker-category">
-<img
-    src="IMG_9804.jpeg"
-    class="sticker-image"
+<a
+    href="stickers.html"
+    class="category-link"
 >
-<div
-    class="category-name"
-    id="stickers"
->
-    🏷️ Stickers
-</div>
-</div>
+    <div class="category sticker-category">
+        <img
+            src="IMG_9804.jpeg"
+            class="sticker-image"
+        >
+        <div
+            class="category-name"
+            id="stickers"
+        >
+            🏷️ Stickers
+        </div>
+    </div>
 </a>
 </div>
 <!-- ==========================
@@ -282,18 +272,17 @@ onclick=“openWelcome()”
 <div id="cart">
     Nessun prodotto
 </div>
-
 <button
-class=“checkout”
-onclick=“sendOrder()”
-id=“orderButton”
-
-📲 Conferma ordine
+    class="checkout"
+    onclick="sendOrder()"
+    id="orderButton"
+>
+    📲 Conferma ordine
 </button>
 <a href="bitcoin.html">
-<button class="checkout">
-    ₿ Paga in Bitcoin
-</button>
+    <button class="checkout">
+        ₿ Paga in Bitcoin
+    </button>
 </a>
 </div>
 <!-- ==========================
@@ -364,82 +353,48 @@ function selectLanguage(lang) {
         return;
     }
     selectedLanguage = lang;
-    localStorage.setItem(
-        "language",
-        lang
-    );
     const t = translations[lang];
-    document.getElementById(
-        "welcomeText"
-    ).textContent = t.welcome;
-    document.getElementById(
-        "enterButton"
-    ).textContent = t.enter;
+    document.getElementById("welcomeText").textContent =
+        t.welcome;
+    document.getElementById("enterButton").textContent =
+        t.enter;
     document
-        .querySelectorAll(
-            ".welcome-languages button"
-        )
+        .querySelectorAll(".welcome-languages button")
         .forEach(function(button) {
-            button.classList.remove(
-                "selected"
-            );
+            button.classList.remove("selected");
         });
     const selectedButton =
-        document.getElementById(
-            "lang-" + lang
-        );
+        document.getElementById("lang-" + lang);
     if (selectedButton) {
-        selectedButton.classList.add(
-            "selected"
-        );
+        selectedButton.classList.add("selected");
     }
 }
 /* ==========================
    TRADUZIONE SITO
 ========================== */
 function applyLanguage(lang) {
-    const t =
-        translations[lang];
+    const t = translations[lang];
     if (!t) {
         return;
     }
-    document.documentElement.lang =
-        lang;
-    document.getElementById(
-        "dispensario"
-    ).textContent =
+    document.documentElement.lang = lang;
+    document.getElementById("dispensario").textContent =
         t.dispensario;
-    document.getElementById(
-        "weed"
-    ).textContent =
+    document.getElementById("weed").textContent =
         t.weed;
-    document.getElementById(
-        "frozen"
-    ).textContent =
+    document.getElementById("frozen").textContent =
         t.frozen;
-    document.getElementById(
-        "dry"
-    ).textContent =
+    document.getElementById("dry").textContent =
         t.dry;
-    document.getElementById(
-        "extract"
-    ).textContent =
+    document.getElementById("extract").textContent =
         t.extract;
-    document.getElementById(
-        "vape"
-    ).textContent =
+    document.getElementById("vape").textContent =
         t.vape;
-    document.getElementById(
-        "stickers"
-    ).textContent =
+    document.getElementById("stickers").textContent =
         t.stickers;
-    document.getElementById(
-        "cartTitle"
-    ).textContent =
+    document.getElementById("cartTitle").textContent =
         t.cart;
-    document.getElementById(
-        "orderButton"
-    ).textContent =
+    document.getElementById("orderButton").textContent =
         t.order;
 }
 /* ==========================
@@ -459,20 +414,7 @@ function enterSite() {
     );
     document.getElementById(
         "welcomeScreen"
-    ).style.display =
-        "none";
-}
-/* ==========================
-   APRI WELCOME
-========================== */
-function openWelcome() {
-    document.getElementById(
-        "welcomeScreen"
-    ).style.display =
-        "flex";
-    selectLanguage(
-        selectedLanguage
-    );
+    ).style.display = "none";
 }
 /* ==========================
    CARRELLO
@@ -493,15 +435,13 @@ function showCart() {
         return;
     }
     box.innerHTML = "";
-    cart.forEach(
-        function(item,index) {
-            box.innerHTML +=
-                item +
-                ' <button onclick="removeItem(' +
-                index +
-                ')">❌</button><br><br>';
-        }
-    );
+    cart.forEach(function(item,index) {
+        box.innerHTML +=
+            item +
+            ' <button onclick="removeItem(' +
+            index +
+            ')">❌</button><br><br>';
+    });
 }
 function removeItem(index) {
     cart.splice(index,1);
@@ -513,9 +453,7 @@ function removeItem(index) {
 }
 function sendOrder() {
     if (cart.length === 0) {
-        alert(
-            "Il carrello è vuoto"
-        );
+        alert("Il carrello è vuoto");
         return;
     }
     const ordine =
@@ -525,9 +463,7 @@ function sendOrder() {
         ordine;
     const telegram =
         "https://t.me/wordex17?text=" +
-        encodeURIComponent(
-            messaggio
-        );
+        encodeURIComponent(messaggio);
     window.location.href =
         telegram;
 }
@@ -539,13 +475,14 @@ window.addEventListener(
     function() {
         showCart();
         const entered =
-            localStorage.getItem(
-                "entered"
-            );
+            localStorage.getItem("entered");
         const savedLanguage =
-            localStorage.getItem(
-                "language"
-            );
+            localStorage.getItem("language");
+        /*
+           SE L'UTENTE È GIÀ ENTRATO:
+           salta direttamente la schermata
+           di benvenuto.
+        */
         if (
             entered === "yes" &&
             savedLanguage &&
@@ -558,14 +495,16 @@ window.addEventListener(
             );
             document.getElementById(
                 "welcomeScreen"
-            ).style.display =
-                "none";
+            ).style.display = "none";
         }
+        /*
+           PRIMA VISITA:
+           mostra il benvenuto.
+        */
         else {
             document.getElementById(
                 "welcomeScreen"
-            ).style.display =
-                "flex";
+            ).style.display = "flex";
             selectLanguage(
                 selectedLanguage
             );
