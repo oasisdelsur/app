@@ -5,25 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
-<style>
-.back-home {
-    margin: 5px 0 15px 5px;
-}
-.back-home a {
-    color: white;
-    text-decoration: none;
-    font-size: 28px;
-    font-weight: bold;
-}
-.back-home a:hover {
-    color: #00e676;
-}
-</style>
 </head>
 <body>
 <div class="container">
-<!-- FRECCIA -->
-<div class="back-home">
+<!-- FRECCIA INDIETRO -->
+<div class="back-button">
     <a href="index.html">←</a>
 </div>
 <!-- CATEGORIE -->
@@ -32,6 +18,7 @@
 
 <img
 src=“a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif”
+alt=“Weed”
 class=“category-image”
 
 <div class="category-name">
@@ -44,6 +31,7 @@ Weed
 
 <img
 src=“frozen.jpg”
+alt=“Frozen”
 class=“category-image”
 
 <div class="category-name">
@@ -56,6 +44,7 @@ Frozen
 
 <img
 src=“dry.webp”
+alt=“Dry”
 class=“category-image”
 
 <div class="category-name">
@@ -68,6 +57,7 @@ Dry
 
 <img
 src=“images.jpg”
+alt=“Extract”
 class=“category-image”
 
 <div class="category-name">
@@ -80,6 +70,7 @@ Extract
 
 <img
 src=“IMG_9790.jpeg”
+alt=“VAPE”
 class=“category-image”
 
 <div class="category-name">
@@ -92,6 +83,7 @@ VAPE
 
 <img
 src=“IMG_9804.jpeg”
+alt=“Stickers”
 class=“sticker-image”
 
 <div class="category-name">
@@ -135,8 +127,7 @@ function showCart(){
 const box =
 document.getElementById("cart");
 if(cart.length === 0){
-box.innerHTML =
-"Nessun prodotto";
+box.innerHTML = "Nessun prodotto";
 return;
 }
 box.innerHTML = "";
@@ -169,8 +160,7 @@ ordine;
 const telegram =
 "https://t.me/wordex17?text=" +
 encodeURIComponent(messaggio);
-window.location.href =
-telegram;
+window.location.href = telegram;
 }
 window.addEventListener(
 "load",
