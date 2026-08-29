@@ -77,6 +77,28 @@
 .enter-button:active {
     transform:scale(.97);
 }
+/* ==========================
+   FRECCIA WELCOME
+========================== */
+.welcome-back {
+    display:inline-block;
+    margin:15px 15px 0 15px;
+    padding:12px 20px;
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:bold;
+    background:#111;
+    border:1px solid rgba(0,255,120,.25);
+    border-radius:30px;
+    cursor:pointer;
+    transition:.25s;
+}
+.welcome-back:hover {
+    background:#00e676;
+    color:#000;
+    transform:translateX(-5px);
+}
 </style>
 </head>
 <body>
@@ -134,129 +156,144 @@
 <!-- ==========================
      PAGINA PRINCIPALE
 ========================== -->
+<!-- FRECCIA PER TORNARE AL WELCOME -->
+
+<a
+href=”#”
+class=“welcome-back”
+onclick=“backToWelcome(); return false;”
+
+← Welcome / Cambia lingua
+</a>
 <div class="container">
 <div class="header">
-    <img
-        src="IMG_9609.png"
-        alt="Oasis del Sur"
-        class="logo"
-    >
+<img
+    src="IMG_9609.png"
+    alt="Oasis del Sur"
+    class="logo"
+>
 </div>
 <div class="section-header">
-    <div
-        class="section-title"
-        id="dispensario"
-    >
-        🌿 Dispensario
-    </div>
+<div
+    class="section-title"
+    id="dispensario"
+>
+    🌿 Dispensario
+</div>
 </div>
 <!-- WEED -->
+
 <a
-    href="weed.html"
-    class="category-link"
->
-    <div class="category">
-        <img
-            src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
-            class="category-image"
-        >
-        <div
-            class="category-name"
-            id="weed"
-        >
-            Weed
-        </div>
+href=“weed.html”
+class=“category-link”
+
+<div class="category">
+    <img
+        src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
+        class="category-image"
+    >
+    <div
+        class="category-name"
+        id="weed"
+    >
+        Weed
     </div>
+</div>
 </a>
 <!-- FROZEN -->
+
 <a
-    href="frozen.html"
-    class="category-link"
->
-    <div class="category">
-        <img
-            src="frozen.jpg"
-            class="category-image"
-        >
-        <div
-            class="category-name"
-            id="frozen"
-        >
-            Frozen
-        </div>
+href=“frozen.html”
+class=“category-link”
+
+<div class="category">
+    <img
+        src="frozen.jpg"
+        class="category-image"
+    >
+    <div
+        class="category-name"
+        id="frozen"
+    >
+        Frozen
     </div>
+</div>
 </a>
 <!-- DRY -->
+
 <a
-    href="dry.html"
-    class="category-link"
->
-    <div class="category">
-        <img
-            src="dry.webp"
-            class="category-image"
-        >
-        <div
-            class="category-name"
-            id="dry"
-        >
-            Dry
-        </div>
+href=“dry.html”
+class=“category-link”
+
+<div class="category">
+    <img
+        src="dry.webp"
+        class="category-image"
+    >
+    <div
+        class="category-name"
+        id="dry"
+    >
+        Dry
     </div>
+</div>
 </a>
 <!-- EXTRACT -->
+
 <a
-    href="extract.html"
-    class="category-link"
->
-    <div class="category">
-        <img
-            src="images.jpg"
-            class="category-image"
-        >
-        <div
-            class="category-name"
-            id="extract"
-        >
-            Extract
-        </div>
+href=“extract.html”
+class=“category-link”
+
+<div class="category">
+    <img
+        src="images.jpg"
+        class="category-image"
+    >
+    <div
+        class="category-name"
+        id="extract"
+    >
+        Extract
     </div>
+</div>
 </a>
 <!-- VAPE -->
+
 <a
-    href="VAPE.html"
-    class="category-link"
->
-    <div class="category">
-        <img
-            src="IMG_9790.jpeg"
-            class="category-image"
-        >
-        <div
-            class="category-name"
-            id="vape"
-        >
-            VAPE
-        </div>
+href=“VAPE.html”
+class=“category-link”
+
+<div class="category">
+    <img
+        src="IMG_9790.jpeg"
+        class="category-image"
+    >
+    <div
+        class="category-name"
+        id="vape"
+    >
+        VAPE
     </div>
+</div>
 </a>
 <!-- STICKERS -->
+
 <a
-    href="stickers.html"
-    class="category-link"
->
-    <div class="category sticker-category">
-        <img
-            src="IMG_9804.jpeg"
-            class="sticker-image"
-        >
-        <div
-            class="category-name"
-            id="stickers"
-        >
-            🏷️ Stickers
-        </div>
+href=“stickers.html”
+class=“category-link”
+
+<div class="category sticker-category">
+    <img
+        src="IMG_9804.jpeg"
+        class="sticker-image"
+    >
+    <div
+        class="category-name"
+        id="stickers"
+    >
+        🏷️ Stickers
     </div>
+</div>
 </a>
 </div>
 <!-- ==========================
@@ -285,10 +322,10 @@
     </button>
 </a>
 </div>
-<!-- ==========================
-     JAVASCRIPT
-========================== -->
 <script>
+/* ==========================
+   TRADUZIONI
+========================== */
 const translations = {
     it: {
         welcome:"Benvenuto",
@@ -344,7 +381,7 @@ const translations = {
     }
 };
 /* ==========================
-   LINGUA
+   LINGUA SELEZIONATA
 ========================== */
 let selectedLanguage =
     localStorage.getItem("language") || "it";
@@ -417,6 +454,17 @@ function enterSite() {
     ).style.display = "none";
 }
 /* ==========================
+   TORNA AL WELCOME
+========================== */
+function backToWelcome() {
+    document.getElementById(
+        "welcomeScreen"
+    ).style.display = "flex";
+    selectLanguage(
+        selectedLanguage
+    );
+}
+/* ==========================
    CARRELLO
 ========================== */
 let cart =
@@ -451,6 +499,9 @@ function removeItem(index) {
     );
     showCart();
 }
+/* ==========================
+   ORDINE
+========================== */
 function sendOrder() {
     if (cart.length === 0) {
         alert("Il carrello è vuoto");
@@ -478,11 +529,6 @@ window.addEventListener(
             localStorage.getItem("entered");
         const savedLanguage =
             localStorage.getItem("language");
-        /*
-           SE L'UTENTE È GIÀ ENTRATO:
-           salta direttamente la schermata
-           di benvenuto.
-        */
         if (
             entered === "yes" &&
             savedLanguage &&
@@ -497,10 +543,6 @@ window.addEventListener(
                 "welcomeScreen"
             ).style.display = "none";
         }
-        /*
-           PRIMA VISITA:
-           mostra il benvenuto.
-        */
         else {
             document.getElementById(
                 "welcomeScreen"
