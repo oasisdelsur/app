@@ -67,5 +67,72 @@ alt="Stickers">
 </div>
 </a>
 </div>
+<!-- CARRELLO -->
+<div class="cart">
+<div class="cart-title">
+🛒 Carrello
+</div>
+<div id="cart">
+Nessun prodotto
+</div>
+
+📲 Conferma ordine
+
+</button>
+<a href="bitcoin.html">
+<button class="checkout">
+₿ Paga in Bitcoin
+</button>
+</a>
+</div>
+<script>
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+function showCart(){
+const box =
+document.getElementById("cart");
+if(cart.length === 0){
+box.innerHTML = "Nessun prodotto";
+return;
+}
+box.innerHTML = "";
+cart.forEach((item,index)=>{
+box.innerHTML +=
+item +
+' <button onclick="removeItem(' +
+index +
+')">❌</button><br><br>';
+});
+}
+function removeItem(index){
+cart.splice(index,1);
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+showCart();
+}
+function sendOrder(){
+if(cart.length === 0){
+alert("Il carrello è vuoto");
+return;
+}
+const ordine =
+cart.join("\n");
+const messaggio =
+"Ciao Oasis del Sur, vorrei ordinare:\n\n" +
+ordine;
+const telegram =
+"https://t.me/wordex17?text=" +
+encodeURIComponent(messaggio);
+window.location.href =
+telegram;
+}
+window.addEventListener(
+"load",
+function(){
+showCart();
+});
+</script>
 </body>
 </html>
