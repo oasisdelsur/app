@@ -2,16 +2,12 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-
-<meta
-name=“viewport”
-content=“width=device-width, initial-scale=1.0”
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 <style>
 .back-home {
-    margin-bottom: 10px;
+    margin: 5px 0 15px 5px;
 }
 .back-home a {
     color: white;
@@ -26,154 +22,161 @@ content=“width=device-width, initial-scale=1.0”
 </head>
 <body>
 <div class="container">
-<!-- FRECCIA TORNA ALLA PAGINA DI BENVENUTO -->
+<!-- FRECCIA -->
 <div class="back-home">
-<a href="index.html">←</a>
+    <a href="index.html">←</a>
 </div>
 <!-- CATEGORIE -->
 <a href="weed.html" class="category-link">
 <div class="category">
-    <img
-        src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
-        alt="Weed"
-        class="category-image"
-    >
-    <div class="category-name">
-        Weed
-    </div>
+
+<img
+src=“a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif”
+class=“category-image”
+
+<div class="category-name">
+Weed
+</div>
 </div>
 </a>
 <a href="frozen.html" class="category-link">
 <div class="category">
-    <img
-        src="frozen.jpg"
-        alt="Frozen"
-        class="category-image"
-    >
-    <div class="category-name">
-        Frozen
-    </div>
+
+<img
+src=“frozen.jpg”
+class=“category-image”
+
+<div class="category-name">
+Frozen
+</div>
 </div>
 </a>
 <a href="dry.html" class="category-link">
 <div class="category">
-    <img
-        src="dry.webp"
-        alt="Dry"
-        class="category-image"
-    >
-    <div class="category-name">
-        Dry
-    </div>
+
+<img
+src=“dry.webp”
+class=“category-image”
+
+<div class="category-name">
+Dry
+</div>
 </div>
 </a>
 <a href="extract.html" class="category-link">
 <div class="category">
-    <img
-        src="images.jpg"
-        alt="Extract"
-        class="category-image"
-    >
-    <div class="category-name">
-        Extract
-    </div>
+
+<img
+src=“images.jpg”
+class=“category-image”
+
+<div class="category-name">
+Extract
+</div>
 </div>
 </a>
 <a href="VAPE.html" class="category-link">
 <div class="category">
-    <img
-        src="IMG_9790.jpeg"
-        alt="VAPE"
-        class="category-image"
-    >
-    <div class="category-name">
-        VAPE
-    </div>
+
+<img
+src=“IMG_9790.jpeg”
+class=“category-image”
+
+<div class="category-name">
+VAPE
+</div>
 </div>
 </a>
 <a href="stickers.html" class="category-link">
 <div class="category sticker-category">
-    <img
-        src="IMG_9804.jpeg"
-        alt="Stickers"
-        class="sticker-image"
-    >
-    <div class="category-name">
-        🏷️ Stickers
-    </div>
+
+<img
+src=“IMG_9804.jpeg”
+class=“sticker-image”
+
+<div class="category-name">
+🏷️ Stickers
+</div>
 </div>
 </a>
 </div>
 <!-- CARRELLO -->
 <div class="cart">
 <div class="cart-title">
-    🛒 Carrello
+
+🛒 Carrello
+
 </div>
 <div id="cart">
-    Nessun prodotto
+
+Nessun prodotto
+
 </div>
+
 <button
-    class="checkout"
-    onclick="sendOrder()"
->
-    📲 Conferma ordine
+class=“checkout”
+onclick=“sendOrder()”
+
+📲 Conferma ordine
+
 </button>
 <a href="bitcoin.html">
-    <button class="checkout">
-        ₿ Paga in Bitcoin
-    </button>
+<button class="checkout">
+
+₿ Paga in Bitcoin
+
+</button>
 </a>
 </div>
 <script>
 let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
-function showCart() {
-    const box =
-        document.getElementById("cart");
-    if (cart.length === 0) {
-        box.innerHTML =
-            "Nessun prodotto";
-        return;
-    }
-    box.innerHTML = "";
-    cart.forEach((item, index) => {
-        box.innerHTML +=
-            item +
-            ' <button onclick="removeItem(' +
-            index +
-            ')">❌</button><br><br>';
-    });
+JSON.parse(localStorage.getItem("cart")) || [];
+function showCart(){
+const box =
+document.getElementById("cart");
+if(cart.length === 0){
+box.innerHTML =
+"Nessun prodotto";
+return;
 }
-function removeItem(index) {
-    cart.splice(index, 1);
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-    showCart();
+box.innerHTML = "";
+cart.forEach((item,index)=>{
+box.innerHTML +=
+item +
+' <button onclick="removeItem(' +
+index +
+')">❌</button><br><br>';
+});
 }
-function sendOrder() {
-    if (cart.length === 0) {
-        alert("Il carrello è vuoto");
-        return;
-    }
-    const ordine =
-        cart.join("\n");
-    const messaggio =
-        "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
-        ordine;
-    const telegram =
-        "https://t.me/wordex17?text=" +
-        encodeURIComponent(messaggio);
-    window.location.href =
-        telegram;
+function removeItem(index){
+cart.splice(index,1);
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+showCart();
+}
+function sendOrder(){
+if(cart.length === 0){
+alert("Il carrello è vuoto");
+return;
+}
+const ordine =
+cart.join("\n");
+const messaggio =
+"Ciao Oasis del Sur, vorrei ordinare:\n\n" +
+ordine;
+const telegram =
+"https://t.me/wordex17?text=" +
+encodeURIComponent(messaggio);
+window.location.href =
+telegram;
 }
 window.addEventListener(
-    "load",
-    function () {
-        showCart();
-    }
-);
+"load",
+function(){
+showCart();
+});
 </script>
 </body>
 </html>
