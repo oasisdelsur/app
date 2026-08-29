@@ -4,56 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oasis del Sur</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <div class="container">
-<!-- FRECCIA -->
 <div class="back-button">
-<a href="index.html">←</a>
+<a href="./index.html">←</a>
 </div>
-<!-- WEED -->
-<a href="weed.html" class="category-link">
+<a href="./weed.html" class="category-link">
 <div class="category">
 <div class="category-name">
 Weed
 </div>
 </div>
 </a>
-<!-- FROZEN -->
-<a href="frozen.html" class="category-link">
+<a href="./frozen.html" class="category-link">
 <div class="category">
 <div class="category-name">
 Frozen
 </div>
 </div>
 </a>
-<!-- DRY -->
-<a href="dry.html" class="category-link">
+<a href="./dry.html" class="category-link">
 <div class="category">
 <div class="category-name">
 Dry
 </div>
 </div>
 </a>
-<!-- EXTRACT -->
-<a href="extract.html" class="category-link">
+<a href="./extract.html" class="category-link">
 <div class="category">
 <div class="category-name">
 Extract
 </div>
 </div>
 </a>
-<!-- VAPE -->
-<a href="VAPE.html" class="category-link">
+<a href="./VAPE.html" class="category-link">
 <div class="category">
 <div class="category-name">
 VAPE
 </div>
 </div>
 </a>
-<!-- STICKERS -->
-<a href="stickers.html" class="category-link">
+<a href="./stickers.html" class="category-link">
 <div class="category sticker-category">
 <div class="category-name">
 🏷️ Stickers
@@ -61,7 +54,6 @@ VAPE
 </div>
 </a>
 </div>
-<!-- CARRELLO -->
 <div class="cart">
 <div class="cart-title">
 🛒 Carrello
@@ -73,7 +65,7 @@ Nessun prodotto
 📲 Conferma ordine
 
 </button>
-<a href="bitcoin.html">
+<a href="./bitcoin.html">
 <button class="checkout">
 ₿ Paga in Bitcoin
 </button>
@@ -86,8 +78,7 @@ function showCart() {
 const box =
 document.getElementById("cart");
 if (cart.length === 0) {
-box.innerHTML =
-"Nessun prodotto";
+box.innerHTML = "Nessun prodotto";
 return;
 }
 box.innerHTML = "";
