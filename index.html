@@ -5,69 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
+<style>
+#welcomeScreen {
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#050505;
+    color:white;
+    text-align:center;
+}
+.welcome-box {
+    width:90%;
+    max-width:420px;
+    padding:30px;
+    border-radius:25px;
+    background:rgba(20,20,20,.95);
+    border:1px solid rgba(0,255,120,.25);
+    box-shadow:0 0 40px rgba(0,255,120,.15);
+}
+.welcome-logo {
+    width:180px;
+    height:180px;
+    object-fit:contain;
+    border-radius:50%;
+    margin-bottom:15px;
+}
+.welcome-box h1 {
+    margin:10px 0;
+    font-size:30px;
+}
+.welcome-box p {
+    font-size:20px;
+    margin:10px 0 25px;
+}
+.welcome-languages {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:20px;
+}
+.welcome-languages button {
+    padding:14px 8px;
+    border:none;
+    border-radius:20px;
+    background:#111;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+}
+.welcome-languages button.selected {
+    background:#00e676;
+    color:black;
+}
+.enter-button {
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:30px;
+    background:#00e676;
+    color:black;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.enter-button:active {
+    transform:scale(.97);
+}
+</style>
 </head>
 <body>
 <!-- ==========================
-     PAGINA DI BENVENUTO
+     BENVENUTO
 ========================== -->
-<div
-    id="welcomeScreen"
-    class="welcome-screen"
->
+<div id="welcomeScreen">
 <div class="welcome-box">
     <img
         src="IMG_9609.png"
-        alt="Oasis del Sur"
         class="welcome-logo"
+        alt="Oasis del Sur"
     >
-    <h1>
-        OASIS DEL SUR
-    </h1>
+    <h1>OASIS DEL SUR</h1>
     <p id="welcomeText">
         Benvenuto
     </p>
-    <!-- LINGUE -->
     <div class="welcome-languages">
         <button
-            onclick="selectWelcomeLanguage('it')"
             id="lang-it"
+            onclick="selectLanguage('it')"
         >
             🇮🇹 Italiano
         </button>
         <button
-            onclick="selectWelcomeLanguage('es')"
             id="lang-es"
+            onclick="selectLanguage('es')"
         >
             🇪🇸 Español
         </button>
         <button
-            onclick="selectWelcomeLanguage('en')"
             id="lang-en"
+            onclick="selectLanguage('en')"
         >
             🇬🇧 English
         </button>
         <button
-            onclick="selectWelcomeLanguage('de')"
             id="lang-de"
+            onclick="selectLanguage('de')"
         >
             🇩🇪 Deutsch
         </button>
     </div>
-    <!-- ENTRA -->
     <button
         class="enter-button"
-        onclick="enterSite()"
         id="enterButton"
+        onclick="enterSite()"
     >
         ENTRA
     </button>
 </div>
 </div>
 <!-- ==========================
-     SITO PRINCIPALE
+     SITO
 ========================== -->
 <div class="container">
-<!-- LOGO -->
 <div class="header">
     <img
         src="IMG_9609.png"
@@ -75,7 +137,6 @@
         class="logo"
     >
 </div>
-<!-- TITOLO -->
 <div class="section-header">
     <div
         class="section-title"
@@ -84,11 +145,7 @@
         🌿 Dispensario
     </div>
 </div>
-<!-- WEED -->
-<a
-    href="weed.html"
-    class="category-link"
->
+<a href="weed.html" class="category-link">
     <div class="category">
         <img
             src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
@@ -102,11 +159,7 @@
         </div>
     </div>
 </a>
-<!-- FROZEN -->
-<a
-    href="frozen.html"
-    class="category-link"
->
+<a href="frozen.html" class="category-link">
     <div class="category">
         <img
             src="frozen.jpg"
@@ -120,11 +173,7 @@
         </div>
     </div>
 </a>
-<!-- DRY -->
-<a
-    href="dry.html"
-    class="category-link"
->
+<a href="dry.html" class="category-link">
     <div class="category">
         <img
             src="dry.webp"
@@ -138,11 +187,7 @@
         </div>
     </div>
 </a>
-<!-- EXTRACT -->
-<a
-    href="extract.html"
-    class="category-link"
->
+<a href="extract.html" class="category-link">
     <div class="category">
         <img
             src="images.jpg"
@@ -156,11 +201,7 @@
         </div>
     </div>
 </a>
-<!-- VAPE -->
-<a
-    href="VAPE.html"
-    class="category-link"
->
+<a href="VAPE.html" class="category-link">
     <div class="category">
         <img
             src="IMG_9790.jpeg"
@@ -174,11 +215,7 @@
         </div>
     </div>
 </a>
-<!-- STICKERS -->
-<a
-    href="stickers.html"
-    class="category-link"
->
+<a href="stickers.html" class="category-link">
     <div class="category sticker-category">
         <img
             src="IMG_9804.jpeg"
@@ -220,117 +257,160 @@
 </a>
 </div>
 <!-- ==========================
-     LANGUAGE.JS
-========================== -->
-<script src="language.js"></script>
-<!-- ==========================
-     FUNZIONI DI BENVENUTO
+     JAVASCRIPT
 ========================== -->
 <script>
-let selectedWelcomeLanguage = null;
-/* ==========================
-   SCELTA LINGUA
-========================== */
-function selectWelcomeLanguage(lang) {
-    selectedWelcomeLanguage = lang;
-    /* Evidenzia lingua scelta */
+const translations = {
+    it: {
+        welcome:"Benvenuto",
+        enter:"ENTRA",
+        dispensario:"🌿 Dispensario",
+        weed:"Weed",
+        frozen:"Frozen",
+        dry:"Dry",
+        extract:"Extract",
+        vape:"VAPE",
+        stickers:"🏷️ Stickers",
+        cart:"🛒 Carrello",
+        order:"📲 Conferma ordine"
+    },
+    es: {
+        welcome:"Bienvenido",
+        enter:"ENTRAR",
+        dispensario:"🌿 Dispensario",
+        weed:"Marihuana",
+        frozen:"Frozen",
+        dry:"Dry",
+        extract:"Extractos",
+        vape:"Vaporizadores",
+        stickers:"🏷️ Pegatinas",
+        cart:"🛒 Carrito",
+        order:"📲 Confirmar pedido"
+    },
+    en: {
+        welcome:"Welcome",
+        enter:"ENTER",
+        dispensario:"🌿 Dispensary",
+        weed:"Weed",
+        frozen:"Frozen",
+        dry:"Dry",
+        extract:"Extract",
+        vape:"Vapes",
+        stickers:"🏷️ Stickers",
+        cart:"🛒 Cart",
+        order:"📲 Confirm order"
+    },
+    de: {
+        welcome:"Willkommen",
+        enter:"EINTRETEN",
+        dispensario:"🌿 Shop",
+        weed:"Weed",
+        frozen:"Frozen",
+        dry:"Dry",
+        extract:"Extrakte",
+        vape:"Vapes",
+        stickers:"🏷️ Aufkleber",
+        cart:"🛒 Warenkorb",
+        order:"📲 Bestellung bestätigen"
+    }
+};
+let selectedLanguage = "it";
+function selectLanguage(lang) {
+    selectedLanguage = lang;
+    const t = translations[lang];
+    document.getElementById("welcomeText").textContent =
+        t.welcome;
+    document.getElementById("enterButton").textContent =
+        t.enter;
     document
         .querySelectorAll(".welcome-languages button")
         .forEach(function(button) {
             button.classList.remove("selected");
         });
-    const selectedButton =
-        document.getElementById("lang-" + lang);
-    if (selectedButton) {
-        selectedButton.classList.add("selected");
-    }
-    /* Testo di benvenuto */
-    const welcomeText =
-        document.getElementById("welcomeText");
-    const enterButton =
-        document.getElementById("enterButton");
-    if (lang === "it") {
-        welcomeText.innerHTML = "Benvenuto";
-        enterButton.innerHTML = "ENTRA";
-    }
-    else if (lang === "es") {
-        welcomeText.innerHTML = "Bienvenido";
-        enterButton.innerHTML = "ENTRAR";
-    }
-    else if (lang === "en") {
-        welcomeText.innerHTML = "Welcome";
-        enterButton.innerHTML = "ENTER";
-    }
-    else if (lang === "de") {
-        welcomeText.innerHTML = "Willkommen";
-        enterButton.innerHTML = "EINTRETEN";
-    }
+    document
+        .getElementById("lang-" + lang)
+        .classList.add("selected");
 }
-/* ==========================
-   ENTRA NEL SITO
-========================== */
+function applyLanguage(lang) {
+    const t = translations[lang];
+    document.getElementById("dispensario").textContent =
+        t.dispensario;
+    document.getElementById("weed").textContent =
+        t.weed;
+    document.getElementById("frozen").textContent =
+        t.frozen;
+    document.getElementById("dry").textContent =
+        t.dry;
+    document.getElementById("extract").textContent =
+        t.extract;
+    document.getElementById("vape").textContent =
+        t.vape;
+    document.getElementById("stickers").textContent =
+        t.stickers;
+    document.getElementById("cartTitle").textContent =
+        t.cart;
+    document.getElementById("orderButton").textContent =
+        t.order;
+    document.documentElement.lang = lang;
+}
 function enterSite() {
-    /* Se non è stata scelta una lingua,
-       usa italiano */
-    if (!selectedWelcomeLanguage) {
-        selectedWelcomeLanguage = "it";
-    }
-    /* Salva lingua */
     localStorage.setItem(
         "language",
-        selectedWelcomeLanguage
+        selectedLanguage
     );
-    /* Traduce il sito */
-    if (typeof applyLanguage === "function") {
-        applyLanguage(
-            selectedWelcomeLanguage
-        );
-    }
-    /* NASCONDE COMPLETAMENTE
-       LA PAGINA DI BENVENUTO */
-    const welcome =
-        document.getElementById("welcomeScreen");
-    if (welcome) {
-        welcome.style.display = "none";
-    }
+    applyLanguage(selectedLanguage);
+    /* NASCONDE LA SCHERMATA */
+    document.getElementById("welcomeScreen").style.display =
+        "none";
 }
 /* ==========================
-   AVVIO
+   CARRELLO
 ========================== */
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+function showCart() {
+    const box =
+        document.getElementById("cart");
+    if (!box) return;
+    if (cart.length === 0) {
+        box.textContent =
+            "Nessun prodotto";
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item,index) {
+        box.innerHTML +=
+            item +
+            ' <button onclick="removeItem(' +
+            index +
+            ')">❌</button><br><br>';
+    });
+}
+function removeItem(index) {
+    cart.splice(index,1);
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    showCart();
+}
+function sendOrder() {
+    if (cart.length === 0) {
+        alert("Il carrello è vuoto");
+        return;
+    }
+    const ordine =
+        cart.join("\n");
+    const messaggio =
+        "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
+        ordine;
+    const telegram =
+        "https://t.me/wordex17?text=" +
+        encodeURIComponent(messaggio);
+    window.location.href = telegram;
+}
 window.addEventListener("load", function() {
-    /* Mostra il carrello */
-    if (typeof showCart === "function") {
-        showCart();
-    }
-    /* Controlla se esiste
-       una lingua già salvata */
-    const savedLanguage =
-        localStorage.getItem("language");
-    /*
-       IMPORTANTE:
-       Se esiste una lingua salvata,
-       applichiamo la lingua ma
-       mostriamo comunque la schermata
-       di benvenuto.
-       Così l'utente può scegliere
-       nuovamente la lingua prima
-       di entrare.
-    */
-    if (
-        savedLanguage &&
-        (
-            savedLanguage === "it" ||
-            savedLanguage === "es" ||
-            savedLanguage === "en" ||
-            savedLanguage === "de"
-        )
-    ) {
-        selectedWelcomeLanguage =
-            savedLanguage;
-        selectWelcomeLanguage(
-            savedLanguage
-        );
-    }
+    showCart();
 });
 </script>
 </body>
