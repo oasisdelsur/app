@@ -2,67 +2,140 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 <title>Frozen - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
+<!-- TITOLO -->
 <div class="section-title" id="frozenTitle">
-
-❄️ Frozen
-
+    ❄️ Frozen
 </div>
+<!-- INDIETRO -->
 <div class="back-button">
-<a href="index.html" id="back">
-
-← Indietro
-
-</a>
+    <a href="index.html" id="back">
+        ← Indietro
+    </a>
 </div>
+<!-- PRODOTTI -->
 <div class="products">
-<div class="product">
-<a href="highland-terps.html" class="category-link">
-<div class="product-name">
-
-Highland Terps 90U
-
+    <div class="product">
+        <a
+            href="highland-terps.html"
+            class="category-link"
+        >
+            <div class="product-name">
+                Highland Terps 90U
+            </div>
+        </a>
+    </div>
 </div>
-</a>
 </div>
-</div>
-</div>
+<!-- CARRELLO -->
 <div class="cart">
 <div class="cart-title" id="cartTitle">
-
-🛒 Carrello
-
+    🛒 Carrello
 </div>
 <div id="cart">
-
-Nessun prodotto
-
+    Nessun prodotto
 </div>
-<button class="checkout" id="orderButton">
-
-📲 Conferma ordine
-
+<button
+    class="checkout"
+    id="orderButton"
+    onclick="sendOrder()"
+>
+    📲 Conferma ordine
 </button>
 </div>
 <script src="language.js"></script>
 <script>
-window.onload=function(){
-let lang=localStorage.getItem("language") || "it";
-let t=translations[lang];
-document.getElementById("frozenTitle").innerHTML=
-"❄️ "+t.frozen;
-document.getElementById("back").innerHTML=
-t.back;
-document.getElementById("cartTitle").innerHTML=
-t.cart;
-document.getElementById("orderButton").innerHTML=
-t.order;
+/* ==========================
+   CARRELLO
+========================== */
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+function showCart() {
+    const box =
+        document.getElementById("cart");
+    if (!box) {
+        return;
+    }
+    if (cart.length === 0) {
+        box.innerHTML =
+            "Nessun prodotto";
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML +=
+            item +
+            ' <button onclick="removeItem(' +
+            index +
+            ')">❌</button>' +
+            '<br><br>';
+    });
 }
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    showCart();
+}
+function sendOrder() {
+    if (cart.length === 0) {
+        alert("Il carrello è vuoto");
+        return;
+    }
+    const ordine =
+        cart.join("\n");
+    const messaggio =
+        "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
+        ordine;
+    const telegram =
+        "https://t.me/wordex17?text=" +
+        encodeURIComponent(messaggio);
+    window.location.href =
+        telegram;
+}
+/* ==========================
+   LINGUA
+========================== */
+window.addEventListener("load", function() {
+    const lang =
+        localStorage.getItem("language") || "it";
+    if (
+        typeof translations !== "undefined" &&
+        translations[lang]
+    ) {
+        const t =
+            translations[lang];
+        document.documentElement.lang =
+            lang;
+        document.getElementById(
+            "frozenTitle"
+        ).innerHTML =
+            "❄️ " + t.frozen;
+        document.getElementById(
+            "back"
+        ).innerHTML =
+            t.back;
+        document.getElementById(
+            "cartTitle"
+        ).innerHTML =
+            t.cart;
+        document.getElementById(
+            "orderButton"
+        ).innerHTML =
+            t.order;
+    }
+    showCart();
+});
 </script>
 </body>
 </html>
