@@ -1,350 +1,120 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Oasis del Sur</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
+<!-- ==========================
+     PAGINA DI BENVENUTO
+========================== -->
+<div id="welcomeScreen" class="welcome-screen">
+<div class="welcome-box">
+    <img src="IMG_9609.png" alt="Oasis del Sur" class="welcome-logo">
+    <h1>OASIS DEL SUR</h1>
+    <p id="welcomeText">Benvenuto</p>
+    <div class="welcome-languages">
+        <button onclick="selectWelcomeLanguage('it')" id="lang-it">
+            🇮🇹 Italiano
+        </button>
+        <button onclick="selectWelcomeLanguage('es')" id="lang-es">
+            🇪🇸 Español
+        </button>
+        <button onclick="selectWelcomeLanguage('en')" id="lang-en">
+            🇬🇧 English
+        </button>
+        <button onclick="selectWelcomeLanguage('de')" id="lang-de">
+            🇩🇪 Deutsch
+        </button>
+    </div>
+    <button class="enter-button" onclick="enterSite()" id="enterButton">
+        ENTRA
+    </button>
+</div>
+</div>
+<!-- ==========================
+     SITO
+========================== -->
 <div class="container">
-
 <div class="header">
-
-<img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
-
+    <img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
 </div>
-
-
 <div class="section-header">
-
-<div class="section-title" id="dispensario">
-🌿 Dispensario
+    <div class="section-title" id="dispensario">
+        🌿 Dispensario
+    </div>
 </div>
-
-
-<div class="language-box">
-
-<button class="language-button" onclick="openLanguage()">
-🌐 Language ▾
-</button>
-
-
-<div class="language-menu" id="languageMenu">
-
-<button onclick="changeLanguage('it')">🇮🇹 Italiano</button>
-<button onclick="changeLanguage('es')">🇪🇸 Español</button>
-<button onclick="changeLanguage('en')">🇬🇧 English</button>
-<button onclick="changeLanguage('de')">🇩🇪 Deutsch</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-
 <a href="weed.html" class="category-link">
-
-<div class="category">
-
-<img src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif" class="category-image">
-
-<div class="category-name" id="weed">
-Weed
-</div>
-
-</div>
-
+    <div class="category">
+        <img src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
+             class="category-image">
+        <div class="category-name" id="weed">
+            Weed
+        </div>
+    </div>
 </a>
-
-
-
 <a href="frozen.html" class="category-link">
-
-<div class="category">
-
-<img src="frozen.jpg" class="category-image">
-
-<div class="category-name" id="frozen">
-Frozen
-</div>
-
-</div>
-
+    <div class="category">
+        <img src="frozen.jpg" class="category-image">
+        <div class="category-name" id="frozen">
+            Frozen
+        </div>
+    </div>
 </a>
-
-
-
 <a href="dry.html" class="category-link">
-
-<div class="category">
-
-<img src="dry.webp" class="category-image">
-
-<div class="category-name" id="dry">
-Dry
-</div>
-
-</div>
-
-</a><a href="extract.html" class="category-link">
-
-<div class="category">
-
-<img src="images.jpg" class="category-image">
-
-<div class="category-name" id="extract">
-Extract
-</div>
-
-</div>
-
+    <div class="category">
+        <img src="dry.webp" class="category-image">
+        <div class="category-name" id="dry">
+            Dry
+        </div>
+    </div>
 </a>
-
-
-
+<a href="extract.html" class="category-link">
+    <div class="category">
+        <img src="images.jpg" class="category-image">
+        <div class="category-name" id="extract">
+            Extract
+        </div>
+    </div>
+</a>
 <a href="VAPE.html" class="category-link">
-
-<div class="category">
-
-<img src="IMG_9790.jpeg" class="category-image">
-
-<div class="category-name" id="vape">
-VAPE
-</div>
-
-</div>
-
+    <div class="category">
+        <img src="IMG_9790.jpeg" class="category-image">
+        <div class="category-name" id="vape">
+            VAPE
+        </div>
+    </div>
 </a>
-
-
-
 <a href="stickers.html" class="category-link">
-
-<div class="category sticker-category">
-
-<img src="IMG_9804.jpeg" class="sticker-image">
-
-<div class="category-name" id="stickers">
-🏷️ Stickers
-</div>
-
-</div>
-
+    <div class="category sticker-category">
+        <img src="IMG_9804.jpeg" class="sticker-image">
+        <div class="category-name" id="stickers">
+            🏷️ Stickers
+        </div>
+    </div>
 </a>
-
 </div>
-
-
-
+<!-- ==========================
+     CARRELLO
+========================== -->
 <div class="cart">
-
 <div class="cart-title" id="cartTitle">
-
-🛒 Carrello
-
+    🛒 Carrello
 </div>
-
-
 <div id="cart">
-
-Nessun prodotto
-
+    Nessun prodotto
 </div>
-
-
-
 <button class="checkout" onclick="sendOrder()" id="orderButton">
-
-📲 Conferma ordine
-
+    📲 Conferma ordine
 </button>
-
-
-
 <a href="bitcoin.html">
-
-<button class="checkout">
-
-₿ Paga in Bitcoin
-
-</button>
-
+    <button class="checkout">
+        ₿ Paga in Bitcoin
+    </button>
 </a>
-
-
 </div>
-
-
-
 <script src="language.js"></script>
-
-
-
-<script>
-
-
-function openLanguage(){
-
-document.getElementById("languageMenu").classList.toggle("show");
-
-}
-
-
-
-function changeLanguage(lang){
-
-
-localStorage.setItem("language",lang);
-
-
-let t=translations[lang];
-
-
-document.getElementById("dispensario").innerHTML=t.dispensario;
-
-document.getElementById("weed").innerHTML=t.weed;
-
-document.getElementById("frozen").innerHTML=t.frozen;
-
-document.getElementById("dry").innerHTML=t.dry;
-
-document.getElementById("extract").innerHTML=t.extract;
-
-document.getElementById("vape").innerHTML=t.vape;
-
-document.getElementById("stickers").innerHTML=t.stickers || "🏷️ Stickers";
-
-document.getElementById("cartTitle").innerHTML=t.cart;
-
-document.getElementById("orderButton").innerHTML=t.order;
-
-
-document.documentElement.lang=lang;
-
-
-document.getElementById("languageMenu").classList.remove("show");
-
-
-}let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-
-
-function showCart(){
-
-
-let box=document.getElementById("cart");
-
-
-if(cart.length===0){
-
-box.innerHTML="Nessun prodotto";
-
-return;
-
-}
-
-
-box.innerHTML="";
-
-
-cart.forEach((item,index)=>{
-
-
-box.innerHTML += item +
-
-' <button onclick="removeItem('+index+')">❌</button><br><br>';
-
-
-});
-
-
-}
-
-
-
-
-function removeItem(index){
-
-
-cart.splice(index,1);
-
-
-localStorage.setItem("cart",JSON.stringify(cart));
-
-
-showCart();
-
-
-}
-
-
-
-
-function sendOrder(){
-
-
-if(cart.length===0){
-
-alert("Il carrello è vuoto");
-
-return;
-
-}
-
-
-
-let ordine=cart.join("\n");
-
-
-let messaggio="Ciao Oasis del Sur, vorrei ordinare:\n\n"+ordine;
-
-
-
-let telegram="https://t.me/wordex17?text="+encodeURIComponent(messaggio);
-
-
-
-window.location.href=telegram;
-
-
-}
-
-
-
-
-window.onload=function(){
-
-
-showCart();
-
-
-let saved=localStorage.getItem("language");
-
-
-if(saved){
-
-changeLanguage(saved);
-
-}
-
-
-}
-
-
-
-</script>
-
-
 </body>
-
 </html>
