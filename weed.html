@@ -2,7 +2,10 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 <title>Weed - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -49,30 +52,88 @@
 </div>
 <script src="language.js"></script>
 <script>
+/* ==========================
+   CARRELLO
+========================== */
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+function showCart() {
+    const box =
+        document.getElementById("cart");
+    if (!box) {
+        return;
+    }
+    if (cart.length === 0) {
+        box.innerHTML =
+            "Nessun prodotto";
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML +=
+            item +
+            ' <button onclick="removeItem(' +
+            index +
+            ')">❌</button>' +
+            '<br><br>';
+    });
+}
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    showCart();
+}
+function sendOrder() {
+    if (cart.length === 0) {
+        alert("Il carrello è vuoto");
+        return;
+    }
+    const ordine =
+        cart.join("\n");
+    const messaggio =
+        "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
+        ordine;
+    const telegram =
+        "https://t.me/wordex17?text=" +
+        encodeURIComponent(messaggio);
+    window.location.href =
+        telegram;
+}
+/* ==========================
+   AVVIO PAGINA
+========================== */
 window.addEventListener("load", function() {
-    /* Lingua salvata nella pagina iniziale */
     const lang =
         localStorage.getItem("language") || "it";
-    const t =
-        translations[lang] || translations.it;
-    /* Applica la lingua */
-    document.documentElement.lang = lang;
-    document.getElementById("weedTitle").innerHTML =
-        "🌿 " + t.weed;
-    document.getElementById("back").innerHTML =
-        t.back;
-    document.getElementById("coming").innerHTML =
-        t.coming;
-    document.getElementById("arrival").innerHTML =
-        t.arrival;
-    document.getElementById("cartTitle").innerHTML =
-        t.cart;
-    document.getElementById("orderButton").innerHTML =
-        t.order;
-    /* Carrello */
-    if (typeof showCart === "function") {
-        showCart();
+    if (typeof translations !== "undefined") {
+        const t =
+            translations[lang] ||
+            translations.it;
+        document.documentElement.lang =
+            lang;
+        if (document.getElementById("weedTitle"))
+            document.getElementById("weedTitle").innerHTML =
+                "🌿 " + t.weed;
+        if (document.getElementById("back"))
+            document.getElementById("back").innerHTML =
+                t.back;
+        if (document.getElementById("coming"))
+            document.getElementById("coming").innerHTML =
+                t.coming;
+        if (document.getElementById("arrival"))
+            document.getElementById("arrival").innerHTML =
+                t.arrival;
+        if (document.getElementById("cartTitle"))
+            document.getElementById("cartTitle").innerHTML =
+                t.cart;
+        if (document.getElementById("orderButton"))
+            document.getElementById("orderButton").innerHTML =
+                t.order;
     }
+    showCart();
 });
 </script>
 </body>
