@@ -10,17 +10,23 @@
 <!-- ==========================
      PAGINA DI BENVENUTO
 ========================== -->
-<div id="welcomeScreen" class="welcome-screen">
+<div
+    id="welcomeScreen"
+    class="welcome-screen"
+>
 <div class="welcome-box">
     <img
         src="IMG_9609.png"
         alt="Oasis del Sur"
         class="welcome-logo"
     >
-    <h1>OASIS DEL SUR</h1>
+    <h1>
+        OASIS DEL SUR
+    </h1>
     <p id="welcomeText">
         Benvenuto
     </p>
+    <!-- LINGUE -->
     <div class="welcome-languages">
         <button
             onclick="selectWelcomeLanguage('it')"
@@ -47,6 +53,7 @@
             🇩🇪 Deutsch
         </button>
     </div>
+    <!-- ENTRA -->
     <button
         class="enter-button"
         onclick="enterSite()"
@@ -60,6 +67,7 @@
      SITO PRINCIPALE
 ========================== -->
 <div class="container">
+<!-- LOGO -->
 <div class="header">
     <img
         src="IMG_9609.png"
@@ -67,6 +75,7 @@
         class="logo"
     >
 </div>
+<!-- TITOLO -->
 <div class="section-header">
     <div
         class="section-title"
@@ -75,6 +84,7 @@
         🌿 Dispensario
     </div>
 </div>
+<!-- WEED -->
 <a
     href="weed.html"
     class="category-link"
@@ -92,6 +102,7 @@
         </div>
     </div>
 </a>
+<!-- FROZEN -->
 <a
     href="frozen.html"
     class="category-link"
@@ -109,6 +120,7 @@
         </div>
     </div>
 </a>
+<!-- DRY -->
 <a
     href="dry.html"
     class="category-link"
@@ -126,6 +138,7 @@
         </div>
     </div>
 </a>
+<!-- EXTRACT -->
 <a
     href="extract.html"
     class="category-link"
@@ -143,6 +156,7 @@
         </div>
     </div>
 </a>
+<!-- VAPE -->
 <a
     href="VAPE.html"
     class="category-link"
@@ -160,6 +174,7 @@
         </div>
     </div>
 </a>
+<!-- STICKERS -->
 <a
     href="stickers.html"
     class="category-link"
@@ -205,8 +220,118 @@
 </a>
 </div>
 <!-- ==========================
-     JAVASCRIPT
+     LANGUAGE.JS
 ========================== -->
 <script src="language.js"></script>
+<!-- ==========================
+     FUNZIONI DI BENVENUTO
+========================== -->
+<script>
+let selectedWelcomeLanguage = null;
+/* ==========================
+   SCELTA LINGUA
+========================== */
+function selectWelcomeLanguage(lang) {
+    selectedWelcomeLanguage = lang;
+    /* Evidenzia lingua scelta */
+    document
+        .querySelectorAll(".welcome-languages button")
+        .forEach(function(button) {
+            button.classList.remove("selected");
+        });
+    const selectedButton =
+        document.getElementById("lang-" + lang);
+    if (selectedButton) {
+        selectedButton.classList.add("selected");
+    }
+    /* Testo di benvenuto */
+    const welcomeText =
+        document.getElementById("welcomeText");
+    const enterButton =
+        document.getElementById("enterButton");
+    if (lang === "it") {
+        welcomeText.innerHTML = "Benvenuto";
+        enterButton.innerHTML = "ENTRA";
+    }
+    else if (lang === "es") {
+        welcomeText.innerHTML = "Bienvenido";
+        enterButton.innerHTML = "ENTRAR";
+    }
+    else if (lang === "en") {
+        welcomeText.innerHTML = "Welcome";
+        enterButton.innerHTML = "ENTER";
+    }
+    else if (lang === "de") {
+        welcomeText.innerHTML = "Willkommen";
+        enterButton.innerHTML = "EINTRETEN";
+    }
+}
+/* ==========================
+   ENTRA NEL SITO
+========================== */
+function enterSite() {
+    /* Se non è stata scelta una lingua,
+       usa italiano */
+    if (!selectedWelcomeLanguage) {
+        selectedWelcomeLanguage = "it";
+    }
+    /* Salva lingua */
+    localStorage.setItem(
+        "language",
+        selectedWelcomeLanguage
+    );
+    /* Traduce il sito */
+    if (typeof applyLanguage === "function") {
+        applyLanguage(
+            selectedWelcomeLanguage
+        );
+    }
+    /* NASCONDE COMPLETAMENTE
+       LA PAGINA DI BENVENUTO */
+    const welcome =
+        document.getElementById("welcomeScreen");
+    if (welcome) {
+        welcome.style.display = "none";
+    }
+}
+/* ==========================
+   AVVIO
+========================== */
+window.addEventListener("load", function() {
+    /* Mostra il carrello */
+    if (typeof showCart === "function") {
+        showCart();
+    }
+    /* Controlla se esiste
+       una lingua già salvata */
+    const savedLanguage =
+        localStorage.getItem("language");
+    /*
+       IMPORTANTE:
+       Se esiste una lingua salvata,
+       applichiamo la lingua ma
+       mostriamo comunque la schermata
+       di benvenuto.
+       Così l'utente può scegliere
+       nuovamente la lingua prima
+       di entrare.
+    */
+    if (
+        savedLanguage &&
+        (
+            savedLanguage === "it" ||
+            savedLanguage === "es" ||
+            savedLanguage === "en" ||
+            savedLanguage === "de"
+        )
+    ) {
+        selectedWelcomeLanguage =
+            savedLanguage;
+        selectWelcomeLanguage(
+            savedLanguage
+        );
+    }
+});
+</script>
 </body>
 </html>
