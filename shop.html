@@ -4,58 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oasis del Sur</title>
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-<div class="back-button">
-<a href="./index.html">←</a>
+<div class="header">
+<img src="IMG_9609.png" alt="Oasis del Sur" class="logo">
 </div>
-<a href="./weed.html" class="category-link">
+<div class="section-header">
+<div class="section-title" id="dispensario">
+🌿 Dispensario
+</div>
+<div class="language-box">
+<button class="language-button" onclick="openLanguage()">
+🌐 Language ▾
+</button>
+<div class="language-menu" id="languageMenu">
+
+🇮🇹 Italiano
+🇪🇸 Español
+🇬🇧 English
+🇩🇪 Deutsch
+
+</div>
+</div>
+</div>
+<a href="weed.html" class="category-link">
 <div class="category">
-<div class="category-name">
+<div class="category-name" id="weed">
 Weed
 </div>
 </div>
 </a>
-<a href="./frozen.html" class="category-link">
+<a href="frozen.html" class="category-link">
 <div class="category">
-<div class="category-name">
+<div class="category-name" id="frozen">
 Frozen
 </div>
 </div>
 </a>
-<a href="./dry.html" class="category-link">
+<a href="dry.html" class="category-link">
 <div class="category">
-<div class="category-name">
+<div class="category-name" id="dry">
 Dry
 </div>
 </div>
 </a>
-<a href="./extract.html" class="category-link">
+<a href="extract.html" class="category-link">
 <div class="category">
-<div class="category-name">
+<div class="category-name" id="extract">
 Extract
 </div>
 </div>
 </a>
-<a href="./VAPE.html" class="category-link">
+<a href="VAPE.html" class="category-link">
 <div class="category">
-<div class="category-name">
+<div class="category-name" id="vape">
 VAPE
 </div>
 </div>
 </a>
-<a href="./stickers.html" class="category-link">
+<a href="stickers.html" class="category-link">
 <div class="category sticker-category">
-<div class="category-name">
+<div class="category-name" id="stickers">
 🏷️ Stickers
 </div>
 </div>
 </a>
 </div>
 <div class="cart">
-<div class="cart-title">
+<div class="cart-title" id="cartTitle">
 🛒 Carrello
 </div>
 <div id="cart">
@@ -65,24 +83,28 @@ Nessun prodotto
 📲 Conferma ordine
 
 </button>
-<a href="./bitcoin.html">
+<a href="bitcoin.html">
 <button class="checkout">
+
 ₿ Paga in Bitcoin
+
 </button>
 </a>
 </div>
+<script src="language.js"></script>
 <script>
 let cart =
 JSON.parse(localStorage.getItem("cart")) || [];
-function showCart() {
-const box =
+function showCart(){
+let box =
 document.getElementById("cart");
-if (cart.length === 0) {
-box.innerHTML = "Nessun prodotto";
+if(cart.length === 0){
+box.innerHTML =
+"Nessun prodotto";
 return;
 }
 box.innerHTML = "";
-cart.forEach((item, index) => {
+cart.forEach((item,index)=>{
 box.innerHTML +=
 item +
 ' <button onclick="removeItem(' +
@@ -90,32 +112,37 @@ index +
 ')">❌</button><br><br>';
 });
 }
-function removeItem(index) {
-cart.splice(index, 1);
+function removeItem(index){
+cart.splice(index,1);
 localStorage.setItem(
 "cart",
 JSON.stringify(cart)
 );
 showCart();
 }
-function sendOrder() {
-if (cart.length === 0) {
+function sendOrder(){
+if(cart.length === 0){
 alert("Il carrello è vuoto");
 return;
 }
-const ordine =
+let ordine =
 cart.join("\n");
-const messaggio =
+let messaggio =
 "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
 ordine;
-const telegram =
+let telegram =
 "https://t.me/wordex17?text=" +
 encodeURIComponent(messaggio);
 window.location.href =
 telegram;
 }
-window.onload = function() {
+window.onload=function(){
 showCart();
+let saved =
+localStorage.getItem("language");
+if(saved){
+changeLanguage(saved);
+}
 };
 </script>
 </body>
