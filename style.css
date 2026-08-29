@@ -1,166 +1,188 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oasis del Sur</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container">
-<!-- FRECCIA INDIETRO -->
-<div class="back-button">
-<a href="index.html">←</a>
-</div>
-<!-- WEED -->
-<a href="weed.html" class="category-link">
-<div class="category">
-    <img
-        src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
-        alt="Weed"
-        class="category-image"
-    >
-    <div class="category-name">
-        Weed
-    </div>
-</div>
-</a>
-<!-- FROZEN -->
-<a href="frozen.html" class="category-link">
-<div class="category">
-    <img
-        src="frozen.jpg"
-        alt="Frozen"
-        class="category-image"
-    >
-    <div class="category-name">
-        Frozen
-    </div>
-</div>
-</a>
-<!-- DRY -->
-<a href="dry.html" class="category-link">
-<div class="category">
-    <img
-        src="dry.webp"
-        alt="Dry"
-        class="category-image"
-    >
-    <div class="category-name">
-        Dry
-    </div>
-</div>
-</a>
-<!-- EXTRACT -->
-<a href="extract.html" class="category-link">
-<div class="category">
-    <img
-        src="images.jpg"
-        alt="Extract"
-        class="category-image"
-    >
-    <div class="category-name">
-        Extract
-    </div>
-</div>
-</a>
-<!-- VAPE -->
-<a href="VAPE.html" class="category-link">
-<div class="category">
-    <img
-        src="IMG_9790.jpeg"
-        alt="VAPE"
-        class="category-image"
-    >
-    <div class="category-name">
-        VAPE
-    </div>
-</div>
-</a>
-<!-- STICKERS -->
-<a href="stickers.html" class="category-link">
-<div class="category sticker-category">
-    <img
-        src="IMG_9804.jpeg"
-        alt="Stickers"
-        class="sticker-image"
-    >
-    <div class="category-name">
-        🏷️ Stickers
-    </div>
-</div>
-</a>
-</div>
-<!-- CARRELLO -->
-<div class="cart">
-<div class="cart-title">
-    🛒 Carrello
-</div>
-<div id="cart">
-    Nessun prodotto
-</div>
-<button
-    class="checkout"
-    onclick="sendOrder()"
->
-    📲 Conferma ordine
-</button>
-<a href="bitcoin.html">
-    <button class="checkout">
-        ₿ Paga in Bitcoin
-    </button>
-</a>
-</div>
-<script>
-let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
-function showCart() {
-    const box =
-        document.getElementById("cart");
-    if (cart.length === 0) {
-        box.innerHTML =
-            "Nessun prodotto";
-        return;
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
     }
-    box.innerHTML = "";
-    cart.forEach((item, index) => {
-        box.innerHTML +=
-            item +
-            ' <button onclick="removeItem(' +
-            index +
-            ')">❌</button><br><br>';
-    });
+
+body {
+margin: 0;
+background: #050505;
+color: white;
+position: relative;
+overflow-x: hidden;
 }
-function removeItem(index) {
-    cart.splice(index, 1);
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-    showCart();
+
+.container {
+width: 100%;
+padding: 15px;
 }
-function sendOrder() {
-    if (cart.length === 0) {
-        alert("Il carrello è vuoto");
-        return;
-    }
-    const ordine =
-        cart.join("\n");
-    const messaggio =
-        "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
-        ordine;
-    const telegram =
-        "https://t.me/wordex17?text=" +
-        encodeURIComponent(messaggio);
-    window.location.href =
-        telegram;
+
+/* CATEGORIE */
+
+.category-link {
+text-decoration: none;
+color: white;
+display: block;
 }
-window.addEventListener(
-    "load",
-    function () {
-        showCart();
-    }
-);
-</script>
-</body>
-</html>
+
+.category {
+width: calc(50% - 8px);
+float: left;
+margin-right: 8px;
+margin-bottom: 15px;
+min-height: 220px;
+padding: 18px;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+background: rgba(20,20,20,.75);
+backdrop-filter: blur(14px);
+border: 1px solid rgba(0,255,120,.15);
+box-shadow:
+0 0 20px rgba(0,255,120,.08),
+0 10px 30px rgba(0,0,0,.7);
+transition: .3s;
+}
+
+.category:hover {
+transform: translateY(-5px);
+}
+
+.category-name {
+font-size: 20px;
+font-weight: bold;
+}
+
+.category-image {
+width: 100%;
+height: 140px;
+object-fit: cover;
+border-radius: 15px;
+margin-bottom: 12px;
+}
+
+/* STICKERS */
+
+.sticker-image {
+width: 100px;
+height: 100px;
+object-fit: cover;
+border-radius: 50%;
+margin-bottom: 12px;
+}
+
+/* CARRELLO */
+
+.cart {
+clear: both;
+margin: 25px 15px;
+padding: 20px;
+border-radius: 22px;
+background: rgba(20,20,20,.75);
+backdrop-filter: blur(14px);
+}
+
+.cart-title {
+font-size: 22px;
+font-weight: bold;
+}
+
+#cart {
+margin-top: 15px;
+font-size: 16px;
+line-height: 1.8;
+}
+
+/* PULSANTI */
+
+.checkout {
+width: 100%;
+margin-top: 15px;
+padding: 15px;
+background: #e50914;
+color: white;
+border: none;
+border-radius: 30px;
+font-size: 17px;
+font-weight: bold;
+}
+
+/* FRECCIA INDIETRO */
+
+.back-button {
+padding: 10px 5px;
+}
+
+.back-button a {
+color: white;
+text-decoration: none;
+font-size: 28px;
+font-weight: bold;
+}
+
+.back-button a:hover {
+color: #00e676;
+}
+
+/* SFONDO VERDE */
+
+body::before,
+body::after {
+content: “”;
+position: fixed;
+width: 700px;
+height: 700px;
+border-radius: 50%;
+z-index: -1;
+filter: blur(140px);
+opacity: .35;
+}
+
+body::before {
+background: #00ff88;
+top: -250px;
+left: -250px;
+animation: greenMove1 12s infinite alternate;
+}
+
+body::after {
+background: #00ff44;
+bottom: -250px;
+right: -250px;
+animation: greenMove2 16s infinite alternate;
+}
+
+@keyframes greenMove1 {
+0% {
+transform: translate(0,0) scale(1);
+}
+
+100% {
+    transform: translate(180px,120px) scale(1.3);
+}
+
+}
+
+@keyframes greenMove2 {
+0% {
+transform: translate(0,0) scale(1);
+}
+
+100% {
+    transform: translate(-180px,-120px) scale(1.3);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:500px) {
+
+.category {
+    width: 100%;
+    margin-right: 0;
+}
+
+}
