@@ -1,164 +1,79 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Weed - Oasis del Sur</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
-
-
 <body>
-
-
 <div class="container">
-
-
-
+<!-- TITOLO -->
 <div class="section-title" id="weedTitle">
-
-🌿 Weed
-
+    🌿 Weed
 </div>
-
-
-
-
+<!-- INDIETRO -->
 <div class="back-button">
-
-<a href="index.html" id="back">
-
-← Indietro
-
-</a>
-
+    <a href="index.html" id="back">
+        ← Indietro
+    </a>
 </div>
-
-
-
-
-
+<!-- PRODOTTI NON DISPONIBILI -->
 <div class="coming-soon">
-
-
-<div class="hourglass">
-
-⏳
-
+    <div class="hourglass">
+        ⏳
+    </div>
+    <h2 id="coming">
+        Ancora non disponibili
+    </h2>
+    <p id="arrival">
+        Prodotti in arrivo...
+    </p>
 </div>
-
-
-
-<h2 id="coming">
-
-Ancora non disponibili
-
-</h2>
-
-
-
-<p id="arrival">
-
-Prodotti in arrivo...
-
-</p>
-
-
-
 </div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
+<!-- CARRELLO -->
 <div class="cart">
-
-
 <div class="cart-title" id="cartTitle">
-
-🛒 Carrello
-
+    🛒 Carrello
 </div>
-
-
-
 <div id="cart">
-
-Nessun prodotto
-
+    Nessun prodotto
 </div>
-
-
-
-<button class="checkout" id="orderButton">
-
-📲 Conferma ordine
-
+<button
+    class="checkout"
+    id="orderButton"
+    onclick="sendOrder()"
+>
+    📲 Conferma ordine
 </button>
-
-
 </div>
-
-
-
-
-
-
-
 <script src="language.js"></script>
-
-
 <script>
-
-
-window.onload=function(){
-
-
-let lang=localStorage.getItem("language") || "it";
-
-
-let t=translations[lang];
-
-
-
-document.getElementById("weedTitle").innerHTML="🌿 "+t.weed;
-
-
-document.getElementById("back").innerHTML=t.back;
-
-
-document.getElementById("coming").innerHTML=t.coming;
-
-
-document.getElementById("arrival").innerHTML=t.arrival;
-
-
-document.getElementById("cartTitle").innerHTML=t.cart;
-
-
-document.getElementById("orderButton").innerHTML=t.order;
-
-
-
-}
-
-
+window.addEventListener("load", function() {
+    /* Lingua salvata nella pagina iniziale */
+    const lang =
+        localStorage.getItem("language") || "it";
+    const t =
+        translations[lang] || translations.it;
+    /* Applica la lingua */
+    document.documentElement.lang = lang;
+    document.getElementById("weedTitle").innerHTML =
+        "🌿 " + t.weed;
+    document.getElementById("back").innerHTML =
+        t.back;
+    document.getElementById("coming").innerHTML =
+        t.coming;
+    document.getElementById("arrival").innerHTML =
+        t.arrival;
+    document.getElementById("cartTitle").innerHTML =
+        t.cart;
+    document.getElementById("orderButton").innerHTML =
+        t.order;
+    /* Carrello */
+    if (typeof showCart === "function") {
+        showCart();
+    }
+});
 </script>
-
-
-
 </body>
-
 </html>
