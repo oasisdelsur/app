@@ -4,99 +4,80 @@ it: {
     welcome: "Benvenuto",
     enter: "ENTRA",
     dispensario: "🌿 Dispensario",
-    vape: "VAPE",
     weed: "Weed",
     frozen: "Frozen",
     dry: "Dry",
     extract: "Extract",
+    vape: "VAPE",
     stickers: "🏷️ Stickers",
     cart: "🛒 Carrello",
-    order: "📲 Conferma ordine",
-    back: "← Indietro",
-    coming: "Ancora non disponibili",
-    arrival: "Prodotti in arrivo..."
+    order: "📲 Conferma ordine"
 },
 es: {
     welcome: "Bienvenido",
     enter: "ENTRAR",
     dispensario: "🌿 Dispensario",
-    vape: "Vaporizadores",
     weed: "Marihuana",
     frozen: "Frozen",
     dry: "Dry",
     extract: "Extractos",
+    vape: "Vaporizadores",
     stickers: "🏷️ Pegatinas",
     cart: "🛒 Carrito",
-    order: "📲 Confirmar pedido",
-    back: "← Atrás",
-    coming: "Todavía no disponibles",
-    arrival: "Productos próximamente..."
+    order: "📲 Confirmar pedido"
 },
 en: {
     welcome: "Welcome",
     enter: "ENTER",
     dispensario: "🌿 Dispensary",
-    vape: "Vapes",
     weed: "Weed",
     frozen: "Frozen",
     dry: "Dry",
     extract: "Extract",
+    vape: "Vapes",
     stickers: "🏷️ Stickers",
     cart: "🛒 Cart",
-    order: "📲 Confirm order",
-    back: "← Back",
-    coming: "Not available yet",
-    arrival: "Products coming soon..."
+    order: "📲 Confirm order"
 },
 de: {
     welcome: "Willkommen",
     enter: "EINTRETEN",
     dispensario: "🌿 Shop",
-    vape: "Vapes",
     weed: "Weed",
     frozen: "Frozen",
     dry: "Dry",
     extract: "Extrakte",
+    vape: "Vapes",
     stickers: "🏷️ Aufkleber",
     cart: "🛒 Warenkorb",
-    order: "📲 Bestellung bestätigen",
-    back: "← Zurück",
-    coming: "Noch nicht verfügbar",
-    arrival: "Produkte kommen bald..."
+    order: "📲 Bestellung bestätigen"
 }
 
 };
 
 /* ==========================
-LINGUA SCELTA
+LINGUA SELEZIONATA
 ========================== */
 
-let selectedWelcomeLanguage =
-localStorage.getItem(“language”) || null;
+let selectedWelcomeLanguage = null;
+
+/* ==========================
+SCELTA LINGUA
+========================== */
 
 function selectWelcomeLanguage(lang) {
 
-if (!translations[lang]) return;
+if (!translations[lang]) {
+    return;
+}
 selectedWelcomeLanguage = lang;
-localStorage.setItem("language", lang);
 const t = translations[lang];
-const welcomeText =
-    document.getElementById("welcomeText");
-const enterButton =
-    document.getElementById("enterButton");
-if (welcomeText) {
-    welcomeText.innerHTML = t.welcome;
-}
-if (enterButton) {
-    enterButton.innerHTML = t.enter;
-}
-document
-    .querySelectorAll(".welcome-languages button")
-    .forEach(button => {
-        button.classList.remove("selected");
-    });
-const selectedButton =
-    document.getElementById("lang-" + lang);
+document.getElementById("welcomeText").innerHTML = t.welcome;
+document.getElementById("enterButton").innerHTML = t.enter;
+document.querySelectorAll(".welcome-languages button").forEach(function(button) {
+    button.classList.remove("selected");
+});
+const selectedButton = document.getElementById("lang-" + lang);
 if (selectedButton) {
     selectedButton.classList.add("selected");
 }
@@ -104,23 +85,25 @@ if (selectedButton) {
 }
 
 /* ==========================
-ENTRA
+ENTRA NEL SITO
 ========================== */
 
 function enterSite() {
 
 if (!selectedWelcomeLanguage) {
     selectedWelcomeLanguage = "it";
-    localStorage.setItem(
-        "language",
-        "it"
-    );
 }
-applyLanguage(selectedWelcomeLanguage);
-const welcome =
+localStorage.setItem(
+    "language",
+    selectedWelcomeLanguage
+);
+applyLanguage(
+    selectedWelcomeLanguage
+);
+const welcomeScreen =
     document.getElementById("welcomeScreen");
-if (welcome) {
-    welcome.classList.add("hidden");
+if (welcomeScreen) {
+    welcomeScreen.classList.add("hidden");
 }
 
 }
@@ -132,69 +115,46 @@ TRADUZIONE
 function applyLanguage(lang) {
 
 const t = translations[lang];
-if (!t) return;
-localStorage.setItem(
-    "language",
-    lang
-);
+if (!t) {
+    return;
+}
 document.documentElement.lang = lang;
-if (document.getElementById("welcomeText"))
-    document.getElementById("welcomeText").innerHTML =
-        t.welcome;
-if (document.getElementById("enterButton"))
-    document.getElementById("enterButton").innerHTML =
-        t.enter;
-if (document.getElementById("dispensario"))
+if (document.getElementById("dispensario")) {
     document.getElementById("dispensario").innerHTML =
         t.dispensario;
-if (document.getElementById("weed"))
+}
+if (document.getElementById("weed")) {
     document.getElementById("weed").innerHTML =
         t.weed;
-if (document.getElementById("frozen"))
+}
+if (document.getElementById("frozen")) {
     document.getElementById("frozen").innerHTML =
         t.frozen;
-if (document.getElementById("dry"))
+}
+if (document.getElementById("dry")) {
     document.getElementById("dry").innerHTML =
         t.dry;
-if (document.getElementById("extract"))
+}
+if (document.getElementById("extract")) {
     document.getElementById("extract").innerHTML =
         t.extract;
-if (document.getElementById("vape"))
+}
+if (document.getElementById("vape")) {
     document.getElementById("vape").innerHTML =
         t.vape;
-if (document.getElementById("stickers"))
+}
+if (document.getElementById("stickers")) {
     document.getElementById("stickers").innerHTML =
         t.stickers;
-if (document.getElementById("cartTitle"))
+}
+if (document.getElementById("cartTitle")) {
     document.getElementById("cartTitle").innerHTML =
         t.cart;
-if (document.getElementById("orderButton"))
+}
+if (document.getElementById("orderButton")) {
     document.getElementById("orderButton").innerHTML =
         t.order;
-if (document.getElementById("vapeTitle"))
-    document.getElementById("vapeTitle").innerHTML =
-        "💨 " + t.vape;
-if (document.getElementById("weedTitle"))
-    document.getElementById("weedTitle").innerHTML =
-        "🌿 " + t.weed;
-if (document.getElementById("frozenTitle"))
-    document.getElementById("frozenTitle").innerHTML =
-        "❄️ " + t.frozen;
-if (document.getElementById("dryTitle"))
-    document.getElementById("dryTitle").innerHTML =
-        "🌱 " + t.dry;
-if (document.getElementById("extractTitle"))
-    document.getElementById("extractTitle").innerHTML =
-        "🧪 " + t.extract;
-if (document.getElementById("back"))
-    document.getElementById("back").innerHTML =
-        t.back;
-if (document.getElementById("coming"))
-    document.getElementById("coming").innerHTML =
-        t.coming;
-if (document.getElementById("arrival"))
-    document.getElementById("arrival").innerHTML =
-        t.arrival;
+}
 
 }
 
@@ -209,14 +169,16 @@ function showCart() {
 
 const box =
     document.getElementById("cart");
-if (!box) return;
+if (!box) {
+    return;
+}
 if (cart.length === 0) {
     box.innerHTML =
         "Nessun prodotto";
     return;
 }
 box.innerHTML = "";
-cart.forEach((item, index) => {
+cart.forEach(function(item, index) {
     box.innerHTML +=
         item +
         ' <button onclick="removeItem(' +
@@ -262,20 +224,5 @@ AVVIO
 window.addEventListener(“load”, function() {
 
 showCart();
-const saved =
-    localStorage.getItem("language");
-/*
-   Se esiste già una lingua salvata,
-   viene applicata automaticamente.
-*/
-if (saved && translations[saved]) {
-    selectedWelcomeLanguage = saved;
-    applyLanguage(saved);
-    const welcome =
-        document.getElementById("welcomeScreen");
-    if (welcome) {
-        welcome.classList.add("hidden");
-    }
-}
 
 });
