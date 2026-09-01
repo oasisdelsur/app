@@ -11,23 +11,14 @@
 </head>
 <body>
 <div class="container">
-    <!-- TITOLO -->
-    <div
-        class="section-title"
-        id="weedTitle"
-    >
+    <div class="section-title" id="weedTitle">
         🌿 Weed
     </div>
-    <!-- INDIETRO -->
     <div class="back-button">
-        <a
-            href="index.html"
-            id="back"
-        >
+        <a href="index.html" id="back">
             ← Indietro
         </a>
     </div>
-    <!-- PRODOTTI NON DISPONIBILI -->
     <div class="coming-soon">
         <div class="hourglass">
             ⏳
@@ -42,10 +33,7 @@
 </div>
 <!-- CARRELLO -->
 <div class="cart">
-    <div
-        class="cart-title"
-        id="cartTitle"
-    >
+    <div class="cart-title" id="cartTitle">
         🛒 Carrello
     </div>
     <div id="cart">
@@ -62,190 +50,54 @@
 <!-- SISTEMA LINGUA -->
 <script src="language.js"></script>
 <script>
-/* ==========================
-   TRADUZIONE PAGINA
-========================== */
-window.addEventListener(
-    "load",
-    function() {
-        const lang =
-            localStorage.getItem(
-                "language"
-            ) || "it";
-        if (
-            typeof translations !==
-            "undefined"
-        ) {
-            const t =
-                translations[lang] ||
-                translations.it;
-            document.documentElement.lang =
-                lang;
-            /* TITOLO */
-            const weedTitle =
-                document.getElementById(
-                    "weedTitle"
-                );
-            if (weedTitle) {
-                weedTitle.innerHTML =
-                    "🌿 " + t.weed;
-            }
-            /* INDIETRO */
-            const back =
-                document.getElementById(
-                    "back"
-                );
-            if (back) {
-                back.innerHTML =
-                    "← " + t.back;
-            }
-            /* DISPONIBILITÀ */
-            const coming =
-                document.getElementById(
-                    "coming"
-                );
-            if (coming) {
-                coming.innerHTML =
-                    t.coming;
-            }
-            /* ARRIVO */
-            const arrival =
-                document.getElementById(
-                    "arrival"
-                );
-            if (arrival) {
-                arrival.innerHTML =
-                    t.arrival;
-            }
-            /* CARRELLO */
-            const cartTitle =
-                document.getElementById(
-                    "cartTitle"
-                );
-            if (cartTitle) {
-                cartTitle.innerHTML =
-                    t.cart;
-            }
-            /* ORDINE */
-            const orderButton =
-                document.getElementById(
-                    "orderButton"
-                );
-            if (orderButton) {
-                orderButton.innerHTML =
-                    t.order;
-            }
-        }
-        showCart();
-    }
-);
-/* ==========================
-   CARRELLO
-========================== */
 let cart =
     JSON.parse(
-        localStorage.getItem(
-            "cart"
-        )
+        localStorage.getItem("cart")
     ) || [];
 function showCart() {
     const box =
-        document.getElementById(
-            "cart"
-        );
-    if (!box) {
-        return;
-    }
+        document.getElementById("cart");
+    if (!box) return;
+    const lang =
+        localStorage.getItem("language") || "it";
+    const t =
+        translations[lang] || translations.it;
     if (cart.length === 0) {
-        const lang =
-            localStorage.getItem(
-                "language"
-            ) || "it";
-        if (
-            typeof translations !==
-            "undefined"
-        ) {
-            const t =
-                translations[lang] ||
-                translations.it;
-            box.innerHTML =
-                t.emptyCart ||
-                "Nessun prodotto";
-        } else {
-            box.innerHTML =
-                "Nessun prodotto";
-        }
+        box.innerHTML =
+            t.emptyCart;
         return;
     }
     box.innerHTML = "";
-    cart.forEach(
-        function(item, index) {
-            box.innerHTML +=
-                item +
-                ' <button onclick="removeItem(' +
-                index +
-                ')">❌</button>' +
-                '<br><br>';
-        }
-    );
+    cart.forEach(function(item, index) {
+        box.innerHTML +=
+            item +
+            ' <button onclick="removeItem(' +
+            index +
+            ')">❌</button>' +
+            '<br><br>';
+    });
 }
 function removeItem(index) {
-    cart.splice(
-        index,
-        1
-    );
+    cart.splice(index, 1);
     localStorage.setItem(
         "cart",
         JSON.stringify(cart)
     );
     showCart();
 }
-/* ==========================
-   INVIO ORDINE
-========================== */
 function sendOrder() {
+    const lang =
+        localStorage.getItem("language") || "it";
+    const t =
+        translations[lang] || translations.it;
     if (cart.length === 0) {
-        const lang =
-            localStorage.getItem(
-                "language"
-            ) || "it";
-        let message =
-            "Il carrello è vuoto";
-        if (
-            typeof translations !==
-            "undefined"
-        ) {
-            const t =
-                translations[lang] ||
-                translations.it;
-            message =
-                t.emptyAlert ||
-                message;
-        }
-        alert(message);
+        alert(t.emptyAlert);
         return;
     }
     const ordine =
         cart.join("\n");
-    const lang =
-        localStorage.getItem(
-            "language"
-        ) || "it";
-    let orderMessage =
-        "Ciao Oasis del Sur, vorrei ordinare:";
-    if (
-        typeof translations !==
-        "undefined"
-    ) {
-        const t =
-            translations[lang] ||
-            translations.it;
-        orderMessage =
-            t.orderMessage ||
-            orderMessage;
-    }
     const messaggio =
-        orderMessage +
+        t.orderMessage +
         "\n\n" +
         ordine;
     const telegram =
@@ -256,6 +108,15 @@ function sendOrder() {
     window.location.href =
         telegram;
 }
+window.addEventListener(
+    "load",
+    function() {
+        const lang =
+            localStorage.getItem("language") || "it";
+        changeLanguage(lang);
+        showCart();
+    }
+);
 </script>
 </body>
 </html>
