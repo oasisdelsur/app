@@ -11,45 +11,54 @@
 </head>
 <body>
 <div class="container">
-<!-- TITOLO -->
-<div class="section-title" id="frozenTitle">
-    ❄️ Frozen
-</div>
-<!-- INDIETRO -->
-<div class="back-button">
-    <a href="index.html" id="back">
-        ← Indietro
-    </a>
-</div>
-<!-- PRODOTTI -->
-<div class="products">
-    <div class="product">
+    <!-- TITOLO -->
+    <div
+        class="section-title"
+        id="frozenTitle"
+    >
+        ❄️ Frozen
+    </div>
+    <!-- INDIETRO -->
+    <div class="back-button">
         <a
-            href="highland-terps.html"
-            class="category-link"
+            href="shop.html"
+            id="back"
         >
-            <div class="product-name">
-                Highland Terps 90U
-            </div>
+            ← Indietro
         </a>
     </div>
-</div>
+    <!-- PRODOTTI -->
+    <div class="products">
+        <div class="product">
+            <a
+                href="highland-terps.html"
+                class="category-link"
+            >
+                <div class="product-name">
+                    Highland Terps 90U
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
 <!-- CARRELLO -->
 <div class="cart">
-<div class="cart-title" id="cartTitle">
-    🛒 Carrello
-</div>
-<div id="cart">
-    Nessun prodotto
-</div>
-<button
-    class="checkout"
-    id="orderButton"
-    onclick="sendOrder()"
->
-    📲 Conferma ordine
-</button>
+    <div
+        class="cart-title"
+        id="cartTitle"
+    >
+        🛒 Carrello
+    </div>
+    <div id="cart">
+        Nessun producto
+    </div>
+    <button
+        class="checkout"
+        id="orderButton"
+        onclick="sendOrder()"
+    >
+        📲 Conferma ordine
+    </button>
 </div>
 <script src="language.js"></script>
 <script>
@@ -57,16 +66,22 @@
    CARRELLO
 ========================== */
 let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
 function showCart() {
     const box =
         document.getElementById("cart");
     if (!box) {
         return;
     }
+    const lang =
+        localStorage.getItem("language") || "it";
+    const t =
+        translations[lang] || translations.it;
     if (cart.length === 0) {
         box.innerHTML =
-            "Nessun prodotto";
+            t.emptyCart || "Nessun prodotto";
         return;
     }
     box.innerHTML = "";
@@ -87,55 +102,72 @@ function removeItem(index) {
     );
     showCart();
 }
+/* ==========================
+   INVIO ORDINE
+========================== */
 function sendOrder() {
+    const lang =
+        localStorage.getItem("language") || "it";
+    const t =
+        translations[lang] || translations.it;
     if (cart.length === 0) {
-        alert("Il carrello è vuoto");
+        alert(
+            t.emptyAlert ||
+            "Il carrello è vuoto"
+        );
         return;
     }
     const ordine =
         cart.join("\n");
     const messaggio =
-        "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
+        (t.orderMessage ||
+        "Ciao Oasis del Sur, vorrei ordinare:") +
+        "\n\n" +
         ordine;
     const telegram =
         "https://t.me/wordex17?text=" +
-        encodeURIComponent(messaggio);
+        encodeURIComponent(
+            messaggio
+        );
     window.location.href =
         telegram;
 }
 /* ==========================
    LINGUA
 ========================== */
-window.addEventListener("load", function() {
-    const lang =
-        localStorage.getItem("language") || "it";
-    if (
-        typeof translations !== "undefined" &&
-        translations[lang]
-    ) {
-        const t =
-            translations[lang];
-        document.documentElement.lang =
-            lang;
-        document.getElementById(
-            "frozenTitle"
-        ).innerHTML =
-            "❄️ " + t.frozen;
-        document.getElementById(
-            "back"
-        ).innerHTML =
-            t.back;
-        document.getElementById(
-            "cartTitle"
-        ).innerHTML =
-            t.cart;
-        document.getElementById(
-            "orderButton"
-        ).innerHTML =
-            t.order;
+window.addEventListener(
+    "load",
+    function() {
+        const lang =
+            localStorage.getItem("language") || "it";
+        if (
+            typeof translations !== "undefined" &&
+            translations[lang]
+        ) {
+            const t =
+                translations[lang];
+            document.documentElement.lang =
+                lang;
+            document.getElementById(
+                "frozenTitle"
+            ).innerHTML =
+                "❄️ " + t.frozen;
+            document.getElementById(
+                "back"
+            ).innerHTML =
+                t.back;
+            document.getElementById(
+                "cartTitle"
+            ).innerHTML =
+                t.cart;
+            document.getElementById(
+                "orderButton"
+            ).innerHTML =
+                t.order;
+        }
+        showCart();
     }
-    showCart();
-});
+);
 </script>
 </body>
 </html>
