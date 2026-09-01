@@ -1,95 +1,162 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Dry - Oasis del Sur</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
 <div class="container">
-
-<div class="section-title" id="dryTitle">
-🌱 Dry
+    <!-- TITOLO -->
+    <div
+        class="section-title"
+        id="dryTitle"
+    >
+        🌱 Dry
+    </div>
+    <!-- INDIETRO -->
+    <div class="back-button">
+        <a
+            href="shop.html"
+            id="back"
+        >
+            ← Indietro
+        </a>
+    </div>
+    <!-- PRODOTTI -->
+    <div class="products">
+        <div class="product">
+            <a
+                href="rocket-seeds.html"
+                class="category-link"
+            >
+                <div class="product-name">
+                    Rocket Seeds
+                </div>
+            </a>
+        </div>
+        <div class="product">
+            <a
+                href="gas-mint.html"
+                class="category-link"
+            >
+                <div class="product-name">
+                    Gas Mint
+                </div>
+            </a>
+        </div>
+        <div class="product">
+            <a
+                href="arcade.html"
+                class="category-link"
+            >
+                <div class="product-name">
+                    Arcade
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
-
-<div class="back-button">
-<a href="index.html" id="back">
-← Indietro
-</a>
-</div>
-
-<div class="products">
-
-<div class="product">
-<a href="rocket-seeds.html" class="category-link">
-<div class="product-name">
-Rocket Seeds
-</div>
-</a>
-</div>
-
-<div class="product">
-<a href="gas-mint.html" class="category-link">
-<div class="product-name">
-Gas Mint
-</div>
-</a>
-</div>
-
-<div class="product">
-<a href="arcade.html" class="category-link">
-<div class="product-name">
-Arcade
-</div>
-</a>
-</div>
-
-</div>
-
-</div>
-
+<!-- CARRELLO -->
 <div class="cart">
-
-<div class="cart-title" id="cartTitle">
-🛒 Carrello
+    <div
+        class="cart-title"
+        id="cartTitle"
+    >
+        🛒 Carrello
+    </div>
+    <div id="cart">
+        Nessun prodotto
+    </div>
+    <button
+        class="checkout"
+        id="orderButton"
+        onclick="sendOrder()"
+    >
+        📲 Conferma ordine
+    </button>
 </div>
-
-<div id="cart">
-Nessun prodotto
-</div>
-
-<button class="checkout" id="orderButton">
-📲 Conferma ordine
-</button>
-
-</div>
-
 <script src="language.js"></script>
-
 <script>
-
-window.onload=function(){
-
-let lang=localStorage.getItem("language") || "it";
-
-let t=translations[lang];
-
-document.getElementById("dryTitle").innerHTML="🌱 "+t.dry;
-document.getElementById("back").innerHTML=t.back;
-document.getElementById("cartTitle").innerHTML=t.cart;
-document.getElementById("orderButton").innerHTML=t.order;
-
+let cart =
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+function showCart() {
+    const box =
+        document.getElementById("cart");
+    if (!box) return;
+    const lang =
+        localStorage.getItem("language") || "it";
+    const t =
+        translations[lang] || translations.it;
+    if (cart.length === 0) {
+        box.innerHTML =
+            t.emptyCart ||
+            "Nessun prodotto";
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML +=
+            item +
+            ' <button onclick="removeItem(' +
+            index +
+            ')">❌</button>' +
+            '<br><br>';
+    });
 }
-
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    showCart();
+}
+function sendOrder() {
+    const lang =
+        localStorage.getItem("language") || "it";
+    const t =
+        translations[lang] || translations.it;
+    if (cart.length === 0) {
+        alert(
+            t.emptyAlert ||
+            "Il carrello è vuoto"
+        );
+        return;
+    }
+    const ordine =
+        cart.join("\n");
+    const messaggio =
+        (
+            t.orderMessage ||
+            "Ciao Oasis del Sur, vorrei ordinare:"
+        ) +
+        "\n\n" +
+        ordine;
+    const telegram =
+        "https://t.me/wordex17?text=" +
+        encodeURIComponent(
+            messaggio
+        );
+    window.location.href =
+        telegram;
+}
+window.addEventListener(
+    "load",
+    function() {
+        const lang =
+            localStorage.getItem("language") || "it";
+        if (
+            typeof changeLanguage === "function"
+        ) {
+            changeLanguage(lang);
+        }
+        showCart();
+    }
+);
 </script>
-
 </body>
 </html>
