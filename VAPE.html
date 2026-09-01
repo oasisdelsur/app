@@ -1,212 +1,269 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>VAPE - Oasis del Sur</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
 <div class="container">
-
+<!-- TITOLO -->
 <div class="section-title" id="vapeTitle">
-
 💨 VAPE
-
 </div>
-
+<!-- INDIETRO -->
 <div class="back-button">
-
-<a href="index.html" id="back">
-
+<a href="shop.html" id="back">
 ← Indietro
-
 </a>
-
 </div>
-
-
+<!-- PRODOTTO -->
 <div class="product">
-
-<img src="IMG_9798.png" class="product-image">
-
-<img src="IMG_9800.png" class="product-image">
-
-<img src="IMG_9801.png" class="product-image">
-
-
-<video class="product-image" controls autoplay muted loop>
-
-<source src="IMG_8774.mov" type="video/quicktime">
-
+<img
+    src="IMG_9798.png"
+    class="product-image"
+    alt="Vape"
+>
+<img
+    src="IMG_9800.png"
+    class="product-image"
+    alt="Vape"
+>
+<img
+    src="IMG_9801.png"
+    class="product-image"
+    alt="Vape"
+>
+<video
+    class="product-image"
+    controls
+    autoplay
+    muted
+    loop
+>
+<source
+    src="IMG_8774.mov"
+    type="video/quicktime"
+>
 Il tuo browser non supporta il video.
-
 </video>
-
-
+<!-- QUANTITÀ -->
 <h2 id="choose">
-
 Scegli quantità
-
 </h2>
-
-
 <div class="sizes">
-
-<button onclick="addToCart('Vape - 1 pezzo')">1</button>
-<button onclick="addToCart('Vape - 2 pezzi')">2</button>
-<button onclick="addToCart('Vape - 3 pezzi')">3</button>
-<button onclick="addToCart('Vape - 4 pezzi')">4</button>
-<button onclick="addToCart('Vape - 5 pezzi')">5</button>
-<button onclick="addToCart('Vape - 6 pezzi')">6</button>
-<button onclick="addToCart('Vape - 7 pezzi')">7</button>
-<button onclick="addToCart('Vape - 8 pezzi')">8</button>
-<button onclick="addToCart('Vape - 9 pezzi')">9</button>
-<button onclick="addToCart('Vape - 10 pezzi')">10</button>
-
-<button onclick="addToCart('Vape - 20 pezzi')">20</button>
-<button onclick="addToCart('Vape - 30 pezzi')">30</button>
-<button onclick="addToCart('Vape - 40 pezzi')">40</button>
-<button onclick="addToCart('Vape - 50 pezzi')">50</button>
-
+<button onclick="addToCart('Vape - 1 pezzo')">
+1
+</button>
+<button onclick="addToCart('Vape - 2 pezzi')">
+2
+</button>
+<button onclick="addToCart('Vape - 3 pezzi')">
+3
+</button>
+<button onclick="addToCart('Vape - 4 pezzi')">
+4
+</button>
+<button onclick="addToCart('Vape - 5 pezzi')">
+5
+</button>
+<button onclick="addToCart('Vape - 6 pezzi')">
+6
+</button>
+<button onclick="addToCart('Vape - 7 pezzi')">
+7
+</button>
+<button onclick="addToCart('Vape - 8 pezzi')">
+8
+</button>
+<button onclick="addToCart('Vape - 9 pezzi')">
+9
+</button>
+<button onclick="addToCart('Vape - 10 pezzi')">
+10
+</button>
+<button onclick="addToCart('Vape - 20 pezzi')">
+20
+</button>
+<button onclick="addToCart('Vape - 30 pezzi')">
+30
+</button>
+<button onclick="addToCart('Vape - 40 pezzi')">
+40
+</button>
+<button onclick="addToCart('Vape - 50 pezzi')">
+50
+</button>
 </div>
-
 </div>
-
-
+<!-- CARRELLO -->
 <div class="cart">
-
 <div class="cart-title">
-
-🛒 <span id="cartText">Il tuo ordine</span>
-
+🛒
+<span id="cartText">
+Il tuo ordine
+</span>
 </div>
-
-
 <div id="mini-cart">
-
 Carrello vuoto
-
 </div>
-
-
 </div>
-
-
-<a href="index.html" class="category-link">
-
-<div class="category">
-
+<!-- VAI AL CARRELLO -->
+<a
+    href="shop.html"
+    class="category-link"
+>
+<div
+    class="category"
+    id="goCart"
+>
 🛒 Vai al carrello
-
 </div>
-
 </a>
-
-
-<a href="index.html" class="category-link">
-
-<div class="category">
-
-🏠 Torna al menu principale
-
+<!-- TORNA ALLO SHOP -->
+<a
+    href="shop.html"
+    class="category-link"
+>
+<div
+    class="category"
+    id="goMenu"
+>
+🏠 Torna allo Shop
 </div>
-
 </a>
-
-
 </div>
-
-
 <script src="language.js"></script>
-
-
 <script>
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-
+/* ==========================
+   CARRELLO
+========================== */
+let cart =
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+/* ==========================
+   AGGIUNGI
+========================== */
 function addToCart(product){
-
-cart.push(product);
-
-localStorage.setItem("cart", JSON.stringify(cart));
-
-showMiniCart();
-
-alert("✅ " + product + " aggiunto al carrello");
-
+    cart.push(product);
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    showMiniCart();
+    const lang =
+        localStorage.getItem("language")
+        || "it";
+    const t =
+        translations[lang]
+        || translations.it;
+    alert(
+        "✅ " +
+        product +
+        " " +
+        (
+            t.addedToCart
+            || "aggiunto al carrello"
+        )
+    );
 }
-
-
+/* ==========================
+   MOSTRA CARRELLO
+========================== */
 function showMiniCart(){
-
-let box=document.getElementById("mini-cart");
-
-
-if(cart.length===0){
-
-box.innerHTML="Carrello vuoto";
-
-return;
-
+    const box =
+        document.getElementById(
+            "mini-cart"
+        );
+    if (!box) {
+        return;
+    }
+    const lang =
+        localStorage.getItem("language")
+        || "it";
+    const t =
+        translations[lang]
+        || translations.it;
+    if(cart.length === 0){
+        box.innerHTML =
+            t.emptyCart
+            || "Carrello vuoto";
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(
+        function(item,index){
+            box.innerHTML +=
+                "• " +
+                item +
+                ' <button onclick="removeItem(' +
+                index +
+                ')">❌</button>' +
+                "<br><br>";
+        }
+    );
 }
-
-
-box.innerHTML="";
-
-
-cart.forEach(function(item,index){
-
-box.innerHTML += "• " + item + " <button onclick='removeItem("+index+")'>❌</button><br><br>";
-
-});
-
-
-}
-
-
+/* ==========================
+   RIMUOVI
+========================== */
 function removeItem(index){
-
-cart.splice(index,1);
-
-localStorage.setItem("cart",JSON.stringify(cart));
-
-showMiniCart();
-
+    cart.splice(
+        index,
+        1
+    );
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    showMiniCart();
 }
-
-
-window.onload=function(){
-
-let lang=localStorage.getItem("language") || "it";
-
-let t=translations[lang];
-
-
-document.getElementById("vapeTitle").innerHTML="💨 "+t.vape;
-
-document.getElementById("back").innerHTML=t.back;
-
-document.getElementById("choose").innerHTML=t.choose || "Scegli quantità";
-
-document.getElementById("cartText").innerHTML=t.cart;
-
-
-showMiniCart();
-
-}
-
+/* ==========================
+   LINGUA
+========================== */
+window.addEventListener(
+    "load",
+    function(){
+        const lang =
+            localStorage.getItem(
+                "language"
+            ) || "it";
+        const t =
+            translations[lang]
+            || translations.it;
+        document.documentElement.lang =
+            lang;
+        document.getElementById(
+            "vapeTitle"
+        ).innerHTML =
+            "💨 " + t.vape;
+        document.getElementById(
+            "back"
+        ).innerHTML =
+            t.back;
+        document.getElementById(
+            "choose"
+        ).innerHTML =
+            t.choose
+            || "Scegli quantità";
+        document.getElementById(
+            "cartText"
+        ).innerHTML =
+            t.cart;
+        document.getElementById(
+            "goCart"
+        ).innerHTML =
+            t.goCart
+            || "🛒 Vai al carrello";
+        document.getElementById(
+            "goMenu"
+        ).innerHTML =
+            t.goMenu
+            || "🏠 Torna allo Shop";
+        showMiniCart();
+    }
+);
 </script>
-
-
 </body>
-
 </html>
