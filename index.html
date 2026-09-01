@@ -34,7 +34,7 @@
         .logo-container {
             width: 280px;
             height: 280px;
-            margin: 0 auto 25px;
+            margin: 0 auto 15px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,6 +44,53 @@
             height: 100%;
             object-fit: contain;
             object-position: center;
+            display: block;
+        }
+        /* SELETTORE LINGUA */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 18px;
+        }
+        .language-button {
+            background: #111;
+            color: white;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .language-menu {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: calc(100% + 8px);
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 6px;
+            min-width: 150px;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+        .language-menu button {
+            display: block;
+            width: 100%;
+            background: transparent;
+            color: white;
+            border: 0;
+            border-radius: 8px;
+            padding: 9px 12px;
+            text-align: left;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .language-menu button:hover {
+            background: #222;
+        }
+        .language-selector.open .language-menu {
             display: block;
         }
         h1 {
@@ -75,7 +122,7 @@
                 height: 280px;
                 max-width: 70vw;
                 max-height: 70vw;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
             h1 {
                 font-size: 26px;
@@ -97,6 +144,29 @@
                 alt="Oasis del Sur"
             >
         </div>
+        <!-- LINGUA -->
+        <div class="language-selector" id="languageSelector">
+            <button
+                class="language-button"
+                onclick="toggleLanguageMenu()"
+            >
+                🌐 Italiano ▾
+            </button>
+            <div class="language-menu">
+                <button onclick="selectLanguage('it')">
+                    🇮🇹 Italiano
+                </button>
+                <button onclick="selectLanguage('en')">
+                    🇬🇧 English
+                </button>
+                <button onclick="selectLanguage('es')">
+                    🇪🇸 Español
+                </button>
+                <button onclick="selectLanguage('de')">
+                    🇩🇪 Deutsch
+                </button>
+            </div>
+        </div>
         <h1>
             Benvenuto in Oasis del Sur
         </h1>
@@ -107,5 +177,58 @@
             ENTRA
         </a>
     </div>
+    <script>
+        function toggleLanguageMenu() {
+            const selector =
+                document.getElementById("languageSelector");
+            selector.classList.toggle("open");
+        }
+        function selectLanguage(language) {
+            const names = {
+                it: "🇮🇹 Italiano",
+                en: "🇬🇧 English",
+                es: "🇪🇸 Español",
+                de: "🇩🇪 Deutsch"
+            };
+            document.querySelector(
+                ".language-button"
+            ).textContent = names[language] + " ▾";
+            document
+                .getElementById("languageSelector")
+                .classList.remove("open");
+            localStorage.setItem(
+                "language",
+                language
+            );
+        }
+        document.addEventListener(
+            "click",
+            function(event) {
+                const selector =
+                    document.getElementById(
+                        "languageSelector"
+                    );
+                if (
+                    !selector.contains(event.target)
+                ) {
+                    selector.classList.remove("open");
+                }
+            }
+        );
+        window.addEventListener(
+            "load",
+            function() {
+                const savedLanguage =
+                    localStorage.getItem(
+                        "language"
+                    );
+                if (savedLanguage) {
+                    selectLanguage(
+                        savedLanguage
+                    );
+                }
+            }
+        );
+    </script>
 </body>
 </html>
