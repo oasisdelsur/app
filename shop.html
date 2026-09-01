@@ -1,138 +1,284 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oasis del Sur</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasis del Sur</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-<!-- FRECCIA -->
-<div class="back-button">
-<a href="index.html">←</a>
-</div>
-<!-- WEED -->
-<a href="weed.html" class="category-link">
-<div class="category">
-<img src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
-class="category-image"
-alt="Weed">
-<div class="category-name">Weed</div>
-</div>
-</a>
-<!-- FROZEN -->
-<a href="frozen.html" class="category-link">
-<div class="category">
-<img src="frozen.jpg"
-class="category-image"
-alt="Frozen">
-<div class="category-name">Frozen</div>
-</div>
-</a>
-<!-- DRY -->
-<a href="dry.html" class="category-link">
-<div class="category">
-<img src="dry.webp"
-class="category-image"
-alt="Dry">
-<div class="category-name">Dry</div>
-</div>
-</a>
-<!-- EXTRACT -->
-<a href="extract.html" class="category-link">
-<div class="category">
-<img src="images.jpg"
-class="category-image"
-alt="Extract">
-<div class="category-name">Extract</div>
-</div>
-</a>
-<!-- VAPE -->
-<a href="VAPE.html" class="category-link">
-<div class="category">
-<img src="IMG_9790.jpeg"
-class="category-image"
-alt="VAPE">
-<div class="category-name">VAPE</div>
-</div>
-</a>
-<!-- STICKERS -->
-<a href="stickers.html" class="category-link">
-<div class="category sticker-category">
-<img src="IMG_9804.jpeg"
-class="sticker-image"
-alt="Stickers">
-<div class="category-name">🏷️ Stickers</div>
-</div>
-</a>
+    <!-- FRECCIA -->
+    <div class="back-button">
+        <a href="index.html">←</a>
+    </div>
+    <!-- WEED -->
+    <a href="weed.html" class="category-link">
+        <div class="category">
+            <img
+                src="a82ad9_3bc1726cb8bd4951bf8e445cf043f960~mv2.avif"
+                class="category-image"
+                alt="Weed"
+            >
+            <div class="category-name" data-translate="weed">
+                Weed
+            </div>
+        </div>
+    </a>
+    <!-- FROZEN -->
+    <a href="frozen.html" class="category-link">
+        <div class="category">
+            <img
+                src="frozen.jpg"
+                class="category-image"
+                alt="Frozen"
+            >
+            <div class="category-name" data-translate="frozen">
+                Frozen
+            </div>
+        </div>
+    </a>
+    <!-- DRY -->
+    <a href="dry.html" class="category-link">
+        <div class="category">
+            <img
+                src="dry.webp"
+                class="category-image"
+                alt="Dry"
+            >
+            <div class="category-name" data-translate="dry">
+                Dry
+            </div>
+        </div>
+    </a>
+    <!-- EXTRACT -->
+    <a href="extract.html" class="category-link">
+        <div class="category">
+            <img
+                src="images.jpg"
+                class="category-image"
+                alt="Extract"
+            >
+            <div class="category-name" data-translate="extract">
+                Extract
+            </div>
+        </div>
+    </a>
+    <!-- VAPE -->
+    <a href="VAPE.html" class="category-link">
+        <div class="category">
+            <img
+                src="IMG_9790.jpeg"
+                class="category-image"
+                alt="VAPE"
+            >
+            <div class="category-name" data-translate="vape">
+                VAPE
+            </div>
+        </div>
+    </a>
+    <!-- STICKERS -->
+    <a href="stickers.html" class="category-link">
+        <div class="category sticker-category">
+            <img
+                src="IMG_9804.jpeg"
+                class="sticker-image"
+                alt="Stickers"
+            >
+            <div class="category-name" data-translate="stickers">
+                🏷️ Stickers
+            </div>
+        </div>
+    </a>
 </div>
 <!-- CARRELLO -->
 <div class="cart">
-<div class="cart-title">
-🛒 Carrello
-</div>
-<div id="cart">
-Nessun prodotto
-</div>
-
-📲 Conferma ordine
-
-</button>
-<a href="bitcoin.html">
-<button class="checkout">
-₿ Paga in Bitcoin
-</button>
-</a>
+    <div class="cart-title" data-translate="cartTitle">
+        🛒 Carrello
+    </div>
+    <div id="cart">
+        <span data-translate="emptyCart">
+            Nessun prodotto
+        </span>
+    </div>
+    <!-- CONFERMA ORDINE -->
+    <button
+        class="checkout"
+        onclick="sendOrder()"
+        data-translate="confirmOrder"
+    >
+        📲 Conferma ordine
+    </button>
+    <!-- BITCOIN -->
+    <a href="bitcoin.html">
+        <button
+            class="checkout"
+            data-translate="payBitcoin"
+        >
+            ₿ Paga in Bitcoin
+        </button>
+    </a>
 </div>
 <script>
-let cart =
-JSON.parse(localStorage.getItem("cart")) || [];
-function showCart(){
-const box =
-document.getElementById("cart");
-if(cart.length === 0){
-box.innerHTML = "Nessun prodotto";
-return;
-}
-box.innerHTML = "";
-cart.forEach((item,index)=>{
-box.innerHTML +=
-item +
-' <button onclick="removeItem(' +
-index +
-')">❌</button><br><br>';
-});
-}
-function removeItem(index){
-cart.splice(index,1);
-localStorage.setItem(
-"cart",
-JSON.stringify(cart)
-);
-showCart();
-}
-function sendOrder(){
-if(cart.length === 0){
-alert("Il carrello è vuoto");
-return;
-}
-const ordine =
-cart.join("\n");
-const messaggio =
-"Ciao Oasis del Sur, vorrei ordinare:\n\n" +
-ordine;
-const telegram =
-"https://t.me/wordex17?text=" +
-encodeURIComponent(messaggio);
-window.location.href =
-telegram;
-}
-window.addEventListener(
-"load",
-function(){
-showCart();
-});
+    /* =========================
+       TRADUZIONI
+    ========================= */
+    const translations = {
+        it: {
+            weed: "Weed",
+            frozen: "Frozen",
+            dry: "Dry",
+            extract: "Extract",
+            vape: "VAPE",
+            stickers: "🏷️ Stickers",
+            cartTitle: "🛒 Carrello",
+            emptyCart: "Nessun prodotto",
+            confirmOrder: "📲 Conferma ordine",
+            payBitcoin: "₿ Paga in Bitcoin",
+            emptyAlert: "Il carrello è vuoto",
+            orderMessage:
+                "Ciao Oasis del Sur, vorrei ordinare:"
+        },
+        en: {
+            weed: "Weed",
+            frozen: "Frozen",
+            dry: "Dry",
+            extract: "Extract",
+            vape: "VAPE",
+            stickers: "🏷️ Stickers",
+            cartTitle: "🛒 Cart",
+            emptyCart: "No products",
+            confirmOrder: "📲 Confirm order",
+            payBitcoin: "₿ Pay with Bitcoin",
+            emptyAlert: "The cart is empty",
+            orderMessage:
+                "Hello Oasis del Sur, I would like to order:"
+        },
+        es: {
+            weed: "Weed",
+            frozen: "Frozen",
+            dry: "Dry",
+            extract: "Extract",
+            vape: "VAPE",
+            stickers: "🏷️ Stickers",
+            cartTitle: "🛒 Carrito",
+            emptyCart: "Ningún producto",
+            confirmOrder: "📲 Confirmar pedido",
+            payBitcoin: "₿ Pagar con Bitcoin",
+            emptyAlert: "El carrito está vacío",
+            orderMessage:
+                "Hola Oasis del Sur, quisiera hacer un pedido:"
+        },
+        de: {
+            weed: "Weed",
+            frozen: "Frozen",
+            dry: "Dry",
+            extract: "Extrakte",
+            vape: "VAPE",
+            stickers: "🏷️ Sticker",
+            cartTitle: "🛒 Warenkorb",
+            emptyCart: "Keine Produkte",
+            confirmOrder: "📲 Bestellung bestätigen",
+            payBitcoin: "₿ Mit Bitcoin bezahlen",
+            emptyAlert: "Der Warenkorb ist leer",
+            orderMessage:
+                "Hallo Oasis del Sur, ich möchte bestellen:"
+        }
+    };
+    /* =========================
+       LINGUA
+    ========================= */
+    function getLanguage() {
+        return localStorage.getItem("language") || "it";
+    }
+    function translatePage() {
+        const language = getLanguage();
+        const texts = translations[language];
+        document.documentElement.lang =
+            language;
+        document
+            .querySelectorAll("[data-translate]")
+            .forEach(function(element) {
+                const key =
+                    element.getAttribute(
+                        "data-translate"
+                    );
+                if (texts[key]) {
+                    element.textContent =
+                        texts[key];
+                }
+            });
+    }
+    /* =========================
+       CARRELLO
+    ========================= */
+    let cart =
+        JSON.parse(
+            localStorage.getItem("cart")
+        ) || [];
+    function showCart() {
+        const box =
+            document.getElementById("cart");
+        if (cart.length === 0) {
+            const language =
+                getLanguage();
+            box.innerHTML =
+                translations[language].emptyCart;
+            return;
+        }
+        box.innerHTML = "";
+        cart.forEach(function(item, index) {
+            box.innerHTML +=
+                item +
+                ' <button onclick="removeItem(' +
+                index +
+                ')">❌</button><br><br>';
+        });
+    }
+    function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
+        showCart();
+    }
+    /* =========================
+       INVIO ORDINE
+    ========================= */
+    function sendOrder() {
+        if (cart.length === 0) {
+            alert(
+                translations[getLanguage()]
+                    .emptyAlert
+            );
+            return;
+        }
+        const ordine =
+            cart.join("\n");
+        const messaggio =
+            translations[getLanguage()]
+                .orderMessage +
+            "\n\n" +
+            ordine;
+        const telegram =
+            "https://t.me/wordex17?text=" +
+            encodeURIComponent(
+                messaggio
+            );
+        window.location.href =
+            telegram;
+    }
+    /* =========================
+       AVVIO PAGINA
+    ========================= */
+    window.addEventListener(
+        "load",
+        function() {
+            translatePage();
+            showCart();
+        }
+    );
 </script>
 </body>
 </html>
