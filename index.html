@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Oasis del Sur</title>
-
     <style>
         * {
             box-sizing: border-box;
         }
-
         html,
         body {
             margin: 0;
@@ -18,103 +15,74 @@
             width: 100%;
             min-height: 100%;
         }
-
         body {
             min-height: 100vh;
             min-height: 100dvh;
-
             background: #050505;
             color: white;
-
             font-family: Arial, Helvetica, sans-serif;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             text-align: center;
         }
-
         .welcome {
             width: 100%;
             max-width: 600px;
             padding: 30px 20px;
         }
-
         .logo-container {
             width: 250px;
             height: 250px;
-
             margin: 0 auto 25px;
-
             border-radius: 50%;
             overflow: hidden;
-
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #050505;
         }
-
         .logo {
             width: 100%;
             height: 100%;
-
             object-fit: contain;
-
             display: block;
         }
-
         h1 {
             margin: 0 0 30px;
-
             font-size: 32px;
             line-height: 1.2;
         }
-
         .enter {
             display: inline-block;
-
             background: #00e676;
             color: #000;
-
             text-decoration: none;
-
             padding: 16px 60px;
-
             border-radius: 30px;
-
             font-size: 20px;
             font-weight: bold;
-
             transition: 0.2s ease;
         }
-
         .enter:hover {
             background: #00ff88;
             transform: scale(1.05);
         }
-
         @media (max-width: 600px) {
-
             .welcome {
                 padding: 20px 15px;
             }
-
             .logo-container {
                 width: 70vw;
                 height: 70vw;
-
                 max-width: 250px;
                 max-height: 250px;
-
                 margin-bottom: 20px;
             }
-
             h1 {
                 font-size: 26px;
                 margin-bottom: 25px;
             }
-
             .enter {
                 padding: 14px 50px;
                 font-size: 18px;
@@ -122,11 +90,8 @@
         }
     </style>
 </head>
-
 <body>
-
     <div class="welcome">
-
         <div class="logo-container">
             <img
                 src="IMG_9609.png"
@@ -134,19 +99,15 @@
                 alt="Oasis del Sur"
             >
         </div>
-
         <h1>
             Benvenuto in Oasis del Sur
         </h1>
-
         <a
             href="shop.html"
             class="enter"
         >
             ENTRA
         </a>
-
     </div>
-
 </body>
 </html>
