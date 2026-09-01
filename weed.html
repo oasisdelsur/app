@@ -1,140 +1,261 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-<title>Weed - Oasis del Sur</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Weed - Oasis del Sur</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-<!-- TITOLO -->
-<div class="section-title" id="weedTitle">
-    🌿 Weed
-</div>
-<!-- INDIETRO -->
-<div class="back-button">
-    <a href="index.html" id="back">
-        ← Indietro
-    </a>
-</div>
-<!-- PRODOTTI NON DISPONIBILI -->
-<div class="coming-soon">
-    <div class="hourglass">
-        ⏳
+    <!-- TITOLO -->
+    <div
+        class="section-title"
+        id="weedTitle"
+    >
+        🌿 Weed
     </div>
-    <h2 id="coming">
-        Ancora non disponibili
-    </h2>
-    <p id="arrival">
-        Prodotti in arrivo...
-    </p>
-</div>
+    <!-- INDIETRO -->
+    <div class="back-button">
+        <a
+            href="index.html"
+            id="back"
+        >
+            ← Indietro
+        </a>
+    </div>
+    <!-- PRODOTTI NON DISPONIBILI -->
+    <div class="coming-soon">
+        <div class="hourglass">
+            ⏳
+        </div>
+        <h2 id="coming">
+            Ancora non disponibili
+        </h2>
+        <p id="arrival">
+            Prodotti in arrivo...
+        </p>
+    </div>
 </div>
 <!-- CARRELLO -->
 <div class="cart">
-<div class="cart-title" id="cartTitle">
-    🛒 Carrello
+    <div
+        class="cart-title"
+        id="cartTitle"
+    >
+        🛒 Carrello
+    </div>
+    <div id="cart">
+        Nessun prodotto
+    </div>
+    <button
+        class="checkout"
+        id="orderButton"
+        onclick="sendOrder()"
+    >
+        📲 Conferma ordine
+    </button>
 </div>
-<div id="cart">
-    Nessun prodotto
-</div>
-<button
-    class="checkout"
-    id="orderButton"
-    onclick="sendOrder()"
->
-    📲 Conferma ordine
-</button>
-</div>
+<!-- SISTEMA LINGUA -->
 <script src="language.js"></script>
 <script>
+/* ==========================
+   TRADUZIONE PAGINA
+========================== */
+window.addEventListener(
+    "load",
+    function() {
+        const lang =
+            localStorage.getItem(
+                "language"
+            ) || "it";
+        if (
+            typeof translations !==
+            "undefined"
+        ) {
+            const t =
+                translations[lang] ||
+                translations.it;
+            document.documentElement.lang =
+                lang;
+            /* TITOLO */
+            const weedTitle =
+                document.getElementById(
+                    "weedTitle"
+                );
+            if (weedTitle) {
+                weedTitle.innerHTML =
+                    "🌿 " + t.weed;
+            }
+            /* INDIETRO */
+            const back =
+                document.getElementById(
+                    "back"
+                );
+            if (back) {
+                back.innerHTML =
+                    "← " + t.back;
+            }
+            /* DISPONIBILITÀ */
+            const coming =
+                document.getElementById(
+                    "coming"
+                );
+            if (coming) {
+                coming.innerHTML =
+                    t.coming;
+            }
+            /* ARRIVO */
+            const arrival =
+                document.getElementById(
+                    "arrival"
+                );
+            if (arrival) {
+                arrival.innerHTML =
+                    t.arrival;
+            }
+            /* CARRELLO */
+            const cartTitle =
+                document.getElementById(
+                    "cartTitle"
+                );
+            if (cartTitle) {
+                cartTitle.innerHTML =
+                    t.cart;
+            }
+            /* ORDINE */
+            const orderButton =
+                document.getElementById(
+                    "orderButton"
+                );
+            if (orderButton) {
+                orderButton.innerHTML =
+                    t.order;
+            }
+        }
+        showCart();
+    }
+);
 /* ==========================
    CARRELLO
 ========================== */
 let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+    JSON.parse(
+        localStorage.getItem(
+            "cart"
+        )
+    ) || [];
 function showCart() {
     const box =
-        document.getElementById("cart");
+        document.getElementById(
+            "cart"
+        );
     if (!box) {
         return;
     }
     if (cart.length === 0) {
-        box.innerHTML =
-            "Nessun prodotto";
+        const lang =
+            localStorage.getItem(
+                "language"
+            ) || "it";
+        if (
+            typeof translations !==
+            "undefined"
+        ) {
+            const t =
+                translations[lang] ||
+                translations.it;
+            box.innerHTML =
+                t.emptyCart ||
+                "Nessun prodotto";
+        } else {
+            box.innerHTML =
+                "Nessun prodotto";
+        }
         return;
     }
     box.innerHTML = "";
-    cart.forEach(function(item, index) {
-        box.innerHTML +=
-            item +
-            ' <button onclick="removeItem(' +
-            index +
-            ')">❌</button>' +
-            '<br><br>';
-    });
+    cart.forEach(
+        function(item, index) {
+            box.innerHTML +=
+                item +
+                ' <button onclick="removeItem(' +
+                index +
+                ')">❌</button>' +
+                '<br><br>';
+        }
+    );
 }
 function removeItem(index) {
-    cart.splice(index, 1);
+    cart.splice(
+        index,
+        1
+    );
     localStorage.setItem(
         "cart",
         JSON.stringify(cart)
     );
     showCart();
 }
+/* ==========================
+   INVIO ORDINE
+========================== */
 function sendOrder() {
     if (cart.length === 0) {
-        alert("Il carrello è vuoto");
+        const lang =
+            localStorage.getItem(
+                "language"
+            ) || "it";
+        let message =
+            "Il carrello è vuoto";
+        if (
+            typeof translations !==
+            "undefined"
+        ) {
+            const t =
+                translations[lang] ||
+                translations.it;
+            message =
+                t.emptyAlert ||
+                message;
+        }
+        alert(message);
         return;
     }
     const ordine =
         cart.join("\n");
-    const messaggio =
-        "Ciao Oasis del Sur, vorrei ordinare:\n\n" +
-        ordine;
-    const telegram =
-        "https://t.me/wordex17?text=" +
-        encodeURIComponent(messaggio);
-    window.location.href =
-        telegram;
-}
-/* ==========================
-   AVVIO PAGINA
-========================== */
-window.addEventListener("load", function() {
     const lang =
-        localStorage.getItem("language") || "it";
-    if (typeof translations !== "undefined") {
+        localStorage.getItem(
+            "language"
+        ) || "it";
+    let orderMessage =
+        "Ciao Oasis del Sur, vorrei ordinare:";
+    if (
+        typeof translations !==
+        "undefined"
+    ) {
         const t =
             translations[lang] ||
             translations.it;
-        document.documentElement.lang =
-            lang;
-        if (document.getElementById("weedTitle"))
-            document.getElementById("weedTitle").innerHTML =
-                "🌿 " + t.weed;
-        if (document.getElementById("back"))
-            document.getElementById("back").innerHTML =
-                t.back;
-        if (document.getElementById("coming"))
-            document.getElementById("coming").innerHTML =
-                t.coming;
-        if (document.getElementById("arrival"))
-            document.getElementById("arrival").innerHTML =
-                t.arrival;
-        if (document.getElementById("cartTitle"))
-            document.getElementById("cartTitle").innerHTML =
-                t.cart;
-        if (document.getElementById("orderButton"))
-            document.getElementById("orderButton").innerHTML =
-                t.order;
+        orderMessage =
+            t.orderMessage ||
+            orderMessage;
     }
-    showCart();
-});
+    const messaggio =
+        orderMessage +
+        "\n\n" +
+        ordine;
+    const telegram =
+        "https://t.me/wordex17?text=" +
+        encodeURIComponent(
+            messaggio
+        );
+    window.location.href =
+        telegram;
+}
 </script>
 </body>
 </html>
