@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-    <title>Weed - Oasis del Sur</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+<title>Weed - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-    <div class="section-title" id="weedTitle">
+    <!-- TITOLO -->
+    <div
+        class="section-title"
+        id="weedTitle"
+    >
         🌿 Weed
     </div>
+    <!-- INDIETRO -->
     <div class="back-button">
-        <a href="index.html" id="back">
+        <a
+            href="shop.html"
+            id="back"
+        >
             ← Indietro
         </a>
     </div>
+    <!-- PRODOTTI NON DISPONIBILI -->
     <div class="coming-soon">
         <div class="hourglass">
             ⏳
@@ -33,7 +42,10 @@
 </div>
 <!-- CARRELLO -->
 <div class="cart">
-    <div class="cart-title" id="cartTitle">
+    <div
+        class="cart-title"
+        id="cartTitle"
+    >
         🛒 Carrello
     </div>
     <div id="cart">
@@ -64,7 +76,8 @@ function showCart() {
         translations[lang] || translations.it;
     if (cart.length === 0) {
         box.innerHTML =
-            t.emptyCart;
+            t.emptyCart ||
+            "Nessun prodotto";
         return;
     }
     box.innerHTML = "";
@@ -91,13 +104,19 @@ function sendOrder() {
     const t =
         translations[lang] || translations.it;
     if (cart.length === 0) {
-        alert(t.emptyAlert);
+        alert(
+            t.emptyAlert ||
+            "Il carrello è vuoto"
+        );
         return;
     }
     const ordine =
         cart.join("\n");
     const messaggio =
-        t.orderMessage +
+        (
+            t.orderMessage ||
+            "Ciao Oasis del Sur, vorrei ordinare:"
+        ) +
         "\n\n" +
         ordine;
     const telegram =
@@ -113,7 +132,11 @@ window.addEventListener(
     function() {
         const lang =
             localStorage.getItem("language") || "it";
-        changeLanguage(lang);
+        if (
+            typeof changeLanguage === "function"
+        ) {
+            changeLanguage(lang);
+        }
         showCart();
     }
 );
