@@ -46,51 +46,32 @@
             object-position: center;
             display: block;
         }
-        /* SELETTORE LINGUA */
-        .language-selector {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 18px;
-        }
-        .language-button {
-            background: #111;
-            color: white;
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 8px 18px;
-            font-size: 15px;
-            cursor: pointer;
-        }
-        .language-menu {
-            display: none;
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%);
+        /* LINGUE */
+        .languages {
             width: 230px;
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 8px;
-            z-index: 1000;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            margin: 0 auto 18px;
+            display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 6px;
         }
-        .language-selector.open .language-menu {
-            display: grid;
-        }
-        .language-menu button {
-            background: #181818;
+        .language {
+            background: #111;
             color: white;
-            border: 0;
-            border-radius: 8px;
-            padding: 10px 6px;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 9px 6px;
             font-size: 14px;
+            font-weight: normal;
             cursor: pointer;
+            transition: 0.2s ease;
         }
-        .language-menu button:hover {
-            background: #292929;
+        .language:hover {
+            background: #222;
+            transform: scale(1.03);
+        }
+        .language.selected {
+            border-color: #00e676;
+            background: #181818;
         }
         h1 {
             margin: 0 0 30px;
@@ -123,8 +104,14 @@
                 max-height: 70vw;
                 margin-bottom: 15px;
             }
-            .language-menu {
+            .languages {
                 width: 220px;
+                gap: 6px;
+                margin-bottom: 18px;
+            }
+            .language {
+                padding: 9px 4px;
+                font-size: 13px;
             }
             h1 {
                 font-size: 26px;
@@ -139,6 +126,7 @@
 </head>
 <body>
     <div class="welcome">
+        <!-- LOGO -->
         <div class="logo-container">
             <img
                 src="IMG_9609.png"
@@ -146,101 +134,113 @@
                 alt="Oasis del Sur"
             >
         </div>
-        <!-- SELETTORE LINGUA -->
-        <div
-            class="language-selector"
-            id="languageSelector"
-        >
+        <!-- LINGUE -->
+        <div class="languages">
             <button
-                class="language-button"
-                onclick="toggleLanguageMenu()"
+                class="language selected"
+                onclick="selectLanguage('it')"
             >
-                🌐 Italiano ▾
+                🇮🇹 Italiano
             </button>
-            <div class="language-menu">
-                <button onclick="selectLanguage('it')">
-                    🇮🇹 Italiano
-                </button>
-                <button onclick="selectLanguage('en')">
-                    🇬🇧 English
-                </button>
-                <button onclick="selectLanguage('es')">
-                    🇪🇸 Español
-                </button>
-                <button onclick="selectLanguage('de')">
-                    🇩🇪 Deutsch
-                </button>
-            </div>
+            <button
+                class="language"
+                onclick="selectLanguage('en')"
+            >
+                🇬🇧 English
+            </button>
+            <button
+                class="language"
+                onclick="selectLanguage('es')"
+            >
+                🇪🇸 Español
+            </button>
+            <button
+                class="language"
+                onclick="selectLanguage('de')"
+            >
+                🇩🇪 Deutsch
+            </button>
         </div>
-        <h1>
+        <!-- BENVENUTO -->
+        <h1 id="welcomeText">
             Benvenuto in Oasis del Sur
         </h1>
+        <!-- ENTRA -->
         <a
             href="shop.html"
             class="enter"
+            id="enterButton"
         >
             ENTRA
         </a>
     </div>
     <script>
-        function toggleLanguageMenu() {
-            const selector =
-                document.getElementById(
-                    "languageSelector"
-                );
-            selector.classList.toggle("open");
-        }
+        const translations = {
+            it: {
+                welcome: "Benvenuto in Oasis del Sur",
+                enter: "ENTRA"
+            },
+            en: {
+                welcome: "Welcome to Oasis del Sur",
+                enter: "ENTER"
+            },
+            es: {
+                welcome: "Bienvenido a Oasis del Sur",
+                enter: "ENTRAR"
+            },
+            de: {
+                welcome: "Willkommen bei Oasis del Sur",
+                enter: "EINTRETEN"
+            }
+        };
         function selectLanguage(language) {
-            const names = {
-                it: "🌐 🇮🇹 Italiano",
-                en: "🌐 🇬🇧 English",
-                es: "🌐 🇪🇸 Español",
-                de: "🌐 🇩🇪 Deutsch"
-            };
-            document.querySelector(
-                ".language-button"
-            ).textContent =
-                names[language] + " ▾";
-            document
-                .getElementById(
-                    "languageSelector"
-                )
-                .classList.remove("open");
             localStorage.setItem(
                 "language",
                 language
             );
+            document.documentElement.lang =
+                language;
+            document.getElementById(
+                "welcomeText"
+            ).textContent =
+                translations[language].welcome;
+            document.getElementById(
+                "enterButton"
+            ).textContent =
+                translations[language].enter;
+            document.querySelectorAll(
+                ".language"
+            ).forEach(function(button) {
+                button.classList.remove(
+                    "selected"
+                );
+            });
+            const buttons =
+                document.querySelectorAll(
+                    ".language"
+                );
+            const languageIndex = {
+                it: 0,
+                en: 1,
+                es: 2,
+                de: 3
+            };
+            buttons[
+                languageIndex[language]
+            ].classList.add(
+                "selected"
+            );
         }
-        document.addEventListener(
-            "click",
-            function(event) {
-                const selector =
-                    document.getElementById(
-                        "languageSelector"
-                    );
-                if (
-                    !selector.contains(
-                        event.target
-                    )
-                ) {
-                    selector.classList.remove(
-                        "open"
-                    );
-                }
-            }
-        );
         window.addEventListener(
             "load",
             function() {
                 const savedLanguage =
                     localStorage.getItem(
                         "language"
-                    );
-                if (savedLanguage) {
-                    selectLanguage(
-                        savedLanguage
-                    );
-                }
+                    ) || "it";
+                selectLanguage(
+                    savedLanguage
+                );
             }
         );
     </script>
