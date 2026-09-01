@@ -57,41 +57,40 @@
             color: white;
             border: 1px solid #333;
             border-radius: 20px;
-            padding: 8px 16px;
+            padding: 8px 18px;
             font-size: 15px;
             cursor: pointer;
         }
         .language-menu {
             display: none;
             position: absolute;
+            top: calc(100% + 8px);
             left: 50%;
             transform: translateX(-50%);
-            bottom: calc(100% + 8px);
+            width: 230px;
             background: #111;
             border: 1px solid #333;
             border-radius: 12px;
-            padding: 6px;
-            min-width: 150px;
+            padding: 8px;
             z-index: 1000;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+        .language-selector.open .language-menu {
+            display: grid;
         }
         .language-menu button {
-            display: block;
-            width: 100%;
-            background: transparent;
+            background: #181818;
             color: white;
             border: 0;
             border-radius: 8px;
-            padding: 9px 12px;
-            text-align: left;
-            font-size: 15px;
+            padding: 10px 6px;
+            font-size: 14px;
             cursor: pointer;
         }
         .language-menu button:hover {
-            background: #222;
-        }
-        .language-selector.open .language-menu {
-            display: block;
+            background: #292929;
         }
         h1 {
             margin: 0 0 30px;
@@ -124,6 +123,9 @@
                 max-height: 70vw;
                 margin-bottom: 15px;
             }
+            .language-menu {
+                width: 220px;
+            }
             h1 {
                 font-size: 26px;
                 margin-bottom: 25px;
@@ -144,8 +146,11 @@
                 alt="Oasis del Sur"
             >
         </div>
-        <!-- LINGUA -->
-        <div class="language-selector" id="languageSelector">
+        <!-- SELETTORE LINGUA -->
+        <div
+            class="language-selector"
+            id="languageSelector"
+        >
             <button
                 class="language-button"
                 onclick="toggleLanguageMenu()"
@@ -180,21 +185,26 @@
     <script>
         function toggleLanguageMenu() {
             const selector =
-                document.getElementById("languageSelector");
+                document.getElementById(
+                    "languageSelector"
+                );
             selector.classList.toggle("open");
         }
         function selectLanguage(language) {
             const names = {
-                it: "🇮🇹 Italiano",
-                en: "🇬🇧 English",
-                es: "🇪🇸 Español",
-                de: "🇩🇪 Deutsch"
+                it: "🌐 🇮🇹 Italiano",
+                en: "🌐 🇬🇧 English",
+                es: "🌐 🇪🇸 Español",
+                de: "🌐 🇩🇪 Deutsch"
             };
             document.querySelector(
                 ".language-button"
-            ).textContent = names[language] + " ▾";
+            ).textContent =
+                names[language] + " ▾";
             document
-                .getElementById("languageSelector")
+                .getElementById(
+                    "languageSelector"
+                )
                 .classList.remove("open");
             localStorage.setItem(
                 "language",
@@ -209,9 +219,13 @@
                         "languageSelector"
                     );
                 if (
-                    !selector.contains(event.target)
+                    !selector.contains(
+                        event.target
+                    )
                 ) {
-                    selector.classList.remove("open");
+                    selector.classList.remove(
+                        "open"
+                    );
                 }
             }
         );
