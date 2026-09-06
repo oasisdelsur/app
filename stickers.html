@@ -2,318 +2,88 @@
 <html lang="it">
 
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Oasis del Sur - Stickers</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stickers</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-
 <div class="container">
 
+    <div class="back-button">
+        <a href="shop.html">← Indietro</a>
+    </div>
 
-<div class="header">
+    <div class="section-title">
+        🏷️ Scegli i tuoi stickers
+    </div>
 
-<img src="IMG_9609.png" class="logo">
+    <div class="product">
 
-</div>
+        <h3 id="counter">
+            Hai scelto 0 / 3 stickers
+        </h3>
 
+        <div class="products">
 
+            <div class="category" onclick="addSticker('Sticker IMG 0529')">
+                <img src="IMG_0529.JPG" class="category-image" alt="Sticker IMG 0529">
+                <div class="category-name">Scegli</div>
+            </div>
 
-<div class="back-button">
+            <div class="category" onclick="addSticker('Sticker IMG 0530')">
+                <img src="IMG_0530.JPG" class="category-image" alt="Sticker IMG 0530">
+                <div class="category-name">Scegli</div>
+            </div>
 
-<a href="index.html">
-⬅️ Torna indietro
-</a>
+            <div class="category" onclick="addSticker('Sticker 52e')">
+                <img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="category-image" alt="Sticker 52e">
+                <div class="category-name">Scegli</div>
+            </div>
 
-</div>
+            <div class="category" onclick="addSticker('Sticker 1B7F')">
+                <img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="category-image" alt="Sticker 1B7F">
+                <div class="category-name">Scegli</div>
+            </div>
 
+            <div class="category" onclick="addSticker('Sticker Screenshot')">
+                <img src="Screenshot 2025-04-09 (19.30.53).png" class="category-image" alt="Sticker Screenshot">
+                <div class="category-name">Scegli</div>
+            </div>
 
+        </div>
 
-<div class="coming-soon">
-
-<h2>🏷️ Stickers Oasis</h2>
-
-<p>
-Con ogni ordine hai diritto a scegliere fino a 3 stickers gratuiti.
-Scegli i tuoi preferiti e li aggiungeremo al tuo ordine.
-</p>
-
-</div>
-
-
-
-<div class="products">
-
-
-
-<div class="product">
-
-<img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="product-image">
-
-<h2>Sticker 1</h2>
-
-<button class="checkout" onclick="addSticker('Sticker 1')">
-➕ Aggiungi sticker
-</button>
-
-</div>
-
-
-
-<div class="product">
-
-<img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="product-image">
-
-<h2>Sticker 2</h2>
-
-<button class="checkout" onclick="addSticker('Sticker 2')">
-➕ Aggiungi sticker
-</button>
+    </div>
 
 </div>
-
-
-
-<div class="product">
-
-<img src="IMG_9804.jpeg" class="product-image">
-
-<h2>Sticker 3</h2>
-
-<button class="checkout" onclick="addSticker('Sticker 3')">
-➕ Aggiungi sticker
-</button>
-
-</div>
-
-
-
-<div class="product">
-
-<img src="IMG_0529.JPG" class="product-image">
-
-<h2>Sticker 4</h2>
-
-<button class="checkout" onclick="addSticker('Sticker 4')">
-➕ Aggiungi sticker
-</button>
-
-</div><div class="product">
-
-<img src="IMG_0530.JPG" class="product-image">
-
-<h2>Sticker 5</h2>
-
-<button class="checkout" onclick="addSticker('Sticker 5')">
-➕ Aggiungi sticker
-</button>
-
-</div>
-
-
-
-<div class="product">
-
-<img src="OASIS.png" class="product-image">
-
-<h2>Sticker Logo Oasis</h2>
-
-<button class="checkout" onclick="addSticker('Sticker Logo Oasis')">
-➕ Aggiungi sticker
-</button>
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<div class="cart">
-
-
-<div class="cart-title">
-🏷️ Sticker scelti
-</div>
-
-
-
-<div id="stickerCart">
-
-Nessun sticker scelto
-
-</div>
-
-
-
-
-<a href="index.html">
-
-<button class="checkout">
-
-🛒 Vai al carrello
-
-</button>
-
-</a>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
 
 <script>
 
+let stickers = [];
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addSticker(nome) {
 
+    if (stickers.length >= 3) {
+        alert("Hai già scelto 3 stickers per questo ordine 🎁");
+        return;
+    }
 
+    stickers.push(nome);
 
-function addSticker(name){
+    localStorage.setItem(
+        "stickers",
+        JSON.stringify(stickers)
+    );
 
+    document.getElementById("counter").innerHTML =
+        "Hai scelto " + stickers.length + " / 3 stickers";
 
-let stickers = cart.filter(item => item.includes("Sticker"));
-
-
-
-if(stickers.length >= 3){
-
-alert("Hai massimo 3 sticker");
-
-return;
-
+    alert("✅ " + nome + " aggiunto");
 }
-
-
-
-cart.push(name);
-
-
-localStorage.setItem("cart", JSON.stringify(cart));
-
-
-showStickerCart();
-
-
-
-let disponibili = 3 - cart.filter(item => item.includes("Sticker")).length;
-
-
-
-if(disponibili === 2){
-
-alert("Ti restano 2 sticker disponibili");
-
-}
-
-else if(disponibili === 1){
-
-alert("Ti resta 1 sticker disponibile");
-
-}
-
-else if(disponibili === 0){
-
-alert("Questo era il tuo ultimo sticker");
-
-}
-
-
-}function showStickerCart(){
-
-
-let box=document.getElementById("stickerCart");
-
-
-let stickers = cart.filter(item => item.includes("Sticker"));
-
-
-
-if(stickers.length===0){
-
-box.innerHTML="Nessun sticker scelto";
-
-return;
-
-}
-
-
-
-box.innerHTML="";
-
-
-
-stickers.forEach((item)=>{
-
-
-let index = cart.indexOf(item);
-
-
-
-box.innerHTML +=
-
-"🏷️ " + item +
-
-' <button onclick="removeSticker('+index+')">❌</button><br><br>';
-
-
-
-});
-
-
-}
-
-
-
-
-
-function removeSticker(index){
-
-
-cart.splice(index,1);
-
-
-localStorage.setItem("cart", JSON.stringify(cart));
-
-
-showStickerCart();
-
-
-}
-
-
-
-
-window.onload=function(){
-
-showStickerCart();
-
-}
-
-
 
 </script>
 
-
-
 </body>
-
 </html>
