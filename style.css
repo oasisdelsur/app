@@ -11,7 +11,18 @@ body {
 }
 .container {
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 15px;
+}
+/* =========================
+   TITOLO
+========================= */
+.section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 15px 0 20px;
 }
 /* =========================
    CATEGORIE
@@ -62,6 +73,31 @@ body {
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 12px;
+}
+/* =========================
+   GALLERIA FOTO
+========================= */
+.product {
+    width: 100%;
+    max-width: 700px;
+    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.product-image {
+    width: 45%;
+    max-width: 300px;
+    max-height: 350px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    background: #111;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, .6);
 }
 /* =========================
    CARRELLO
@@ -130,13 +166,15 @@ body::before {
     background: #00ff88;
     top: -250px;
     left: -250px;
-    animation: greenMove1 12s infinite alternate;
+    animation:
+        greenMove1 12s infinite alternate;
 }
 body::after {
     background: #00ff44;
     bottom: -250px;
     right: -250px;
-    animation: greenMove2 16s infinite alternate;
+    animation:
+        greenMove2 16s infinite alternate;
 }
 @keyframes greenMove1 {
     0% {
@@ -155,45 +193,41 @@ body::after {
     }
 }
 /* =========================
-   GALLERIA PRODOTTO
-========================= */
-.product {
-    width: 100%;
-    max-width: 700px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-.product-image {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    max-height: 650px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    border-radius: 18px;
-    background: #111;
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, .6);
-}
-/* =========================
-   MOBILE
+   TELEFONO
 ========================= */
 @media (max-width: 500px) {
+    .container {
+        padding: 12px;
+    }
     .category {
         width: 100%;
         margin-right: 0;
     }
+    .section-title {
+        font-size: 24px;
+    }
     .product {
-        max-width: 100%;
-        gap: 14px;
-        margin-top: 15px;
+        width: 100%;
+        margin: 20px auto;
+        gap: 16px;
     }
     .product-image {
-        width: 100%;
-        max-height: 480px;
+        width: 70%;
+        max-width: 260px;
+        max-height: 320px;
         border-radius: 14px;
+    }
+    .back-button a {
+        font-size: 25px;
+    }
+}
+/* =========================
+   TELEFONI MOLTO PICCOLI
+========================= */
+@media (max-width: 360px) {
+    .product-image {
+        width: 65%;
+        max-width: 230px;
+        max-height: 290px;
     }
 }
