@@ -2,118 +2,62 @@
 <html lang="it">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sticker Collection</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <div class="container">
 
-    <div class="back-button">
-        <a href="shop.html">
-            ← Indietro
-        </a>
-    </div>
-
-    <div class="section-title">
-        🏷️ Scegli i tuoi stickers
-    </div>
-
-    <div class="product">
-
-        <h3 id="counter">
-            Hai scelto 0 / 3 stickers
-        </h3>
-
-        <div class="products">
-
-            <div class="category" onclick="addSticker('Sticker IMG 0529')">
-
-                <img
-                    src="IMG_0529.JPG"
-                    class="category-image"
-                    alt="Sticker IMG 0529"
-                >
-
-                <div class="category-name">
-                    Scegli
-                </div>
-
-            </div>
-
-
-            <div class="category" onclick="addSticker('Sticker IMG 0530')">
-
-                <img
-                    src="IMG_0530.JPG"
-                    class="category-image"
-                    alt="Sticker IMG 0530"
-                >
-
-                <div class="category-name">
-                    Scegli
-                </div>
-
-            </div>
-
-
-            <div class="category" onclick="addSticker('Sticker 52e')">
-
-                <img
-                    src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG"
-                    class="category-image"
-                    alt="Sticker 52e"
-                >
-
-                <div class="category-name">
-                    Scegli
-                </div>
-
-            </div>
-
-
-            <div class="category" onclick="addSticker('Sticker 1B7F')">
-
-                <img
-                    src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG"
-                    class="category-image"
-                    alt="Sticker 1B7F"
-                >
-
-                <div class="category-name">
-                    Scegli
-                </div>
-
-            </div>
-
-
-            <div class="category" onclick="addSticker('Sticker Screenshot')">
-
-                <img
-                    src="Screenshot 2025-04-09 (19.30.53).png"
-                    class="category-image"
-                    alt="Sticker Screenshot"
-                >
-
-                <div class="category-name">
-                    Scegli
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<div class="back-button">
+<a href="shop.html">
+← Indietro
+</a>
 </div>
 
+<div class="section-title">
+🏷️ Scegli i tuoi stickers
+</div>
+
+<div class="product">
+
+<h3 id="counter">
+Hai scelto 0 / 3 stickers
+</h3>
+
+<div class="products">
+
+<div class="category" onclick="addSticker('Sticker IMG 0529')">
+<img src="IMG_0529.JPG" class="category-image">
+<div class="category-name">Scegli</div>
+</div>
+
+<div class="category" onclick="addSticker('Sticker IMG 0530')">
+<img src="IMG_0530.JPG" class="category-image">
+<div class="category-name">Scegli</div>
+</div>
+
+<div class="category" onclick="addSticker('Sticker 52e')">
+<img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="category-image">
+<div class="category-name">Scegli</div>
+</div>
+
+<div class="category" onclick="addSticker('Sticker 1B7F')">
+<img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="category-image">
+<div class="category-name">Scegli</div>
+</div>
+
+<div class="category" onclick="addSticker('Sticker Screenshot')">
+<img src="Screenshot 2025-04-09 (19.30.53).png" class="category-image">
+<div class="category-name">Scegli</div>
+</div>
+
+</div>
+</div>
+</div>
 
 <script>
 
@@ -121,24 +65,23 @@ let stickers = [];
 
 function addSticker(nome) {
 
-    if (stickers.length >= 3) {
+if (stickers.length >= 3) {
+alert("Hai già scelto 3 stickers per questo ordine 🎁");
+return;
+}
 
-        alert("Hai già scelto 3 stickers per questo ordine 🎁");
+stickers.push(nome);
 
-        return;
-    }
+localStorage.setItem(
+"stickers",
+JSON.stringify(stickers)
+);
 
-    stickers.push(nome);
+document.getElementById("counter").innerHTML =
+"Hai scelto " + stickers.length + " / 3 stickers";
 
-    localStorage.setItem(
-        "stickers",
-        JSON.stringify(stickers)
-    );
+alert("✅ " + nome + " aggiunto");
 
-    document.getElementById("counter").innerHTML =
-        "Hai scelto " + stickers.length + " / 3 stickers";
-
-    alert("✅ " + nome + " aggiunto");
 }
 
 </script>
