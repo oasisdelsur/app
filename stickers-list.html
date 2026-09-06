@@ -12,159 +12,136 @@
 
 </head>
 
-
 <body>
-
 
 <div class="container">
 
+    <div class="back-button">
+        <a href="shop.html">
+            ← Indietro
+        </a>
+    </div>
 
-<div class="back-button">
+    <div class="section-title">
+        🏷️ Scegli i tuoi stickers
+    </div>
 
-<a href="stickers.html">
-← Indietro
-</a>
+    <div class="product">
 
-</div>
+        <h3 id="counter">
+            Hai scelto 0 / 3 stickers
+        </h3>
 
+        <div class="products">
 
-<div class="section-title">
+            <div class="category" onclick="addSticker('Sticker IMG 0529')">
 
-🏷️ Scegli i tuoi stickers
+                <img
+                    src="IMG_0529.JPG"
+                    class="category-image"
+                    alt="Sticker IMG 0529"
+                >
 
-</div>
+                <div class="category-name">
+                    Scegli
+                </div>
 
-
-<div class="product">
-
-<h3 id="counter">
-Hai scelto 0 / 3 stickers
-</h3>
-
-
-<div class="products">
-
-
-<div class="category" onclick="addSticker('Oasis Sticker 1')">
-
-<img src="OASIS.png" class="category-image">
-
-<div class="category-name">
-Scegli
-</div>
-
-</div>
+            </div>
 
 
+            <div class="category" onclick="addSticker('Sticker IMG 0530')">
 
-<div class="category" onclick="addSticker('Sticker IMG 0529')">
+                <img
+                    src="IMG_0530.JPG"
+                    class="category-image"
+                    alt="Sticker IMG 0530"
+                >
 
-<img src="IMG_0529.JPG" class="category-image">
+                <div class="category-name">
+                    Scegli
+                </div>
 
-<div class="category-name">
-Scegli
-</div>
-
-</div>
-
-
-
-<div class="category" onclick="addSticker('Sticker IMG 0530')">
-
-<img src="IMG_0530.JPG" class="category-image">
-
-<div class="category-name">
-Scegli
-</div>
-
-</div>
+            </div>
 
 
+            <div class="category" onclick="addSticker('Sticker 52e')">
 
-<div class="category" onclick="addSticker('Sticker 52e')">
+                <img
+                    src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG"
+                    class="category-image"
+                    alt="Sticker 52e"
+                >
 
-<img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="category-image">
+                <div class="category-name">
+                    Scegli
+                </div>
 
-<div class="category-name">
-Scegli
-</div>
-
-</div>
-
-
-
-<div class="category" onclick="addSticker('Sticker 1B7F')">
-
-<img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="category-image">
-
-<div class="category-name">
-Scegli
-</div>
-
-</div>
+            </div>
 
 
+            <div class="category" onclick="addSticker('Sticker 1B7F')">
 
-<div class="category" onclick="addSticker('Sticker Screenshot')">
+                <img
+                    src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG"
+                    class="category-image"
+                    alt="Sticker 1B7F"
+                >
 
-<img src="Screenshot 2025-04-09 (19.30.53).png" class="category-image">
+                <div class="category-name">
+                    Scegli
+                </div>
 
-<div class="category-name">
-Scegli
-</div>
+            </div>
 
-</div>
 
+            <div class="category" onclick="addSticker('Sticker Screenshot')">
+
+                <img
+                    src="Screenshot 2025-04-09 (19.30.53).png"
+                    class="category-image"
+                    alt="Sticker Screenshot"
+                >
+
+                <div class="category-name">
+                    Scegli
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
-
-</div>
-
-
-</div>
-
 
 
 <script>
 
-let stickers=[];
+let stickers = [];
 
+function addSticker(nome) {
 
-function addSticker(nome){
+    if (stickers.length >= 3) {
 
+        alert("Hai già scelto 3 stickers per questo ordine 🎁");
 
-if(stickers.length>=3){
+        return;
+    }
 
-alert("Hai già scelto 3 stickers per questo ordine 🎁");
+    stickers.push(nome);
 
-return;
+    localStorage.setItem(
+        "stickers",
+        JSON.stringify(stickers)
+    );
 
+    document.getElementById("counter").innerHTML =
+        "Hai scelto " + stickers.length + " / 3 stickers";
+
+    alert("✅ " + nome + " aggiunto");
 }
-
-
-stickers.push(nome);
-
-
-localStorage.setItem(
-"stickers",
-JSON.stringify(stickers)
-);
-
-
-document.getElementById("counter").innerHTML =
-"Hai scelto " + stickers.length + " / 3 stickers";
-
-
-alert("✅ "+nome+" aggiunto");
-
-
-}
-
-
 
 </script>
 
-
 </body>
-
 </html>
