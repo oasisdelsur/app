@@ -6,7 +6,9 @@
     <title>Oasis del Sur</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="container">
 
     <!-- FRECCIA -->
@@ -86,10 +88,10 @@
 
     <!-- STICKERS -->
     <a href="stickers.html" class="category-link">
-        <div class="category sticker-category">
+        <div class="category">
             <img
                 src="IMG_1531.jpeg"
-                class="sticker-image"
+                class="category-image"
                 alt="Stickers"
             >
             <div class="category-name" data-translate="stickers">
@@ -99,6 +101,7 @@
     </a>
 
 </div>
+
 
 <!-- CARRELLO -->
 <div class="cart">
@@ -134,207 +137,208 @@
 
 </div>
 
+
 <script>
 
-    /* =========================
-       TRADUZIONI
-    ========================= */
+/* =========================
+   TRADUZIONI
+========================= */
 
-    const translations = {
+const translations = {
 
-        it: {
-            weed: "Weed",
-            frozen: "Frozen",
-            dry: "Dry",
-            extract: "Extract",
-            vape: "VAPE",
-            stickers: "🏷️ Stickers",
-            cartTitle: "🛒 Carrello",
-            emptyCart: "Nessun prodotto",
-            confirmOrder: "📲 Conferma ordine",
-            payBitcoin: "₿ Paga in Bitcoin",
-            emptyAlert: "Il carrello è vuoto",
-            orderMessage:
-                "Ciao Oasis del Sur, vorrei ordinare:"
-        },
+    it: {
+        weed: "Weed",
+        frozen: "Frozen",
+        dry: "Dry",
+        extract: "Extract",
+        vape: "VAPE",
+        stickers: "🏷️ Stickers",
+        cartTitle: "🛒 Carrello",
+        emptyCart: "Nessun prodotto",
+        confirmOrder: "📲 Conferma ordine",
+        payBitcoin: "₿ Paga in Bitcoin",
+        emptyAlert: "Il carrello è vuoto",
+        orderMessage:
+            "Ciao Oasis del Sur, vorrei ordinare:"
+    },
 
-        en: {
-            weed: "Weed",
-            frozen: "Frozen",
-            dry: "Dry",
-            extract: "Extract",
-            vape: "VAPE",
-            stickers: "🏷️ Stickers",
-            cartTitle: "🛒 Cart",
-            emptyCart: "No products",
-            confirmOrder: "📲 Confirm order",
-            payBitcoin: "₿ Pay with Bitcoin",
-            emptyAlert: "The cart is empty",
-            orderMessage:
-                "Hello Oasis del Sur, I would like to order:"
-        },
+    en: {
+        weed: "Weed",
+        frozen: "Frozen",
+        dry: "Dry",
+        extract: "Extract",
+        vape: "VAPE",
+        stickers: "🏷️ Stickers",
+        cartTitle: "🛒 Cart",
+        emptyCart: "No products",
+        confirmOrder: "📲 Confirm order",
+        payBitcoin: "₿ Pay with Bitcoin",
+        emptyAlert: "The cart is empty",
+        orderMessage:
+            "Hello Oasis del Sur, I would like to order:"
+    },
 
-        es: {
-            weed: "Weed",
-            frozen: "Frozen",
-            dry: "Dry",
-            extract: "Extract",
-            vape: "VAPE",
-            stickers: "🏷️ Stickers",
-            cartTitle: "🛒 Carrito",
-            emptyCart: "Ningún producto",
-            confirmOrder: "📲 Confirmar pedido",
-            payBitcoin: "₿ Pagar con Bitcoin",
-            emptyAlert: "El carrello está vacío",
-            orderMessage:
-                "Hola Oasis del Sur, quisiera hacer un pedido:"
-        },
+    es: {
+        weed: "Weed",
+        frozen: "Frozen",
+        dry: "Dry",
+        extract: "Extract",
+        vape: "VAPE",
+        stickers: "🏷️ Stickers",
+        cartTitle: "🛒 Carrito",
+        emptyCart: "Ningún producto",
+        confirmOrder: "📲 Confirmar pedido",
+        payBitcoin: "₿ Pagar con Bitcoin",
+        emptyAlert: "El carrello está vacío",
+        orderMessage:
+            "Hola Oasis del Sur, quisiera hacer un pedido:"
+    },
 
-        de: {
-            weed: "Weed",
-            frozen: "Frozen",
-            dry: "Dry",
-            extract: "Extrakte",
-            vape: "VAPE",
-            stickers: "🏷️ Sticker",
-            cartTitle: "🛒 Warenkorb",
-            emptyCart: "Keine Produkte",
-            confirmOrder: "📲 Bestellung bestätigen",
-            payBitcoin: "₿ Mit Bitcoin bezahlen",
-            emptyAlert: "Der Warenkorb ist leer",
-            orderMessage:
-                "Hallo Oasis del Sur, ich möchte bestellen:"
-        }
-
-    };
-
-
-    /* =========================
-       LINGUA
-    ========================= */
-
-    function getLanguage() {
-        return localStorage.getItem("language") || "it";
+    de: {
+        weed: "Weed",
+        frozen: "Frozen",
+        dry: "Dry",
+        extract: "Extrakte",
+        vape: "VAPE",
+        stickers: "🏷️ Sticker",
+        cartTitle: "🛒 Warenkorb",
+        emptyCart: "Keine Produkte",
+        confirmOrder: "📲 Bestellung bestätigen",
+        payBitcoin: "₿ Mit Bitcoin bezahlen",
+        emptyAlert: "Der Warenkorb ist leer",
+        orderMessage:
+            "Hallo Oasis del Sur, ich möchte bestellen:"
     }
 
-    function translatePage() {
-
-        const language = getLanguage();
-        const texts = translations[language];
-
-        document.documentElement.lang = language;
-
-        document
-            .querySelectorAll("[data-translate]")
-            .forEach(function(element) {
-
-                const key =
-                    element.getAttribute("data-translate");
-
-                if (texts[key]) {
-                    element.textContent = texts[key];
-                }
-
-            });
-    }
+};
 
 
-    /* =========================
-       CARRELLO
-    ========================= */
+/* =========================
+   LINGUA
+========================= */
 
-    let cart =
-        JSON.parse(localStorage.getItem("cart")) || [];
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
 
-    function showCart() {
+function translatePage() {
 
-        const box =
-            document.getElementById("cart");
+    const language = getLanguage();
+    const texts = translations[language];
 
-        if (cart.length === 0) {
+    document.documentElement.lang = language;
 
-            const language = getLanguage();
+    document
+        .querySelectorAll("[data-translate]")
+        .forEach(function(element) {
 
-            box.innerHTML =
-                translations[language].emptyCart;
+            const key =
+                element.getAttribute("data-translate");
 
-            return;
-        }
-
-        box.innerHTML = "";
-
-        cart.forEach(function(item, index) {
-
-            box.innerHTML +=
-                item +
-                ' <button onclick="removeItem(' +
-                index +
-                ')">❌</button><br><br>';
+            if (texts[key]) {
+                element.textContent = texts[key];
+            }
 
         });
+}
+
+
+/* =========================
+   CARRELLO
+========================= */
+
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+function showCart() {
+
+    const box =
+        document.getElementById("cart");
+
+    if (cart.length === 0) {
+
+        const language = getLanguage();
+
+        box.innerHTML =
+            translations[language].emptyCart;
+
+        return;
     }
 
+    box.innerHTML = "";
 
-    function removeItem(index) {
+    cart.forEach(function(item, index) {
 
-        cart.splice(index, 1);
+        box.innerHTML +=
+            item +
+            ' <button onclick="removeItem(' +
+            index +
+            ')">❌</button><br><br>';
 
-        localStorage.setItem(
-            "cart",
-            JSON.stringify(cart)
+    });
+}
+
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    showCart();
+}
+
+
+/* =========================
+   INVIO ORDINE
+========================= */
+
+function sendOrder() {
+
+    if (cart.length === 0) {
+
+        alert(
+            translations[getLanguage()]
+                .emptyAlert
         );
 
+        return;
+    }
+
+    const ordine =
+        cart.join("\n");
+
+    const messaggio =
+        translations[getLanguage()]
+            .orderMessage +
+        "\n\n" +
+        ordine;
+
+    const telegram =
+        "https://t.me/wordex17?text=" +
+        encodeURIComponent(messaggio);
+
+    window.location.href =
+        telegram;
+}
+
+
+/* =========================
+   AVVIO PAGINA
+========================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        translatePage();
         showCart();
+
     }
-
-
-    /* =========================
-       INVIO ORDINE
-    ========================= */
-
-    function sendOrder() {
-
-        if (cart.length === 0) {
-
-            alert(
-                translations[getLanguage()]
-                    .emptyAlert
-            );
-
-            return;
-        }
-
-        const ordine =
-            cart.join("\n");
-
-        const messaggio =
-            translations[getLanguage()]
-                .orderMessage +
-            "\n\n" +
-            ordine;
-
-        const telegram =
-            "https://t.me/wordex17?text=" +
-            encodeURIComponent(messaggio);
-
-        window.location.href =
-            telegram;
-    }
-
-
-    /* =========================
-       AVVIO PAGINA
-    ========================= */
-
-    window.addEventListener(
-        "load",
-        function() {
-
-            translatePage();
-            showCart();
-
-        }
-    );
+);
 
 </script>
 
