@@ -8,10 +8,12 @@
 </head>
 <body>
 <div class="container">
+
     <!-- FRECCIA -->
     <div class="back-button">
         <a href="index.html">←</a>
     </div>
+
     <!-- WEED -->
     <a href="weed.html" class="category-link">
         <div class="category">
@@ -25,6 +27,7 @@
             </div>
         </div>
     </a>
+
     <!-- FROZEN -->
     <a href="frozen.html" class="category-link">
         <div class="category">
@@ -38,6 +41,7 @@
             </div>
         </div>
     </a>
+
     <!-- DRY -->
     <a href="dry.html" class="category-link">
         <div class="category">
@@ -51,6 +55,7 @@
             </div>
         </div>
     </a>
+
     <!-- EXTRACT -->
     <a href="extract.html" class="category-link">
         <div class="category">
@@ -64,6 +69,7 @@
             </div>
         </div>
     </a>
+
     <!-- VAPE -->
     <a href="VAPE.html" class="category-link">
         <div class="category">
@@ -77,11 +83,12 @@
             </div>
         </div>
     </a>
+
     <!-- STICKERS -->
     <a href="stickers.html" class="category-link">
         <div class="category sticker-category">
             <img
-                src="IMG_9804.jpeg"
+                src="IMG_1531.jpeg"
                 class="sticker-image"
                 alt="Stickers"
             >
@@ -90,17 +97,22 @@
             </div>
         </div>
     </a>
+
 </div>
+
 <!-- CARRELLO -->
 <div class="cart">
+
     <div class="cart-title" data-translate="cartTitle">
         🛒 Carrello
     </div>
+
     <div id="cart">
         <span data-translate="emptyCart">
             Nessun prodotto
         </span>
     </div>
+
     <!-- CONFERMA ORDINE -->
     <button
         class="checkout"
@@ -109,6 +121,7 @@
     >
         📲 Conferma ordine
     </button>
+
     <!-- BITCOIN -->
     <a href="bitcoin.html">
         <button
@@ -118,12 +131,17 @@
             ₿ Paga in Bitcoin
         </button>
     </a>
+
 </div>
+
 <script>
+
     /* =========================
        TRADUZIONI
     ========================= */
+
     const translations = {
+
         it: {
             weed: "Weed",
             frozen: "Frozen",
@@ -139,6 +157,7 @@
             orderMessage:
                 "Ciao Oasis del Sur, vorrei ordinare:"
         },
+
         en: {
             weed: "Weed",
             frozen: "Frozen",
@@ -154,6 +173,7 @@
             orderMessage:
                 "Hello Oasis del Sur, I would like to order:"
         },
+
         es: {
             weed: "Weed",
             frozen: "Frozen",
@@ -165,10 +185,11 @@
             emptyCart: "Ningún producto",
             confirmOrder: "📲 Confirmar pedido",
             payBitcoin: "₿ Pagar con Bitcoin",
-            emptyAlert: "El carrito está vacío",
+            emptyAlert: "El carrello está vacío",
             orderMessage:
                 "Hola Oasis del Sur, quisiera hacer un pedido:"
         },
+
         de: {
             weed: "Weed",
             frozen: "Frozen",
@@ -184,101 +205,138 @@
             orderMessage:
                 "Hallo Oasis del Sur, ich möchte bestellen:"
         }
+
     };
+
+
     /* =========================
        LINGUA
     ========================= */
+
     function getLanguage() {
         return localStorage.getItem("language") || "it";
     }
+
     function translatePage() {
+
         const language = getLanguage();
         const texts = translations[language];
-        document.documentElement.lang =
-            language;
+
+        document.documentElement.lang = language;
+
         document
             .querySelectorAll("[data-translate]")
             .forEach(function(element) {
+
                 const key =
-                    element.getAttribute(
-                        "data-translate"
-                    );
+                    element.getAttribute("data-translate");
+
                 if (texts[key]) {
-                    element.textContent =
-                        texts[key];
+                    element.textContent = texts[key];
                 }
+
             });
     }
+
+
     /* =========================
        CARRELLO
     ========================= */
+
     let cart =
-        JSON.parse(
-            localStorage.getItem("cart")
-        ) || [];
+        JSON.parse(localStorage.getItem("cart")) || [];
+
     function showCart() {
+
         const box =
             document.getElementById("cart");
+
         if (cart.length === 0) {
-            const language =
-                getLanguage();
+
+            const language = getLanguage();
+
             box.innerHTML =
                 translations[language].emptyCart;
+
             return;
         }
+
         box.innerHTML = "";
+
         cart.forEach(function(item, index) {
+
             box.innerHTML +=
                 item +
                 ' <button onclick="removeItem(' +
                 index +
                 ')">❌</button><br><br>';
+
         });
     }
+
+
     function removeItem(index) {
+
         cart.splice(index, 1);
+
         localStorage.setItem(
             "cart",
             JSON.stringify(cart)
         );
+
         showCart();
     }
+
+
     /* =========================
        INVIO ORDINE
     ========================= */
+
     function sendOrder() {
+
         if (cart.length === 0) {
+
             alert(
                 translations[getLanguage()]
                     .emptyAlert
             );
+
             return;
         }
+
         const ordine =
             cart.join("\n");
+
         const messaggio =
             translations[getLanguage()]
                 .orderMessage +
             "\n\n" +
             ordine;
+
         const telegram =
             "https://t.me/wordex17?text=" +
-            encodeURIComponent(
-                messaggio
-            );
+            encodeURIComponent(messaggio);
+
         window.location.href =
             telegram;
     }
+
+
     /* =========================
        AVVIO PAGINA
     ========================= */
+
     window.addEventListener(
         "load",
         function() {
+
             translatePage();
             showCart();
+
         }
     );
+
 </script>
+
 </body>
 </html>
