@@ -1,173 +1,201 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-<title>Frozen - Oasis del Sur</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container">
-    <!-- TITOLO -->
-    <div
-        class="section-title"
-        id="frozenTitle"
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
-        ❄️ Frozen
-    </div>
-    <!-- INDIETRO -->
-    <div class="back-button">
-        <a
-            href="shop.html"
-            id="back"
+
+    <title>Frozen - Oasis del Sur</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+        /* ==========================
+           FROZEN - SELEZIONE
+        ========================== */
+
+        .frozen-list {
+            width: 100%;
+            max-width: 700px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .frozen-card {
+            width: 100%;
+            min-height: 120px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background: rgba(20,20,20,.75);
+            backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(0,255,120,.15);
+
+            box-shadow:
+                0 0 20px rgba(0,255,120,.08),
+                0 10px 30px rgba(0,0,0,.7);
+
+            transition: .3s;
+        }
+
+        .frozen-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0,255,120,.35);
+        }
+
+        .frozen-name {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .frozen-folder {
+            font-size: 32px;
+            margin-right: 12px;
+        }
+
+        /* ==========================
+           TELEFONO
+        ========================== */
+
+        @media (max-width: 500px) {
+
+            .frozen-list {
+                margin-top: 20px;
+            }
+
+            .frozen-card {
+                min-height: 105px;
+                padding: 20px;
+            }
+
+            .frozen-name {
+                font-size: 19px;
+            }
+
+            .frozen-folder {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- TITOLO -->
+
+        <div
+            class="section-title"
+            id="frozenTitle"
         >
-            ← Indietro
-        </a>
-    </div>
-    <!-- PRODOTTI -->
-    <div class="products">
-        <div class="product">
+            ❄️ Frozen
+        </div>
+
+
+        <!-- INDIETRO -->
+
+        <div class="back-button">
+
+            <a
+                href="shop.html"
+                id="back"
+            >
+                ← Indietro
+            </a>
+
+        </div>
+
+
+        <!-- SELEZIONE FROZEN -->
+
+        <div class="frozen-list">
+
             <a
                 href="highland-terps.html"
                 class="category-link"
             >
-                <div class="product-name">
-                    Highland Terps 90U
+
+                <div class="frozen-card">
+
+                    <span class="frozen-folder">
+                        📁
+                    </span>
+
+                    <span class="frozen-name">
+                        Highland Terps
+                    </span>
+
                 </div>
+
             </a>
+
         </div>
+
     </div>
-</div>
-<!-- CARRELLO -->
-<div class="cart">
-    <div
-        class="cart-title"
-        id="cartTitle"
-    >
-        🛒 Carrello
-    </div>
-    <div id="cart">
-        Nessun producto
-    </div>
-    <button
-        class="checkout"
-        id="orderButton"
-        onclick="sendOrder()"
-    >
-        📲 Conferma ordine
-    </button>
-</div>
-<script src="language.js"></script>
-<script>
-/* ==========================
-   CARRELLO
-========================== */
-let cart =
-    JSON.parse(
-        localStorage.getItem("cart")
-    ) || [];
-function showCart() {
-    const box =
-        document.getElementById("cart");
-    if (!box) {
-        return;
-    }
-    const lang =
-        localStorage.getItem("language") || "it";
-    const t =
-        translations[lang] || translations.it;
-    if (cart.length === 0) {
-        box.innerHTML =
-            t.emptyCart || "Nessun prodotto";
-        return;
-    }
-    box.innerHTML = "";
-    cart.forEach(function(item, index) {
-        box.innerHTML +=
-            item +
-            ' <button onclick="removeItem(' +
-            index +
-            ')">❌</button>' +
-            '<br><br>';
-    });
-}
-function removeItem(index) {
-    cart.splice(index, 1);
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-    showCart();
-}
-/* ==========================
-   INVIO ORDINE
-========================== */
-function sendOrder() {
-    const lang =
-        localStorage.getItem("language") || "it";
-    const t =
-        translations[lang] || translations.it;
-    if (cart.length === 0) {
-        alert(
-            t.emptyAlert ||
-            "Il carrello è vuoto"
+
+
+    <!-- LINGUA -->
+
+    <script src="language.js"></script>
+
+    <script>
+
+        window.addEventListener(
+            "load",
+            function() {
+
+                const lang =
+                    localStorage.getItem(
+                        "language"
+                    ) || "it";
+
+                if (
+                    typeof translations !== "undefined" &&
+                    translations[lang]
+                ) {
+
+                    const t =
+                        translations[lang];
+
+                    document.documentElement.lang =
+                        lang;
+
+                    document.getElementById(
+                        "frozenTitle"
+                    ).innerHTML =
+                        "❄️ " +
+                        t.frozen;
+
+                    document.getElementById(
+                        "back"
+                    ).innerHTML =
+                        t.back;
+                }
+
+            }
         );
-        return;
-    }
-    const ordine =
-        cart.join("\n");
-    const messaggio =
-        (t.orderMessage ||
-        "Ciao Oasis del Sur, vorrei ordinare:") +
-        "\n\n" +
-        ordine;
-    const telegram =
-        "https://t.me/wordex17?text=" +
-        encodeURIComponent(
-            messaggio
-        );
-    window.location.href =
-        telegram;
-}
-/* ==========================
-   LINGUA
-========================== */
-window.addEventListener(
-    "load",
-    function() {
-        const lang =
-            localStorage.getItem("language") || "it";
-        if (
-            typeof translations !== "undefined" &&
-            translations[lang]
-        ) {
-            const t =
-                translations[lang];
-            document.documentElement.lang =
-                lang;
-            document.getElementById(
-                "frozenTitle"
-            ).innerHTML =
-                "❄️ " + t.frozen;
-            document.getElementById(
-                "back"
-            ).innerHTML =
-                t.back;
-            document.getElementById(
-                "cartTitle"
-            ).innerHTML =
-                t.cart;
-            document.getElementById(
-                "orderButton"
-            ).innerHTML =
-                t.order;
-        }
-        showCart();
-    }
-);
-</script>
+
+    </script>
+
 </body>
+
 </html>
