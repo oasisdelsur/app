@@ -1,33 +1,153 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>VAPE - Oasis del Sur</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+        /* ==========================
+           VAPE - SELEZIONE
+        ========================== */
+
+        .vape-list {
+            width: 100%;
+            max-width: 700px;
+            margin: 30px auto;
+
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .vape-card {
+            width: 100%;
+            min-height: 120px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background: rgba(20,20,20,.75);
+            backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(0,255,120,.15);
+
+            box-shadow:
+                0 0 20px rgba(0,255,120,.08),
+                0 10px 30px rgba(0,0,0,.7);
+
+            transition: .3s;
+        }
+
+        .vape-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0,255,120,.35);
+        }
+
+        .vape-name {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .vape-folder {
+            font-size: 32px;
+            margin-right: 12px;
+        }
+
+        /* ==========================
+           TELEFONO
+        ========================== */
+
+        @media (max-width: 500px) {
+
+            .vape-list {
+                margin-top: 20px;
+            }
+
+            .vape-card {
+                min-height: 105px;
+                padding: 20px;
+            }
+
+            .vape-name {
+                font-size: 19px;
+            }
+
+            .vape-folder {
+                font-size: 28px;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="section-title">
-        💨 VAPE
-    </div>
-
-    <div class="back-button">
-        <a href="shop.html">
-            ← Indietro
-        </a>
-    </div>
-
-    <a href="fat-tony.html" class="category-link">
-        <div class="category">
-            📁 VAPE FAT TONY
+        <div
+            class="section-title"
+            id="vapeTitle"
+        >
+            💨 VAPE
         </div>
-    </a>
 
-</div>
+        <div class="back-button">
+
+            <a
+                href="shop.html"
+                id="back"
+            >
+                ← Indietro
+            </a>
+
+        </div>
+
+        <div class="vape-list">
+
+            <a
+                href="fat-tony.html"
+                class="category-link"
+            >
+
+                <div class="vape-card">
+
+                    <span class="vape-folder">
+                        📁
+                    </span>
+
+                    <span class="vape-name">
+                        VAPE FAT TONY
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="language.js"></script>
 
 </body>
+
 </html>
