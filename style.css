@@ -18,7 +18,9 @@ body {
     padding: 15px;
 }
 
-/* TITOLO */
+/* =========================
+   TITOLO
+========================= */
 
 .section-title {
     text-align: center;
@@ -27,7 +29,9 @@ body {
     margin: 15px 0 20px;
 }
 
-/* CATEGORIE */
+/* =========================
+   CATEGORIE
+========================= */
 
 .category-link {
     text-decoration: none;
@@ -42,25 +46,18 @@ body {
     margin-bottom: 15px;
     min-height: 220px;
     padding: 18px;
-
     border-radius: 20px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
-
     background: rgba(20, 20, 20, .75);
     backdrop-filter: blur(14px);
-
     border: 1px solid rgba(0, 255, 120, .15);
-
     box-shadow:
         0 0 20px rgba(0, 255, 120, .08),
         0 10px 30px rgba(0, 0, 0, .7);
-
     transition: .3s;
 }
 
@@ -68,75 +65,43 @@ body {
     transform: translateY(-5px);
 }
 
-/* =========================
-   NOMI CATEGORIE
-========================= */
-
 .category-name {
-    font-family: Arial, Helvetica, sans-serif !important;
-
-    font-size: 12px !important;
-    font-weight: 700 !important;
-
-    text-transform: uppercase !important;
-    text-align: center !important;
-
-    line-height: 1 !important;
-
-    width: auto !important;
-    height: auto !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    letter-spacing: 0 !important;
-
-    transform: none !important;
-    scale: 1 !important;
-
-    display: block !important;
+    font-size: 20px;
+    font-weight: bold;
 }
-
-/* IMMAGINI */
 
 .category-image {
     width: 100%;
     height: 140px;
-
     object-fit: cover;
-
     border-radius: 15px;
-
     margin-bottom: 12px;
 }
 
-/* STICKER */
+/* =========================
+   STICKER
+========================= */
 
 .sticker-image {
     width: 100% !important;
     height: 140px !important;
-
     object-fit: cover !important;
-
     border-radius: 15px !important;
-
     margin-bottom: 12px;
-
     display: block;
 }
 
-/* GALLERIA */
+/* =========================
+   GALLERIA FOTO
+========================= */
 
 .product {
     width: 100%;
     max-width: 700px;
-
     margin: 25px auto;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     gap: 20px;
 }
 
@@ -144,35 +109,26 @@ body {
     width: 45%;
     max-width: 300px;
     max-height: 350px;
-
     height: auto;
-
     object-fit: contain;
-
     display: block;
-
     margin: 0 auto;
-
     border-radius: 15px;
-
     background: #111;
-
     box-shadow:
         0 8px 25px rgba(0, 0, 0, .6);
 }
 
-/* CARRELLO */
+/* =========================
+   CARRELLO
+========================= */
 
 .cart {
     clear: both;
-
     margin: 25px 15px;
     padding: 20px;
-
     border-radius: 22px;
-
     background: rgba(20, 20, 20, .75);
-
     backdrop-filter: blur(14px);
 }
 
@@ -183,35 +139,29 @@ body {
 
 #cart {
     margin-top: 15px;
-
     font-size: 16px;
-
     line-height: 1.8;
 }
 
-/* PULSANTI */
+/* =========================
+   PULSANTI
+========================= */
 
 .checkout {
     width: 100%;
-
     margin-top: 15px;
-
     padding: 15px;
-
     background: #e50914;
-
     color: white;
-
     border: none;
-
     border-radius: 30px;
-
     font-size: 17px;
-
     font-weight: bold;
 }
 
-/* FRECCIA */
+/* =========================
+   FRECCIA
+========================= */
 
 .back-button {
     padding: 10px 5px;
@@ -219,11 +169,8 @@ body {
 
 .back-button a {
     color: white;
-
     text-decoration: none;
-
     font-size: 28px;
-
     font-weight: bold;
 }
 
@@ -231,48 +178,37 @@ body {
     color: #00e676;
 }
 
-/* SFONDO VERDE */
+/* =========================
+   SFONDO VERDE
+========================= */
 
 body::before,
 body::after {
     content: "";
-
     position: fixed;
-
     width: 700px;
     height: 700px;
-
     border-radius: 50%;
-
     z-index: -1;
-
     filter: blur(140px);
-
     opacity: .35;
 }
 
 body::before {
     background: #00ff88;
-
     top: -250px;
     left: -250px;
-
     animation: greenMove1 12s infinite alternate;
 }
 
 body::after {
     background: #00ff44;
-
     bottom: -250px;
     right: -250px;
-
     animation: greenMove2 16s infinite alternate;
 }
 
-/* ANIMAZIONI */
-
 @keyframes greenMove1 {
-
     0% {
         transform: translate(0, 0) scale(1);
     }
@@ -283,7 +219,6 @@ body::after {
 }
 
 @keyframes greenMove2 {
-
     0% {
         transform: translate(0, 0) scale(1);
     }
@@ -293,7 +228,9 @@ body::after {
     }
 }
 
-/* TELEFONO */
+/* =========================
+   TELEFONO
+========================= */
 
 @media (max-width: 500px) {
 
@@ -313,16 +250,13 @@ body::after {
     .product {
         width: 100%;
         margin: 20px auto;
-
         gap: 16px;
     }
 
     .product-image {
         width: 70%;
-
         max-width: 260px;
         max-height: 320px;
-
         border-radius: 14px;
     }
 
@@ -333,22 +267,18 @@ body::after {
     .sticker-image {
         width: 100% !important;
         height: 140px !important;
-
         border-radius: 15px !important;
-    }
-
-    .category-name {
-        font-size: 12px !important;
     }
 }
 
-/* TELEFONI MOLTO PICCOLI */
+/* =========================
+   TELEFONI MOLTO PICCOLI
+========================= */
 
 @media (max-width: 360px) {
 
     .product-image {
         width: 65%;
-
         max-width: 230px;
         max-height: 290px;
     }
@@ -356,11 +286,6 @@ body::after {
     .sticker-image {
         width: 100% !important;
         height: 140px !important;
-
         border-radius: 15px !important;
-    }
-
-    .category-name {
-        font-size: 12px !important;
     }
 }
