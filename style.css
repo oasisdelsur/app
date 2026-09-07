@@ -18,9 +18,7 @@ body {
     padding: 15px;
 }
 
-/* =========================
-   TITOLO
-========================= */
+/* TITOLO */
 
 .section-title {
     text-align: center;
@@ -29,9 +27,7 @@ body {
     margin: 15px 0 20px;
 }
 
-/* =========================
-   CATEGORIE
-========================= */
+/* CATEGORIE */
 
 .category-link {
     text-decoration: none;
@@ -65,21 +61,17 @@ body {
     transform: translateY(-5px);
 }
 
-/* =========================
-   NOMI CATEGORIE
-========================= */
+/* NOMI CATEGORIE */
 
 .category-name {
-    font-size: 50px !important;
+    font-size: 25px !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
     text-align: center !important;
-    line-height: 1 !important;
+    line-height: 1.1 !important;
 }
 
-/* =========================
-   IMMAGINI CATEGORIE
-========================= */
+/* IMMAGINI CATEGORIE */
 
 .category-image {
     width: 100%;
@@ -89,9 +81,7 @@ body {
     margin-bottom: 12px;
 }
 
-/* =========================
-   STICKER
-========================= */
+/* STICKER */
 
 .sticker-image {
     width: 100% !important;
@@ -102,9 +92,7 @@ body {
     display: block;
 }
 
-/* =========================
-   GALLERIA FOTO
-========================= */
+/* GALLERIA FOTO */
 
 .product {
     width: 100%;
@@ -130,9 +118,7 @@ body {
         0 8px 25px rgba(0, 0, 0, .6);
 }
 
-/* =========================
-   CARRELLO
-========================= */
+/* CARRELLO */
 
 .cart {
     clear: both;
@@ -154,9 +140,7 @@ body {
     line-height: 1.8;
 }
 
-/* =========================
-   PULSANTI
-========================= */
+/* PULSANTI */
 
 .checkout {
     width: 100%;
@@ -170,9 +154,7 @@ body {
     font-weight: bold;
 }
 
-/* =========================
-   FRECCIA
-========================= */
+/* FRECCIA */
 
 .back-button {
     padding: 10px 5px;
@@ -189,9 +171,7 @@ body {
     color: #00e676;
 }
 
-/* =========================
-   SFONDO VERDE
-========================= */
+/* SFONDO VERDE */
 
 body::before,
 body::after {
@@ -239,9 +219,7 @@ body::after {
     }
 }
 
-/* =========================
-   TELEFONO
-========================= */
+/* TELEFONO */
 
 @media (max-width: 500px) {
 
@@ -282,9 +260,7 @@ body::after {
     }
 }
 
-/* =========================
-   TELEFONI MOLTO PICCOLI
-========================= */
+/* TELEFONI MOLTO PICCOLI */
 
 @media (max-width: 360px) {
 
