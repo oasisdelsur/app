@@ -70,7 +70,7 @@ body {
 ========================= */
 
 .category-name {
-    font-size: 25px;
+    font-size: 22px;
     font-weight: bold;
     text-transform: uppercase !important;
     text-align: center;
@@ -254,9 +254,10 @@ body::after {
     }
 
     .category-name {
-        font-size: 25px;
+        font-size: 21px;
         font-weight: bold;
         text-transform: uppercase !important;
+        text-align: center;
     }
 
     .section-title {
@@ -294,9 +295,10 @@ body::after {
 @media (max-width: 360px) {
 
     .category-name {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
         text-transform: uppercase !important;
+        text-align: center;
     }
 
     .product-image {
