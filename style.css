@@ -70,10 +70,11 @@ body {
 ========================= */
 
 .category-name {
-    font-size: 20px !important;
+    font-size: 28px !important;
     font-weight: bold;
     text-transform: uppercase !important;
     text-align: center;
+    line-height: 1.2;
 }
 
 /* =========================
