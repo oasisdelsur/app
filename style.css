@@ -18,9 +18,7 @@ body {
     padding: 15px;
 }
 
-/* =========================
-   TITOLO
-========================= */
+/* TITOLO */
 
 .section-title {
     text-align: center;
@@ -29,9 +27,7 @@ body {
     margin: 15px 0 20px;
 }
 
-/* =========================
-   CATEGORIE
-========================= */
+/* CATEGORIE */
 
 .category-link {
     text-decoration: none;
@@ -71,24 +67,21 @@ body {
     transform: translateY(-5px);
 }
 
-/* =========================
-   NOME CATEGORIE
-========================= */
+/* NOMI CATEGORIE */
 
 .category-name {
-    font-size: 20px !important;
+    font-size: 16px !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
     text-align: center !important;
     line-height: 1.1 !important;
 
     width: 100%;
-    display: block;
+    margin: 0;
+    padding: 0;
 }
 
-/* =========================
-   IMMAGINI CATEGORIE
-========================= */
+/* IMMAGINI CATEGORIE */
 
 .category-image {
     width: 100%;
@@ -98,9 +91,7 @@ body {
     margin-bottom: 12px;
 }
 
-/* =========================
-   STICKER
-========================= */
+/* STICKER */
 
 .sticker-image {
     width: 100% !important;
@@ -111,9 +102,7 @@ body {
     display: block;
 }
 
-/* =========================
-   GALLERIA FOTO
-========================= */
+/* GALLERIA FOTO */
 
 .product {
     width: 100%;
@@ -131,11 +120,9 @@ body {
     width: 45%;
     max-width: 300px;
     max-height: 350px;
-
     height: auto;
 
     object-fit: contain;
-
     display: block;
     margin: 0 auto;
 
@@ -146,9 +133,7 @@ body {
         0 8px 25px rgba(0, 0, 0, .6);
 }
 
-/* =========================
-   CARRELLO
-========================= */
+/* CARRELLO */
 
 .cart {
     clear: both;
@@ -173,13 +158,10 @@ body {
     line-height: 1.8;
 }
 
-/* =========================
-   PULSANTI
-========================= */
+/* PULSANTI */
 
 .checkout {
     width: 100%;
-
     margin-top: 15px;
     padding: 15px;
 
@@ -193,9 +175,7 @@ body {
     font-weight: bold;
 }
 
-/* =========================
-   FRECCIA
-========================= */
+/* FRECCIA */
 
 .back-button {
     padding: 10px 5px;
@@ -213,9 +193,7 @@ body {
     color: #00e676;
 }
 
-/* =========================
-   SFONDO VERDE
-========================= */
+/* SFONDO VERDE */
 
 body::before,
 body::after {
@@ -252,10 +230,6 @@ body::after {
     animation: greenMove2 16s infinite alternate;
 }
 
-/* =========================
-   ANIMAZIONI
-========================= */
-
 @keyframes greenMove1 {
 
     0% {
@@ -278,9 +252,7 @@ body::after {
     }
 }
 
-/* =========================
-   TELEFONO
-========================= */
+/* TELEFONO */
 
 @media (max-width: 500px) {
 
@@ -307,7 +279,6 @@ body::after {
         width: 70%;
         max-width: 260px;
         max-height: 320px;
-
         border-radius: 14px;
     }
 
@@ -321,15 +292,12 @@ body::after {
         border-radius: 15px !important;
     }
 
-    /* LA DIMENSIONE RESTA 20PX */
     .category-name {
-        font-size: 20px !important;
+        font-size: 16px !important;
     }
 }
 
-/* =========================
-   TELEFONI MOLTO PICCOLI
-========================= */
+/* TELEFONI MOLTO PICCOLI */
 
 @media (max-width: 360px) {
 
@@ -345,8 +313,7 @@ body::after {
         border-radius: 15px !important;
     }
 
-    /* LA DIMENSIONE RESTA 20PX */
     .category-name {
-        font-size: 20px !important;
+        font-size: 16px !important;
     }
 }
