@@ -1,1 +1,172 @@
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>SIM - Oasis del Sur</title>
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+    <style>
+        /* ==========================
+           SIM - SELEZIONE
+        ========================== */
+        .sim-list {
+            width: 100%;
+            max-width: 700px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .sim-card {
+            width: 100%;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(20,20,20,.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(0,255,120,.15);
+            box-shadow:
+                0 0 20px rgba(0,255,120,.08),
+                0 10px 30px rgba(0,0,0,.7);
+            transition: .3s;
+        }
+        .sim-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0,255,120,.35);
+        }
+        .sim-name {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .sim-folder {
+            font-size: 32px;
+            margin-right: 12px;
+        }
+        /* ==========================
+           TELEFONO
+        ========================== */
+        @media (max-width: 500px) {
+            .sim-list {
+                margin-top: 20px;
+            }
+            .sim-card {
+                min-height: 105px;
+                padding: 20px;
+            }
+            .sim-name {
+                font-size: 19px;
+            }
+            .sim-folder {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- TITOLO -->
+        <div
+            class="section-title"
+            id="simTitle"
+        >
+            📱 SIM
+        </div>
+        <!-- INDIETRO -->
+        <div class="back-button">
+            <a
+                href="shop.html"
+                id="back"
+            >
+                ← Indietro
+            </a>
+        </div>
+        <!-- SELEZIONE SIM -->
+        <div class="sim-list">
+            <a
+                href="sim-prepagata.html"
+                class="category-link"
+            >
+                <div class="sim-card">
+                    <span class="sim-folder">
+                        📁
+                    </span>
+                    <span class="sim-name">
+                        SIM Prepagata
+                    </span>
+                </div>
+            </a>
+            <a
+                href="sim-dati.html"
+                class="category-link"
+            >
+                <div class="sim-card">
+                    <span class="sim-folder">
+                        📁
+                    </span>
+                    <span class="sim-name">
+                        SIM Dati
+                    </span>
+                </div>
+            </a>
+            <a
+                href="esim.html"
+                class="category-link"
+            >
+                <div class="sim-card">
+                    <span class="sim-folder">
+                        📁
+                    </span>
+                    <span class="sim-name">
+                        eSIM
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- LINGUA -->
+    <script src="language.js"></script>
+    <script>
+        window.addEventListener(
+            "load",
+            function() {
+                const lang =
+                    localStorage.getItem(
+                        "language"
+                    ) || "it";
+                if (
+                    typeof translations !== "undefined" &&
+                    translations[lang]
+                ) {
+                    const t =
+                        translations[lang];
+                    document.documentElement.lang =
+                        lang;
+                    document.getElementById(
+                        "simTitle"
+                    ).innerHTML =
+                        "📱 " +
+                        (
+                            t.sim ||
+                            "SIM"
+                        );
+                    document.getElementById(
+                        "back"
+                    ).innerHTML =
+                        t.back;
+                }
+            }
+        );
+    </script>
+</body>
+</html>
