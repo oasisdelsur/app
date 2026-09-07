@@ -70,7 +70,7 @@ body {
 ========================= */
 
 .category-name {
-    font-size: 28px;
+    font-size: 25px;
     font-weight: bold;
     text-transform: uppercase !important;
     text-align: center;
@@ -254,7 +254,7 @@ body::after {
     }
 
     .category-name {
-        font-size: 28px;
+        font-size: 25px;
         font-weight: bold;
         text-transform: uppercase !important;
     }
@@ -294,7 +294,7 @@ body::after {
 @media (max-width: 360px) {
 
     .category-name {
-        font-size: 26px;
+        font-size: 24px;
         font-weight: bold;
         text-transform: uppercase !important;
     }
