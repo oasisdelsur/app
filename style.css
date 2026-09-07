@@ -70,7 +70,7 @@ body {
 ========================= */
 
 .category-name {
-    font-size: 18px;
+    font-size: 14px !important;
     font-weight: bold;
     text-transform: uppercase !important;
     text-align: center;
@@ -253,13 +253,6 @@ body::after {
         margin-right: 0;
     }
 
-    .category-name {
-        font-size: 18px;
-        font-weight: bold;
-        text-transform: uppercase !important;
-        text-align: center;
-    }
-
     .section-title {
         font-size: 24px;
     }
@@ -293,13 +286,6 @@ body::after {
 ========================= */
 
 @media (max-width: 360px) {
-
-    .category-name {
-        font-size: 17px;
-        font-weight: bold;
-        text-transform: uppercase !important;
-        text-align: center;
-    }
 
     .product-image {
         width: 65%;
