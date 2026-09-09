@@ -1,376 +1,122 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<title>Prodotto Demo</title>
 
-    <title>VAPO FAT TONY - Oasis del Sur</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    h1 {
+        margin-bottom: 25px;
+    }
 
-    <style>
-        /* ==========================
-           IMMAGINI
-        ========================== */
+    .buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 
-        .product-image {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            max-height: 500px;
-            display: block;
-            margin: 0 auto 20px auto;
-            border-radius: 18px;
-            object-fit: contain;
-        }
+    button {
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
 
-        /* ==========================
-           QUANTITÀ
-        ========================== */
+    .add {
+        background: white;
+        color: black;
+    }
 
-        .quantity-box {
-            margin-top: 35px;
-            padding: 25px 15px;
-            text-align: center;
-        }
+    .remove {
+        background: #d32f2f;
+        color: white;
+        margin: 5px;
+    }
 
-        .quantity-title {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-align: center;
+    #cart {
+        max-width: 400px;
+        margin: 30px auto;
+        padding: 20px;
+        background: #222;
+        border-radius: 12px;
+    }
 
-            text-shadow:
-                0 0 8px rgba(255,255,255,.25);
-        }
-
-        .quantity-buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .quantity-buttons button {
-            min-width: 55px;
-            padding: 13px 18px;
-
-            border: 1px solid
-                rgba(255,255,255,.15);
-
-            border-radius: 14px;
-
-            background:
-                rgba(20,20,20,.8);
-
-            color: white;
-
-            font-size: 17px;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            transition:
-                transform .2s,
-                background .2s,
-                box-shadow .2s;
-        }
-
-        .quantity-buttons button:hover {
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 5px 18px
-                rgba(0,0,0,.4);
-        }
-
-        .quantity-buttons button.selected {
-            transform: translateY(-2px);
-
-            background:
-                rgba(0,200,83,.9);
-
-            border-color:
-                rgba(255,255,255,.3);
-
-            box-shadow:
-                0 0 18px
-                rgba(0,200,83,.35);
-        }
-
-        .selected-quantity {
-            margin-top: 18px;
-
-            font-size: 16px;
-            font-weight: bold;
-
-            opacity: .85;
-        }
-
-        /* ==========================
-           MOBILE
-        ========================== */
-
-        @media (max-width: 500px) {
-
-            .product-image {
-                width: 100%;
-                max-width: 100%;
-                max-height: 400px;
-                object-fit: contain;
-            }
-
-        }
-    </style>
+    #quantity {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 15px;
+    }
+</style>
 </head>
 
 <body>
 
-    <!-- ==========================
-         INDIETRO
-    ========================== -->
-
-    <div class="back-button">
-
-        <a href="VAPE.html">
-            ← VAPO
-        </a>
-
-    </div>
-
-
-    <div class="container">
-
-        <!-- ==========================
-             TITOLO
-        ========================== -->
-
-        <div class="section-title">
-            💨 VAPO FAT TONY
-        </div>
-
-
-        <!-- ==========================
-             PRODOTTO
-        ========================== -->
-
-        <div class="product">
-
-            <!-- FOTO 1 -->
-
-            <img
-                src="IMG_9798.png"
-                class="product-image"
-                alt="VAPO FAT TONY"
-            >
-
-
-            <!-- FOTO 2 -->
-
-            <img
-                src="IMG_9800.png"
-                class="product-image"
-                alt="VAPO FAT TONY"
-            >
-
-
-            <!-- FOTO 3 -->
-
-            <img
-                src="IMG_9801.png"
-                class="product-image"
-                alt="VAPO FAT TONY"
-            >
-
-
-            <!-- VIDEO -->
-
-            <video
-                class="product-image"
-                controls
-                muted
-                loop
-            >
-
-                <source
-                    src="IMG_8774.mov"
-                    type="video/quicktime"
-                >
-
-                Il tuo browser non supporta
-                la riproduzione del video.
-
-            </video>
-
-
-            <!-- ==========================
-                 SCELTA QUANTITÀ
-            ========================== -->
-
-            <div class="quantity-box">
-
-                <div class="quantity-title">
-                    ✦ SCEGLI LA QUANTITÀ ✦
-                </div>
-
-
-                <div class="quantity-buttons">
-
-                    <button
-                        type="button"
-                        onclick="selectQuantity(this, 1)"
-                    >
-                        1
-                    </button>
-
-
-                    <button
-                        type="button"
-                        onclick="selectQuantity(this, 2)"
-                    >
-                        2
-                    </button>
-
-
-                    <button
-                        type="button"
-                        onclick="selectQuantity(this, 5)"
-                    >
-                        5
-                    </button>
-
-
-                    <button
-                        type="button"
-                        onclick="selectQuantity(this, 10)"
-                    >
-                        10
-                    </button>
-
-
-                    <button
-                        type="button"
-                        onclick="selectQuantity(this, 50)"
-                    >
-                        50
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="selected-quantity"
-                    id="selectedQuantity"
-                >
-                    Nessuna quantità selezionata
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- ==========================
-             TORNA A VAPO
-        ========================== -->
-
-        <a
-            href="VAPE.html"
-            class="category-link"
-        >
-
-            <div class="category">
-
-                ← Torna ai VAPO
-
-            </div>
-
-        </a>
-
-
-        <!-- ==========================
-             TORNA AL MENU
-        ========================== -->
-
-        <a
-            href="shop.html"
-            class="category-link"
-        >
-
-            <div class="category">
-
-                🏠 Torna al menu
-
-            </div>
-
-        </a>
-
-    </div>
-
-
-    <!-- ==========================
-         SELETTORE QUANTITÀ
-    ========================== -->
-
-    <script>
-
-        function selectQuantity(
-            button,
-            quantity
-        ) {
-
-            /*
-             * Rimuove la selezione
-             * dagli altri pulsanti
-             */
-
-            document
-                .querySelectorAll(
-                    ".quantity-buttons button"
-                )
-                .forEach(
-                    function(btn) {
-
-                        btn.classList.remove(
-                            "selected"
-                        );
-
-                    }
-                );
-
-
-            /*
-             * Seleziona il pulsante
-             */
-
-            button.classList.add(
-                "selected"
-            );
-
-
-            /*
-             * Mostra la quantità
-             */
-
-            document.getElementById(
-                "selectedQuantity"
-            ).textContent =
-                "Quantità selezionata: " +
-                quantity;
-
-        }
-
-    </script>
+<h1>Prodotto Demo</h1>
+
+<div class="buttons">
+    <button class="add" onclick="addQuantity(1)">+1</button>
+    <button class="add" onclick="addQuantity(2)">+2</button>
+    <button class="add" onclick="addQuantity(5)">+5</button>
+    <button class="add" onclick="addQuantity(10)">+10</button>
+</div>
+
+<div id="cart">
+    <h2>Carrello</h2>
+
+    <div id="quantity">0</div>
+    <div>quantità totale</div>
+
+    <br>
+
+    <button class="remove" onclick="removeQuantity(1)">
+        -1
+    </button>
+
+    <button class="remove" onclick="clearCart()">
+        Svuota carrello
+    </button>
+</div>
+
+<script>
+const STORAGE_KEY = "prodotto_demo_quantita";
+
+let quantity = Number(localStorage.getItem(STORAGE_KEY)) || 0;
+
+function updateCart() {
+    document.getElementById("quantity").textContent = quantity;
+    localStorage.setItem(STORAGE_KEY, quantity);
+}
+
+function addQuantity(amount) {
+    quantity += amount;
+    updateCart();
+}
+
+function removeQuantity(amount) {
+    quantity = Math.max(0, quantity - amount);
+    updateCart();
+}
+
+function clearCart() {
+    quantity = 0;
+    localStorage.removeItem(STORAGE_KEY);
+    updateCart();
+}
+
+updateCart();
+</script>
 
 </body>
 </html>
