@@ -2,75 +2,109 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
     <title>VAPE FAT TONY - Oasis del Sur</title>
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
     <style>
+        /* ==========================
+           SCELTA QUANTITÀ
+        ========================== */
         .quantity-box {
-            margin-top: 30px;
+            margin-top: 35px;
+            padding: 25px 15px;
             text-align: center;
         }
         .quantity-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow:
+                0 0 8px rgba(255,255,255,.25);
         }
         .quantity-buttons {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 10px;
             flex-wrap: wrap;
         }
         .quantity-buttons button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 12px;
-            background: #222;
+            min-width: 55px;
+            padding: 13px 18px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 14px;
+            background: rgba(20,20,20,.8);
             color: white;
             font-size: 17px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
+            transition:
+                transform .2s,
+                background .2s,
+                box-shadow .2s;
         }
         .quantity-buttons button:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow:
+                0 5px 18px rgba(0,0,0,.4);
         }
         .quantity-buttons button.selected {
-            background: #00c853;
-            color: white;
+            transform: translateY(-2px);
+            background: rgba(0,200,83,.9);
+            border-color: rgba(255,255,255,.3);
+            box-shadow:
+                0 0 18px rgba(0,200,83,.35);
         }
         .selected-quantity {
-            margin-top: 15px;
-            font-size: 17px;
+            margin-top: 18px;
+            font-size: 16px;
+            font-weight: bold;
+            opacity: .85;
         }
     </style>
 </head>
 <body>
 <div class="container">
+    <!-- TITOLO -->
     <div class="section-title">
         💨 VAPE FAT TONY
     </div>
+    <!-- INDIETRO -->
     <div class="back-button">
         <a href="VAPE.html">
             ← VAPE
         </a>
     </div>
+    <!-- PRODOTTO -->
     <div class="product">
+        <!-- FOTO 1 -->
         <img
             src="IMG_9798.png"
             class="product-image"
             alt="VAPE FAT TONY"
         >
+        <!-- FOTO 2 -->
         <img
             src="IMG_9800.png"
             class="product-image"
             alt="VAPE FAT TONY"
         >
+        <!-- FOTO 3 -->
         <img
             src="IMG_9801.png"
             class="product-image"
             alt="VAPE FAT TONY"
         >
+        <!-- VIDEO -->
         <video
             class="product-image"
             controls
@@ -82,25 +116,37 @@
                 type="video/quicktime"
             >
         </video>
-        <!-- SCELTA QUANTITÀ -->
+        <!-- ==========================
+             SCELTA QUANTITÀ
+        ========================== -->
         <div class="quantity-box">
             <div class="quantity-title">
-                Scegli quantità
+                ✦ SCEGLI LA QUANTITÀ ✦
             </div>
             <div class="quantity-buttons">
-                <button onclick="selectQuantity(this, 1)">
+                <button
+                    onclick="selectQuantity(this, 1)"
+                >
                     1
                 </button>
-                <button onclick="selectQuantity(this, 2)">
+                <button
+                    onclick="selectQuantity(this, 2)"
+                >
                     2
                 </button>
-                <button onclick="selectQuantity(this, 5)">
+                <button
+                    onclick="selectQuantity(this, 5)"
+                >
                     5
                 </button>
-                <button onclick="selectQuantity(this, 10)">
+                <button
+                    onclick="selectQuantity(this, 10)"
+                >
                     10
                 </button>
-                <button onclick="selectQuantity(this, 50)">
+                <button
+                    onclick="selectQuantity(this, 50)"
+                >
                     50
                 </button>
             </div>
@@ -115,14 +161,27 @@
 </div>
 <script>
 function selectQuantity(button, quantity) {
+    /* TOGLIE LA SELEZIONE
+       DAGLI ALTRI PULSANTI */
     document
-        .querySelectorAll(".quantity-buttons button")
+        .querySelectorAll(
+            ".quantity-buttons button"
+        )
         .forEach(function(btn) {
-            btn.classList.remove("selected");
+            btn.classList.remove(
+                "selected"
+            );
         });
-    button.classList.add("selected");
-    document.getElementById("selectedQuantity").textContent =
-        "Quantità selezionata: " + quantity;
+    /* SELEZIONA IL PULSANTE */
+    button.classList.add(
+        "selected"
+    );
+    /* MOSTRA LA QUANTITÀ */
+    document.getElementById(
+        "selectedQuantity"
+    ).textContent =
+        "Quantità selezionata: " +
+        quantity;
 }
 </script>
 </body>
