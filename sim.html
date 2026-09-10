@@ -1,172 +1,408 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-    <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-    <title>SIM - Oasis del Sur</title>
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-    <style>
-        /* ==========================
-           SIM - SELEZIONE
-        ========================== */
-        .sim-list {
-            width: 100%;
-            max-width: 700px;
-            margin: 30px auto;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .sim-card {
-            width: 100%;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 25px;
-            border-radius: 20px;
-            background: rgba(20,20,20,.75);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(0,255,120,.15);
-            box-shadow:
-                0 0 20px rgba(0,255,120,.08),
-                0 10px 30px rgba(0,0,0,.7);
-            transition: .3s;
-        }
-        .sim-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0,255,120,.35);
-        }
-        .sim-name {
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-            text-align: center;
-        }
-        .sim-folder {
-            font-size: 32px;
-            margin-right: 12px;
-        }
-        /* ==========================
-           TELEFONO
-        ========================== */
-        @media (max-width: 500px) {
-            .sim-list {
-                margin-top: 20px;
-            }
-            .sim-card {
-                min-height: 105px;
-                padding: 20px;
-            }
-            .sim-name {
-                font-size: 19px;
-            }
-            .sim-folder {
-                font-size: 28px;
-            }
-        }
-    </style>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>SIM - Oasis del Sur</title>
+
+<link
+    rel="stylesheet"
+    href="style.css"
+>
+
+<style>
+
+/* ==========================
+   SIM — COMING SOON
+========================== */
+
+.sim-coming {
+
+    min-height: 430px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 45px auto;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,255,120,.10),
+            transparent 55%
+        ),
+        rgba(10,10,10,.72);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(0,255,120,.18);
+
+    box-shadow:
+        0 0 50px rgba(0,255,120,.08),
+        0 20px 60px rgba(0,0,0,.8);
+}
+
+
+/* ==========================
+   BAGLIORE
+========================== */
+
+.sim-coming::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,255,120,.08);
+
+    filter: blur(70px);
+
+    animation:
+        simGlow 4s ease-in-out infinite;
+}
+
+
+@keyframes simGlow {
+
+    0%, 100% {
+        transform: scale(.85);
+        opacity: .5;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+}
+
+
+/* ==========================
+   CONTENUTO
+========================== */
+
+.sim-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 560px;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+.sim-title {
+
+    color: white;
+
+    font-size: 52px;
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    margin: 0;
+
+    text-shadow:
+        0 0 20px
+        rgba(0,255,120,.18);
+}
+
+
+.sim-status {
+
+    margin-top: 18px;
+
+    color:
+        rgba(0,255,120,.75);
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+
+.sim-line {
+
+    width: 90px;
+
+    height: 2px;
+
+    margin: 25px auto;
+
+    background:
+        rgba(0,255,120,.5);
+
+    box-shadow:
+        0 0 15px
+        rgba(0,255,120,.5);
+}
+
+
+/* ==========================
+   SIM DATI LYCA
+========================== */
+
+.sim-option {
+
+    display: block;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(0,255,120,.18);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    transition:
+        .3s ease;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.45);
+}
+
+
+.sim-option:hover {
+
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(0,255,120,.08);
+
+    border-color:
+        rgba(0,255,120,.40);
+
+    box-shadow:
+        0 0 25px
+        rgba(0,255,120,.12);
+}
+
+
+.sim-icon {
+
+    font-size: 26px;
+
+    margin-right: 10px;
+
+    vertical-align: middle;
+}
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 500px) {
+
+    .sim-coming {
+
+        min-height: 380px;
+
+        margin: 30px auto;
+    }
+
+
+    .sim-title {
+
+        font-size: 40px;
+
+        letter-spacing: 6px;
+    }
+
+
+    .sim-status {
+
+        font-size: 11px;
+    }
+
+
+    .sim-option {
+
+        font-size: 16px;
+
+        padding: 18px 15px;
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
-    <div class="container">
-        <!-- TITOLO -->
-        <div
-            class="section-title"
-            id="simTitle"
+
+
+<div class="container">
+
+
+    <!-- TITOLO -->
+
+    <div
+        class="section-title"
+        id="simTitle"
+    >
+        📱 SIM
+    </div>
+
+
+    <!-- INDIETRO -->
+
+    <div class="back-button">
+
+        <a
+            href="shop.html"
+            id="back"
         >
-            📱 SIM
-        </div>
-        <!-- INDIETRO -->
-        <div class="back-button">
-            <a
-                href="shop.html"
-                id="back"
+            ← Indietro
+        </a>
+
+    </div>
+
+
+    <!-- SCHERMATA SIM -->
+
+    <div class="sim-coming">
+
+        <div class="sim-content">
+
+
+            <h1 class="sim-title">
+                SIM
+            </h1>
+
+
+            <div
+                class="sim-status"
+                id="simStatus"
             >
-                ← Indietro
-            </a>
-        </div>
-        <!-- SELEZIONE SIM -->
-        <div class="sim-list">
-            <a
-                href="sim-prepagata.html"
-                class="category-link"
-            >
-                <div class="sim-card">
-                    <span class="sim-folder">
-                        📁
-                    </span>
-                    <span class="sim-name">
-                        SIM Prepagata
-                    </span>
-                </div>
-            </a>
+                SIM DATI
+            </div>
+
+
+            <div class="sim-line"></div>
+
+
+            <!-- UNICO PRODOTTO -->
+
             <a
                 href="sim-dati.html"
-                class="category-link"
+                class="sim-option"
             >
-                <div class="sim-card">
-                    <span class="sim-folder">
-                        📁
-                    </span>
-                    <span class="sim-name">
-                        SIM Dati
-                    </span>
-                </div>
+
+                <span class="sim-icon">
+                    📱
+                </span>
+
+                SIM DATI LYCA +39
+
             </a>
-            <a
-                href="esim.html"
-                class="category-link"
-            >
-                <div class="sim-card">
-                    <span class="sim-folder">
-                        📁
-                    </span>
-                    <span class="sim-name">
-                        eSIM
-                    </span>
-                </div>
-            </a>
+
+
         </div>
+
     </div>
-    <!-- LINGUA -->
-    <script src="language.js"></script>
-    <script>
-        window.addEventListener(
-            "load",
-            function() {
-                const lang =
-                    localStorage.getItem(
-                        "language"
-                    ) || "it";
-                if (
-                    typeof translations !== "undefined" &&
-                    translations[lang]
-                ) {
-                    const t =
-                        translations[lang];
-                    document.documentElement.lang =
-                        lang;
-                    document.getElementById(
-                        "simTitle"
-                    ).innerHTML =
-                        "📱 " +
-                        (
-                            t.sim ||
-                            "SIM"
-                        );
-                    document.getElementById(
-                        "back"
-                    ).innerHTML =
-                        t.back;
-                }
-            }
-        );
-    </script>
+
+
+</div>
+
+
+<!-- LINGUA -->
+
+<script src="language.js"></script>
+
+
+<script>
+
+window.addEventListener(
+    "load",
+    function() {
+
+        const lang =
+            localStorage.getItem(
+                "language"
+            ) || "it";
+
+
+        if (
+            typeof translations !== "undefined" &&
+            translations[lang]
+        ) {
+
+            const t =
+                translations[lang];
+
+
+            document.documentElement.lang =
+                lang;
+
+
+            document.getElementById(
+                "simTitle"
+            ).innerHTML =
+                "📱 " +
+                (
+                    t.sim ||
+                    "SIM"
+                );
+
+
+            document.getElementById(
+                "back"
+            ).innerHTML =
+                t.back;
+
+        }
+
+    }
+);
+
+</script>
+
+
 </body>
+
 </html>
