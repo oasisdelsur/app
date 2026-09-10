@@ -20,7 +20,117 @@
 <style>
 
 /* ==========================
-   SIM — COMING SOON
+   SIM — SELEZIONE
+========================== */
+
+.sim-list {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 45px auto;
+
+}
+
+
+/* ==========================
+   CARD SIM
+========================== */
+
+.sim-card {
+
+    width: 100%;
+
+    min-height: 140px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,255,120,.10),
+            transparent 55%
+        ),
+        rgba(10,10,10,.72);
+
+    backdrop-filter: blur(18px);
+
+    border:
+        1px solid
+        rgba(0,255,120,.18);
+
+    box-shadow:
+        0 0 50px
+        rgba(0,255,120,.08),
+
+        0 20px 60px
+        rgba(0,0,0,.8);
+
+    transition:
+        .3s ease;
+
+    cursor: pointer;
+}
+
+
+.sim-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(0,255,120,.40);
+
+    box-shadow:
+        0 0 30px
+        rgba(0,255,120,.12),
+
+        0 20px 60px
+        rgba(0,0,0,.8);
+}
+
+
+.sim-name {
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 15px
+        rgba(0,255,120,.12);
+}
+
+
+.sim-icon {
+
+    font-size: 30px;
+
+    margin-right: 12px;
+
+    vertical-align: middle;
+}
+
+
+/* ==========================
+   COMING SOON
 ========================== */
 
 .sim-coming {
@@ -28,12 +138,15 @@
     min-height: 430px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     margin: 45px auto;
 
     position: relative;
+
     overflow: hidden;
 
     border-radius: 30px;
@@ -48,11 +161,16 @@
 
     backdrop-filter: blur(18px);
 
-    border: 1px solid rgba(0,255,120,.18);
+    border:
+        1px solid
+        rgba(0,255,120,.18);
 
     box-shadow:
-        0 0 50px rgba(0,255,120,.08),
-        0 20px 60px rgba(0,0,0,.8);
+        0 0 50px
+        rgba(0,255,120,.08),
+
+        0 20px 60px
+        rgba(0,0,0,.8);
 }
 
 
@@ -67,6 +185,7 @@
     position: absolute;
 
     width: 280px;
+
     height: 280px;
 
     border-radius: 50%;
@@ -74,7 +193,8 @@
     background:
         rgba(0,255,120,.08);
 
-    filter: blur(70px);
+    filter:
+        blur(70px);
 
     animation:
         simGlow 4s ease-in-out infinite;
@@ -84,20 +204,28 @@
 @keyframes simGlow {
 
     0%, 100% {
-        transform: scale(.85);
+
+        transform:
+            scale(.85);
+
         opacity: .5;
+
     }
 
     50% {
-        transform: scale(1.15);
+
+        transform:
+            scale(1.15);
+
         opacity: 1;
+
     }
 
 }
 
 
 /* ==========================
-   CONTENUTO
+   CONTENUTO COMING SOON
 ========================== */
 
 .sim-content {
@@ -106,13 +234,7 @@
 
     z-index: 2;
 
-    width: 100%;
-
-    max-width: 560px;
-
     text-align: center;
-
-    padding: 30px;
 }
 
 
@@ -166,68 +288,24 @@
 }
 
 
-/* ==========================
-   SIM DATI LYCA
-========================== */
+.sim-message {
 
-.sim-option {
+    color:
+        rgba(255,255,255,.55);
 
-    display: block;
-
-    padding: 20px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(255,255,255,.04);
-
-    border:
-        1px solid
-        rgba(0,255,120,.18);
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 18px;
-
-    font-weight: bold;
+    font-size: 15px;
 
     letter-spacing: 1px;
-
-    transition:
-        .3s ease;
-
-    box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.45);
 }
 
 
-.sim-option:hover {
+/* ==========================
+   NASCONDI / MOSTRA
+========================== */
 
-    transform:
-        translateY(-4px);
+.hidden {
 
-    background:
-        rgba(0,255,120,.08);
-
-    border-color:
-        rgba(0,255,120,.40);
-
-    box-shadow:
-        0 0 25px
-        rgba(0,255,120,.12);
-}
-
-
-.sim-icon {
-
-    font-size: 26px;
-
-    margin-right: 10px;
-
-    vertical-align: middle;
+    display: none;
 }
 
 
@@ -237,11 +315,46 @@
 
 @media (max-width: 500px) {
 
+    .sim-list {
+
+        margin: 30px auto;
+
+    }
+
+
+    .sim-card {
+
+        min-height: 120px;
+
+        padding: 20px;
+
+        border-radius: 25px;
+
+    }
+
+
+    .sim-name {
+
+        font-size: 19px;
+
+        letter-spacing: 1px;
+
+    }
+
+
+    .sim-icon {
+
+        font-size: 26px;
+
+    }
+
+
     .sim-coming {
 
         min-height: 380px;
 
         margin: 30px auto;
+
     }
 
 
@@ -250,20 +363,14 @@
         font-size: 40px;
 
         letter-spacing: 6px;
+
     }
 
 
     .sim-status {
 
         font-size: 11px;
-    }
 
-
-    .sim-option {
-
-        font-size: 16px;
-
-        padding: 18px 15px;
     }
 
 }
@@ -279,7 +386,9 @@
 <div class="container">
 
 
-    <!-- TITOLO -->
+    <!-- ==========================
+         TITOLO
+    ========================== -->
 
     <div
         class="section-title"
@@ -289,7 +398,9 @@
     </div>
 
 
-    <!-- INDIETRO -->
+    <!-- ==========================
+         INDIETRO
+    ========================== -->
 
     <div class="back-button">
 
@@ -303,43 +414,64 @@
     </div>
 
 
-    <!-- SCHERMATA SIM -->
+    <!-- ==========================
+         SCHERMATA SELEZIONE
+    ========================== -->
 
-    <div class="sim-coming">
+    <div
+        id="simSelection"
+        class="sim-list"
+    >
+
+        <div
+            class="sim-card"
+            onclick="showComingSoon()"
+        >
+
+            <span class="sim-icon">
+                📱
+            </span>
+
+            <span
+                class="sim-name"
+                id="simDati"
+            >
+                SIM DATI LYCA +39
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+         SCHERMATA COMING SOON
+    ========================== -->
+
+    <div
+        id="comingSoon"
+        class="sim-coming hidden"
+    >
 
         <div class="sim-content">
 
 
             <h1 class="sim-title">
-                SIM
+                SIM DATI
             </h1>
 
 
-            <div
-                class="sim-status"
-                id="simStatus"
-            >
-                SIM DATI
+            <div class="sim-status">
+                COMING SOON
             </div>
 
 
             <div class="sim-line"></div>
 
 
-            <!-- UNICO PRODOTTO -->
-
-            <a
-                href="sim-dati.html"
-                class="sim-option"
-            >
-
-                <span class="sim-icon">
-                    📱
-                </span>
-
-                SIM DATI LYCA +39
-
-            </a>
+            <div class="sim-message">
+                La selezione sta arrivando.
+            </div>
 
 
         </div>
@@ -350,12 +482,27 @@
 </div>
 
 
-<!-- LINGUA -->
+<!-- ==========================
+     LINGUA
+========================== -->
 
 <script src="language.js"></script>
 
 
 <script>
+
+function showComingSoon() {
+
+    document
+        .getElementById("simSelection")
+        .classList.add("hidden");
+
+    document
+        .getElementById("comingSoon")
+        .classList.remove("hidden");
+
+}
+
 
 window.addEventListener(
     "load",
