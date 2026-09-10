@@ -2,142 +2,156 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weed - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
+
+<style>
+.weed-coming {
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 45px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,255,120,.10),
+            transparent 55%
+        ),
+        rgba(10,10,10,.72);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(0,255,120,.18);
+
+    box-shadow:
+        0 0 50px rgba(0,255,120,.08),
+        0 20px 60px rgba(0,0,0,.8);
+}
+
+.weed-coming::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(0,255,120,.08);
+    filter: blur(70px);
+    animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        transform: scale(.85);
+        opacity: .5;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+.weed-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.weed-title {
+    color: white;
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    margin: 0;
+
+    text-shadow:
+        0 0 20px rgba(0,255,120,.18);
+}
+
+.weed-status {
+    margin-top: 18px;
+    color: rgba(0,255,120,.75);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.weed-line {
+    width: 90px;
+    height: 2px;
+    margin: 25px auto;
+
+    background: rgba(0,255,120,.5);
+
+    box-shadow:
+        0 0 15px rgba(0,255,120,.5);
+}
+
+.weed-message {
+    color: rgba(255,255,255,.55);
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 500px) {
+    .weed-coming {
+        min-height: 380px;
+        margin: 30px auto;
+    }
+
+    .weed-title {
+        font-size: 40px;
+        letter-spacing: 6px;
+    }
+
+    .weed-status {
+        font-size: 11px;
+    }
+}
+</style>
 </head>
+
 <body>
+
 <div class="container">
-    <!-- TITOLO -->
-    <div
-        class="section-title"
-        id="weedTitle"
-    >
+
+    <div class="section-title" id="weedTitle">
         WEED
     </div>
-    <!-- INDIETRO ALLO SHOP -->
+
     <div class="back-button">
-        <a
-            href="shop.html"
-            id="back"
-        >
+        <a href="shop.html" id="back">
             ← INDIETRO
         </a>
     </div>
-    <!-- PRODOTTI NON DISPONIBILI -->
-    <div class="coming-soon">
-        <div class="hourglass">
-            
+
+    <div class="weed-coming">
+        <div class="weed-content">
+
+            <h1 class="weed-title">
+                WEED
+            </h1>
+
+            <div class="weed-status">
+                COMING SOON
+            </div>
+
+            <div class="weed-line"></div>
+
+            <div class="weed-message">
+                La selezione sta arrivando.
+            </div>
+
         </div>
-        
-        </h2>
-        <p id="arrival">
-            PRODOTTO NON DISPONIBILE 
-        </p>
     </div>
+
 </div>
-<!-- CARRELLO -->
-<div class="cart">
-    <div
-        class="cart-title"
-        id="cartTitle"
-    >
-        🛒 Carrello
-    </div>
-    <div id="cart">
-        Nessun prodotto
-    </div>
-    <button
-        class="checkout"
-        id="orderButton"
-        onclick="sendOrder()"
-    >
-        📲 Conferma ordine
-    </button>
-</div>
-<script src="language.js"></script>
-<script>
-let cart =
-    JSON.parse(
-        localStorage.getItem("cart")
-    ) || [];
-function showCart() {
-    const box =
-        document.getElementById("cart");
-    if (!box) return;
-    const lang =
-        localStorage.getItem("language") || "it";
-    const t =
-        translations[lang] || translations.it;
-    if (cart.length === 0) {
-        box.innerHTML =
-            t.emptyCart ||
-            "Nessun prodotto";
-        return;
-    }
-    box.innerHTML = "";
-    cart.forEach(function(item, index) {
-        box.innerHTML +=
-            item +
-            ' <button onclick="removeItem(' +
-            index +
-            ')">❌</button>' +
-            '<br><br>';
-    });
-}
-function removeItem(index) {
-    cart.splice(index, 1);
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-    showCart();
-}
-function sendOrder() {
-    const lang =
-        localStorage.getItem("language") || "it";
-    const t =
-        translations[lang] || translations.it;
-    if (cart.length === 0) {
-        alert(
-            t.emptyAlert ||
-            "Il carrello è vuoto"
-        );
-        return;
-    }
-    const ordine =
-        cart.join("\n");
-    const messaggio =
-        (
-            t.orderMessage ||
-            "Ciao Oasis del Sur, vorrei ordinare:"
-        ) +
-        "\n\n" +
-        ordine;
-    const telegram =
-        "https://t.me/wordex17?text=" +
-        encodeURIComponent(
-            messaggio
-        );
-    window.location.href =
-        telegram;
-}
-window.addEventListener(
-    "load",
-    function() {
-        const lang =
-            localStorage.getItem("language") || "it";
-        if (
-            typeof changeLanguage === "function"
-        ) {
-            changeLanguage(lang);
-        }
-        showCart();
-    }
-);
-</script>
+
 </body>
 </html>
