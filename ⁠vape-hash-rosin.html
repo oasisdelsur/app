@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vape Hash Rosin - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.product-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 500px;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 18px;
+    object-fit: contain;
+}
+#mini-cart {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+#mini-cart button {
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+@media (max-width: 500px) {
+    .product-image {
+        width: 100%;
+        max-width: 100%;
+        max-height: 400px;
+        object-fit: contain;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="back-button">
+    <a href="VAPE.html" id="back">
+        ← Torna ai Vape
+    </a>
+</div>
+
+<div class="container">
+    <div class="section-title">
+         VAPE HASH ROSIN
+    </div>
+
+    <div class="product">
+        <!-- Inserisci qui le tue foto del prodotto (sostituisci la foto con la tua) -->
+        <img src="vape-hash-rosin.jpg" class="product-image" alt="Vape Hash Rosin">
+
+        <h2 id="choose">
+            Scegli quantità
+        </h2>
+        <div class="sizes">
+            <button onclick="addToCart('Vape Hash Rosin - 1pz')">1pz</button>
+            <button onclick="addToCart('Vape Hash Rosin - 2pz')">2pz</button>
+            <button onclick="addToCart('Vape Hash Rosin - 3pz')">3pz</button>
+            <button onclick="addToCart('Vape Hash Rosin - 5pz')">5pz</button>
+            <button onclick="addToCart('Vape Hash Rosin - 10pz')">10pz</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <div class="cart-title">
+            🛒 <span id="cartText">Il tuo ordine</span>
+        </div>
+        <div id="mini-cart">
+            Carrello vuoto
+        </div>
+    </div>
+
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goCart">
+            🛒 Vai al carrello
+        </div>
+    </a>
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goMenu">
+            🏠 Torna al menu
+        </div>
+    </a>
+</div>
+
+<script src="language.js"></script>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(product) {
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+    const lang = localStorage.getItem("language") || "it";
+    const t = translations[lang] || translations.it;
+    alert("✅ " + product + " " + (t.addedToCart || "aggiunto al carrello"));
+}
+
+function showMiniCart() {
+    const box = document.getElementById("mini-cart");
+    if (!box) return;
+    const lang = localStorage.getItem("language") || "it";
+    const t = translations[lang] || translations.it;
+    if (cart.length === 0) {
+        box.innerHTML = t.emptyCart || "Carrello vuoto";
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+    });
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+}
+
+window.addEventListener("load", function() {
+    const lang = localStorage.getItem("language") || "it";
+    const t = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+    if (t.back) document.getElementById("back").innerHTML = t.back;
+    if (t.choose) document.getElementById("choose").innerHTML = t.choose;
+    if (t.cart) document.getElementById("cartText").innerHTML = t.cart;
+    if (t.goCart) document.getElementById("goCart").innerHTML = t.goCart;
+    if (t.goMenu) document.getElementById("goMenu").innerHTML = t.goMenu;
+    showMiniCart();
+});
+</script>
+</body>
+</html>
