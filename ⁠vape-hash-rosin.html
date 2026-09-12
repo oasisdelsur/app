@@ -60,19 +60,16 @@
         <!-- VIDEO 1 -->
         <video class="product-video" controls autoplay loop muted playsinline>
             <source src="-140146119505897229.mov" type="video/quicktime">
-            <source src="-140146119505897229.mov" type="video/mp4">
         </video>
 
         <!-- VIDEO 2 -->
         <video class="product-video" controls autoplay loop muted playsinline>
             <source src="-7398955464198693539.mov" type="video/quicktime">
-            <source src="-7398955464198693539.mov" type="video/mp4">
         </video>
 
         <!-- VIDEO 3 -->
         <video class="product-video" controls autoplay loop muted playsinline>
             <source src="3378853257749259282.mov" type="video/quicktime">
-            <source src="3378853257749259282.mov" type="video/mp4">
         </video>
 
         <h2 id="choose">
@@ -117,7 +114,7 @@ function addToCart(product) {
     localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
     const lang = localStorage.getItem("language") || "it";
-    const t = translations[lang] || translations.it;
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
     alert("✅ " + product + " " + (t.addedToCart || "aggiunto al carrello"));
 }
 
@@ -125,7 +122,7 @@ function showMiniCart() {
     const box = document.getElementById("mini-cart");
     if (!box) return;
     const lang = localStorage.getItem("language") || "it";
-    const t = translations[lang] || translations.it;
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
     if (cart.length === 0) {
         box.innerHTML = t.emptyCart || "Carrello vuoto";
         return;
@@ -144,13 +141,13 @@ function removeItem(index) {
 
 window.addEventListener("load", function() {
     const lang = localStorage.getItem("language") || "it";
-    const t = translations[lang] || translations.it;
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
     document.documentElement.lang = lang;
-    if (t.back) document.getElementById("back").innerHTML = t.back;
-    if (t.choose) document.getElementById("choose").innerHTML = t.choose;
-    if (t.cart) document.getElementById("cartText").innerHTML = t.cart;
-    if (t.goCart) document.getElementById("goCart").innerHTML = t.goCart;
-    if (t.goMenu) document.getElementById("goMenu").innerHTML = t.goMenu;
+    if (t.back && document.getElementById("back")) document.getElementById("back").innerHTML = t.back;
+    if (t.choose && document.getElementById("choose")) document.getElementById("choose").innerHTML = t.choose;
+    if (t.cart && document.getElementById("cartText")) document.getElementById("cartText").innerHTML = t.cart;
+    if (t.goCart && document.getElementById("goCart")) document.getElementById("goCart").innerHTML = t.goCart;
+    if (t.goMenu && document.getElementById("goMenu")) document.getElementById("goMenu").innerHTML = t.goMenu;
     showMiniCart();
 });
 </script>
