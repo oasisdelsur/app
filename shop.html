@@ -313,6 +313,12 @@ let cart =
     JSON.parse(
         localStorage.getItem("cart")
     ) || [];
+
+let stickers =
+    JSON.parse(
+        localStorage.getItem("stickers")
+    ) || [];
+
 /* =========================
    CREA LISTA RAGGRUPPATA
 ========================= */
@@ -332,6 +338,24 @@ function getGroupedCart() {
     );
     return grouped;
 }
+
+function getGroupedStickers() {
+    const grouped = {};
+    stickers.forEach(
+        function(item) {
+            if (
+                grouped[item]
+            ) {
+                grouped[item]++;
+            }
+            else {
+                grouped[item] = 1;
+            }
+        }
+    );
+    return grouped;
+}
+
 /* =========================
    MOSTRA CARRELLO
 ========================= */
@@ -341,7 +365,7 @@ function showCart() {
             "cart"
         );
     if (
-        cart.length === 0
+        cart.length === 0 && stickers.length === 0
     ) {
         const language =
             getLanguage();
@@ -353,7 +377,12 @@ function showCart() {
     }
     const grouped =
         getGroupedCart();
+    const groupedStickers =
+        getGroupedStickers();
+        
     box.innerHTML = "";
+    
+    // Mostra prodotti classici
     Object.keys(grouped)
         .forEach(
             function(product) {
@@ -367,6 +396,30 @@ function showCart() {
                     ' <button ' +
                     'onclick="removeOneItem(\'' +
                     product.replace(
+                        /'/g,
+                        "\\'"
+                    ) +
+                    '\')">' +
+                    "❌" +
+                    "</button>" +
+                    "<br><br>";
+            }
+        );
+
+    // Mostra stickers scelti
+    Object.keys(groupedStickers)
+        .forEach(
+            function(sticker) {
+                const quantity =
+                    groupedStickers[sticker];
+                box.innerHTML +=
+                    "• [STICKER] " +
+                    sticker +
+                    " × " +
+                    quantity +
+                    ' <button ' +
+                    'onclick="removeOneSticker(\'' +
+                    sticker.replace(
                         /'/g,
                         "\\'"
                     ) +
@@ -401,12 +454,35 @@ function removeOneItem(
     );
     showCart();
 }
+
+function removeOneSticker(
+    sticker
+) {
+    const index =
+        stickers.lastIndexOf(
+            sticker
+        );
+    if (
+        index !== -1
+    ) {
+        stickers.splice(
+            index,
+            1
+        );
+    }
+    localStorage.setItem(
+        "stickers",
+        JSON.stringify(stickers)
+    );
+    showCart();
+}
+
 /* =========================
    INVIO ORDINE
 ========================= */
 function sendOrder() {
     if (
-        cart.length === 0
+        cart.length === 0 && stickers.length === 0
     ) {
         alert(
             translations[
@@ -417,6 +493,9 @@ function sendOrder() {
     }
     const grouped =
         getGroupedCart();
+    const groupedStickers =
+        getGroupedStickers();
+
     let ordine = "";
     Object.keys(grouped)
         .forEach(
@@ -428,6 +507,21 @@ function sendOrder() {
                     "\n";
             }
         );
+
+    if (stickers.length > 0) {
+        ordine += "\nSTICKERS:\n";
+        Object.keys(groupedStickers)
+            .forEach(
+                function(sticker) {
+                    ordine +=
+                        sticker +
+                        " × " +
+                        groupedStickers[sticker] +
+                        "\n";
+                }
+            );
+    }
+
     const messaggio =
         translations[
             getLanguage()
