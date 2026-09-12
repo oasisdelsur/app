@@ -2,10 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Highland Terps - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 <style>
@@ -53,261 +50,104 @@
 </style>
 </head>
 <body>
-<!-- ==========================
-     INDIETRO
-========================== -->
+
 <div class="back-button">
-    <a
-        href="frozen.html"
-        id="back"
-    >
+    <a href="frozen.html" id="back">
         ← Torna ai Frozen
     </a>
 </div>
+
 <div class="container">
-    <!-- ==========================
-         TITOLO
-    ========================== -->
     <div class="section-title">
          HIGHLAND TERPS
     </div>
-    <!-- ==========================
-         PRODOTTO
-    ========================== -->
+
     <div class="product">
-        <!-- IMMAGINE 1 -->
-        <img
-            src="IMG_9708.png"
-            class="product-image"
-            alt="Highland Terps"
-        >
-        <!-- IMMAGINE 2 -->
-        <img
-            src="IMG_9709.png"
-            class="product-image"
-            alt="Highland Terps"
-        >
-        <!-- QUANTITÀ -->
+        <img src="IMG_9708.png" class="product-image" alt="Highland Terps">
+        <img src="IMG_9709.png" class="product-image" alt="Highland Terps">
+
         <h2 id="choose">
             Scegli quantità
         </h2>
         <div class="sizes">
-            <button
-                onclick="addToCart('Highland Terps - 10g')"
-            >
-                10g
-            </button>
-            <button
-                onclick="addToCart('Highland Terps - 20g')"
-            >
-                20g
-            </button>
-            <button
-                onclick="addToCart('Highland Terps - 30g')"
-            >
-                30g
-            </button>
-            <button
-                onclick="addToCart('Highland Terps - 40g')"
-            >
-                40g
-            </button>
-            <button
-                onclick="addToCart('Highland Terps - 50g')"
-            >
-                50g
-            </button>
-            <button
-                onclick="addToCart('Highland Terps - 100g')"
-            >
-                100g
-            </button>
-            <button
-                onclick="addToCart('Highland Terps - 500g')"
-            >
-                500g
-            </button>
+            <button onclick="addToCart('Highland Terps - 10g')">10g</button>
+            <button onclick="addToCart('Highland Terps - 20g')">20g</button>
+            <button onclick="addToCart('Highland Terps - 30g')">30g</button>
+            <button onclick="addToCart('Highland Terps - 40g')">40g</button>
+            <button onclick="addToCart('Highland Terps - 50g')">50g</button>
+            <button onclick="addToCart('Highland Terps - 100g')">100g</button>
+            <button onclick="addToCart('Highland Terps - 500g')">500g</button>
         </div>
     </div>
-    <!-- ==========================
-         CARRELLO
-    ========================== -->
+
     <div class="cart">
         <div class="cart-title">
-            🛒
-            <span id="cartText">
-                Il tuo ordine
-            </span>
+            🛒 <span id="cartText">Il tuo ordine</span>
         </div>
         <div id="mini-cart">
             Carrello vuoto
         </div>
     </div>
-    <!-- ==========================
-         VAI AL CARRELLO
-    ========================== -->
-    <a
-        href="shop.html"
-        class="category-link"
-    >
-        <div
-            class="category"
-            id="goCart"
-        >
+
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goCart">
             🛒 Vai al carrello
         </div>
     </a>
-    <!-- ==========================
-         TORNA AL MENU
-    ========================== -->
-    <a
-        href="shop.html"
-        class="category-link"
-    >
-        <div
-            class="category"
-            id="goMenu"
-        >
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goMenu">
             🏠 Torna al menu
         </div>
     </a>
 </div>
-<!-- ==========================
-     LINGUA
-========================== -->
+
 <script src="language.js"></script>
 <script>
-/* ==========================
-   CARRELLO
-========================== */
-let cart =
-    JSON.parse(
-        localStorage.getItem("cart")
-    ) || [];
-/* ==========================
-   AGGIUNGI
-========================== */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 function addToCart(product) {
     cart.push(product);
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
+    localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
-    const lang =
-        localStorage.getItem(
-            "language"
-        ) || "it";
-    const t =
-        translations[lang] ||
-        translations.it;
-    alert(
-        "✅ " +
-        product +
-        " " +
-        (
-            t.addedToCart ||
-            "aggiunto al carrello"
-        )
-    );
+    const lang = localStorage.getItem("language") || "it";
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
+    alert("✅ " + product + " " + (t.addedToCart || "aggiunto al carrello"));
 }
-/* ==========================
-   MOSTRA CARRELLO
-========================== */
+
 function showMiniCart() {
-    const box =
-        document.getElementById(
-            "mini-cart"
-        );
-    if (!box) {
-        return;
-    }
-    const lang =
-        localStorage.getItem(
-            "language"
-        ) || "it";
-    const t =
-        translations[lang] ||
-        translations.it;
+    const box = document.getElementById("mini-cart");
+    if (!box) return;
+    const lang = localStorage.getItem("language") || "it";
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
     if (cart.length === 0) {
-        box.innerHTML =
-            t.emptyCart ||
-            "Carrello vuoto";
+        box.innerHTML = t.emptyCart || "Carrello vuoto";
         return;
     }
     box.innerHTML = "";
-    cart.forEach(
-        function(item, index) {
-            box.innerHTML +=
-                "• " +
-                item +
-                ' <button onclick="removeItem(' +
-                index +
-                ')">❌</button>' +
-                "<br><br>";
-        }
-    );
+    cart.forEach(function(item, index) {
+        box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+    });
 }
-/* ==========================
-   RIMUOVI
-========================== */
+
 function removeItem(index) {
-    cart.splice(
-        index,
-        1
-    );
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
 }
-/* ==========================
-   CARICAMENTO
-========================== */
-window.addEventListener(
-    "load",
-    function() {
-        const lang =
-            localStorage.getItem(
-                "language"
-            ) || "it";
-        const t =
-            translations[lang] ||
-            translations.it;
-        document.documentElement.lang =
-            lang;
-        /* INDIETRO */
-        document.getElementById(
-            "back"
-        ).innerHTML =
-            t.back;
-        /* QUANTITÀ */
-        document.getElementById(
-            "choose"
-        ).innerHTML =
-            t.choose ||
-            "Scegli quantità";
-        /* CARRELLO */
-        document.getElementById(
-            "cartText"
-        ).innerHTML =
-            t.cart;
-        /* VAI AL CARRELLO */
-        document.getElementById(
-            "goCart"
-        ).innerHTML =
-            t.goCart ||
-            "🛒 Vai al carrello";
-        /* MENU */
-        document.getElementById(
-            "goMenu"
-        ).innerHTML =
-            t.goMenu ||
-            "🏠 Torna al menu";
-        showMiniCart();
-    }
-);
+
+window.addEventListener("load", function() {
+    const lang = localStorage.getItem("language") || "it";
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
+    document.documentElement.lang = lang;
+    
+    if (t.back && document.getElementById("back")) document.getElementById("back").innerHTML = t.back;
+    if (document.getElementById("choose")) document.getElementById("choose").innerHTML = t.choose || "Scegli quantità";
+    if (t.cart && document.getElementById("cartText")) document.getElementById("cartText").innerHTML = t.cart;
+    if (document.getElementById("goCart")) document.getElementById("goCart").innerHTML = t.goCart || "🛒 Vai al carrello";
+    if (document.getElementById("goMenu")) document.getElementById("goMenu").innerHTML = t.goMenu || "🏠 Torna al menu";
+    
+    showMiniCart();
+});
 </script>
 </body>
 </html>
