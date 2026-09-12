@@ -8,20 +8,22 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        #mini-cart {
-            margin-top: 15px;
-            font-size: 16px;
-            line-height: 1.8;
+        .sticker-cart {
+            margin-top: 20px;
         }
 
-        #mini-cart button {
-            background: #e50914;
-            color: white;
+        .sticker-cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .remove-sticker {
+            background: none;
             border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
             cursor: pointer;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -41,7 +43,7 @@
     <div class="product">
 
         <h3 id="counter">
-            Selezionati 0 / 5 stickers
+            Hai scelto 0 / 5 stickers
         </h3>
 
         <div class="products">
@@ -137,17 +139,17 @@
             </div>
 
         </div>
-    </div>
 
-    <!-- MINI CARRELLO -->
-    <div class="cart">
+        <div class="cart sticker-cart">
 
-        <div class="cart-title">
-            🛒 I TUOI STICKERS
-        </div>
+            <div class="cart-title">
+                🛒 I TUOI STICKERS
+            </div>
 
-        <div id="mini-cart">
-            Nessuno sticker selezionato
+            <div id="stickerCart">
+                Nessuno sticker selezionato
+            </div>
+
         </div>
 
     </div>
@@ -156,38 +158,65 @@
 
 <script>
 
+const MAX_STICKERS = 5;
+
 let stickers =
     JSON.parse(localStorage.getItem("stickers")) || [];
 
-function addSticker(sticker) {
 
-    if (stickers.length >= 5) {
+function addSticker(nome) {
+
+    if (stickers.length >= MAX_STICKERS) {
         alert("Hai esaurito i tuoi stickers 🎁");
         return;
     }
 
-    stickers.push(sticker);
+    stickers.push(nome);
 
     localStorage.setItem(
         "stickers",
         JSON.stringify(stickers)
     );
 
-    showMiniCart();
+    updateStickerPage();
+
+    const rimasti =
+        MAX_STICKERS - stickers.length;
+
+    if (rimasti === 0) {
+        alert("Hai esaurito i tuoi stickers 🎁");
+    } else if (rimasti === 1) {
+        alert("Ti rimane 1 sticker");
+    } else {
+        alert("Ti rimangono " + rimasti + " stickers");
+    }
 }
 
-function showMiniCart() {
+
+function removeSticker(index) {
+
+    stickers.splice(index, 1);
+
+    localStorage.setItem(
+        "stickers",
+        JSON.stringify(stickers)
+    );
+
+    updateStickerPage();
+}
+
+
+function updateStickerPage() {
+
+    document.getElementById("counter").innerHTML =
+        "Hai scelto " +
+        stickers.length +
+        " / " +
+        MAX_STICKERS +
+        " stickers";
 
     const box =
-        document.getElementById("mini-cart");
-
-    const counter =
-        document.getElementById("counter");
-
-    counter.innerHTML =
-        "Selezionati " +
-        stickers.length +
-        " / 5 stickers";
+        document.getElementById("stickerCart");
 
     if (stickers.length === 0) {
 
@@ -202,29 +231,20 @@ function showMiniCart() {
     stickers.forEach(function(sticker, index) {
 
         box.innerHTML +=
-            "• " +
-            sticker +
-            ' <button onclick="removeSticker(' +
-            index +
-            ')">❌</button>' +
-            "<br><br>";
+            '<div class="sticker-cart-item">' +
+                '<span>• ' + sticker + '</span>' +
+                '<button ' +
+                    'class="remove-sticker" ' +
+                    'onclick="removeSticker(' + index + ')">' +
+                    '❌' +
+                '</button>' +
+            '</div>';
 
     });
 }
 
-function removeSticker(index) {
 
-    stickers.splice(index, 1);
-
-    localStorage.setItem(
-        "stickers",
-        JSON.stringify(stickers)
-    );
-
-    showMiniCart();
-}
-
-showMiniCart();
+updateStickerPage();
 
 </script>
 
