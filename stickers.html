@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stickers</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        #mini-cart {
+            margin-top: 15px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        #mini-cart button {
+            background: #e50914;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -119,6 +137,18 @@
             </div>
 
         </div>
+    </div>
+
+    <!-- MINI CARRELLO -->
+    <div class="cart">
+
+        <div class="cart-title">
+            🛒 I TUOI STICKERS
+        </div>
+
+        <div id="mini-cart">
+            Nessuno sticker selezionato
+        </div>
 
     </div>
 
@@ -129,48 +159,72 @@
 let stickers =
     JSON.parse(localStorage.getItem("stickers")) || [];
 
-function updateCounter() {
-
-    document.getElementById("counter").innerHTML =
-        "Selezionati " + stickers.length + " / 5 stickers";
-}
-
-function addSticker(nome) {
+function addSticker(sticker) {
 
     if (stickers.length >= 5) {
-
         alert("Hai esaurito i tuoi stickers 🎁");
-
         return;
     }
 
-    stickers.push(nome);
+    stickers.push(sticker);
 
     localStorage.setItem(
         "stickers",
         JSON.stringify(stickers)
     );
 
-    updateCounter();
-
-    const rimasti = 5 - stickers.length;
-
-    if (rimasti === 0) {
-
-        alert("Hai esaurito i tuoi stickers 🎁");
-
-    } else if (rimasti === 1) {
-
-        alert("Ti rimane 1 sticker");
-
-    } else {
-
-        alert("Ti rimangono " + rimasti + " stickers");
-
-    }
+    showMiniCart();
 }
 
-updateCounter();
+function showMiniCart() {
+
+    const box =
+        document.getElementById("mini-cart");
+
+    const counter =
+        document.getElementById("counter");
+
+    counter.innerHTML =
+        "Selezionati " +
+        stickers.length +
+        " / 5 stickers";
+
+    if (stickers.length === 0) {
+
+        box.innerHTML =
+            "Nessuno sticker selezionato";
+
+        return;
+    }
+
+    box.innerHTML = "";
+
+    stickers.forEach(function(sticker, index) {
+
+        box.innerHTML +=
+            "• " +
+            sticker +
+            ' <button onclick="removeSticker(' +
+            index +
+            ')">❌</button>' +
+            "<br><br>";
+
+    });
+}
+
+function removeSticker(index) {
+
+    stickers.splice(index, 1);
+
+    localStorage.setItem(
+        "stickers",
+        JSON.stringify(stickers)
+    );
+
+    showMiniCart();
+}
+
+showMiniCart();
 
 </script>
 
