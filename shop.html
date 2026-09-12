@@ -109,14 +109,6 @@ function translatePage() {
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
 
-function getGroupedCart() {
-    const grouped = {};
-    cart.forEach(function(item) {
-        grouped[item] = (grouped[item] || 0) + 1;
-    });
-    return grouped;
-}
-
 function reindexStickers() {
     stickers = stickers.map((_, index) => "Sticker " + (index + 1));
 }
@@ -128,12 +120,11 @@ function showCart() {
         return;
     }
     
-    const grouped = getGroupedCart();
     box.innerHTML = "";
     
-    Object.keys(grouped).forEach(function(product) {
-        box.innerHTML += "• " + product + " × " + grouped[product] +
-            ' <button onclick="removeOneItem(\'' + product.replace(/'/g, "\\'") + '\')">❌</button><br><br>';
+    cart.forEach(function(product, index) {
+        box.innerHTML += "• " + product +
+            ' <button onclick="removeOneItem(' + index + ')">❌</button><br><br>';
     });
 
     stickers.forEach(function(sticker, index) {
@@ -142,9 +133,8 @@ function showCart() {
     });
 }
 
-function removeOneItem(product) {
-    const index = cart.lastIndexOf(product);
-    if (index !== -1) cart.splice(index, 1);
+function removeOneItem(index) {
+    cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
     showCart();
 }
@@ -161,17 +151,15 @@ function sendOrder() {
         alert(translations[getLanguage()].emptyAlert);
         return;
     }
-    const grouped = getGroupedCart();
+    
     let ordine = "";
-    Object.keys(grouped).forEach(function(product) {
-        ordine += product + " × " + grouped[product] + "\n";
+    cart.forEach(function(product) {
+        ordine += product + "\n";
     });
 
-    if (stickers.length > 0) {
-        stickers.forEach(function(sticker) {
-            ordine += sticker + "\n";
-        });
-    }
+    stickers.forEach(function(sticker) {
+        ordine += sticker + "\n";
+    });
 
     const messaggio = translations[getLanguage()].orderMessage + "\n\n" + ordine;
     window.location.href = "https://t.me/wordex17?text=" + encodeURIComponent(messaggio);
