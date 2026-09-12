@@ -1,230 +1,155 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAT TONY - Oasis del Sur</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* ==========================
-           IMMAGINI E VIDEO FULL
-        ========================== */
-        .product-image {
-            width: 100%;
-            max-width: 600px;
-            height: 350px;
-            display: block;
-            margin: 0 auto 20px auto;
-            border-radius: 18px;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        /* ==========================
-           QUANTITÀ
-        ========================== */
-        .quantity-box {
-            margin-top: 35px;
-            padding: 25px 15px;
-            text-align: center;
-        }
-        .quantity-title {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            text-align: center;
-            text-shadow: 0 0 8px rgba(255,255,255,.25);
-        }
-        .quantity-buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .quantity-buttons button {
-            min-width: 55px;
-            padding: 13px 18px;
-            border: 1px solid rgba(255,255,255,.15);
-            border-radius: 14px;
-            background: rgba(20,20,20,.8);
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform .2s, background .2s, box-shadow .2s;
-        }
-        .quantity-buttons button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 18px rgba(0,0,0,.4);
-        }
-        .selected-quantity {
-            margin-top: 18px;
-            font-size: 16px;
-            font-weight: bold;
-            opacity: .85;
-        }
-
-        /* ==========================
-           CARRELLO MINI
-        ========================== */
-        #mini-cart {
-            margin-top: 15px;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-        #mini-cart button {
-            background: #e50914;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            margin-left: 6px;
-        }
-
-        /* ==========================
-           MOBILE
-        ========================== */
-        @media (max-width: 500px) {
-            .product-image {
-                width: 100%;
-                max-width: 100%;
-                height: 280px;
-                object-fit: cover;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vape Hash Rosin - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.product-image, .product-video {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 18px;
+    object-fit: cover;
+    object-position: center;
+}
+#mini-cart {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+#mini-cart button {
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+@media (max-width: 500px) {
+    .product-image, .product-video {
+        width: 100%;
+        max-width: 100%;
+        height: 280px;
+        object-fit: cover;
+    }
+}
+</style>
 </head>
 <body>
 
-    <div class="back-button">
-        <a href="VAPE.html" id="back">
-            ← VAPO
-        </a>
+<div class="back-button">
+    <a href="VAPE.html" id="back">
+        ← Torna ai Vape
+    </a>
+</div>
+
+<div class="container">
+    <div class="section-title">
+         VAPE HASH ROSIN
     </div>
 
-    <div class="container">
-        <div class="section-title">
-            💨 FAT TONY
+    <div class="product">
+        <!-- IMMAGINE -->
+        <img src="C18DCC66-02F2-4311-937A-E12E66847254.jpeg" class="product-image" alt="Vape Hash Rosin">
+
+        <!-- VIDEO 1 -->
+        <video class="product-video" controls autoplay loop muted playsinline>
+            <source src="-140146119505897229.mov" type="video/quicktime">
+        </video>
+
+        <!-- VIDEO 2 -->
+        <video class="product-video" controls autoplay loop muted playsinline>
+            <source src="-7398955464198693539.mov" type="video/quicktime">
+        </video>
+
+        <!-- VIDEO 3 -->
+        <video class="product-video" controls autoplay loop muted playsinline>
+            <source src="3378853257749259282.mov" type="video/quicktime">
+        </video>
+
+        <h2 id="choose">
+            Scegli quantità
+        </h2>
+        <div class="sizes">
+            <button onclick="addToCart('Vape Hash Rosin - 1pz')">1pz</button>
+            <button onclick="addToCart('Vape Hash Rosin - 2pz')">2pz</button>
+            <button onclick="addToCart('Vape Hash Rosin - 3pz')">3pz</button>
+            <button onclick="addToCart('Vape Hash Rosin - 5pz')">5pz</button>
+            <button onclick="addToCart('Vape Hash Rosin - 10pz')">10pz</button>
         </div>
-
-        <div class="product">
-            <!-- FOTO 1 -->
-            <img src="IMG_9798.png" class="product-image" alt="FAT TONY">
-            <!-- FOTO 2 -->
-            <img src="IMG_9800.png" class="product-image" alt="FAT TONY">
-            <!-- FOTO 3 -->
-            <img src="IMG_9801.png" class="product-image" alt="FAT TONY">
-            
-            <!-- VIDEO -->
-            <video class="product-image" controls autoplay loop muted playsinline>
-                <source src="IMG_8774.mov" type="video/quicktime">
-                <source src="IMG_8774.mp4" type="video/mp4">
-            </video>
-
-            <!-- SELEZIONE QUANTITÀ -->
-            <div class="quantity-box">
-                <div class="quantity-title" id="choose">
-                    ✦ SCEGLI LA QUANTITÀ ✦
-                </div>
-                <div class="quantity-buttons">
-                    <button type="button" onclick="addToCart('FAT TONY', 1)">1</button>
-                    <button type="button" onclick="addToCart('FAT TONY', 2)">2</button>
-                    <button type="button" onclick="addToCart('FAT TONY', 5)">5</button>
-                    <button type="button" onclick="addToCart('FAT TONY', 10)">10</button>
-                    <button type="button" onclick="addToCart('FAT TONY', 50)">50</button>
-                </div>
-                <div class="selected-quantity" id="selectedQuantity">
-                    Nessuna quantità selezionata
-                </div>
-            </div>
-        </div>
-
-        <div class="cart">
-            <div class="cart-title">
-                🛒 <span id="cartText">Il tuo ordine</span>
-            </div>
-            <div id="mini-cart">
-                Carrello vuoto
-            </div>
-        </div>
-
-        <a href="shop.html" class="category-link">
-            <div class="category" id="goCart">
-                🛒 Vai al carrello
-            </div>
-        </a>
-        <a href="VAPE.html" class="category-link">
-            <div class="category" id="goVape">
-                ← Torna ai VAPO
-            </div>
-        </a>
-        <a href="shop.html" class="category-link">
-            <div class="category" id="goMenu">
-                🏠 Torna al menu
-            </div>
-        </a>
     </div>
 
-    <script src="language.js"></script>
-    <script>
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    <div class="cart">
+        <div class="cart-title">
+            🛒 <span id="cartText">Il tuo ordine</span>
+        </div>
+        <div id="mini-cart">
+            Carrello vuoto
+        </div>
+    </div>
 
-        function addToCart(product, quantity) {
-            for (let i = 0; i < quantity; i++) {
-                cart.push(product);
-            }
-            localStorage.setItem("cart", JSON.stringify(cart));
-            
-            document.getElementById("selectedQuantity").textContent = "Quantità selezionata: " + quantity;
-            showMiniCart();
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goCart">
+            🛒 Vai al carrello
+        </div>
+    </a>
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goMenu">
+            🏠 Torna al menu
+        </div>
+    </a>
+</div>
 
-            const lang = localStorage.getItem("language") || "it";
-            const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
-            alert("✅ " + product + " x" + quantity + " " + (t.addedToCart || "aggiunto al carrello"));
-        }
+<script src="language.js"></script>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        function showMiniCart() {
-            const box = document.getElementById("mini-cart");
-            if (!box) return;
+function addToCart(product) {
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+    const lang = localStorage.getItem("language") || "it";
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
+    alert("✅ " + product + " " + (t.addedToCart || "aggiunto al carrello"));
+}
 
-            const lang = localStorage.getItem("language") || "it";
-            const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
+function showMiniCart() {
+    const box = document.getElementById("mini-cart");
+    if (!box) return;
+    const lang = localStorage.getItem("language") || "it";
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
+    if (cart.length === 0) {
+        box.innerHTML = t.emptyCart || "Carrello vuoto";
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+    });
+}
 
-            if (cart.length === 0) {
-                box.innerHTML = t.emptyCart || "Carrello vuoto";
-                return;
-            }
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+}
 
-            box.innerHTML = "";
-            cart.forEach(function(item, index) {
-                box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
-            });
-        }
-
-        function removeItem(index) {
-            cart.splice(index, 1);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            showMiniCart();
-        }
-
-        window.addEventListener("load", function() {
-            const lang = localStorage.getItem("language") || "it";
-            const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
-            document.documentElement.lang = lang;
-
-            if (t.back && document.getElementById("back")) document.getElementById("back").innerHTML = t.back;
-            if (t.cart && document.getElementById("cartText")) document.getElementById("cartText").innerHTML = t.cart;
-            if (document.getElementById("goCart")) document.getElementById("goCart").innerHTML = t.goCart || "🛒 Vai al carrello";
-            if (document.getElementById("goVape")) document.getElementById("goVape").innerHTML = "← " + (t.backVape || "Torna ai VAPO");
-            if (document.getElementById("goMenu")) document.getElementById("goMenu").innerHTML = t.goMenu || "🏠 Torna al menu";
-            
-            showMiniCart();
-        });
-    </script>
+window.addEventListener("load", function() {
+    const lang = localStorage.getItem("language") || "it";
+    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
+    document.documentElement.lang = lang;
+    if (t.back && document.getElementById("back")) document.getElementById("back").innerHTML = t.back;
+    if (t.choose && document.getElementById("choose")) document.getElementById("choose").innerHTML = t.choose;
+    if (t.cart && document.getElementById("cartText")) document.getElementById("cartText").innerHTML = t.cart;
+    if (t.goCart && document.getElementById("goCart")) document.getElementById("goCart").innerHTML = t.goCart;
+    if (t.goMenu && document.getElementById("goMenu")) document.getElementById("goMenu").innerHTML = t.goMenu;
+    showMiniCart();
+});
+</script>
 </body>
 </html>
