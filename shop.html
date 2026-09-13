@@ -153,6 +153,25 @@
             </div>
         </div>
     </a>
+    <!-- GADGET -->
+    <a
+        href="gadget.html"
+        class="category-link"
+    >
+        <div class="category">
+            <img
+                src="gadget.jpg"
+                class="category-image"
+                alt="Gadget"
+            >
+            <div
+                class="category-name"
+                data-translate="gadget"
+            >
+                🎁 Gadget
+            </div>
+        </div>
+    </a>
 </div>
 <!-- =========================
      CARRELLO
@@ -200,6 +219,7 @@ const translations = {
         vape: "VAPE",
         sim: "SIM",
         stickers: "STICKERS",
+        gadget: "GADGET",
         cartTitle: "🛒 Carrello",
         emptyCart: "Nessun prodotto",
         confirmOrder:
@@ -219,6 +239,7 @@ const translations = {
         vape: "VAPE",
         sim: "SIM",
         stickers: "STICKERS",
+        gadget: "GADGETS",
         cartTitle: "🛒 Cart",
         emptyCart: "No products",
         confirmOrder:
@@ -238,6 +259,7 @@ const translations = {
         vape: "VAPE",
         sim: "SIM",
         stickers: "STICKERS",
+        gadget: "GADGETS",
         cartTitle: "🛒 Carrito",
         emptyCart:
             "Ningún producto",
@@ -258,6 +280,7 @@ const translations = {
         vape: "VAPE",
         sim: "SIM",
         stickers: "STICKERS",
+        gadget: "GADGETS",
         cartTitle:
             "🛒 Warenkorb",
         emptyCart:
@@ -319,6 +342,11 @@ let stickers =
         localStorage.getItem("stickers")
     ) || [];
 
+let gadgets =
+    JSON.parse(
+        localStorage.getItem("gadgets")
+    ) || [];
+
 /* =========================
    CREA LISTA RAGGRUPPATA
 ========================= */
@@ -356,6 +384,23 @@ function getGroupedStickers() {
     return grouped;
 }
 
+function getGroupedGadgets() {
+    const grouped = {};
+    gadgets.forEach(
+        function(item) {
+            if (
+                grouped[item]
+            ) {
+                grouped[item]++;
+            }
+            else {
+                grouped[item] = 1;
+            }
+        }
+    );
+    return grouped;
+}
+
 /* =========================
    MOSTRA CARRELLO
 ========================= */
@@ -365,7 +410,7 @@ function showCart() {
             "cart"
         );
     if (
-        cart.length === 0 && stickers.length === 0
+        cart.length === 0 && stickers.length === 0 && gadgets.length === 0
     ) {
         const language =
             getLanguage();
@@ -379,6 +424,8 @@ function showCart() {
         getGroupedCart();
     const groupedStickers =
         getGroupedStickers();
+    const groupedGadgets =
+        getGroupedGadgets();
         
     box.innerHTML = "";
     
@@ -420,6 +467,30 @@ function showCart() {
                     ' <button ' +
                     'onclick="removeOneSticker(\'' +
                     sticker.replace(
+                        /'/g,
+                        "\\'"
+                    ) +
+                    '\')">' +
+                    "❌" +
+                    "</button>" +
+                    "<br><br>";
+            }
+        );
+
+    // Mostra gadget scelti
+    Object.keys(groupedGadgets)
+        .forEach(
+            function(gadget) {
+                const quantity =
+                    groupedGadgets[gadget];
+                box.innerHTML +=
+                    "• [GADGET] " +
+                    gadget +
+                    " × " +
+                    quantity +
+                    ' <button ' +
+                    'onclick="removeOneGadget(\'' +
+                    gadget.replace(
                         /'/g,
                         "\\'"
                     ) +
@@ -477,12 +548,34 @@ function removeOneSticker(
     showCart();
 }
 
+function removeOneGadget(
+    gadget
+) {
+    const index =
+        gadgets.lastIndexOf(
+            gadget
+        );
+    if (
+        index !== -1
+    ) {
+        gadgets.splice(
+            index,
+            1
+        );
+    }
+    localStorage.setItem(
+        "gadgets",
+        JSON.stringify(gadgets)
+    );
+    showCart();
+}
+
 /* =========================
    INVIO ORDINE
 ========================= */
 function sendOrder() {
     if (
-        cart.length === 0 && stickers.length === 0
+        cart.length === 0 && stickers.length === 0 && gadgets.length === 0
     ) {
         alert(
             translations[
@@ -495,6 +588,8 @@ function sendOrder() {
         getGroupedCart();
     const groupedStickers =
         getGroupedStickers();
+    const groupedGadgets =
+        getGroupedGadgets();
 
     let ordine = "";
     Object.keys(grouped)
@@ -517,6 +612,20 @@ function sendOrder() {
                         sticker +
                         " × " +
                         groupedStickers[sticker] +
+                        "\n";
+                }
+            );
+    }
+
+    if (gadgets.length > 0) {
+        ordine += "\nGADGETS:\n";
+        Object.keys(groupedGadgets)
+            .forEach(
+                function(gadget) {
+                    ordine +=
+                        gadget +
+                        " × " +
+                        groupedGadgets[gadget] +
                         "\n";
                 }
             );
