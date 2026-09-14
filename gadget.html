@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <style>
     /* ==========================
-       STILI CARD STILO FROZEN
+       SCHEDE STILE FROZEN / FOLDER
     ========================== */
     .gadget-list {
         display: flex;
@@ -43,7 +43,7 @@
     }
 
     /* ==========================
-       MEDIA E GALLERIA
+       MEDIA A SCENDERE (STILE VAPE)
     ========================== */
     .media-container {
         display: none;
@@ -53,41 +53,22 @@
         border-radius: 18px;
     }
 
-    .product-media {
+    .product-image, .product-video {
         width: 100%;
         max-width: 600px;
-        height: auto;
-        max-height: 400px;
+        height: 350px;
         display: block;
-        margin: 0 auto 15px auto;
+        margin: 0 auto 20px auto;
         border-radius: 18px;
-        object-fit: contain;
-        background-color: #000;
-    }
-
-    .gallery-controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 15px;
-    }
-
-    .gallery-btn {
-        background-color: #333;
-        color: #fff;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
+        object-fit: cover;
+        object-position: center;
     }
 
     .add-to-cart-btn {
         display: block;
         width: 100%;
         max-width: 300px;
-        margin: 10px auto 0 auto;
+        margin: 20px auto 0 auto;
         padding: 12px;
         background-color: #28a745;
         color: white;
@@ -98,7 +79,6 @@
         font-weight: bold;
     }
 
-    /* Tasto per chiudere la galleria e tornare alle schede */
     .close-btn {
         background: transparent;
         border: none;
@@ -107,6 +87,15 @@
         cursor: pointer;
         margin-bottom: 15px;
         text-decoration: underline;
+    }
+
+    @media (max-width: 500px) {
+        .product-image, .product-video {
+            width: 100%;
+            max-width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
     }
     </style>
 </head>
@@ -137,17 +126,20 @@
         </div>
     </div>
 
-    <!-- SEZIONE GALLERIA FOTO/VIDEO PER CIMA WEED -->
+    <!-- SEZIONE PRODOTTO SELEZIONATO CON MEDIA A SCENDERE -->
     <div id="media-view" class="media-container">
         <button class="close-btn" onclick="closeGadget()">← Chiudi selezione</button>
-        <h2 id="gadget-title" style="text-align: center; margin-bottom: 15px;"></h2>
+        <h2 id="gadget-title" style="text-align: center; margin-bottom: 20px;"></h2>
 
-        <div id="media-display"></div>
-
-        <div id="gallery-controls-box" class="gallery-controls">
-            <button class="gallery-btn" onclick="prevMedia()">❮ Indietro</button>
-            <span id="media-counter">1 / 4</span>
-            <button class="gallery-btn" onclick="nextMedia()">Avanti ❯</button>
+        <!-- LISTA MEDIA A SCENDERE (SOLO PER CIMA WEED) -->
+        <div id="media-list-box" style="display: none;">
+            <img src="IMG_1780.png" class="product-image" alt="Cima Weed 1">
+            <img src="IMG_1781.png" class="product-image" alt="Cima Weed 2">
+            <img src="IMG_1782.png" class="product-image" alt="Cima Weed 3">
+            <video class="product-video" controls autoplay loop muted playsinline>
+                <source src="IMG_1688.mov" type="video/quicktime">
+                <source src="IMG_1688.mov" type="video/mp4">
+            </video>
         </div>
 
         <button class="add-to-cart-btn" onclick="addSelectedGadget()">Aggiungi al Carrello 🛒</button>
@@ -155,63 +147,24 @@
 </div>
 
 <script>
-const mediaList = [
-    { type: 'image', src: 'IMG_1780.png' },
-    { type: 'image', src: 'IMG_1781.png' },
-    { type: 'image', src: 'IMG_1782.png' },
-    { type: 'video', src: 'IMG_1688.mov' }
-];
-
-let currentMediaIndex = 0;
 let currentSelectedGadget = '';
 
 function openGadget(gadgetName) {
     currentSelectedGadget = gadgetName;
     document.getElementById('gadget-title').innerText = gadgetName;
+    document.getElementById('media-view').style.display = 'block';
+
+    const mediaBox = document.getElementById('media-list-box');
 
     if (gadgetName === 'CIMA WEED') {
-        document.getElementById('media-view').style.display = 'block';
-        document.getElementById('gallery-controls-box').style.display = 'flex';
-        currentMediaIndex = 0;
-        updateMediaDisplay();
+        mediaBox.style.display = 'block';
     } else {
-        // Per gli altri gadget senza foto apre la vista standard di inserimento
-        document.getElementById('media-view').style.display = 'block';
-        document.getElementById('gallery-controls-box').style.display = 'none';
-        document.getElementById('media-display').innerHTML = '<p style="text-align:center;">Seleziona per aggiungere al carrello</p>';
+        mediaBox.style.display = 'none';
     }
 }
 
 function closeGadget() {
     document.getElementById('media-view').style.display = 'none';
-}
-
-function updateMediaDisplay() {
-    const display = document.getElementById('media-display');
-    const counter = document.getElementById('media-counter');
-    const current = mediaList[currentMediaIndex];
-
-    if (current.type === 'image') {
-        display.innerHTML = `<img src="${current.src}" class="product-media" alt="Cima Weed">`;
-    } else if (current.type === 'video') {
-        display.innerHTML = `
-            <video class="product-media" controls playsinline preload="metadata">
-                <source src="${current.src}" type="video/quicktime">
-                <source src="${current.src}" type="video/mp4">
-            </video>`;
-    }
-
-    counter.textContent = (currentMediaIndex + 1) + ' / ' + mediaList.length;
-}
-
-function nextMedia() {
-    currentMediaIndex = (currentMediaIndex + 1) % mediaList.length;
-    updateMediaDisplay();
-}
-
-function prevMedia() {
-    currentMediaIndex = (currentMediaIndex - 1 + mediaList.length) % mediaList.length;
-    updateMediaDisplay();
 }
 
 function addSelectedGadget() {
