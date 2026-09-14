@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="style.css">
     <style>
     /* ==========================
-       STILI MEDIA E GALLERIA
+       MEDIA E GALLERIA
     ========================== */
     .media-container {
         width: 100%;
         max-width: 600px;
-        margin: 0 auto 20px auto;
+        margin: 20px auto;
         text-align: center;
-        display: none; /* Nascosto di default, mostrato al click su CIMA WEED */
+        display: none; /* Si mostra al click su CIMA WEED */
     }
 
     .product-media {
@@ -70,16 +70,49 @@
         background-color: #218838;
     }
 
-    /* Stile pulsante attivo */
+    /* ==========================
+       PULSANTI SELEZIONE (ALLINEATI A HIGHLAND TERPS)
+    ========================== */
+    .sizes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .sizes button {
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: 2px solid transparent;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    /* Stato attivo quando viene selezionato un gadget */
     .sizes button.active {
         background-color: #007bff;
-        color: white;
+        color: #ffffff;
+        border-color: #0056b3;
+    }
+
+    /* ==========================
+       MOBILE
+    ========================== */
+    @media (max-width: 500px) {
+        .product-media {
+            width: 100%;
+            max-width: 100%;
+            max-height: 350px;
+        }
     }
     </style>
 </head>
 <body>
 
-<!-- FRECCIA INDIETRO CHE TORNA ALLO SHOP -->
+<!-- FRECCIA INDIETRO -->
 <div class="back-button">
     <a href="shop.html">← Torna allo Shop</a>
 </div>
@@ -92,18 +125,16 @@
     <div class="product">
         <h2>Scegli il tuo Gadget</h2>
         
-        <!-- RIQUADRI SELEZIONE GADGET -->
+        <!-- RIQUADRI CON LO STESSO DESIGN DI HIGHLAND TERPS -->
         <div class="sizes">
             <button onclick="selectGadget('CIMA WEED', this)">CIMA WEED</button>
             <button onclick="selectGadget('KATANE 10cm', this)">KATANE 10cm</button>
             <button onclick="selectGadget('TAPPETINI DUB', this)">TAPPETINI DUB</button>
         </div>
 
-        <!-- SEZIONE MEDIA DEDICATA A CIMA WEED -->
+        <!-- GALLERIA MEDIA PER CIMA WEED -->
         <div id="cima-weed-gallery" class="media-container">
-            <div id="media-display">
-                <!-- Verrà popolato dinamicamente via JS (immagine o video) -->
-            </div>
+            <div id="media-display"></div>
 
             <div class="gallery-controls">
                 <button class="gallery-btn" onclick="prevMedia()">❮ Indietro</button>
@@ -117,7 +148,6 @@
 </div>
 
 <script>
-// Lista dei file multimediali per "CIMA WEED"
 const mediaList = [
     { type: 'image', src: 'IMG_1780.png' },
     { type: 'image', src: 'IMG_1781.png' },
@@ -131,9 +161,9 @@ let currentSelectedGadget = '';
 function selectGadget(gadgetName, button) {
     currentSelectedGadget = gadgetName;
 
-    // Rimuove classe active da tutti i bottoni
+    // Resetta la classe active su tutti i bottoni
     document.querySelectorAll('.sizes button').forEach(btn => btn.classList.remove('active'));
-    // Aggiunge classe active al bottone selezionato
+    // Evidenzia il bottone cliccato
     button.classList.add('active');
 
     const gallery = document.getElementById('cima-weed-gallery');
@@ -143,10 +173,7 @@ function selectGadget(gadgetName, button) {
         currentMediaIndex = 0;
         updateMediaDisplay();
     } else {
-        // Nasconde la galleria se si seleziona un altro gadget
         gallery.style.display = 'none';
-        
-        // Se desideri aggiungere direttamente gli altri gadget al carrello al click:
         addGadget(gadgetName);
     }
 }
@@ -184,7 +211,7 @@ function addGadget(gadgetName) {
     let gadgets = JSON.parse(localStorage.getItem('gadgets')) || [];
     gadgets.push(gadgetName);
     localStorage.setItem('gadgets', JSON.stringify(gadgets));
-    alert(gadgetName + ' aggiunto al carrello!');
+    alert('✅ ' + gadgetName + ' aggiunto al carrello!');
 }
 
 function addSelectedGadget() {
