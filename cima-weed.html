@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cima Weed - Oasis del Sur</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .product-image, .product-video {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 18px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        #mini-cart {
+            margin-top: 15px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        #mini-cart button {
+            background: #e50914;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 500px) {
+            .product-image, .product-video {
+                width: 100%;
+                max-width: 100%;
+                height: 280px;
+                object-fit: cover;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="back-button">
+    <a href="gadget.html" id="back">
+        ← Torna ai Gadget
+    </a>
+</div>
+
+<div class="container">
+
+    <div class="section-title">
+         CIMA WEED
+    </div>
+
+    <div class="product">
+        <!-- FOTO A SCENDERE -->
+        <img src="IMG_1780.png" class="product-image" alt="Cima Weed 1">
+        <img src="IMG_1781.png" class="product-image" alt="Cima Weed 2">
+        <img src="IMG_1782.png" class="product-image" alt="Cima Weed 3">
+
+        <!-- VIDEO -->
+        <video class="product-video" controls autoplay loop muted playsinline>
+            <source src="IMG_1688.mov" type="video/quicktime">
+            <source src="IMG_1688.mov" type="video/mp4">
+        </video>
+
+        <h2 id="choose">
+            Scegli quantità
+        </h2>
+
+        <div class="sizes">
+            <button onclick="addGadget('CIMA WEED - 1pz')">1pz</button>
+            <button onclick="addGadget('CIMA WEED - 2pz')">2pz</button>
+            <button onclick="addGadget('CIMA WEED - 3pz')">3pz</button>
+            <button onclick="addGadget('CIMA WEED - 5pz')">5pz</button>
+        </div>
+    </div>
+
+    <!-- CARRELLO MINI -->
+    <div class="cart">
+        <div class="cart-title">
+            🛒 <span id="cartText">Il tuo ordine</span>
+        </div>
+        <div id="mini-cart">
+            Carrello vuoto
+        </div>
+    </div>
+
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goCart">
+            🛒 Vai al carrello
+        </div>
+    </a>
+
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goMenu">
+            🏠 Torna al menu
+        </div>
+    </a>
+
+</div>
+
+<script src="language.js"></script>
+
+<script>
+let gadgets = JSON.parse(localStorage.getItem("gadgets")) || [];
+
+function addGadget(product) {
+    gadgets.push(product);
+    localStorage.setItem("gadgets", JSON.stringify(gadgets));
+    showMiniCart();
+    alert("✅ " + product + " aggiunto al carrello");
+}
+
+function showMiniCart() {
+    const box = document.getElementById("mini-cart");
+    if (!box) return;
+
+    if (gadgets.length === 0) {
+        box.innerHTML = "Carrello vuoto";
+        return;
+    }
+
+    box.innerHTML = "";
+    gadgets.forEach(function(item, index) {
+        box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+    });
+}
+
+function removeItem(index) {
+    gadgets.splice(index, 1);
+    localStorage.setItem("gadgets", JSON.stringify(gadgets));
+    showMiniCart();
+}
+
+window.addEventListener("load", function() {
+    showMiniCart();
+});
+</script>
+
+</body>
+
+</html>
