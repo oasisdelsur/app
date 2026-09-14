@@ -7,17 +7,73 @@
     <link rel="stylesheet" href="style.css">
     <style>
     /* ==========================
-       IMMAGINI
+       STILI MEDIA E GALLERIA
     ========================== */
-    .product-image {
+    .media-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 20px auto;
+        text-align: center;
+        display: none; /* Nascosto di default, mostrato al click su CIMA WEED */
+    }
+
+    .product-media {
         width: 100%;
         max-width: 600px;
         height: auto;
-        max-height: 500px;
+        max-height: 400px;
         display: block;
-        margin: 0 auto 20px auto;
+        margin: 0 auto 10px auto;
         border-radius: 18px;
         object-fit: contain;
+        background-color: #000;
+    }
+
+    .gallery-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .gallery-btn {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .gallery-btn:hover {
+        background-color: #555;
+    }
+
+    .add-to-cart-btn {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin: 15px auto 0 auto;
+        padding: 12px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #218838;
+    }
+
+    /* Stile pulsante attivo */
+    .sizes button.active {
+        background-color: #007bff;
+        color: white;
     }
     </style>
 </head>
@@ -34,18 +90,109 @@
     </div>
 
     <div class="product">
-        <!-- SPAZIO DEDICATO ALLE IMMAGINI DEGLI ARTICOLI -->
-
         <h2>Scegli il tuo Gadget</h2>
         
-        <!-- RIQUADRI CON LA STESSA IDENTICA GRANDEZZA DI HIGHLAND TERPS -->
+        <!-- RIQUADRI SELEZIONE GADGET -->
         <div class="sizes">
-            <button>CIMA WEED</button>
-            <button>KATANE 10cm</button>
-            <button>TAPPETINI DUB</button>
+            <button onclick="selectGadget('CIMA WEED', this)">CIMA WEED</button>
+            <button onclick="selectGadget('KATANE 10cm', this)">KATANE 10cm</button>
+            <button onclick="selectGadget('TAPPETINI DUB', this)">TAPPETINI DUB</button>
+        </div>
+
+        <!-- SEZIONE MEDIA DEDICATA A CIMA WEED -->
+        <div id="cima-weed-gallery" class="media-container">
+            <div id="media-display">
+                <!-- Verrà popolato dinamicamente via JS (immagine o video) -->
+            </div>
+
+            <div class="gallery-controls">
+                <button class="gallery-btn" onclick="prevMedia()">❮ Indietro</button>
+                <span id="media-counter">1 / 4</span>
+                <button class="gallery-btn" onclick="nextMedia()">Avanti ❯</button>
+            </div>
+
+            <button class="add-to-cart-btn" onclick="addSelectedGadget()">Aggiungi al Carrello 🛒</button>
         </div>
     </div>
 </div>
+
+<script>
+// Lista dei file multimediali per "CIMA WEED"
+const mediaList = [
+    { type: 'image', src: 'IMG_1780.png' },
+    { type: 'image', src: 'IMG_1781.png' },
+    { type: 'image', src: 'IMG_1782.png' },
+    { type: 'video', src: 'IMG_1688.mov' }
+];
+
+let currentMediaIndex = 0;
+let currentSelectedGadget = '';
+
+function selectGadget(gadgetName, button) {
+    currentSelectedGadget = gadgetName;
+
+    // Rimuove classe active da tutti i bottoni
+    document.querySelectorAll('.sizes button').forEach(btn => btn.classList.remove('active'));
+    // Aggiunge classe active al bottone selezionato
+    button.classList.add('active');
+
+    const gallery = document.getElementById('cima-weed-gallery');
+
+    if (gadgetName === 'CIMA WEED') {
+        gallery.style.display = 'block';
+        currentMediaIndex = 0;
+        updateMediaDisplay();
+    } else {
+        // Nasconde la galleria se si seleziona un altro gadget
+        gallery.style.display = 'none';
+        
+        // Se desideri aggiungere direttamente gli altri gadget al carrello al click:
+        addGadget(gadgetName);
+    }
+}
+
+function updateMediaDisplay() {
+    const display = document.getElementById('media-display');
+    const counter = document.getElementById('media-counter');
+    const current = mediaList[currentMediaIndex];
+
+    if (current.type === 'image') {
+        display.innerHTML = `<img src="${current.src}" class="product-media" alt="Cima Weed">`;
+    } else if (current.type === 'video') {
+        display.innerHTML = `
+            <video class="product-media" controls autoplay loop muted playsinline>
+                <source src="${current.src}" type="video/mp4">
+                <source src="${current.src}" type="video/quicktime">
+                Il tuo browser non supporta il tag video.
+            </video>`;
+    }
+
+    counter.textContent = `${currentMediaIndex + 1} / ${mediaList.length}`;
+}
+
+function nextMedia() {
+    currentMediaIndex = (currentMediaIndex + 1) % mediaList.length;
+    updateMediaDisplay();
+}
+
+function prevMedia() {
+    currentMediaIndex = (currentMediaIndex - 1 + mediaList.length) % mediaList.length;
+    updateMediaDisplay();
+}
+
+function addGadget(gadgetName) {
+    let gadgets = JSON.parse(localStorage.getItem('gadgets')) || [];
+    gadgets.push(gadgetName);
+    localStorage.setItem('gadgets', JSON.stringify(gadgets));
+    alert(gadgetName + ' aggiunto al carrello!');
+}
+
+function addSelectedGadget() {
+    if (currentSelectedGadget) {
+        addGadget(currentSelectedGadget);
+    }
+}
+</script>
 
 </body>
 </html>
