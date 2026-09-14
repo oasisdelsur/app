@@ -7,14 +7,50 @@
     <link rel="stylesheet" href="style.css">
     <style>
     /* ==========================
+       STILI CARD STILO FROZEN
+    ========================== */
+    .gadget-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .gadget-card {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        backdrop-filter: blur(5px);
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .gadget-card:active, .gadget-card:hover {
+        transform: scale(0.98);
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .gadget-card .icon {
+        font-size: 24px;
+    }
+
+    /* ==========================
        MEDIA E GALLERIA
     ========================== */
     .media-container {
-        width: 100%;
-        max-width: 600px;
-        margin: 20px auto;
-        text-align: center;
-        display: none; /* Si attiva al click */
+        display: none;
+        margin-top: 25px;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        border-radius: 18px;
     }
 
     .product-media {
@@ -23,7 +59,7 @@
         height: auto;
         max-height: 400px;
         display: block;
-        margin: 0 auto 10px auto;
+        margin: 0 auto 15px auto;
         border-radius: 18px;
         object-fit: contain;
         background-color: #000;
@@ -34,7 +70,7 @@
         justify-content: center;
         align-items: center;
         gap: 15px;
-        margin-top: 10px;
+        margin-bottom: 15px;
     }
 
     .gallery-btn {
@@ -47,15 +83,11 @@
         font-size: 16px;
     }
 
-    .gallery-btn:hover {
-        background-color: #555;
-    }
-
     .add-to-cart-btn {
         display: block;
         width: 100%;
         max-width: 300px;
-        margin: 15px auto 0 auto;
+        margin: 10px auto 0 auto;
         padding: 12px;
         background-color: #28a745;
         color: white;
@@ -66,49 +98,20 @@
         font-weight: bold;
     }
 
-    .add-to-cart-btn:hover {
-        background-color: #218838;
-    }
-
-    /* ==========================
-       PULSANTI SELEZIONE (STILE HIGHLAND TERPS)
-    ========================== */
-    .sizes {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        margin-top: 15px;
-    }
-
-    .sizes button {
-        padding: 12px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        border: 2px solid transparent;
-        border-radius: 12px;
+    /* Tasto per chiudere la galleria e tornare alle schede */
+    .close-btn {
+        background: transparent;
+        border: none;
+        color: #ff4d4d;
+        font-size: 14px;
         cursor: pointer;
-        transition: all 0.2s ease;
-    }
-
-    .sizes button.active {
-        background-color: #007bff;
-        color: #ffffff;
-        border-color: #0056b3;
-    }
-
-    @media (max-width: 500px) {
-        .product-media {
-            width: 100%;
-            max-width: 100%;
-            max-height: 350px;
-        }
+        margin-bottom: 15px;
+        text-decoration: underline;
     }
     </style>
 </head>
 <body>
 
-<!-- FRECCIA INDIETRO -->
 <div class="back-button">
     <a href="shop.html">← Torna allo Shop</a>
 </div>
@@ -118,28 +121,36 @@
          🎁 GADGET
     </div>
 
-    <div class="product">
-        <h2>Scegli il tuo Gadget</h2>
-        
-        <!-- RIQUADRI CON SELEZIONE -->
-        <div class="sizes">
-            <button id="btn-cima" onclick="selectGadget('CIMA WEED', this)">CIMA WEED</button>
-            <button onclick="selectGadget('KATANE 10cm', this)">KATANE 10cm</button>
-            <button onclick="selectGadget('TAPPETINI DUB', this)">TAPPETINI DUB</button>
+    <!-- ELENCO SCHEDE STILE FROZEN -->
+    <div id="gadget-menu" class="gadget-list">
+        <div class="gadget-card" onclick="openGadget('CIMA WEED')">
+            <span class="icon">📁</span>
+            <span>CIMA WEED</span>
+        </div>
+        <div class="gadget-card" onclick="openGadget('KATANE 10cm')">
+            <span class="icon">📁</span>
+            <span>KATANE 10cm</span>
+        </div>
+        <div class="gadget-card" onclick="openGadget('TAPPETINI DUB')">
+            <span class="icon">📁</span>
+            <span>TAPPETINI DUB</span>
+        </div>
+    </div>
+
+    <!-- SEZIONE GALLERIA FOTO/VIDEO PER CIMA WEED -->
+    <div id="media-view" class="media-container">
+        <button class="close-btn" onclick="closeGadget()">← Chiudi selezione</button>
+        <h2 id="gadget-title" style="text-align: center; margin-bottom: 15px;"></h2>
+
+        <div id="media-display"></div>
+
+        <div id="gallery-controls-box" class="gallery-controls">
+            <button class="gallery-btn" onclick="prevMedia()">❮ Indietro</button>
+            <span id="media-counter">1 / 4</span>
+            <button class="gallery-btn" onclick="nextMedia()">Avanti ❯</button>
         </div>
 
-        <!-- GALLERIA MEDIA PER CIMA WEED -->
-        <div id="cima-weed-gallery" class="media-container">
-            <div id="media-display"></div>
-
-            <div class="gallery-controls">
-                <button class="gallery-btn" onclick="prevMedia()">❮ Indietro</button>
-                <span id="media-counter">1 / 4</span>
-                <button class="gallery-btn" onclick="nextMedia()">Avanti ❯</button>
-            </div>
-
-            <button class="add-to-cart-btn" onclick="addSelectedGadget()">Aggiungi al Carrello 🛒</button>
-        </div>
+        <button class="add-to-cart-btn" onclick="addSelectedGadget()">Aggiungi al Carrello 🛒</button>
     </div>
 </div>
 
@@ -154,28 +165,25 @@ const mediaList = [
 let currentMediaIndex = 0;
 let currentSelectedGadget = '';
 
-function selectGadget(gadgetName, button) {
+function openGadget(gadgetName) {
     currentSelectedGadget = gadgetName;
-
-    // Resetta lo stato attivo di tutti i pulsanti
-    const buttons = document.querySelectorAll('.sizes button');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    
-    // Attiva il pulsante cliccato
-    if (button) {
-        button.classList.add('active');
-    }
-
-    const gallery = document.getElementById('cima-weed-gallery');
+    document.getElementById('gadget-title').innerText = gadgetName;
 
     if (gadgetName === 'CIMA WEED') {
-        gallery.style.display = 'block';
+        document.getElementById('media-view').style.display = 'block';
+        document.getElementById('gallery-controls-box').style.display = 'flex';
         currentMediaIndex = 0;
         updateMediaDisplay();
     } else {
-        gallery.style.display = 'none';
-        addGadget(gadgetName);
+        // Per gli altri gadget senza foto apre la vista standard di inserimento
+        document.getElementById('media-view').style.display = 'block';
+        document.getElementById('gallery-controls-box').style.display = 'none';
+        document.getElementById('media-display').innerHTML = '<p style="text-align:center;">Seleziona per aggiungere al carrello</p>';
     }
+}
+
+function closeGadget() {
+    document.getElementById('media-view').style.display = 'none';
 }
 
 function updateMediaDisplay() {
@@ -184,13 +192,12 @@ function updateMediaDisplay() {
     const current = mediaList[currentMediaIndex];
 
     if (current.type === 'image') {
-        display.innerHTML = `<img src="${current.src}" class="product-media" alt="Cima Weed" onerror="this.alt='Immagine non trovata su GitHub'">`;
+        display.innerHTML = `<img src="${current.src}" class="product-media" alt="Cima Weed">`;
     } else if (current.type === 'video') {
         display.innerHTML = `
             <video class="product-media" controls playsinline preload="metadata">
                 <source src="${current.src}" type="video/quicktime">
                 <source src="${current.src}" type="video/mp4">
-                Il tuo browser non supporta la riproduzione del video.
             </video>`;
     }
 
@@ -207,17 +214,12 @@ function prevMedia() {
     updateMediaDisplay();
 }
 
-function addGadget(gadgetName) {
-    let gadgets = JSON.parse(localStorage.getItem('gadgets')) || [];
-    gadgets.push(gadgetName);
-    localStorage.setItem('gadgets', JSON.stringify(gadgets));
-    alert('✅ ' + gadgetName + ' aggiunto al carrello!');
-}
-
 function addSelectedGadget() {
-    if (currentSelectedGadget) {
-        addGadget(currentSelectedGadget);
-    }
+    if (!currentSelectedGadget) return;
+    let gadgets = JSON.parse(localStorage.getItem('gadgets')) || [];
+    gadgets.push(currentSelectedGadget);
+    localStorage.setItem('gadgets', JSON.stringify(gadgets));
+    alert('✅ ' + currentSelectedGadget + ' aggiunto al carrello!');
 }
 </script>
 
