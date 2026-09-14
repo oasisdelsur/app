@@ -1,180 +1,120 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gadget - Oasis del Sur</title>
     <link rel="stylesheet" href="style.css">
+
     <style>
-    /* ==========================
-       SCHEDE STILE FROZEN / FOLDER
-    ========================== */
-    .gadget-list {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .gadget-card {
-        background: rgba(0, 0, 0, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 18px;
-        padding: 20px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        backdrop-filter: blur(5px);
-        transition: transform 0.2s, background-color 0.2s;
-    }
-
-    .gadget-card:active, .gadget-card:hover {
-        transform: scale(0.98);
-        background: rgba(0, 0, 0, 0.6);
-    }
-
-    .gadget-card .icon {
-        font-size: 24px;
-    }
-
-    /* ==========================
-       MEDIA A SCENDERE (STILE VAPE)
-    ========================== */
-    .media-container {
-        display: none;
-        margin-top: 25px;
-        background: rgba(0, 0, 0, 0.3);
-        padding: 20px;
-        border-radius: 18px;
-    }
-
-    .product-image, .product-video {
-        width: 100%;
-        max-width: 600px;
-        height: 350px;
-        display: block;
-        margin: 0 auto 20px auto;
-        border-radius: 18px;
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .add-to-cart-btn {
-        display: block;
-        width: 100%;
-        max-width: 300px;
-        margin: 20px auto 0 auto;
-        padding: 12px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    .close-btn {
-        background: transparent;
-        border: none;
-        color: #ff4d4d;
-        font-size: 14px;
-        cursor: pointer;
-        margin-bottom: 15px;
-        text-decoration: underline;
-    }
-
-    @media (max-width: 500px) {
-        .product-image, .product-video {
+        /* ==========================
+           GADGET - SELEZIONE
+        ========================== */
+        .vape-list {
             width: 100%;
-            max-width: 100%;
-            height: 280px;
-            object-fit: cover;
+            max-width: 700px;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
-    }
+
+        .vape-card {
+            width: 100%;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            border-radius: 20px;
+            background: rgba(20,20,20,.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(0,255,120,.15);
+            box-shadow: 0 0 20px rgba(0,255,120,.08), 0 10px 30px rgba(0,0,0,.7);
+            transition: .3s;
+            text-decoration: none;
+        }
+
+        .vape-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0,255,120,.35);
+        }
+
+        .vape-name {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .vape-folder {
+            font-size: 32px;
+            margin-right: 12px;
+        }
+
+        @media (max-width: 500px) {
+            .vape-list {
+                margin-top: 20px;
+            }
+            .vape-card {
+                min-height: 105px;
+                padding: 20px;
+            }
+            .vape-name {
+                font-size: 19px;
+            }
+            .vape-folder {
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<div class="back-button">
-    <a href="shop.html">← Torna allo Shop</a>
-</div>
+    <div class="container">
 
-<div class="container">
-    <div class="section-title">
-         🎁 GADGET
+        <div class="section-title">
+            🎁 GADGET
+        </div>
+
+        <div class="back-button">
+            <a href="shop.html" id="back">
+                ← Indietro
+            </a>
+        </div>
+
+        <div class="vape-list">
+
+            <!-- LINK ALLA PAGINA DEDICATA -->
+            <a href="cima-weed.html?v=1" class="category-link">
+                <div class="vape-card">
+                    <span class="vape-folder">📁</span>
+                    <span class="vape-name">CIMA WEED</span>
+                </div>
+            </a>
+
+            <a href="katane.html?v=1" class="category-link">
+                <div class="vape-card">
+                    <span class="vape-folder">📁</span>
+                    <span class="vape-name">KATANE 10cm</span>
+                </div>
+            </a>
+
+            <a href="tappetini-dub.html?v=1" class="category-link">
+                <div class="vape-card">
+                    <span class="vape-folder">📁</span>
+                    <span class="vape-name">TAPPETINI DUB</span>
+                </div>
+            </a>
+
+        </div>
+
     </div>
 
-    <!-- ELENCO SCHEDE STILE FROZEN -->
-    <div id="gadget-menu" class="gadget-list">
-        <div class="gadget-card" onclick="openGadget('CIMA WEED')">
-            <span class="icon">📁</span>
-            <span>CIMA WEED</span>
-        </div>
-        <div class="gadget-card" onclick="openGadget('KATANE 10cm')">
-            <span class="icon">📁</span>
-            <span>KATANE 10cm</span>
-        </div>
-        <div class="gadget-card" onclick="openGadget('TAPPETINI DUB')">
-            <span class="icon">📁</span>
-            <span>TAPPETINI DUB</span>
-        </div>
-    </div>
-
-    <!-- SEZIONE PRODOTTO SELEZIONATO CON MEDIA A SCENDERE -->
-    <div id="media-view" class="media-container">
-        <button class="close-btn" onclick="closeGadget()">← Chiudi selezione</button>
-        <h2 id="gadget-title" style="text-align: center; margin-bottom: 20px;"></h2>
-
-        <!-- LISTA MEDIA A SCENDERE (SOLO PER CIMA WEED) -->
-        <div id="media-list-box" style="display: none;">
-            <img src="IMG_1780.png" class="product-image" alt="Cima Weed 1">
-            <img src="IMG_1781.png" class="product-image" alt="Cima Weed 2">
-            <img src="IMG_1782.png" class="product-image" alt="Cima Weed 3">
-            <video class="product-video" controls autoplay loop muted playsinline>
-                <source src="IMG_1688.mov" type="video/quicktime">
-                <source src="IMG_1688.mov" type="video/mp4">
-            </video>
-        </div>
-
-        <button class="add-to-cart-btn" onclick="addSelectedGadget()">Aggiungi al Carrello 🛒</button>
-    </div>
-</div>
-
-<script>
-let currentSelectedGadget = '';
-
-function openGadget(gadgetName) {
-    currentSelectedGadget = gadgetName;
-    document.getElementById('gadget-title').innerText = gadgetName;
-    document.getElementById('media-view').style.display = 'block';
-
-    const mediaBox = document.getElementById('media-list-box');
-
-    if (gadgetName === 'CIMA WEED') {
-        mediaBox.style.display = 'block';
-    } else {
-        mediaBox.style.display = 'none';
-    }
-}
-
-function closeGadget() {
-    document.getElementById('media-view').style.display = 'none';
-}
-
-function addSelectedGadget() {
-    if (!currentSelectedGadget) return;
-    let gadgets = JSON.parse(localStorage.getItem('gadgets')) || [];
-    gadgets.push(currentSelectedGadget);
-    localStorage.setItem('gadgets', JSON.stringify(gadgets));
-    alert('✅ ' + currentSelectedGadget + ' aggiunto al carrello!');
-}
-</script>
+    <script src="language.js"></script>
 
 </body>
+
 </html>
