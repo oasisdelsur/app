@@ -43,7 +43,7 @@
 <body>
 
 <div class="back-button">
-    <a href="VAPE.html" id="back">
+    <a href="VAPE.html" id="back" data-translate="backToVapes">
         ← Torna ai Vape
     </a>
 </div>
@@ -64,7 +64,7 @@
             <source src="IMG_8774.mov" type="video/quicktime">
         </video>
 
-        <h2 id="choose">
+        <h2 id="choose" data-translate="chooseQuantity">
             Scegli quantità
         </h2>
         <div class="sizes">
@@ -77,21 +77,21 @@
     </div>
 
     <div class="cart">
-        <div class="cart-title">
-            🛒 <span id="cartText">Il tuo ordine</span>
+        <div class="cart-title" data-translate="cartTitle">
+            🛒 Carrello
         </div>
         <div id="mini-cart">
-            Carrello vuoto
+            <span data-translate="emptyCart">Carrello vuoto</span>
         </div>
     </div>
 
     <a href="shop.html" class="category-link">
-        <div class="category" id="goCart">
+        <div class="category" id="goCart" data-translate="goToCart">
             🛒 Vai al carrello
         </div>
     </a>
     <a href="shop.html" class="category-link">
-        <div class="category" id="goMenu">
+        <div class="category" id="goMenu" data-translate="backToMenu">
             🏠 Torna al menu
         </div>
     </a>
@@ -115,6 +115,7 @@ function showMiniCart() {
     if (!box) return;
     const lang = localStorage.getItem("language") || "it";
     const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
+    
     if (cart.length === 0) {
         box.innerHTML = t.emptyCart || "Carrello vuoto";
         return;
@@ -132,14 +133,9 @@ function removeItem(index) {
 }
 
 window.addEventListener("load", function() {
-    const lang = localStorage.getItem("language") || "it";
-    const t = (typeof translations !== "undefined" && translations[lang]) ? translations[lang] : {};
-    document.documentElement.lang = lang;
-    if (t.back && document.getElementById("back")) document.getElementById("back").innerHTML = t.back;
-    if (t.choose && document.getElementById("choose")) document.getElementById("choose").innerHTML = t.choose;
-    if (t.cart && document.getElementById("cartText")) document.getElementById("cartText").innerHTML = t.cart;
-    if (t.goCart && document.getElementById("goCart")) document.getElementById("goCart").innerHTML = t.goCart;
-    if (t.goMenu && document.getElementById("goMenu")) document.getElementById("goMenu").innerHTML = t.goMenu;
+    if (typeof translatePage === "function") {
+        translatePage();
+    }
     showMiniCart();
 });
 </script>
