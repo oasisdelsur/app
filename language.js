@@ -14,7 +14,11 @@ const translations = {
         arrival: "Prodotti in arrivo...",
         emptyCart: "Nessun prodotto",
         emptyAlert: "Il carrello è vuoto",
-        orderMessage: "Ciao Oasis del Sur, vorrei ordinare:"
+        orderMessage: "Ciao Oasis del Sur, vorrei ordinare:",
+        // Nuove chiavi per i singoli prodotti
+        choose: "Scegli quantità",
+        goCart: "🛒 Vai al carrello",
+        goMenu: "🏠 Torna al menu"
     },
 
     es: {
@@ -31,8 +35,12 @@ const translations = {
         coming: "Todavía no disponibles",
         arrival: "Productos próximamente...",
         emptyCart: "Ningún producto",
-        emptyAlert: "El carrello está vacío",
-        orderMessage: "Hola Oasis del Sur, quisiera hacer un pedido:"
+        emptyAlert: "El carrito está vacío",
+        orderMessage: "Hola Oasis del Sur, quisiera hacer un pedido:",
+        // Nuove chiavi per i singoli prodotti
+        choose: "Elige cantidad",
+        goCart: "🛒 Ir al carrito",
+        goMenu: "🏠 Volver al menú"
     },
 
     en: {
@@ -50,7 +58,11 @@ const translations = {
         arrival: "Products coming soon...",
         emptyCart: "No products",
         emptyAlert: "The cart is empty",
-        orderMessage: "Hello Oasis del Sur, I would like to order:"
+        orderMessage: "Hello Oasis del Sur, I would like to order:",
+        // Nuove chiavi per i singoli prodotti
+        choose: "Choose quantity",
+        goCart: "🛒 Go to cart",
+        goMenu: "🏠 Back to menu"
     },
 
     de: {
@@ -68,7 +80,11 @@ const translations = {
         arrival: "Produkte kommen bald...",
         emptyCart: "Keine Produkte",
         emptyAlert: "Der Warenkorb ist leer",
-        orderMessage: "Hallo Oasis del Sur, ich möchte bestellen:"
+        orderMessage: "Hallo Oasis del Sur, ich möchte bestellen:",
+        // Nuove chiavi per i singoli prodotti
+        choose: "Menge auswählen",
+        goCart: "🛒 Zum Warenkorb",
+        goMenu: "🏠 Zurück zum Menü"
     }
 };
 
@@ -86,74 +102,70 @@ function changeLanguage(lang) {
 
     /* INDEX */
     if (document.getElementById("dispensario"))
-        document.getElementById("dispensario").innerHTML =
-            t.dispensario;
+        document.getElementById("dispensario").innerHTML = t.dispensario;
 
     if (document.getElementById("weed"))
-        document.getElementById("weed").innerHTML =
-            t.weed;
+        document.getElementById("weed").innerHTML = t.weed;
 
     if (document.getElementById("frozen"))
-        document.getElementById("frozen").innerHTML =
-            t.frozen;
+        document.getElementById("frozen").innerHTML = t.frozen;
 
     if (document.getElementById("dry"))
-        document.getElementById("dry").innerHTML =
-            t.dry;
+        document.getElementById("dry").innerHTML = t.dry;
 
     if (document.getElementById("extract"))
-        document.getElementById("extract").innerHTML =
-            t.extract;
+        document.getElementById("extract").innerHTML = t.extract;
 
     if (document.getElementById("vape"))
-        document.getElementById("vape").innerHTML =
-            t.vape;
+        document.getElementById("vape").innerHTML = t.vape;
 
     if (document.getElementById("stickers"))
-        document.getElementById("stickers").innerHTML =
-            t.stickers;
+        document.getElementById("stickers").innerHTML = t.stickers;
 
     /* PAGINE CATEGORIE */
     if (document.getElementById("vapeTitle"))
-        document.getElementById("vapeTitle").innerHTML =
-            "💨 " + t.vape;
+        document.getElementById("vapeTitle").innerHTML = "💨 " + t.vape;
 
     if (document.getElementById("weedTitle"))
-        document.getElementById("weedTitle").innerHTML =
-            "WEED";
+        document.getElementById("weedTitle").innerHTML = "WEED";
 
     if (document.getElementById("frozenTitle"))
-        document.getElementById("frozenTitle").innerHTML =
-            "❄️ " + t.frozen;
+        document.getElementById("frozenTitle").innerHTML = "❄️ " + t.frozen;
 
     if (document.getElementById("dryTitle"))
-        document.getElementById("dryTitle").innerHTML =
-            "🌱 " + t.dry;
+        document.getElementById("dryTitle").innerHTML = "🌱 " + t.dry;
 
     if (document.getElementById("extractTitle"))
-        document.getElementById("extractTitle").innerHTML =
-            "🧪 " + t.extract;
+        document.getElementById("extractTitle").innerHTML = "🧪 " + t.extract;
+
+    /* SINGOLI PRODOTTI */
+    if (document.getElementById("choose"))
+        document.getElementById("choose").innerHTML = t.choose;
+
+    if (document.getElementById("goCart"))
+        document.getElementById("goCart").innerHTML = t.goCart;
+
+    if (document.getElementById("goMenu"))
+        document.getElementById("goMenu").innerHTML = t.goMenu;
+
+    if (document.getElementById("cartText"))
+        document.getElementById("cartText").innerHTML = t.cart;
 
     /* GENERALE */
     if (document.getElementById("back"))
-        document.getElementById("back").innerHTML =
-            t.back;
+        document.getElementById("back").innerHTML = t.back;
 
     if (document.getElementById("coming"))
-        document.getElementById("coming").innerHTML =
-            t.coming;
+        document.getElementById("coming").innerHTML = t.coming;
 
     if (document.getElementById("arrival"))
-        document.getElementById("arrival").innerHTML =
-            t.arrival;
+        document.getElementById("arrival").innerHTML = t.arrival;
 
     if (document.getElementById("cartTitle"))
-        document.getElementById("cartTitle").innerHTML =
-            t.cart;
+        document.getElementById("cartTitle").innerHTML = t.cart;
 
     if (document.getElementById("orderButton"))
-        document.getElementById("orderButton").innerHTML =
-            t.order;
+        document.getElementById("orderButton").innerHTML = t.order;
 
     document.documentElement.lang = lang;
 }
@@ -162,8 +174,6 @@ function changeLanguage(lang) {
    LINGUA SALVATA
 ========================== */
 window.addEventListener("load", function () {
-    const saved =
-        localStorage.getItem("language") || "it";
-
+    const saved = localStorage.getItem("language") || "it";
     changeLanguage(saved);
 });
