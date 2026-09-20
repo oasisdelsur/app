@@ -16,7 +16,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 15px;
-    padding-top: 60px; /* Spazio per non far coprire i contenuti in alto dalla freccia fissa */
+    padding-top: 60px; /* Spazio in alto per non coprire i titoli con la freccia fissa */
 }
 
 /* =========================
