@@ -16,7 +16,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 15px;
-    padding-top: 60px; /* Spazio in alto per non coprire i titoli con la freccia fissa */
+    padding-top: 60px; /* Spazio in alto per non coprire i contenuti con la freccia */
 }
 
 /* =========================
@@ -161,40 +161,48 @@ body {
 }
 
 /* =========================
-   FRECCIA (FISSA IN ALTO A SINISTRA)
+   FRECCIA UNIVERSALE (CORREZIONE GLOBALE)
 ========================= */
 
-.back-button {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 9999;
-    padding: 0;
+/* Forza la posizione fissa in alto a sinistra per qualsiasi contenitore di ritorno */
+.back-button, .back-link, header a[href*="html"] {
+    position: fixed !important;
+    top: 15px !important;
+    left: 15px !important;
+    z-index: 9999 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-.back-button a {
-    color: white;
-    text-decoration: none;
-    font-size: 22px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 255, 120, 0.3);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
+/* Rende il link un cerchio perfetto con la sola freccia */
+.back-button a, .back-link a {
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 50% !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(0, 255, 120, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+    font-size: 0 !important; /* Nasconde l'eventuale testo interno (es. "Indietro") */
 }
 
-.back-button a:hover {
-    color: #00e676;
-    background: rgba(0, 0, 0, 0.85);
-    border-color: #00e676;
-    transform: scale(1.05);
+/* Mostra solo il simbolo della freccia al centro del cerchio */
+.back-button a::before, .back-link a::before {
+    content: "←" !important;
+    font-size: 22px !important;
+    color: white !important;
+}
+
+.back-button a:hover, .back-link a:hover {
+    border-color: #00e676 !important;
+    transform: scale(1.05) !important;
 }
 
 /* =========================
@@ -280,15 +288,18 @@ body::after {
         border-radius: 14px;
     }
 
-    .back-button {
-        top: 12px;
-        left: 12px;
+    .back-button, .back-link {
+        top: 12px !important;
+        left: 12px !important;
     }
 
-    .back-button a {
-        width: 38px;
-        height: 38px;
-        font-size: 20px;
+    .back-button a, .back-link a {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .back-button a::before, .back-link a::before {
+        font-size: 20px !important;
     }
 
     .sticker-image {
