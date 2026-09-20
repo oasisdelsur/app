@@ -16,6 +16,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 15px;
+    padding-top: 60px; /* Spazio per non far coprire i contenuti in alto dalla freccia fissa */
 }
 
 /* =========================
@@ -160,22 +161,40 @@ body {
 }
 
 /* =========================
-   FRECCIA
+   FRECCIA (FISSA IN ALTO A SINISTRA)
 ========================= */
 
 .back-button {
-    padding: 10px 5px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+    padding: 0;
 }
 
 .back-button a {
     color: white;
     text-decoration: none;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 255, 120, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
 .back-button a:hover {
     color: #00e676;
+    background: rgba(0, 0, 0, 0.85);
+    border-color: #00e676;
+    transform: scale(1.05);
 }
 
 /* =========================
@@ -236,6 +255,7 @@ body::after {
 
     .container {
         padding: 12px;
+        padding-top: 60px;
     }
 
     .category {
@@ -260,8 +280,15 @@ body::after {
         border-radius: 14px;
     }
 
+    .back-button {
+        top: 12px;
+        left: 12px;
+    }
+
     .back-button a {
-        font-size: 25px;
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
     }
 
     .sticker-image {
