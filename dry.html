@@ -47,12 +47,12 @@
 </head>
 <body>
 <div class="container">
-    <div class="section-title" id="dryTitle">
+    <div class="section-title" id="dryTitle" data-translate="selectStrain">
         SELEZIONA IL TUO STRAIN
     </div>
     
     <div class="back-button">
-        <a href="shop.html" id="back">
+        <a href="shop.html" id="back" data-translate="back">
             ← Indietro
         </a>
     </div>
@@ -69,5 +69,47 @@
         </a>
     </div>
 </div>
+
+<script>
+/* TRADUZIONI */
+const translations = {
+    it: {
+        selectStrain: "SELEZIONA IL TUO STRAIN",
+        back: "← Indietro"
+    },
+    en: {
+        selectStrain: "SELECT YOUR STRAIN",
+        back: "← Back"
+    },
+    es: {
+        selectStrain: "SELECCIONA TU STRAIN",
+        back: "← Atrás"
+    },
+    de: {
+        selectStrain: "WÄHLE DEINEN STRAIN",
+        back: "← Zurück"
+    }
+};
+
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
+
+function translatePage() {
+    const lang = getLanguage();
+    const texts = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+    
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+}
+
+// Esegue la traduzione subito all'apertura
+translatePage();
+</script>
 </body>
 </html>
