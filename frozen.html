@@ -1,203 +1,178 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frozen - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.frozen-coming {
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 45px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,255,120,.10),
+            transparent 55%
+        ),
+        rgba(10,10,10,.72);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(0,255,120,.18);
+    box-shadow:
+        0 0 50px rgba(0,255,120,.08),
+        0 20px 60px rgba(0,0,0,.8);
+}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+.frozen-coming::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(0,255,120,.08);
+    filter: blur(70px);
+    animation: glow 4s ease-in-out infinite;
+}
 
-    <title>Frozen - Oasis del Sur</title>
+@keyframes glow {
+    0%, 100% {
+        transform: scale(.85);
+        opacity: .5;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+.frozen-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
 
-    <style>
-        /* ==========================
-           FROZEN - SELEZIONE
-        ========================== */
+.frozen-title {
+    color: white;
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(0,255,120,.18);
+}
 
-        .frozen-list {
-            width: 100%;
-            max-width: 700px;
-            margin: 30px auto;
+.frozen-status {
+    margin-top: 18px;
+    color: rgba(0,255,120,.75);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
 
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
+.frozen-line {
+    width: 90px;
+    height: 2px;
+    margin: 25px auto;
+    background: rgba(0,255,120,.5);
+    box-shadow: 0 0 15px rgba(0,255,120,.5);
+}
 
-        .frozen-card {
-            width: 100%;
-            min-height: 120px;
+.frozen-message {
+    color: rgba(255,255,255,.55);
+    font-size: 15px;
+    letter-spacing: 1px;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 25px;
-
-            border-radius: 20px;
-
-            background: rgba(20,20,20,.75);
-            backdrop-filter: blur(14px);
-
-            border: 1px solid rgba(0,255,120,.15);
-
-            box-shadow:
-                0 0 20px rgba(0,255,120,.08),
-                0 10px 30px rgba(0,0,0,.7);
-
-            transition: .3s;
-        }
-
-        .frozen-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0,255,120,.35);
-        }
-
-        .frozen-name {
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .frozen-folder {
-            font-size: 32px;
-            margin-right: 12px;
-        }
-
-        /* ==========================
-           TELEFONO
-        ========================== */
-
-        @media (max-width: 500px) {
-
-            .frozen-list {
-                margin-top: 20px;
-            }
-
-            .frozen-card {
-                min-height: 105px;
-                padding: 20px;
-            }
-
-            .frozen-name {
-                font-size: 19px;
-            }
-
-            .frozen-folder {
-                font-size: 28px;
-            }
-
-        }
-    </style>
+@media (max-width: 500px) {
+    .frozen-coming {
+        min-height: 380px;
+        margin: 30px auto;
+    }
+    .frozen-title {
+        font-size: 40px;
+        letter-spacing: 6px;
+    }
+    .frozen-status {
+        font-size: 11px;
+    }
+}
+</style>
 </head>
-
 <body>
-
-    <div class="container">
-
-        <!-- TITOLO -->
-
-        <div
-            class="section-title"
-            id="frozenTitle"
-        >
-            FROZEN
-        </div>
-
-
-        <!-- INDIETRO -->
-
-        <div class="back-button">
-
-            <a
-                href="shop.html"
-                id="back"
-            >
-                ← INDIETRO
-            </a>
-
-        </div>
-
-
-        <!-- SELEZIONE FROZEN -->
-
-        <div class="frozen-list">
-
-            <a
-                href="highland-terps.html"
-                class="category-link"
-            >
-
-                <div class="frozen-card">
-
-                    <span class="frozen-folder">
-                        📁
-                    </span>
-
-                    <span class="frozen-name">
-                        HIGHLAND TERPS 90U
-                    </span>
-
-                </div>
-
-            </a>
-
-        </div>
-
+<div class="container">
+    <div class="section-title" id="frozenTitle" data-translate="frozen">
+        ❄️ FROZEN
     </div>
 
+    <div class="back-button">
+        <a href="shop.html" id="back" data-translate="back">
+            ← Indietro
+        </a>
+    </div>
 
-    <!-- LINGUA -->
+    <div class="frozen-coming">
+        <div class="frozen-content">
+            <h1 class="frozen-title">
+                FROZEN
+            </h1>
+            <div class="frozen-status">
+                COMING SOON
+            </div>
+            <div class="frozen-line"></div>
+            <div class="frozen-message" data-translate="comingSoonMsg">
+                La selezione sta arrivando.
+            </div>
+        </div>
+    </div>
+</div>
 
-    <script src="language.js"></script>
+<script>
+const translations = {
+    it: {
+        frozen: "❄️ FROZEN",
+        back: "← Indietro",
+        comingSoonMsg: "La selezione sta arrivando."
+    },
+    en: {
+        frozen: "❄️ FROZEN",
+        back: "← Back",
+        comingSoonMsg: "The selection is coming soon."
+    },
+    es: {
+        frozen: "❄️ FROZEN",
+        back: "← Atrás",
+        comingSoonMsg: "La selección está arrivando."
+    },
+    de: {
+        frozen: "❄️ FROZEN",
+        back: "← Zurück",
+        comingSoonMsg: "Die Auswahl kommt bald."
+    }
+};
 
-    <script>
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
 
-        window.addEventListener(
-            "load",
-            function() {
+function translatePage() {
+    const lang = getLanguage();
+    const texts = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+    
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+}
 
-                const lang =
-                    localStorage.getItem(
-                        "language"
-                    ) || "it";
-
-                if (
-                    typeof translations !== "undefined" &&
-                    translations[lang]
-                ) {
-
-                    const t =
-                        translations[lang];
-
-                    document.documentElement.lang =
-                        lang;
-
-                    document.getElementById(
-                        "frozenTitle"
-                    ).innerHTML =
-                        "❄️ " +
-                        t.frozen;
-
-                    document.getElementById(
-                        "back"
-                    ).innerHTML =
-                        t.back;
-                }
-
-            }
-        );
-
-    </script>
-
+translatePage();
+</script>
 </body>
-
 </html>
