@@ -18,22 +18,27 @@
     object-position: center;
 }
 
-/* SEZIONE QUANTITÀ ALLINEATA A SINISTRA CON PULSANTI IN COLONNA */
+/* SEZIONE QUANTITÀ COMPLETA A SINISTRA */
 .quantity-section {
     text-align: left;
     margin: 25px 0 20px 0;
+    width: 100%;
 }
 
 .quantity-title {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 800;
     color: #ffffff;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-/* BOTTONI QUANTITÀ VERTICALI (A SCENDERE) */
+/* BOTTONI QUANTITÀ IN COLONNA ALLINEATI A SINISTRA */
 .sizes {
     display: flex;
     flex-direction: column;
@@ -209,10 +214,10 @@
             <source src="IMG_2298.mov" type="video/quicktime">
         </video>
 
-        <!-- QUANTITÀ IN COLONNA A SCENDERE -->
+        <!-- SEZIONE FORMATO ALLINEATA A SINISTRA CON DITO IN BASSO -->
         <div class="quantity-section">
             <div class="quantity-title" id="choose" data-translate="chooseQuantity">
-                SCEGLI LA QUANTITÀ ↙️
+                FORMATO DISPONIBILE 👇
             </div>
             <div class="sizes">
                 <button onclick="addToCart('RUBY VIOLET 💜 - 10g')">10g</button>
@@ -235,7 +240,6 @@
 
         <!-- BOTTONI AZIONE INTEGRATI NELLA SCHEDA -->
         <div class="cart-actions-integrated">
-            <!-- VAI AL CARRELLO DIRETTAMENTE IN FONDO A SHOP.HTML -->
             <a href="shop.html#cart" class="btn-action-int primary" id="goCart">
                 <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
             </a>
@@ -251,7 +255,7 @@
 const translations = {
     it: {
         backToWeed: "← Torna a Weed",
-        chooseQuantity: "SCEGLI LA QUANTITÀ ↙️",
+        chooseQuantity: "FORMATO DISPONIBILE 👇",
         cartTitle: "CARRELLO",
         emptyCart: "Carrello vuoto",
         goToCart: "Vai al carrello",
@@ -260,7 +264,7 @@ const translations = {
     },
     en: {
         backToWeed: "← Back to Weed",
-        chooseQuantity: "CHOOSE QUANTITY ↙️",
+        chooseQuantity: "AVAILABLE SIZES 👇",
         cartTitle: "CART",
         emptyCart: "Empty cart",
         goToCart: "Go to cart",
@@ -269,7 +273,7 @@ const translations = {
     },
     es: {
         backToWeed: "← Volver a Weed",
-        chooseQuantity: "ELIGE LA CANTIDAD ↙️",
+        chooseQuantity: "FORMATO DISPONIBLE 👇",
         cartTitle: "CARRITO",
         emptyCart: "Carrito vacío",
         goToCart: "Ir al carrito",
@@ -278,7 +282,7 @@ const translations = {
     },
     de: {
         backToWeed: "← Zurück zu Weed",
-        chooseQuantity: "MENGE WÄHLEN ↙️",
+        chooseQuantity: "VERFÜGBARE GRÖSSEN 👇",
         cartTitle: "WARENKORB",
         emptyCart: "Warenkorb leer",
         goToCart: "Zum Warenkorb",
