@@ -5,7 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stickers - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+
 <style>
+/* TITOLO ULTRA-PREMIUM (AZZURRO CRISTALLO) */
+.section-title-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 15px auto 20px auto;
+    padding: 18px 24px;
+    box-sizing: border-box;
+    
+    /* GLASSMORPHISM SCURO CON BORDI E RIFLESSI AZZURRI */
+    background: linear-gradient(145deg, rgba(10, 20, 30, 0.9), rgba(8, 15, 25, 0.95));
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* OMBRA LUSSUOSA E BAGLIORE AZZURRO */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 212, 255, 0.15);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* RIFLESSO DI LUCE AZZURRA SULLA SCHEDA */
+.section-title-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+    transition: 0.5s;
+    animation: shine 6s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.title-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.section-title-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    
+    /* SFUMATURA METALLICA AZZURRO PREMIUM */
+    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0088ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.5));
+}
+
+.title-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #00d4ff; /* TESTO AZZURRO */
+    text-transform: uppercase;
+    margin-top: 6px;
+    border-top: 1px solid rgba(0, 212, 255, 0.3);
+    padding-top: 6px;
+    width: 80%;
+    text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
+}
+
 .sticker-cart {
     margin-top: 20px;
 }
@@ -33,23 +122,34 @@
     .category-image {
         width: 100%;
     }
+    .section-title-text {
+        font-size: 18px;
+        letter-spacing: 1.5px;
+    }
+    .title-badge {
+        font-size: 11px;
+    }
 }
 </style>
 </head>
 <body>
+
 <div class="back-button">
     <a href="shop.html" id="back">
         ← Torna al menu
     </a>
 </div>
+
 <div class="container">
-    <div class="section-title">
-        SELEZIONA I TUOI STICKERS
+    <!-- TITOLO SUPERIORE STILE PREMIUM AZZURRO -->
+    <div class="section-title-container">
+        <div class="title-header">
+            <span class="section-title-text">SELEZIONA I TUOI STICKERS</span>
+        </div>
+        <div class="title-badge" id="counter">Hai scelto 0 / 5 stickers</div>
     </div>
+
     <div class="product">
-        <h3 id="counter">
-            Hai scelto 0 / 5 stickers
-        </h3>
         <div class="products">
             <div class="category" onclick="addSticker()">
                 <img src="IMG_0529.JPG" class="category-image">
@@ -124,6 +224,7 @@
                 <div class="category-name">+ AGGIUNGI</div>
             </div>
         </div>
+
         <div class="cart sticker-cart">
             <div class="cart-title">
                 🛒
@@ -147,6 +248,7 @@
         </a>
     </div>
 </div>
+
 <script src="language.js"></script>
 <script>
 const MAX_STICKERS = 5;
