@@ -12,6 +12,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+/* SCORRIMENTO FLUIDO IN TUTTA LA PAGINA */
+html {
+    scroll-behavior: smooth;
+}
+
 /* PULSANTE INDIETRO CIRCOLARE FISSO SULLO SCHERMO */
 .back-button-circle {
     position: fixed;
@@ -329,8 +334,8 @@
             </div>
         </div>
 
-        <!-- SCHEDA CARRELLO UNIFICATA -->
-        <div class="cart-card">
+        <!-- SCHEDA CARRELLO UNIFICATA (CON ID PER L'ANCORA) -->
+        <div class="cart-card" id="cartSection">
             <div class="cart-title-custom">
                 <span id="cartText">CARRELLO</span> <span>🛒</span>
             </div>
@@ -340,7 +345,7 @@
 
             <!-- BOTTONI DI AZIONE INTEGRATI -->
             <div class="cart-actions-integrated">
-                <a href="cart.html" class="btn-action-int primary" id="goCart">
+                <a href="#cartSection" class="btn-action-int primary" id="goCart">
                     <span>🛒</span> <span>Vai al carrello</span>
                 </a>
                 <a href="shop.html" class="btn-action-int" id="goMenu">
