@@ -288,10 +288,9 @@
 </head>
 <body>
 
-<!-- PULSANTE INDIETRO AGGIORNATO A VAPE -->
 <div class="back-button">
-    <a href="vape.html" id="back" data-translate="backToVape">
-        ← Torna a Vape
+    <a href="weed.html" id="back" data-translate="backToWeed">
+        ← Torna a Weed
     </a>
 </div>
 
@@ -336,7 +335,7 @@
         </div>
     </div>
 
-    <!-- CARRELLO UNIFICATO -->
+    <!-- CARRELLO UNIFICATO (ID per scorrimento) -->
     <div class="cart-card" id="cart-section">
         <div class="cart-title-custom">
             <span data-translate="cartTitle">CARRELLO</span> <span>🛒</span>
@@ -358,10 +357,10 @@
 </div>
 
 <script>
-/* TRADUZIONI INTEGRATE AGGIORNATE PER VAPE */
+/* TRADUZIONI INTEGRATE */
 const translations = {
     it: {
-        backToVape: "← Torna a Vape",
+        backToWeed: "← Torna a Weed",
         chooseQuantity: "FORMATI DISPONIBILI 👇",
         cartTitle: "CARRELLO",
         emptyCart: "Carrello vuoto",
@@ -370,7 +369,7 @@ const translations = {
         addedToCart: "aggiunto al carrello"
     },
     en: {
-        backToVape: "← Back to Vape",
+        backToWeed: "← Back to Weed",
         chooseQuantity: "AVAILABLE SIZES 👇",
         cartTitle: "CART",
         emptyCart: "Empty cart",
@@ -379,7 +378,7 @@ const translations = {
         addedToCart: "added to cart"
     },
     es: {
-        backToVape: "← Volver a Vape",
+        backToWeed: "← Volver a Weed",
         chooseQuantity: "FORMATOS DISPONIBLES 👇",
         cartTitle: "CARRITO",
         emptyCart: "Carrito vacío",
@@ -388,7 +387,7 @@ const translations = {
         addedToCart: "añadido al carrito"
     },
     de: {
-        backToVape: "← Zurück zu Vape",
+        backToWeed: "← Zurück zu Weed",
         chooseQuantity: "VERFÜGBARE GRÖSSEN 👇",
         cartTitle: "WARENKORB",
         emptyCart: "Warenkorb leer",
@@ -423,7 +422,7 @@ function addToCart(product) {
     localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
     
-    // Scorre alla scheda carrello
+    // Scorre direttamente al carrello in fondo alla pagina quando si aggiunge un prodotto
     document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
     
     const lang = getLanguage();
