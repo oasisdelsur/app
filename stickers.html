@@ -12,22 +12,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+/* PULSANTE INDIETRO CIRCOLARE SCURO CON FRECCIA */
+.back-button-circle {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 38px;
+    height: 38px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
 /* TITOLO ULTRA-PREMIUM (AZZURRO CRISTALLO) */
 .section-title-container {
     width: 100%;
     max-width: 600px;
-    margin: 15px auto 20px auto;
+    margin: 50px auto 20px auto;
     padding: 18px 24px;
     box-sizing: border-box;
     
-    /* GLASSMORPHISM SCURO CON BORDI E RIFLESSI AZZURRI */
     background: linear-gradient(145deg, rgba(10, 20, 30, 0.9), rgba(8, 15, 25, 0.95));
     border: 1px solid rgba(0, 212, 255, 0.4);
     border-radius: 18px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     
-    /* OMBRA LUSSUOSA E BAGLIORE AZZURRO */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 212, 255, 0.15);
     
     display: flex;
@@ -39,7 +58,6 @@
     overflow: hidden;
 }
 
-/* RIFLESSO DI LUCE AZZURRA SULLA SCHEDA */
 .section-title-container::before {
     content: '';
     position: absolute;
@@ -69,15 +87,12 @@
 .section-title-text {
     font-family: 'Cinzel', serif;
     font-weight: 900;
-    font-size: 24px;
-    letter-spacing: 3px;
+    font-size: 22px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    
-    /* SFUMATURA METALLICA AZZURRO PREMIUM */
     background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0088ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
     filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.5));
 }
 
@@ -86,7 +101,7 @@
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 2px;
-    color: #00d4ff; /* TESTO AZZURRO */
+    color: #00d4ff;
     text-transform: uppercase;
     margin-top: 6px;
     border-top: 1px solid rgba(0, 212, 255, 0.3);
@@ -95,36 +110,75 @@
     text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
 }
 
+/* STILI DELLA SEZIONE SCHEDE E CARRELLO IN BASSO */
 .sticker-cart {
-    margin-top: 20px;
+    background: rgba(15, 25, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 18px;
+    margin: 30px auto 20px auto;
+    max-width: 500px;
 }
+
+.cart-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
 .sticker-cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    padding: 8px 0;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-.remove-sticker {
-    background: #e50914;
-    color: white;
-    border: none;
+
+.remove-sticker-btn {
+    width: 18px;
+    height: 18px;
+    background-color: #ff3b30;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    border: none;
     cursor: pointer;
+    box-shadow: 0 0 6px rgba(255, 59, 48, 0.6);
 }
+
+.navigation-box {
+    display: block;
+    background: rgba(15, 25, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 22px;
+    margin: 15px auto;
+    max-width: 500px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    backdrop-filter: blur(10px);
+}
+
 .category-image {
     width: 100%;
     height: auto;
     display: block;
 }
+
 @media (max-width: 500px) {
-    .category-image {
-        width: 100%;
-    }
     .section-title-text {
-        font-size: 18px;
-        letter-spacing: 1.5px;
+        font-size: 17px;
+        letter-spacing: 1px;
     }
     .title-badge {
         font-size: 11px;
@@ -134,14 +188,13 @@
 </head>
 <body>
 
-<div class="back-button">
-    <a href="shop.html" id="back">
-        ← Torna al menu
-    </a>
-</div>
+<!-- PULSANTE FRECCIA TORNA INDIETRO -->
+<a href="shop.html" class="back-button-circle" id="back">
+    ←
+</a>
 
 <div class="container">
-    <!-- TITOLO SUPERIORE STILE PREMIUM AZZURRO -->
+    <!-- TITOLO SUPERIORE CON CONTEGGIO -->
     <div class="section-title-container">
         <div class="title-header">
             <span class="section-title-text">SELEZIONA I TUOI STICKERS</span>
@@ -225,26 +278,22 @@
             </div>
         </div>
 
-        <div class="cart sticker-cart">
+        <!-- CARRELLO IN BASSO STILE SCREENSHOT -->
+        <div class="sticker-cart">
             <div class="cart-title">
-                🛒
-                <span id="cartText">
-                    I TUOI STICKERS
-                </span>
+                🛒🛒 <span id="cartText">Carrello</span>
             </div>
             <div id="stickerCart">
                 Nessuno sticker selezionato
             </div>
         </div>
-        <a href="shop.html" class="category-link">
-            <div class="category" id="goCart">
-                🛒 Vai al carrello
-            </div>
+
+        <!-- BOTTONI GRANDI DI NAVIGAZIONE -->
+        <a href="cart.html" class="navigation-box" id="goCart">
+            🛒 Vai al carrello
         </a>
-        <a href="shop.html" class="category-link">
-            <div class="category" id="goMenu">
-                🏠 Torna al menu
-            </div>
+        <a href="shop.html" class="navigation-box" id="goMenu">
+            🏠 Torna al menu
         </a>
     </div>
 </div>
@@ -287,7 +336,7 @@ function updateStickerPage() {
     document.getElementById("counter").innerHTML = "Hai scelto " + stickers.length + " / " + MAX_STICKERS + " stickers";
     const box = document.getElementById("stickerCart");
     if (stickers.length === 0) {
-        box.innerHTML = "Nessuno sticker selezionato";
+        box.innerHTML = "<span style='color:#aaa;'>Nessuno sticker selezionato</span>";
         return;
     }
     box.innerHTML = "";
@@ -295,19 +344,18 @@ function updateStickerPage() {
         box.innerHTML +=
             '<div class="sticker-cart-item">' +
                 '<span>• ' + sticker + '</span>' +
-                '<button class="remove-sticker" onclick="removeSticker(' + index + ')">❌</button>' +
+                '<button class="remove-sticker-btn" onclick="removeSticker(' + index + ')"></button>' +
             '</div>';
     });
 }
 
 window.addEventListener("load", function() {
     const lang = localStorage.getItem("language") || "it";
-    const t = translations[lang] || translations.it;
+    const t = window.translations ? (translations[lang] || translations.it) : {};
     document.documentElement.lang = lang;
-    if (t.back) document.getElementById("back").innerHTML = t.back;
     if (t.cart) document.getElementById("cartText").innerHTML = t.cart;
-    document.getElementById("goCart").innerHTML = t.goCart || "🛒 Vai al carrello";
-    document.getElementById("goMenu").innerHTML = t.goMenu || "🏠 Torna al menu";
+    if (t.goCart) document.getElementById("goCart").innerHTML = t.goCart;
+    if (t.goMenu) document.getElementById("goMenu").innerHTML = t.goMenu;
     reindexStickers();
     localStorage.setItem("stickers", JSON.stringify(stickers));
     updateStickerPage();
