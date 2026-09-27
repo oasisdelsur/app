@@ -204,77 +204,77 @@
 
     <div class="product">
         <div class="products">
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N1')">
                 <img src="IMG_0529.JPG" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N1 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N2')">
                 <img src="IMG_0530.JPG" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N2 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N3')">
                 <img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N3 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N4')">
                 <img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N4 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N5')">
                 <img src="IMG_1658.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N5 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N6')">
                 <img src="IMG_1659.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N6 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N7')">
                 <img src="IMG_1667.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N7 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N8')">
                 <img src="IMG_1669.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N8 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N9')">
                 <img src="IMG_1665.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N9 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N10')">
                 <img src="IMG_1663.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N10 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N11')">
                 <img src="IMG_1664.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N11 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N12')">
                 <img src="IMG_1668.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N12 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N13')">
                 <img src="IMG_1657.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N13 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N14')">
                 <img src="IMG_1670.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N14 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N15')">
                 <img src="IMG_1671.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N15 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N16')">
                 <img src="IMG_1673.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N16 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N17')">
                 <img src="IMG_1672.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N17 + AGGIUNGI</div>
             </div>
-            <div class="category" onclick="addSticker()">
+            <div class="category" onclick="addSticker('N18')">
                 <img src="IMG_1662.jpeg" class="category-image">
-                <div class="category-name">+ AGGIUNGI</div>
+                <div class="category-name">N18 + AGGIUNGI</div>
             </div>
         </div>
 
@@ -301,20 +301,21 @@
 <script src="language.js"></script>
 <script>
 const MAX_STICKERS = 5;
+// Il carrello ora salverà stringhe come "Sticker N1", "Sticker N8", ecc.
 let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
 
-function reindexStickers() {
-    stickers = stickers.map((_, index) => "Sticker " + (index + 1));
-}
-
-function addSticker() {
+// Modificata: accetta come parametro il numero dello sticker cliccato
+function addSticker(numeroSticker) {
     if (stickers.length >= MAX_STICKERS) {
         alert("Hai esaurito i tuoi stickers 🎁");
         return;
     }
-    stickers.push("Sticker " + (stickers.length + 1));
+    
+    // Inserisce nell'array il nome specifico
+    stickers.push("Sticker " + numeroSticker);
     localStorage.setItem("stickers", JSON.stringify(stickers));
     updateStickerPage();
+    
     const rimasti = MAX_STICKERS - stickers.length;
     if (rimasti === 0) {
         alert("Hai esaurito i tuoi stickers 🎁");
@@ -327,7 +328,7 @@ function addSticker() {
 
 function removeSticker(index) {
     stickers.splice(index, 1);
-    reindexStickers();
+    // Nota: Ho rimosso il reindex per evitare che perda il nome "N" quando elimini qualcosa
     localStorage.setItem("stickers", JSON.stringify(stickers));
     updateStickerPage();
 }
@@ -335,10 +336,12 @@ function removeSticker(index) {
 function updateStickerPage() {
     document.getElementById("counter").innerHTML = "Hai scelto " + stickers.length + " / " + MAX_STICKERS + " stickers";
     const box = document.getElementById("stickerCart");
+    
     if (stickers.length === 0) {
         box.innerHTML = "<span style='color:#aaa;'>Nessuno sticker selezionato</span>";
         return;
     }
+    
     box.innerHTML = "";
     stickers.forEach(function(sticker, index) {
         box.innerHTML +=
@@ -353,11 +356,11 @@ window.addEventListener("load", function() {
     const lang = localStorage.getItem("language") || "it";
     const t = window.translations ? (translations[lang] || translations.it) : {};
     document.documentElement.lang = lang;
+    
     if (t.cart) document.getElementById("cartText").innerHTML = t.cart;
     if (t.goCart) document.getElementById("goCart").innerHTML = t.goCart;
     if (t.goMenu) document.getElementById("goMenu").innerHTML = t.goMenu;
-    reindexStickers();
-    localStorage.setItem("stickers", JSON.stringify(stickers));
+    
     updateStickerPage();
 });
 </script>
