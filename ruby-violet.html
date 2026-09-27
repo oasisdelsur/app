@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUBY VIOLET - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.product-image, .product-video {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 18px;
+    object-fit: cover;
+    object-position: center;
+}
+#mini-cart {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+#mini-cart button {
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+@media (max-width: 500px) {
+    .product-image, .product-video {
+        width: 100%;
+        max-width: 100%;
+        height: 280px;
+        object-fit: cover;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="back-button">
+    <a href="weed.html" id="back" data-translate="backToWeed">
+        ← Torna a Weed
+    </a>
+</div>
+
+<div class="container">
+    <div class="section-title">
+         🌿 RUBY VIOLET 💜
+    </div>
+
+    <div class="product">
+        <!-- IMMAGINI (puoi cambiare i nomi dei file dopo) -->
+        <img src="ruby_violet_1.jpg" class="product-image" alt="RUBY VIOLET">
+        <img src="ruby_violet_2.jpg" class="product-image" alt="RUBY VIOLET">
+
+        <!-- VIDEO (puoi cambiare il nome del file dopo) -->
+        <video class="product-video" controls autoplay loop muted playsinline>
+            <source src="ruby_violet_video.mp4" type="video/mp4">
+        </video>
+
+        <h2 id="choose" data-translate="chooseQuantity">
+            Scegli quantità
+        </h2>
+        <div class="sizes">
+            <button onclick="addToCart('RUBY VIOLET 💜 - 1pz')">1pz</button>
+            <button onclick="addToCart('RUBY VIOLET 💜 - 2pz')">2pz</button>
+            <button onclick="addToCart('RUBY VIOLET 💜 - 5pz')">5pz</button>
+            <button onclick="addToCart('RUBY VIOLET 💜 - 10pz')">10pz</button>
+            <button onclick="addToCart('RUBY VIOLET 💜 - 50pz')">50pz</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <div class="cart-title" data-translate="cartTitle">
+            🛒 Carrello
+        </div>
+        <div id="mini-cart">
+            <span data-translate="emptyCart">Carrello vuoto</span>
+        </div>
+    </div>
+
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goCart" data-translate="goToCart">
+            🛒 Vai al carrello
+        </div>
+    </a>
+    <a href="shop.html" class="category-link">
+        <div class="category" id="goMenu" data-translate="backToMenu">
+            🏠 Torna al menu
+        </div>
+    </a>
+</div>
+
+<script>
+/* TRADUZIONI INTEGRATE (TUTTE LE LINGUE) */
+const translations = {
+    it: {
+        backToWeed: "← Torna a Weed",
+        chooseQuantity: "Scegli quantità",
+        cartTitle: "🛒 Carrello",
+        emptyCart: "Carrello vuoto",
+        goToCart: "🛒 Vai al carrello",
+        backToMenu: "🏠 Torna al menu",
+        addedToCart: "aggiunto al carrello"
+    },
+    en: {
+        backToWeed: "← Back to Weed",
+        chooseQuantity: "Choose quantity",
+        cartTitle: "🛒 Cart",
+        emptyCart: "Empty cart",
+        goToCart: "🛒 Go to cart",
+        backToMenu: "🏠 Back to menu",
+        addedToCart: "added to cart"
+    },
+    es: {
+        backToWeed: "← Volver a Weed",
+        chooseQuantity: "Elige cantidad",
+        cartTitle: "🛒 Carrito",
+        emptyCart: "Carrito vacío",
+        goToCart: "🛒 Ir al carrito",
+        backToMenu: "🏠 Volver al menú",
+        addedToCart: "añadido al carrito"
+    },
+    de: {
+        backToWeed: "← Zurück zu Weed",
+        chooseQuantity: "Menge wählen",
+        cartTitle: "🛒 Warenkorb",
+        emptyCart: "Warenkorb leer",
+        goToCart: "🛒 Zum Warenkorb",
+        backToMenu: "🏠 Zurück zum Menü",
+        addedToCart: "zum Warenkorb hinzugefügt"
+    }
+};
+
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
+
+function translatePage() {
+    const lang = getLanguage();
+    const texts = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+    
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+}
+
+/* GESTIONE CARRELLO */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(product) {
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+    const lang = getLanguage();
+    const t = translations[lang] || translations.it;
+    alert("✅ " + product + " " + t.addedToCart);
+}
+
+function showMiniCart() {
+    const box = document.getElementById("mini-cart");
+    if (!box) return;
+    const lang = getLanguage();
+    const t = translations[lang] || translations.it;
+    
+    if (cart.length === 0) {
+        box.innerHTML = t.emptyCart;
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+    });
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+}
+
+window.addEventListener("load", function() {
+    translatePage();
+    showMiniCart();
+});
+</script>
+</body>
+</html>
