@@ -111,6 +111,16 @@
     text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
 }
 
+/* RENDI TUTTE LE IMMAGINI DELLE SCHEDE UNIFORMI E UGUALI */
+.category-image {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    padding: 10px;
+    box-sizing: border-box;
+    display: block;
+}
+
 /* CARRELLO INTEGRATO UNICO STILE WEED */
 .cart-card {
     background: rgba(10, 20, 12, 0.9);
@@ -216,12 +226,6 @@
     background: linear-gradient(135deg, #28a745, #1e7e34);
 }
 
-.category-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
 @media (max-width: 500px) {
     .section-title-text {
         font-size: 17px;
@@ -325,7 +329,7 @@
             </div>
         </div>
 
-        <!-- SCHEDA CARRELLO UNIFICATA STILE WEED -->
+        <!-- SCHEDA CARRELLO UNIFICATA -->
         <div class="cart-card">
             <div class="cart-title-custom">
                 <span id="cartText">CARRELLO</span> <span>🛒</span>
@@ -334,7 +338,7 @@
                 Nessuno sticker selezionato
             </div>
 
-            <!-- BOTTONI DI AZIONE INTEGRATI NEL CARRELLO -->
+            <!-- BOTTONI DI AZIONE INTEGRATI -->
             <div class="cart-actions-integrated">
                 <a href="cart.html" class="btn-action-int primary" id="goCart">
                     <span>🛒</span> <span>Vai al carrello</span>
