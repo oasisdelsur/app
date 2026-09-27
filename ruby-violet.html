@@ -9,7 +9,7 @@
 <!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 /* TITOLO ULTRA-PREMIUM (STESSA LARGHEZZA ESATTA DELL'IMMAGINE) */
@@ -67,18 +67,17 @@
 }
 
 .section-title-text {
-    font-family: 'Cinzel', serif; /* Font elegante e luxury */
+    font-family: 'Cinzel', serif;
     font-weight: 900;
     font-size: 26px;
     letter-spacing: 4px;
     text-transform: uppercase;
     
-    /* SFUMATURA METALLICA PREMIUM (VIOLA / RUBINO / ORO ROSA) */
+    /* SFUMATURA METALLICA PREMIUM */
     background: linear-gradient(135deg, #f3e5f5 0%, #e040fb 40%, #ea80fc 70%, #ffd700 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
-    /* OMBRA DEL TESTO */
     filter: drop-shadow(0 2px 8px rgba(224, 64, 251, 0.5));
 }
 
@@ -87,7 +86,7 @@
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 3px;
-    color: rgba(255, 215, 0, 0.85); /* Dettaglio oro */
+    color: rgba(255, 215, 0, 0.85);
     text-transform: uppercase;
     margin-top: 4px;
     border-top: 1px solid rgba(255, 215, 0, 0.2);
@@ -112,28 +111,31 @@
     object-position: center;
 }
 
-/* SEZIONE QUANTITÀ COMPLETA A SINISTRA */
+/* SEZIONE QUANTITÀ COMPLETA E CENTRATA */
 .quantity-section {
-    text-align: left;
+    text-align: center;
     margin: 25px 0 20px 0;
     width: 100%;
 }
 
+/* TITOLO CENTRATO CON DITO E STILE PREMIUM */
 .quantity-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 800;
     color: #ffffff;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 12px;
-    text-align: left;
+    margin-bottom: 14px;
+    text-align: center;
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
 }
 
-/* BOTTONI QUANTITÀ IN COLONNA ALLINEATI A SINISTRA */
+/* BOTTONI QUANTITÀ IN COLONNA */
 .sizes {
     display: flex;
     flex-direction: column;
@@ -322,10 +324,10 @@
             <source src="IMG_2298.mov" type="video/quicktime">
         </video>
 
-        <!-- SEZIONE FORMATO -->
+        <!-- SEZIONE FORMATI DISPONIBILI CENTRATA CON DITO -->
         <div class="quantity-section">
             <div class="quantity-title" id="choose" data-translate="chooseQuantity">
-                FORMATO DISPONIBILE 👇
+                FORMATI DISPONIBILI 👇
             </div>
             <div class="sizes">
                 <button onclick="addToCart('RUBY VIOLET 💜 - 10g')">10g</button>
@@ -363,7 +365,7 @@
 const translations = {
     it: {
         backToWeed: "← Torna a Weed",
-        chooseQuantity: "FORMATO DISPONIBILE 👇",
+        chooseQuantity: "FORMATI DISPONIBILI 👇",
         cartTitle: "CARRELLO",
         emptyCart: "Carrello vuoto",
         goToCart: "Vai al carrello",
@@ -381,7 +383,7 @@ const translations = {
     },
     es: {
         backToWeed: "← Volver a Weed",
-        chooseQuantity: "FORMATO DISPONIBLE 👇",
+        chooseQuantity: "FORMATOS DISPONIBLES 👇",
         cartTitle: "CARRITO",
         emptyCart: "Carrito vacío",
         goToCart: "Ir al carrito",
