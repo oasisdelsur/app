@@ -335,7 +335,7 @@
         </div>
     </div>
 
-    <!-- CARRELLO UNIFICATO (ID per scorrimento) -->
+    <!-- CARRELLO UNIFICATO -->
     <div class="cart-card" id="cart-section">
         <div class="cart-title-custom">
             <span data-translate="cartTitle">CARRELLO</span> <span>🛒</span>
@@ -422,7 +422,7 @@ function addToCart(product) {
     localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
     
-    // Scorre direttamente al carrello in fondo alla pagina quando si aggiunge un prodotto
+    // Scorre alla scheda carrello
     document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
     
     const lang = getLanguage();
