@@ -5,7 +5,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRAPE FRUIT - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+
 <style>
+/* TITOLO ULTRA-PREMIUM (STESSA LARGHEZZA ESATTA DELL'IMMAGINE) */
+.section-title-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 15px auto 20px auto;
+    padding: 18px 24px;
+    box-sizing: border-box;
+    
+    /* GLASSMORPHISM SCURO CON BORDI E RIFLESSI ROSSI */
+    background: linear-gradient(145deg, rgba(30, 10, 12, 0.9), rgba(18, 8, 10, 0.95));
+    border: 1px solid rgba(255, 59, 48, 0.4);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* OMBRA LUSSUOSA E BAGLIORE PROFONDO ROSSO */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 59, 48, 0.18);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* RIFLESSO DI LUCE PREMIUM SULLA SCHEDA */
+.section-title-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    transition: 0.5s;
+    animation: shine 6s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.title-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.section-title-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    
+    /* SFUMATURA METALLICA ROSSO RUBINO / FUOCO */
+    background: linear-gradient(135deg, #ffffff 0%, #ff4d4d 40%, #e60000 70%, #ff8080 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    filter: drop-shadow(0 2px 8px rgba(255, 59, 48, 0.5));
+}
+
+.title-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(255, 100, 100, 0.9);
+    text-transform: uppercase;
+    margin-top: 4px;
+    border-top: 1px solid rgba(255, 59, 48, 0.25);
+    padding-top: 4px;
+    width: 60%;
+}
+
+.section-title-container .emoji-icon {
+    font-size: 22px;
+    filter: drop-shadow(0 0 8px rgba(255, 59, 48, 0.6));
+}
+
+/* IMMAGINI E VIDEO */
 .product-image, .product-video {
     width: 100%;
     max-width: 600px;
@@ -16,26 +110,182 @@
     object-fit: cover;
     object-position: center;
 }
-#mini-cart {
-    margin-top: 15px;
+
+/* SEZIONE QUANTITÀ COMPLETA E CENTRATA */
+.quantity-section {
+    text-align: center;
+    margin: 25px 0 20px 0;
+    width: 100%;
+}
+
+/* TITOLO CENTRATO CON DITO E STILE PREMIUM */
+.quantity-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+/* BOTTONI QUANTITÀ IN COLONNA */
+.sizes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.sizes button {
+    width: 100%;
+    background: rgba(15, 30, 18, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 175, 80, 0.4);
+    border-radius: 14px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    line-height: 1.8;
-}
-#mini-cart button {
-    background: #e50914;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    font-weight: 800;
+    padding: 14px 18px;
+    text-align: left;
     cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.sizes button::after {
+    content: "＋";
+    font-size: 18px;
+    color: #4CAF50;
+}
+
+.sizes button:hover, .sizes button:active {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    border-color: #66bb6a;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+}
+
+/* CARRELLO INTEGRATO E COMPATTO */
+.cart-card {
+    background: rgba(10, 20, 12, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(50, 205, 50, 0.3);
+    border-radius: 22px;
+    padding: 20px;
+    margin: 25px 0 20px 0;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15), inset 0 0 15px rgba(50, 205, 50, 0.05);
+}
+
+.cart-title-custom {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #4CAF50;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+#mini-cart {
+    font-size: 14px;
+    color: #e0e0e0;
+    margin-bottom: 16px;
+}
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cart-item-row button {
+    background: rgba(255, 59, 48, 0.15);
+    color: #ff453a;
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cart-item-row button:hover {
+    background: #ff3b30;
+    color: #ffffff;
+}
+
+/* BOTTONI INTEGRATI DENTRO LA SCHEDA CARRELLO */
+.cart-actions-integrated {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-action-int {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px 8px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-action-int.primary {
+    background: linear-gradient(135deg, #1e7e34, #155724);
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.25);
+}
+
+.btn-action-int:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-action-int.primary:hover {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+}
+
 @media (max-width: 500px) {
+    .section-title-text {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
     .product-image, .product-video {
-        width: 100%;
-        max-width: 100%;
         height: 280px;
-        object-fit: cover;
     }
 }
 </style>
@@ -49,90 +299,102 @@
 </div>
 
 <div class="container">
-    <div class="section-title">
-         🧊 21/21 = GRAPE FRUIT
+    <!-- TITOLO PREMIUM STYLE IN TONI ROSSO RUBINO -->
+    <div class="section-title-container">
+        <div class="title-header">
+            <span class="section-title-text">GRAPE FRUIT</span>
+        </div>
+        <div class="title-badge">PREMIUM EDITION</div>
     </div>
 
     <div class="product">
-        <!-- IMMAGINI (puoi cambiare o aggiungere le immagini in seguito) -->
-        <img src="grape_fruit_1.jpg" class="product-image" alt="GRAPE FRUIT">
-        <img src="grape_fruit_2.jpg" class="product-image" alt="GRAPE FRUIT">
+        <!-- IMMAGINI SPECIFICHE -->
+        <img src="IMG_2360.png" class="product-image" alt="GRAPE FRUIT">
+        <img src="IMG_2361.png" class="product-image" alt="GRAPE FRUIT">
+        <img src="IMG_2362.png" class="product-image" alt="GRAPE FRUIT">
+        <img src="IMG_2363.png" class="product-image" alt="GRAPE FRUIT">
 
-        <!-- VIDEO (puoi cambiare il percorso in seguito) -->
+        <!-- VIDEO SPECIFICI -->
         <video class="product-video" controls autoplay loop muted playsinline>
-            <source src="grape_fruit_video.mp4" type="video/mp4">
+            <source src="IMG_2305.mov" type="video/quicktime">
+        </video>
+        <video class="product-video" controls autoplay loop muted playsinline>
+            <source src="IMG_2307.mov" type="video/quicktime">
         </video>
 
-        <h2 id="choose" data-translate="chooseQuantity">
-            Scegli quantità
-        </h2>
-        <div class="sizes">
-            <button onclick="addToCart('21/21 = GRAPE FRUIT - 1pz')">1pz</button>
-            <button onclick="addToCart('21/21 = GRAPE FRUIT - 2pz')">2pz</button>
-            <button onclick="addToCart('21/21 = GRAPE FRUIT - 5pz')">5pz</button>
-            <button onclick="addToCart('21/21 = GRAPE FRUIT - 10pz')">10pz</button>
-            <button onclick="addToCart('21/21 = GRAPE FRUIT - 50pz')">50pz</button>
+        <!-- SEZIONE FORMATI DISPONIBILI CENTRATA CON DITO -->
+        <div class="quantity-section">
+            <div class="quantity-title" id="choose" data-translate="chooseQuantity">
+                FORMATI DISPONIBILI 👇
+            </div>
+            <div class="sizes">
+                <button onclick="addToCart('GRAPE FRUIT - 10g')">10g</button>
+                <button onclick="addToCart('GRAPE FRUIT - 20g')">20g</button>
+                <button onclick="addToCart('GRAPE FRUIT - 50g')">50g</button>
+                <button onclick="addToCart('GRAPE FRUIT - 100g')">100g</button>
+                <button onclick="addToCart('GRAPE FRUIT - 500g')">500g</button>
+            </div>
         </div>
     </div>
 
-    <div class="cart">
-        <div class="cart-title" data-translate="cartTitle">
-            🛒 Carrello
+    <!-- CARRELLO UNIFICATO -->
+    <div class="cart-card">
+        <div class="cart-title-custom">
+            <span data-translate="cartTitle">CARRELLO</span> <span>🛒</span>
         </div>
         <div id="mini-cart">
             <span data-translate="emptyCart">Carrello vuoto</span>
         </div>
-    </div>
 
-    <a href="shop.html" class="category-link">
-        <div class="category" id="goCart" data-translate="goToCart">
-            🛒 Vai al carrello
+        <!-- BOTTONI AZIONE INTEGRATI NELLA SCHEDA -->
+        <div class="cart-actions-integrated">
+            <a href="shop.html#cart" class="btn-action-int primary" id="goCart">
+                <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
+            </a>
+            <a href="shop.html" class="btn-action-int" id="goMenu">
+                <span>🏠</span> <span data-translate="backToMenu">Torna al menu</span>
+            </a>
         </div>
-    </a>
-    <a href="shop.html" class="category-link">
-        <div class="category" id="goMenu" data-translate="backToMenu">
-            🏠 Torna al menu
-        </div>
-    </a>
+    </div>
 </div>
 
 <script>
-/* TRADUZIONI INTEGRATE (TUTTE LE LINGUE) */
+/* TRADUZIONI INTEGRATE */
 const translations = {
     it: {
         backToDry: "← Torna a Dry",
-        chooseQuantity: "Scegli quantità",
-        cartTitle: "🛒 Carrello",
+        chooseQuantity: "FORMATI DISPONIBILI 👇",
+        cartTitle: "CARRELLO",
         emptyCart: "Carrello vuoto",
-        goToCart: "🛒 Vai al carrello",
-        backToMenu: "🏠 Torna al menu",
+        goToCart: "Vai al carrello",
+        backToMenu: "Torna al menu",
         addedToCart: "aggiunto al carrello"
     },
     en: {
         backToDry: "← Back to Dry",
-        chooseQuantity: "Choose quantity",
-        cartTitle: "🛒 Cart",
+        chooseQuantity: "AVAILABLE SIZES 👇",
+        cartTitle: "CART",
         emptyCart: "Empty cart",
-        goToCart: "🛒 Go to cart",
-        backToMenu: "🏠 Back to menu",
+        goToCart: "Go to cart",
+        backToMenu: "Back to menu",
         addedToCart: "added to cart"
     },
     es: {
         backToDry: "← Volver a Dry",
-        chooseQuantity: "Elige cantidad",
-        cartTitle: "🛒 Carrito",
+        chooseQuantity: "FORMATOS DISPONIBLES 👇",
+        cartTitle: "CARRITO",
         emptyCart: "Carrito vacío",
-        goToCart: "🛒 Ir al carrito",
-        backToMenu: "🏠 Volver al menú",
+        goToCart: "Ir al carrito",
+        backToMenu: "Volver al menú",
         addedToCart: "añadido al carrito"
     },
     de: {
         backToDry: "← Zurück zu Dry",
-        chooseQuantity: "Menge wählen",
-        cartTitle: "🛒 Warenkorb",
+        chooseQuantity: "VERFÜGBARE GRÖSSEN 👇",
+        cartTitle: "WARENKORB",
         emptyCart: "Warenkorb leer",
-        goToCart: "🛒 Zum Warenkorb",
-        backToMenu: "🏠 Zurück zum Menü",
+        goToCart: "Zum Warenkorb",
+        backToMenu: "Zurück zum Menü",
         addedToCart: "zum Warenkorb hinzugefügt"
     }
 };
@@ -178,7 +440,7 @@ function showMiniCart() {
     }
     box.innerHTML = "";
     cart.forEach(function(item, index) {
-        box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+        box.innerHTML += '<div class="cart-item-row"><span>• ' + item + '</span><button onclick="removeItem(' + index + ')">❌ Rimuovi</button></div>';
     });
 }
 
@@ -195,4 +457,3 @@ window.addEventListener("load", function() {
 </script>
 </body>
 </html>
-
