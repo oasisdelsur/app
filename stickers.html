@@ -42,7 +42,6 @@ html {
 /* TITOLO ULTRA-PREMIUM (AZZURRO CRISTALLO) */
 .section-title-container {
     width: 100%;
-    max-width: 600px;
     margin: 50px auto 20px auto;
     padding: 18px 24px;
     box-sizing: border-box;
@@ -126,8 +125,10 @@ html {
     display: block;
 }
 
-/* CARRELLO INTEGRATO UNICO STILE WEED */
+/* CARRELLO LARGHEZZA COMPLETA IDENTICO ALLE SCHEDE WEED */
 .cart-card {
+    width: 100%;
+    box-sizing: border-box;
     background: rgba(10, 20, 12, 0.9);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -135,7 +136,6 @@ html {
     border-radius: 22px;
     padding: 20px;
     margin: 25px auto 20px auto;
-    max-width: 600px;
     box-shadow: 0 0 20px rgba(50, 205, 50, 0.15), inset 0 0 15px rgba(50, 205, 50, 0.05);
 }
 
@@ -334,7 +334,7 @@ html {
             </div>
         </div>
 
-        <!-- SCHEDA CARRELLO UNIFICATA (CON ID PER L'ANCORA) -->
+        <!-- SCHEDA CARRELLO CON LARGHEZZA PARI A QUELLE SOPRA -->
         <div class="cart-card" id="cartSection">
             <div class="cart-title-custom">
                 <span id="cartText">CARRELLO</span> <span>🛒</span>
