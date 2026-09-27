@@ -12,9 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-/* PULSANTE INDIETRO CIRCOLARE SCURO CON FRECCIA */
+/* PULSANTE INDIETRO CIRCOLARE FISSO SULLO SCHERMO */
 .back-button-circle {
-    position: absolute;
+    position: fixed;
     top: 15px;
     left: 15px;
     width: 38px;
@@ -28,8 +28,9 @@
     text-decoration: none;
     color: #ffffff;
     font-size: 18px;
-    z-index: 100;
+    z-index: 1000;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
@@ -110,63 +111,109 @@
     text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
 }
 
-/* STILI DELLA SEZIONE SCHEDE E CARRELLO IN BASSO */
-.sticker-cart {
-    background: rgba(15, 25, 18, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 18px;
-    margin: 30px auto 20px auto;
-    max-width: 500px;
+/* CARRELLO INTEGRATO UNICO STILE WEED */
+.cart-card {
+    background: rgba(10, 20, 12, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(50, 205, 50, 0.3);
+    border-radius: 22px;
+    padding: 20px;
+    margin: 25px auto 20px auto;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15), inset 0 0 15px rgba(50, 205, 50, 0.05);
 }
 
-.cart-title {
+.cart-title-custom {
     font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
     font-weight: 800;
-    font-size: 18px;
-    color: #fff;
+    letter-spacing: 1px;
+    color: #4CAF50;
+    text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+#stickerCart {
+    font-size: 14px;
+    color: #e0e0e0;
+    margin-bottom: 16px;
 }
 
 .sticker-cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
     color: #fff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .remove-sticker-btn {
-    width: 18px;
-    height: 18px;
-    background-color: #ff3b30;
-    border-radius: 50%;
-    border: none;
+    background: rgba(255, 59, 48, 0.15);
+    color: #ff453a;
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 0 6px rgba(255, 59, 48, 0.6);
+    transition: all 0.2s ease;
 }
 
-.navigation-box {
-    display: block;
-    background: rgba(15, 25, 18, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 22px;
-    margin: 15px auto;
-    max-width: 500px;
-    text-align: center;
-    text-decoration: none;
+.remove-sticker-btn:hover {
+    background: #ff3b30;
     color: #ffffff;
+}
+
+/* BOTTONI INTEGRATI DENTRO IL CARRELLO (AFFIANCATI) */
+.cart-actions-integrated {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-action-int {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px 8px;
+    color: #fff;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    backdrop-filter: blur(10px);
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-action-int.primary {
+    background: linear-gradient(135deg, #1e7e34, #155724);
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.25);
+}
+
+.btn-action-int:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-action-int.primary:hover {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
 }
 
 .category-image {
@@ -188,7 +235,7 @@
 </head>
 <body>
 
-<!-- PULSANTE FRECCIA TORNA INDIETRO -->
+<!-- PULSANTE FRECCIA FISSO -->
 <a href="shop.html" class="back-button-circle" id="back">
     ←
 </a>
@@ -278,40 +325,39 @@
             </div>
         </div>
 
-        <!-- CARRELLO IN BASSO STILE SCREENSHOT -->
-        <div class="sticker-cart">
-            <div class="cart-title">
-                🛒🛒 <span id="cartText">Carrello</span>
+        <!-- SCHEDA CARRELLO UNIFICATA STILE WEED -->
+        <div class="cart-card">
+            <div class="cart-title-custom">
+                <span id="cartText">CARRELLO</span> <span>🛒</span>
             </div>
             <div id="stickerCart">
                 Nessuno sticker selezionato
             </div>
-        </div>
 
-        <!-- BOTTONI GRANDI DI NAVIGAZIONE -->
-        <a href="cart.html" class="navigation-box" id="goCart">
-            🛒 Vai al carrello
-        </a>
-        <a href="shop.html" class="navigation-box" id="goMenu">
-            🏠 Torna al menu
-        </a>
+            <!-- BOTTONI DI AZIONE INTEGRATI NEL CARRELLO -->
+            <div class="cart-actions-integrated">
+                <a href="cart.html" class="btn-action-int primary" id="goCart">
+                    <span>🛒</span> <span>Vai al carrello</span>
+                </a>
+                <a href="shop.html" class="btn-action-int" id="goMenu">
+                    <span>🏠</span> <span>Torna al menu</span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
 <script src="language.js"></script>
 <script>
 const MAX_STICKERS = 5;
-// Il carrello ora salverà stringhe come "Sticker N1", "Sticker N8", ecc.
 let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
 
-// Modificata: accetta come parametro il numero dello sticker cliccato
 function addSticker(numeroSticker) {
     if (stickers.length >= MAX_STICKERS) {
         alert("Hai esaurito i tuoi stickers 🎁");
         return;
     }
     
-    // Inserisce nell'array il nome specifico
     stickers.push("Sticker " + numeroSticker);
     localStorage.setItem("stickers", JSON.stringify(stickers));
     updateStickerPage();
@@ -328,7 +374,6 @@ function addSticker(numeroSticker) {
 
 function removeSticker(index) {
     stickers.splice(index, 1);
-    // Nota: Ho rimosso il reindex per evitare che perda il nome "N" quando elimini qualcosa
     localStorage.setItem("stickers", JSON.stringify(stickers));
     updateStickerPage();
 }
@@ -338,7 +383,7 @@ function updateStickerPage() {
     const box = document.getElementById("stickerCart");
     
     if (stickers.length === 0) {
-        box.innerHTML = "<span style='color:#aaa;'>Nessuno sticker selezionato</span>";
+        box.innerHTML = "<span style='color:#aaa;'>Carrello vuoto</span>";
         return;
     }
     
@@ -347,7 +392,7 @@ function updateStickerPage() {
         box.innerHTML +=
             '<div class="sticker-cart-item">' +
                 '<span>• ' + sticker + '</span>' +
-                '<button class="remove-sticker-btn" onclick="removeSticker(' + index + ')"></button>' +
+                '<button class="remove-sticker-btn" onclick="removeSticker(' + index + ')">❌ Rimuovi</button>' +
             '</div>';
     });
 }
@@ -358,8 +403,6 @@ window.addEventListener("load", function() {
     document.documentElement.lang = lang;
     
     if (t.cart) document.getElementById("cartText").innerHTML = t.cart;
-    if (t.goCart) document.getElementById("goCart").innerHTML = t.goCart;
-    if (t.goMenu) document.getElementById("goMenu").innerHTML = t.goMenu;
     
     updateStickerPage();
 });
