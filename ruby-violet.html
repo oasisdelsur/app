@@ -6,6 +6,7 @@
 <title>RUBY VIOLET - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 <style>
+/* STILE IMMAGINI E VIDEO */
 .product-image, .product-video {
     width: 100%;
     max-width: 600px;
@@ -16,20 +17,107 @@
     object-fit: cover;
     object-position: center;
 }
+
+/* CARRELLO MODERNO IN STILE GLASS */
+.cart-card {
+    background: rgba(15, 25, 18, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 25px 0 20px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.cart-title-custom {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
 #mini-cart {
-    margin-top: 15px;
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
 }
-#mini-cart button {
-    background: #e50914;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cart-item-row button {
+    background: rgba(229, 9, 20, 0.2);
+    color: #ff4d4d;
+    border: 1px solid rgba(229, 9, 20, 0.4);
+    border-radius: 8px;
+    padding: 4px 8px;
+    font-size: 12px;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
+
+.cart-item-row button:hover {
+    background: #e50914;
+    color: #fff;
+}
+
+/* CONTENITORE GRIGLIA BOTTONI AZIONE */
+.action-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 14px 10px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-action.primary {
+    background: linear-gradient(135deg, rgba(34, 139, 34, 0.6), rgba(20, 90, 20, 0.8));
+    border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.btn-action.primary:hover {
+    background: linear-gradient(135deg, rgba(46, 160, 46, 0.8), rgba(25, 110, 25, 0.95));
+}
+
 @media (max-width: 500px) {
     .product-image, .product-video {
         width: 100%;
@@ -54,13 +142,13 @@
     </div>
 
     <div class="product">
-        <!-- IMMAGINI SPECIFICHE DI RUBY VIOLET -->
+        <!-- IMMAGINI SPECIFICHE -->
         <img src="IMG_2310.png" class="product-image" alt="RUBY VIOLET">
         <img src="IMG_2311.png" class="product-image" alt="RUBY VIOLET">
         <img src="IMG_2312.png" class="product-image" alt="RUBY VIOLET">
         <img src="IMG_2313.png" class="product-image" alt="RUBY VIOLET">
 
-        <!-- VIDEO SPECIFICI DI RUBY VIOLET -->
+        <!-- VIDEO SPECIFICI -->
         <video class="product-video" controls autoplay loop muted playsinline>
             <source src="IMG_2297.mov" type="video/quicktime">
         </video>
@@ -80,64 +168,64 @@
         </div>
     </div>
 
-    <div class="cart">
-        <div class="cart-title" data-translate="cartTitle">
-            🛒 Carrello
+    <!-- CARRELLO RESTYLING -->
+    <div class="cart-card">
+        <div class="cart-title-custom">
+            <span>🛒</span> <span data-translate="cartTitle">Carrello</span>
         </div>
         <div id="mini-cart">
             <span data-translate="emptyCart">Carrello vuoto</span>
         </div>
     </div>
 
-    <a href="shop.html" class="category-link">
-        <div class="category" id="goCart" data-translate="goToCart">
-            🛒 Vai al carrello
-        </div>
-    </a>
-    <a href="shop.html" class="category-link">
-        <div class="category" id="goMenu" data-translate="backToMenu">
-            🏠 Torna al menu
-        </div>
-    </a>
+    <!-- BOTTONI DI NAVIGAZIONE COMPATTI AD ARCHITETTURA GRID (2 AFFIANCATI) -->
+    <div class="action-buttons-grid">
+        <a href="shop.html" class="btn-action primary" id="goCart">
+            <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
+        </a>
+        <a href="shop.html" class="btn-action" id="goMenu">
+            <span>🏠</span> <span data-translate="backToMenu">Torna al menu</span>
+        </a>
+    </div>
 </div>
 
 <script>
-/* TRADUZIONI INTEGRATE (TUTTE LE LINGUE) */
+/* TRADUZIONI INTEGRATE */
 const translations = {
     it: {
         backToWeed: "← Torna a Weed",
         chooseQuantity: "Scegli quantità",
-        cartTitle: "🛒 Carrello",
+        cartTitle: "Carrello",
         emptyCart: "Carrello vuoto",
-        goToCart: "🛒 Vai al carrello",
-        backToMenu: "🏠 Torna al menu",
+        goToCart: "Vai al carrello",
+        backToMenu: "Torna al menu",
         addedToCart: "aggiunto al carrello"
     },
     en: {
         backToWeed: "← Back to Weed",
         chooseQuantity: "Choose quantity",
-        cartTitle: "🛒 Cart",
+        cartTitle: "Cart",
         emptyCart: "Empty cart",
-        goToCart: "🛒 Go to cart",
-        backToMenu: "🏠 Back to menu",
+        goToCart: "Go to cart",
+        backToMenu: "Back to menu",
         addedToCart: "added to cart"
     },
     es: {
         backToWeed: "← Volver a Weed",
         chooseQuantity: "Elige cantidad",
-        cartTitle: "🛒 Carrito",
+        cartTitle: "Carrito",
         emptyCart: "Carrito vacío",
-        goToCart: "🛒 Ir al carrito",
-        backToMenu: "🏠 Volver al menú",
+        goToCart: "Ir al carrito",
+        backToMenu: "Volver al menú",
         addedToCart: "añadido al carrito"
     },
     de: {
         backToWeed: "← Zurück zu Weed",
         chooseQuantity: "Menge wählen",
-        cartTitle: "🛒 Warenkorb",
+        cartTitle: "Warenkorb",
         emptyCart: "Warenkorb leer",
-        goToCart: "🛒 Zum Warenkorb",
-        backToMenu: "🏠 Zurück zum Menü",
+        goToCart: "Zum Warenkorb",
+        backToMenu: "Zurück zum Menü",
         addedToCart: "zum Warenkorb hinzugefügt"
     }
 };
@@ -183,7 +271,7 @@ function showMiniCart() {
     }
     box.innerHTML = "";
     cart.forEach(function(item, index) {
-        box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+        box.innerHTML += '<div class="cart-item-row"><span>• ' + item + '</span><button onclick="removeItem(' + index + ')">❌ Rimuovi</button></div>';
     });
 }
 
