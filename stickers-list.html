@@ -1,90 +1,365 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sticker Collection</title>
+<title>Stickers - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
-</head>
 
+<!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* PULSANTE INDIETRO CIRCOLARE FISSO SULLO SCHERMO */
+.back-button-circle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 38px;
+    height: 38px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* TITOLO ULTRA-PREMIUM (AZZURRO CRISTALLO) */
+.section-title-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto 20px auto;
+    padding: 18px 24px;
+    box-sizing: border-box;
+    
+    background: linear-gradient(145deg, rgba(10, 20, 30, 0.9), rgba(8, 15, 25, 0.95));
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 212, 255, 0.15);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+    transition: 0.5s;
+    animation: shine 6s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.title-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.section-title-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0088ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.5));
+}
+
+.title-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #00d4ff;
+    text-transform: uppercase;
+    margin-top: 6px;
+    border-top: 1px solid rgba(0, 212, 255, 0.3);
+    padding-top: 6px;
+    width: 80%;
+    text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
+}
+
+/* STILI DELLA SEZIONE SCHEDE E CARRELLO IN BASSO */
+.sticker-cart {
+    background: rgba(15, 25, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 18px;
+    margin: 30px auto 20px auto;
+    max-width: 500px;
+}
+
+.cart-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.sticker-cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.remove-sticker-btn {
+    width: 18px;
+    height: 18px;
+    background-color: #ff3b30;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(255, 59, 48, 0.6);
+}
+
+.navigation-box {
+    display: block;
+    background: rgba(15, 25, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 22px;
+    margin: 15px auto;
+    max-width: 500px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.category-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 500px) {
+    .section-title-text {
+        font-size: 17px;
+        letter-spacing: 1px;
+    }
+    .title-badge {
+        font-size: 11px;
+    }
+}
+</style>
+</head>
 <body>
 
-<div class="container">
-
-<div class="back-button">
-<a href="shop.html">
-← Indietro
+<!-- PULSANTE FRECCIA FISSO CHE SEGUE LO SCROLL -->
+<a href="shop.html" class="back-button-circle" id="back">
+    ←
 </a>
+
+<div class="container">
+    <!-- TITOLO SUPERIORE CON CONTEGGIO -->
+    <div class="section-title-container">
+        <div class="title-header">
+            <span class="section-title-text">SELEZIONA I TUOI STICKERS</span>
+        </div>
+        <div class="title-badge" id="counter">Hai scelto 0 / 5 stickers</div>
+    </div>
+
+    <div class="product">
+        <div class="products">
+            <div class="category" onclick="addSticker('N1')">
+                <img src="IMG_0529.JPG" class="category-image">
+                <div class="category-name">N1 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N2')">
+                <img src="IMG_0530.JPG" class="category-image">
+                <div class="category-name">N2 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N3')">
+                <img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="category-image">
+                <div class="category-name">N3 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N4')">
+                <img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="category-image">
+                <div class="category-name">N4 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N5')">
+                <img src="IMG_1658.jpeg" class="category-image">
+                <div class="category-name">N5 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N6')">
+                <img src="IMG_1659.jpeg" class="category-image">
+                <div class="category-name">N6 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N7')">
+                <img src="IMG_1667.jpeg" class="category-image">
+                <div class="category-name">N7 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N8')">
+                <img src="IMG_1669.jpeg" class="category-image">
+                <div class="category-name">N8 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N9')">
+                <img src="IMG_1665.jpeg" class="category-image">
+                <div class="category-name">N9 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N10')">
+                <img src="IMG_1663.jpeg" class="category-image">
+                <div class="category-name">N10 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N11')">
+                <img src="IMG_1664.jpeg" class="category-image">
+                <div class="category-name">N11 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N12')">
+                <img src="IMG_1668.jpeg" class="category-image">
+                <div class="category-name">N12 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N13')">
+                <img src="IMG_1657.jpeg" class="category-image">
+                <div class="category-name">N13 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N14')">
+                <img src="IMG_1670.jpeg" class="category-image">
+                <div class="category-name">N14 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N15')">
+                <img src="IMG_1671.jpeg" class="category-image">
+                <div class="category-name">N15 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N16')">
+                <img src="IMG_1673.jpeg" class="category-image">
+                <div class="category-name">N16 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N17')">
+                <img src="IMG_1672.jpeg" class="category-image">
+                <div class="category-name">N17 + AGGIUNGI</div>
+            </div>
+            <div class="category" onclick="addSticker('N18')">
+                <img src="IMG_1662.jpeg" class="category-image">
+                <div class="category-name">N18 + AGGIUNGI</div>
+            </div>
+        </div>
+
+        <!-- CARRELLO IN BASSO STILE SCREENSHOT -->
+        <div class="sticker-cart">
+            <div class="cart-title">
+                🛒🛒 <span id="cartText">Carrello</span>
+            </div>
+            <div id="stickerCart">
+                Nessuno sticker selezionato
+            </div>
+        </div>
+
+        <!-- BOTTONI GRANDI DI NAVIGAZIONE -->
+        <a href="cart.html" class="navigation-box" id="goCart">
+            🛒 Vai al carrello
+        </a>
+        <a href="shop.html" class="navigation-box" id="goMenu">
+            🏠 Torna al menu
+        </a>
+    </div>
 </div>
 
-<div class="section-title">
-🏷️ Scegli i tuoi stickers
-</div>
-
-<div class="product">
-
-<h3 id="counter">
-Hai scelto 0 / 3 stickers
-</h3>
-
-<div class="products">
-
-<div class="category" onclick="addSticker('Sticker IMG 0529')">
-<img src="IMG_0529.JPG" class="category-image">
-<div class="category-name">Scegli</div>
-</div>
-
-<div class="category" onclick="addSticker('Sticker IMG 0530')">
-<img src="IMG_0530.JPG" class="category-image">
-<div class="category-name">Scegli</div>
-</div>
-
-<div class="category" onclick="addSticker('Sticker 52e')">
-<img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="category-image">
-<div class="category-name">Scegli</div>
-</div>
-
-<div class="category" onclick="addSticker('Sticker 1B7F')">
-<img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="category-image">
-<div class="category-name">Scegli</div>
-</div>
-
-<div class="category" onclick="addSticker('Sticker Screenshot')">
-<img src="Screenshot 2025-04-09 (19.30.53).png" class="category-image">
-<div class="category-name">Scegli</div>
-</div>
-
-</div>
-</div>
-</div>
-
+<script src="language.js"></script>
 <script>
+const MAX_STICKERS = 5;
+let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
 
-let stickers = [];
-
-function addSticker(nome) {
-
-if (stickers.length >= 3) {
-alert("Hai già scelto 3 stickers per questo ordine 🎁");
-return;
+function addSticker(numeroSticker) {
+    if (stickers.length >= MAX_STICKERS) {
+        alert("Hai esaurito i tuoi stickers 🎁");
+        return;
+    }
+    
+    stickers.push("Sticker " + numeroSticker);
+    localStorage.setItem("stickers", JSON.stringify(stickers));
+    updateStickerPage();
+    
+    const rimasti = MAX_STICKERS - stickers.length;
+    if (rimasti === 0) {
+        alert("Hai esaurito i tuoi stickers 🎁");
+    } else if (rimasti === 1) {
+        alert("Ti rimane 1 sticker");
+    } else {
+        alert("Ti rimangono " + rimasti + " stickers");
+    }
 }
 
-stickers.push(nome);
-
-localStorage.setItem(
-"stickers",
-JSON.stringify(stickers)
-);
-
-document.getElementById("counter").innerHTML =
-"Hai scelto " + stickers.length + " / 3 stickers";
-
-alert("✅ " + nome + " aggiunto");
-
+function removeSticker(index) {
+    stickers.splice(index, 1);
+    localStorage.setItem("stickers", JSON.stringify(stickers));
+    updateStickerPage();
 }
 
+function updateStickerPage() {
+    document.getElementById("counter").innerHTML = "Hai scelto " + stickers.length + " / " + MAX_STICKERS + " stickers";
+    const box = document.getElementById("stickerCart");
+    
+    if (stickers.length === 0) {
+        box.innerHTML = "<span style='color:#aaa;'>Nessuno sticker selezionato</span>";
+        return;
+    }
+    
+    box.innerHTML = "";
+    stickers.forEach(function(sticker, index) {
+        box.innerHTML +=
+            '<div class="sticker-cart-item">' +
+                '<span>• ' + sticker + '</span>' +
+                '<button class="remove-sticker-btn" onclick="removeSticker(' + index + ')"></button>' +
+            '</div>';
+    });
+}
+
+window.addEventListener("load", function() {
+    const lang = localStorage.getItem("language") || "it";
+    const t = window.translations ? (translations[lang] || translations.it) : {};
+    document.documentElement.lang = lang;
+    
+    if (t.cart) document.getElementById("cartText").innerHTML = t.cart;
+    if (t.goCart) document.getElementById("goCart").innerHTML = t.goCart;
+    if (t.goMenu) document.getElementById("goMenu").innerHTML = t.goMenu;
+    
+    updateStickerPage();
+});
 </script>
-
 </body>
 </html>
