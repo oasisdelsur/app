@@ -6,7 +6,7 @@
 <title>RUBY VIOLET - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* STILE IMMAGINI E VIDEO */
+/* IMMAGINI E VIDEO */
 .product-image, .product-video {
     width: 100%;
     max-width: 600px;
@@ -18,70 +18,70 @@
     object-position: center;
 }
 
-/* CARRELLO MODERNO IN STILE GLASS */
+/* CARRELLO ULTRA-MODERNO NEON GLOW */
 .cart-card {
-    background: rgba(15, 25, 18, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 20px;
-    padding: 20px;
-    margin: 25px 0 20px 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    background: rgba(10, 20, 12, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(50, 205, 50, 0.3);
+    border-radius: 22px;
+    padding: 18px 20px;
+    margin: 25px 0 15px 0;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15), inset 0 0 15px rgba(50, 205, 50, 0.05);
 }
 
 .cart-title-custom {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 800;
-    letter-spacing: 0.5px;
-    color: #ffffff;
+    letter-spacing: 1px;
+    color: #4CAF50;
+    text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
 }
 
 #mini-cart {
-    font-size: 15px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    color: #e0e0e0;
 }
 
 .cart-item-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 8px 12px;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 10px 14px;
+    border-radius: 12px;
     margin-bottom: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .cart-item-row button {
-    background: rgba(229, 9, 20, 0.2);
-    color: #ff4d4d;
-    border: 1px solid rgba(229, 9, 20, 0.4);
-    border-radius: 8px;
-    padding: 4px 8px;
-    font-size: 12px;
+    background: rgba(255, 59, 48, 0.15);
+    color: #ff453a;
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .cart-item-row button:hover {
-    background: #e50914;
-    color: #fff;
+    background: #ff3b30;
+    color: #ffffff;
 }
 
-/* CONTENITORE GRIGLIA BOTTONI AZIONE */
+/* BOTTONI AFFIANCATI IN STILE VETRO VIBRANTE */
 .action-buttons-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 15px;
+    gap: 10px;
 }
 
 .btn-action {
@@ -89,41 +89,37 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 14px;
-    padding: 14px 10px;
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 14px 8px;
+    color: #fff;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.btn-action.primary {
+    background: linear-gradient(135deg, #1e7e34, #155724);
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }
 
 .btn-action:hover {
     transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.btn-action.primary {
-    background: linear-gradient(135deg, rgba(34, 139, 34, 0.6), rgba(20, 90, 20, 0.8));
-    border: 1px solid rgba(76, 175, 80, 0.4);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .btn-action.primary:hover {
-    background: linear-gradient(135deg, rgba(46, 160, 46, 0.8), rgba(25, 110, 25, 0.95));
+    background: linear-gradient(135deg, #28a745, #1e7e34);
 }
 
 @media (max-width: 500px) {
     .product-image, .product-video {
-        width: 100%;
-        max-width: 100%;
         height: 280px;
-        object-fit: cover;
     }
 }
 </style>
@@ -168,7 +164,7 @@
         </div>
     </div>
 
-    <!-- CARRELLO RESTYLING -->
+    <!-- CARRELLO NEON RESTYLING -->
     <div class="cart-card">
         <div class="cart-title-custom">
             <span>🛒</span> <span data-translate="cartTitle">Carrello</span>
@@ -178,7 +174,7 @@
         </div>
     </div>
 
-    <!-- BOTTONI DI NAVIGAZIONE COMPATTI AD ARCHITETTURA GRID (2 AFFIANCATI) -->
+    <!-- BOTTONI DI NAVIGAZIONE COMPATTI AD ARCHITETTURA GRID -->
     <div class="action-buttons-grid">
         <a href="shop.html" class="btn-action primary" id="goCart">
             <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
