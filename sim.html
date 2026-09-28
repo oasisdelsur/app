@@ -387,18 +387,6 @@
 
 
     <!-- ==========================
-         TITOLO
-    ========================== -->
-
-    <div
-        class="section-title"
-        id="simTitle"
-    >
-        📱 SIM
-    </div>
-
-
-    <!-- ==========================
          INDIETRO
     ========================== -->
 
@@ -527,20 +515,9 @@ window.addEventListener(
                 lang;
 
 
-            document.getElementById(
-                "simTitle"
-            ).innerHTML =
-                "📱 " +
-                (
-                    t.sim ||
-                    "SIM"
-                );
-
-
-            document.getElementById(
-                "back"
-            ).innerHTML =
-                t.back;
+            if (document.getElementById("back")) {
+                document.getElementById("back").innerHTML = t.back;
+            }
 
         }
 
