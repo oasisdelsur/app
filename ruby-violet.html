@@ -99,14 +99,20 @@
     filter: drop-shadow(0 0 8px rgba(224, 64, 251, 0.6));
 }
 
-/* IMMAGINI E VIDEO */
+/* GRIGLIA A 2 COLONNE PER IMMAGINI E VIDEO */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+
 .product-image, .product-video {
     width: 100%;
-    max-width: 600px;
-    height: 350px;
+    height: 220px;
     display: block;
-    margin: 0 auto 20px auto;
-    border-radius: 18px;
+    border-radius: 14px;
     object-fit: cover;
     object-position: center;
 }
@@ -284,8 +290,11 @@
         font-size: 20px;
         letter-spacing: 2px;
     }
+    .media-grid {
+        gap: 8px;
+    }
     .product-image, .product-video {
-        height: 280px;
+        height: 160px;
     }
 }
 </style>
@@ -308,19 +317,20 @@
     </div>
 
     <div class="product">
-        <!-- IMMAGINI SPECIFICHE -->
-        <img src="IMG_2310.png" class="product-image" alt="RUBY VIOLET">
-        <img src="IMG_2311.png" class="product-image" alt="RUBY VIOLET">
-        <img src="IMG_2312.png" class="product-image" alt="RUBY VIOLET">
-        <img src="IMG_2313.png" class="product-image" alt="RUBY VIOLET">
+        <!-- GRIGLIA A 2 COLONNE PER IMMAGINI E VIDEO -->
+        <div class="media-grid">
+            <img src="IMG_2310.png" class="product-image" alt="RUBY VIOLET">
+            <img src="IMG_2311.png" class="product-image" alt="RUBY VIOLET">
+            <img src="IMG_2312.png" class="product-image" alt="RUBY VIOLET">
+            <img src="IMG_2313.png" class="product-image" alt="RUBY VIOLET">
 
-        <!-- VIDEO SPECIFICI -->
-        <video class="product-video" controls autoplay loop muted playsinline>
-            <source src="IMG_2297.mov" type="video/quicktime">
-        </video>
-        <video class="product-video" controls autoplay loop muted playsinline>
-            <source src="IMG_2298.mov" type="video/quicktime">
-        </video>
+            <video class="product-video" controls autoplay loop muted playsinline>
+                <source src="IMG_2297.mov" type="video/quicktime">
+            </video>
+            <video class="product-video" controls autoplay loop muted playsinline>
+                <source src="IMG_2298.mov" type="video/quicktime">
+            </video>
+        </div>
 
         <!-- SEZIONE FORMATI DISPONIBILI CENTRATA CON DITO -->
         <div class="quantity-section">
