@@ -15,8 +15,13 @@ body {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 15px;
-    padding-top: 60px; /* Spazio in alto per non coprire i contenuti con la freccia */
+    padding: 10px;
+    padding-top: 55px; /* Spazio in alto per la freccia */
+    
+    /* GRIGLIA A 2 COLONNE COMPATTA */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 /* =========================
@@ -24,30 +29,31 @@ body {
 ========================= */
 
 .section-title {
+    grid-column: 1 / -1; /* Occupa tutta la larghezza */
     text-align: center;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 15px 0 20px;
+    margin: 5px 0 10px;
 }
 
 /* =========================
-   CATEGORIE
+   CATEGORIE (2 COLONNE COMPATTE)
 ========================= */
 
 .category-link {
     text-decoration: none;
     color: white;
     display: block;
+    width: 100%;
 }
 
 .category {
-    width: calc(50% - 8px);
-    float: left;
-    margin-right: 8px;
-    margin-bottom: 15px;
-    min-height: 220px;
-    padding: 18px;
-    border-radius: 20px;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0;
+    min-height: 85px; /* Compattato per far stare tutto nello schermo */
+    padding: 8px;
+    border-radius: 14px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,26 +63,27 @@ body {
     backdrop-filter: blur(14px);
     border: 1px solid rgba(0, 255, 120, .15);
     box-shadow:
-        0 0 20px rgba(0, 255, 120, .08),
-        0 10px 30px rgba(0, 0, 0, .7);
-    transition: .3s;
+        0 0 15px rgba(0, 255, 120, .08),
+        0 5px 15px rgba(0, 0, 0, .7);
+    transition: .2s;
 }
 
 .category:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 .category-name {
-    font-size: 20px;
+    font-size: 13px;
     font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
 }
 
 .category-image {
     width: 100%;
-    height: 140px;
+    height: 60px; /* Ridotta altezza immagine per risparmiare spazio */
     object-fit: cover;
-    border-radius: 15px;
-    margin-bottom: 12px;
+    border-radius: 10px;
 }
 
 /* =========================
@@ -85,25 +92,25 @@ body {
 
 .sticker-image {
     width: 100% !important;
-    height: 140px !important;
+    height: 60px !important;
     object-fit: cover !important;
-    border-radius: 15px !important;
-    margin-bottom: 12px;
+    border-radius: 10px !important;
     display: block;
 }
 
 /* =========================
-   GALLERIA FOTO
+   GALLERIA FOTO / PRODOTTI
 ========================= */
 
 .product {
+    grid-column: 1 / -1;
     width: 100%;
     max-width: 700px;
-    margin: 25px auto;
+    margin: 15px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .product-image {
@@ -116,32 +123,33 @@ body {
     margin: 0 auto;
     border-radius: 15px;
     background: #111;
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, .6);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .6);
 }
 
 /* =========================
-   CARRELLO
+   CARRELLO (A SCOMPARSA O IN BASSO COMPATTO)
 ========================= */
 
 .cart {
+    grid-column: 1 / -1; /* Occupa tutta la larghezza in fondo */
     clear: both;
-    margin: 25px 15px;
-    padding: 20px;
-    border-radius: 22px;
-    background: rgba(20, 20, 20, .75);
+    margin: 10px 0;
+    padding: 12px 15px;
+    border-radius: 16px;
+    background: rgba(20, 20, 20, .85);
     backdrop-filter: blur(14px);
+    border: 1px solid rgba(0, 255, 120, .2);
 }
 
 .cart-title {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: bold;
 }
 
 #cart {
-    margin-top: 15px;
-    font-size: 16px;
-    line-height: 1.8;
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.4;
 }
 
 /* =========================
@@ -150,53 +158,49 @@ body {
 
 .checkout {
     width: 100%;
-    margin-top: 15px;
-    padding: 15px;
+    margin-top: 8px;
+    padding: 10px;
     background: #e50914;
     color: white;
     border: none;
-    border-radius: 30px;
-    font-size: 17px;
+    border-radius: 20px;
+    font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 /* =========================
-   FRECCIA UNIVERSALE (CORREZIONE GLOBALE)
+   FRECCIA UNIVERSALE
 ========================= */
 
-/* Forza la posizione fissa in alto a sinistra per qualsiasi contenitore di ritorno */
 .back-button, .back-link, header a[href*="html"] {
     position: fixed !important;
-    top: 15px !important;
-    left: 15px !important;
+    top: 10px !important;
+    left: 10px !important;
     z-index: 9999 !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-/* Rende il link un cerchio perfetto con la sola freccia */
 .back-button a, .back-link a {
     color: white !important;
     text-decoration: none !important;
-    font-size: 22px !important;
-    font-weight: bold !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 42px !important;
-    height: 42px !important;
+    width: 36px !important;
+    height: 36px !important;
     border-radius: 50% !important;
     background: rgba(0, 0, 0, 0.75) !important;
     backdrop-filter: blur(8px) !important;
     border: 1px solid rgba(0, 255, 120, 0.3) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
-    font-size: 0 !important; /* Nasconde l'eventuale testo interno (es. "Indietro") */
+    font-size: 0 !important;
 }
 
-/* Mostra solo il simbolo della freccia al centro del cerchio */
 .back-button a::before, .back-link a::before {
     content: "←" !important;
-    font-size: 22px !important;
+    font-size: 18px !important;
     color: white !important;
 }
 
@@ -236,49 +240,44 @@ body::after {
 }
 
 @keyframes greenMove1 {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    100% {
-        transform: translate(180px, 120px) scale(1.3);
-    }
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(180px, 120px) scale(1.3); }
 }
 
 @keyframes greenMove2 {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    100% {
-        transform: translate(-180px, -120px) scale(1.3);
-    }
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-180px, -120px) scale(1.3); }
 }
 
 /* =========================
-   TELEFONO
+   OTTIMIZZAZIONE MOBILE TELEFONI
 ========================= */
 
 @media (max-width: 500px) {
 
     .container {
-        padding: 12px;
-        padding-top: 60px;
+        padding: 8px;
+        padding-top: 50px;
+        gap: 8px; /* Ridotto lo spazio tra le schede */
     }
 
+    /* FORZA LA MANTENUTA DELLE 2 COLONNE SU MOBILE */
     .category {
         width: 100%;
-        margin-right: 0;
+        min-height: 75px;
+        padding: 6px;
+    }
+
+    .category-image, .sticker-image {
+        height: 50px !important;
+    }
+
+    .category-name {
+        font-size: 12px;
     }
 
     .section-title {
-        font-size: 24px;
-    }
-
-    .product {
-        width: 100%;
-        margin: 20px auto;
-        gap: 16px;
+        font-size: 18px;
     }
 
     .product-image {
@@ -287,26 +286,6 @@ body::after {
         max-height: 320px;
         border-radius: 14px;
     }
-
-    .back-button, .back-link {
-        top: 12px !important;
-        left: 12px !important;
-    }
-
-    .back-button a, .back-link a {
-        width: 38px !important;
-        height: 38px !important;
-    }
-
-    .back-button a::before, .back-link a::before {
-        font-size: 20px !important;
-    }
-
-    .sticker-image {
-        width: 100% !important;
-        height: 140px !important;
-        border-radius: 15px !important;
-    }
 }
 
 /* =========================
@@ -314,16 +293,16 @@ body::after {
 ========================= */
 
 @media (max-width: 360px) {
-
-    .product-image {
-        width: 65%;
-        max-width: 230px;
-        max-height: 290px;
+    .category {
+        min-height: 65px;
+        padding: 5px;
     }
 
-    .sticker-image {
-        width: 100% !important;
-        height: 140px !important;
-        border-radius: 15px !important;
+    .category-image, .sticker-image {
+        height: 42px !important;
+    }
+
+    .category-name {
+        font-size: 11px;
     }
 }
