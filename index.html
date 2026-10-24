@@ -1,251 +1,206 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oasis del Sur</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100%;
-        }
-        body {
-            min-height: 100vh;
-            min-height: 100dvh;
-            background: #050505;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        .welcome {
-            width: 100%;
-            max-width: 600px;
-            padding: 24px 20px;
-        }
-        /* LOGO */
-        .logo-container {
-            width: 280px;
-            height: 280px;
-            margin: 0 auto 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .logo {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            display: block;
-        }
-        /* LINGUE */
-        .languages {
-            width: 230px;
-            margin: 0 auto 16px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-        }
-        .language {
-            background: #111;
-            color: white;
-            border: 1px solid #333;
-            border-radius: 9px;
-            padding: 8px 5px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-        .language:hover {
-            background: #222;
-            transform: scale(1.03);
-        }
-        .language.selected {
-            border-color: #00e676;
-            background: #181818;
-        }
-        /* TITOLO */
-        h1 {
-            margin: 0 0 22px;
-            font-size: 30px;
-            line-height: 1.2;
-        }
-        /* PULSANTE */
-        .enter {
-            display: inline-block;
-            background: #00e676;
-            color: #000;
-            text-decoration: none;
-            padding: 15px 55px;
-            border-radius: 30px;
-            font-size: 20px;
-            font-weight: bold;
-            transition: 0.2s ease;
-        }
-        .enter:hover {
-            background: #00ff88;
-            transform: scale(1.05);
-        }
-        /* TELEFONO */
-        @media (max-width: 600px) {
-            .welcome {
-                padding: 18px 15px;
-            }
-            .logo-container {
-                width: 250px;
-                height: 250px;
-                max-width: 68vw;
-                max-height: 68vw;
-                margin-bottom: 10px;
-            }
-            .languages {
-                width: 220px;
-                margin-bottom: 14px;
-                gap: 5px;
-            }
-            .language {
-                padding: 8px 4px;
-                font-size: 13px;
-            }
-            h1 {
-                font-size: 26px;
-                margin-bottom: 20px;
-            }
-            .enter {
-                padding: 14px 50px;
-                font-size: 18px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Oasis del Sur</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    background: #050505;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.welcome {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+/* LOGO */
+.logo-container {
+    width: min(58vw, 250px);
+    height: min(58vw, 250px);
+    margin: 0 auto 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+/* LINGUE */
+.languages {
+    width: min(220px, 72vw);
+    margin: 0 auto 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+.language {
+    background: #111;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 8px 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.language.selected {
+    border-color: #00e676;
+    background: #151d18;
+    box-shadow: 0 0 8px #00e67620;
+}
+/* TITOLO */
+h1 {
+    font-size: clamp(20px, 5.5vw, 28px);
+    line-height: 1.15;
+    margin: 4px 0 15px;
+}
+/* ENTRA */
+.enter {
+    display: inline-block;
+    background: #00e676;
+    color: #000;
+    text-decoration: none;
+    padding: 13px 48px;
+    border-radius: 30px;
+    font-size: 17px;
+    font-weight: bold;
+    box-shadow: 0 0 18px #00e67630;
+    transition: 0.2s ease;
+}
+.enter:active {
+    transform: scale(0.97);
+}
+/* SCHERMI BASSI */
+@media (max-height: 700px) {
+    .welcome {
+        padding: 6px 15px;
+    }
+    .logo-container {
+        width: min(43vh, 190px);
+        height: min(43vh, 190px);
+        margin-bottom: 3px;
+    }
+    .languages {
+        margin-bottom: 6px;
+        gap: 4px;
+    }
+    .language {
+        padding: 6px 3px;
+        font-size: 12px;
+    }
+    h1 {
+        font-size: 21px;
+        margin: 3px 0 10px;
+    }
+    .enter {
+        padding: 11px 40px;
+        font-size: 16px;
+    }
+}
+/* SCHERMI MOLTO BASSI */
+@media (max-height: 560px) {
+    .logo-container {
+        width: 32vh;
+        height: 32vh;
+    }
+    .languages {
+        margin-bottom: 4px;
+    }
+    h1 {
+        font-size: 18px;
+        margin-bottom: 7px;
+    }
+    .enter {
+        padding: 9px 32px;
+        font-size: 15px;
+    }
+}
+</style>
 </head>
 <body>
-    <div class="welcome">
-        <!-- LOGO -->
-        <div class="logo-container">
-            <img
-                src="IMG_9609.png"
-                class="logo"
-                alt="Oasis del Sur"
-            >
-        </div>
-        <!-- LINGUE -->
-        <div class="languages">
-            <button
-                class="language selected"
-                onclick="selectLanguage('it')"
-            >
-                🇮🇹 Italiano
-            </button>
-            <button
-                class="language"
-                onclick="selectLanguage('en')"
-            >
-                🇬🇧 English
-            </button>
-            <button
-                class="language"
-                onclick="selectLanguage('es')"
-            >
-                🇪🇸 Español
-            </button>
-            <button
-                class="language"
-                onclick="selectLanguage('de')"
-            >
-                🇩🇪 Deutsch
-            </button>
-        </div>
-        <!-- TESTO DI BENVENUTO -->
-        <h1 id="welcomeText">
-            Benvenuto in Oasis del Sur
-        </h1>
-        <!-- ENTRA -->
-        <a
-            href="shop.html"
-            class="enter"
-            id="enterButton"
+<div class="welcome">
+    <div class="logo-container">
+        <img
+            src="IMG_9609.png"
+            class="logo"
+            alt="Oasis del Sur"
         >
-            ENTRA
-        </a>
     </div>
-    <script>
-        const translations = {
-            it: {
-                welcome: "Benvenuto in Oasis del Sur",
-                enter: "ENTRA"
-            },
-            en: {
-                welcome: "Welcome to Oasis del Sur",
-                enter: "ENTER"
-            },
-            es: {
-                welcome: "Bienvenido a Oasis del Sur",
-                enter: "ENTRAR"
-            },
-            de: {
-                welcome: "Willkommen bei Oasis del Sur",
-                enter: "EINTRETEN"
-            }
-        };
-        function selectLanguage(language) {
-            localStorage.setItem(
-                "language",
-                language
-            );
-            document.documentElement.lang =
-                language;
-            document.getElementById(
-                "welcomeText"
-            ).textContent =
-                translations[language].welcome;
-            document.getElementById(
-                "enterButton"
-            ).textContent =
-                translations[language].enter;
-            document.querySelectorAll(
-                ".language"
-            ).forEach(function(button) {
-                button.classList.remove(
-                    "selected"
-                );
-            });
-            const buttons =
-                document.querySelectorAll(
-                    ".language"
-                );
-            const languageIndex = {
-                it: 0,
-                en: 1,
-                es: 2,
-                de: 3
-            };
-            buttons[
-                languageIndex[language]
-            ].classList.add(
-                "selected"
-            );
-        }
-        window.addEventListener(
-            "load",
-            function() {
-                const savedLanguage =
-                    localStorage.getItem(
-                        "language"
-                    ) || "it";
-                selectLanguage(
-                    savedLanguage
-                );
-            }
-        );
-    </script>
+    <div class="languages">
+        <button class="language selected" onclick="selectLanguage('it')">🇮🇹 Italiano</button>
+        <button class="language" onclick="selectLanguage('en')">🇬🇧 English</button>
+        <button class="language" onclick="selectLanguage('es')">🇪🇸 Español</button>
+        <button class="language" onclick="selectLanguage('de')">🇩🇪 Deutsch</button>
+    </div>
+    <h1 id="welcomeText">Benvenuto in Oasis del Sur</h1>
+    <a href="shop.html" class="enter" id="enterButton">ENTRA</a>
+</div>
+<script>
+const translations = {
+    it: {
+        welcome: "Benvenuto in Oasis del Sur",
+        enter: "ENTRA"
+    },
+    en: {
+        welcome: "Welcome to Oasis del Sur",
+        enter: "ENTER"
+    },
+    es: {
+        welcome: "Bienvenido a Oasis del Sur",
+        enter: "ENTRAR"
+    },
+    de: {
+        welcome: "Willkommen bei Oasis del Sur",
+        enter: "EINTRETEN"
+    }
+};
+function selectLanguage(language) {
+    localStorage.setItem("language", language);
+    document.documentElement.lang = language;
+    document.getElementById("welcomeText").textContent =
+        translations[language].welcome;
+    document.getElementById("enterButton").textContent =
+        translations[language].enter;
+    document.querySelectorAll(".language").forEach(function(button) {
+        button.classList.remove("selected");
+    });
+    const languageIndex = {
+        it: 0,
+        en: 1,
+        es: 2,
+        de: 3
+    };
+    document.querySelectorAll(".language")[languageIndex[language]]
+        .classList.add("selected");
+}
+window.addEventListener("load", function() {
+    const savedLanguage = localStorage.getItem("language") || "it";
+    selectLanguage(translations[savedLanguage] ? savedLanguage : "it");
+});
+</script>
 </body>
 </html>
