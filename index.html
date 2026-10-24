@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Oasis del Sur</title>
     
-    <!-- SCRIPT UFFICIALE TELEGRAM WEB APP -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
@@ -25,7 +24,7 @@
             font-family: Arial, Helvetica, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Allinea tutto verso l'alto */
+            justify-content: flex-start;
             align-items: center;
             text-align: center;
             padding-top: 10px;
@@ -38,11 +37,11 @@
             flex-direction: column;
             align-items: center;
         }
-        /* LOGO OTTIMIZZATO PER MEZZA SCHERMATA */
+        /* LOGO RIDOTTO PER FAR RIENTRARE TUTTO */
         .logo-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 6px;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 8px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -55,7 +54,7 @@
         /* LINGUE */
         .languages {
             width: 210px;
-            margin: 0 auto 8px;
+            margin: 0 auto 10px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5px;
@@ -75,7 +74,7 @@
         }
         /* TITOLO */
         h1 {
-            margin: 0 0 10px;
+            margin: 0 0 12px;
             font-size: 18px;
             line-height: 1.2;
         }
@@ -115,7 +114,6 @@
     </div>
 
     <script>
-        // Forza l'espansione su Telegram
         if (window.Telegram && window.Telegram.WebApp) {
             window.Telegram.WebApp.ready();
             window.Telegram.WebApp.expand();
