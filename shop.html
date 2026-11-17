@@ -11,13 +11,58 @@
         rel="stylesheet"
         href="style.css"
     >
+    <style>
+        /* Stile personalizzato per inserire la freccia e la scritta nel pallino */
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 6px 14px 6px 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .back-button a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            gap: 6px;
+        }
+
+        .back-arrow {
+            width: 28px;
+            height: 28px;
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .container {
+            position: relative;
+            padding-top: 50px; /* Spazio per evitare sovrapposizioni col bottone in alto */
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <!-- FRECCIA -->
+    <!-- FRECCIA E SCRITTA TORNA ALLA HOME -->
     <div class="back-button">
         <a href="index.html">
-            ←
+            <div class="back-arrow">←</div>
+            <span data-translate="backHome">Torna alla home</span>
         </a>
     </div>
     <!-- WEED -->
@@ -212,6 +257,7 @@
 ========================= */
 const translations = {
     it: {
+        backHome: "Torna alla home",
         weed: "WEED",
         frozen: "FROZEN",
         dry: "DRY",
@@ -222,16 +268,13 @@ const translations = {
         gadget: "GADGET",
         cartTitle: "🛒 Carrello",
         emptyCart: "Nessun prodotto",
-        confirmOrder:
-            "📲 Conferma ordine",
-        payBitcoin:
-            "₿ Paga in Bitcoin",
-        emptyAlert:
-            "Il carrello è vuoto",
-        orderMessage:
-            "Ciao Oasis del Sur, vorrei ordinare:"
+        confirmOrder: "📲 Conferma ordine",
+        payBitcoin: "₿ Paga in Bitcoin",
+        emptyAlert: "Il carrello è vuoto",
+        orderMessage: "Ciao Oasis del Sur, vorrei ordinare:"
     },
     en: {
+        backHome: "Back to home",
         weed: "WEED",
         frozen: "FROZEN",
         dry: "DRY",
@@ -242,16 +285,13 @@ const translations = {
         gadget: "GADGETS",
         cartTitle: "🛒 Cart",
         emptyCart: "No products",
-        confirmOrder:
-            "📲 Confirm order",
-        payBitcoin:
-            "₿ Pay with Bitcoin",
-        emptyAlert:
-            "The cart is empty",
-        orderMessage:
-            "Hello Oasis del Sur, I would like to order:"
+        confirmOrder: "📲 Confirm order",
+        payBitcoin: "₿ Pay with Bitcoin",
+        emptyAlert: "The cart is empty",
+        orderMessage: "Hello Oasis del Sur, I would like to order:"
     },
     es: {
+        backHome: "Volver a la home",
         weed: "WEED",
         frozen: "FROZEN",
         dry: "DRY",
@@ -261,18 +301,14 @@ const translations = {
         stickers: "STICKERS",
         gadget: "GADGETS",
         cartTitle: "🛒 Carrito",
-        emptyCart:
-            "Ningún producto",
-        confirmOrder:
-            "📲 Confirmar pedido",
-        payBitcoin:
-            "₿ Pagar con Bitcoin",
-        emptyAlert:
-            "El carrello está vacío",
-        orderMessage:
-            "Hola Oasis del Sur, quisiera hacer un pedido:"
+        emptyCart: "Ningún producto",
+        confirmOrder: "📲 Confirmar pedido",
+        payBitcoin: "₿ Pagar con Bitcoin",
+        emptyAlert: "El carrito está vacío",
+        orderMessage: "Hola Oasis del Sur, quisiera hacer un pedido:"
     },
     de: {
+        backHome: "Zur Startseite",
         weed: "WEED",
         frozen: "FROZEN",
         dry: "DRY",
@@ -281,123 +317,74 @@ const translations = {
         sim: "SIM",
         stickers: "STICKERS",
         gadget: "GADGETS",
-        cartTitle:
-            "🛒 Warenkorb",
-        emptyCart:
-            "Keine Produkte",
-        confirmOrder:
-            "📲 Bestellung bestätigen",
-        payBitcoin:
-            "₿ Mit Bitcoin bezahlen",
-        emptyAlert:
-            "Der Warenkorb ist leer",
-        orderMessage:
-            "Hallo Oasis del Sur, ich möchte bestellen:"
+        cartTitle: "🛒 Warenkorb",
+        emptyCart: "Keine Produkte",
+        confirmOrder: "📲 Bestellung bestätigen",
+        payBitcoin: "₿ Mit Bitcoin bezahlen",
+        emptyAlert: "Der Warenkorb ist leer",
+        orderMessage: "Hallo Oasis del Sur, ich möchte bestellen:"
     }
 };
 /* =========================
    LINGUA
 ========================= */
 function getLanguage() {
-    return (
-        localStorage.getItem(
-            "language"
-        ) || "it"
-    );
+    return localStorage.getItem("language") || "it";
 }
 function translatePage() {
-    const language =
-        getLanguage();
-    const texts =
-        translations[language];
-    document.documentElement.lang =
-        language;
-    document
-        .querySelectorAll(
-            "[data-translate]"
-        )
-        .forEach(
-            function(element) {
-                const key =
-                    element.getAttribute(
-                        "data-translate"
-                    );
-                if (texts[key]) {
-                    element.textContent =
-                        texts[key];
-                }
-            }
-        );
+    const language = getLanguage();
+    const texts = translations[language];
+    document.documentElement.lang = language;
+    document.querySelectorAll("[data-translate]").forEach(function(element) {
+        const key = element.getAttribute("data-translate");
+        if (texts[key]) {
+            element.textContent = texts[key];
+        }
+    });
 }
 /* =========================
    CARRELLO
 ========================= */
-let cart =
-    JSON.parse(
-        localStorage.getItem("cart")
-    ) || [];
-
-let stickers =
-    JSON.parse(
-        localStorage.getItem("stickers")
-    ) || [];
-
-let gadgets =
-    JSON.parse(
-        localStorage.getItem("gadgets")
-    ) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
+let gadgets = JSON.parse(localStorage.getItem("gadgets")) || [];
 
 /* =========================
    CREA LISTA RAGGRUPPATA
 ========================= */
 function getGroupedCart() {
     const grouped = {};
-    cart.forEach(
-        function(item) {
-            if (
-                grouped[item]
-            ) {
-                grouped[item]++;
-            }
-            else {
-                grouped[item] = 1;
-            }
+    cart.forEach(function(item) {
+        if (grouped[item]) {
+            grouped[item]++;
+        } else {
+            grouped[item] = 1;
         }
-    );
+    });
     return grouped;
 }
 
 function getGroupedStickers() {
     const grouped = {};
-    stickers.forEach(
-        function(item) {
-            if (
-                grouped[item]
-            ) {
-                grouped[item]++;
-            }
-            else {
-                grouped[item] = 1;
-            }
+    stickers.forEach(function(item) {
+        if (grouped[item]) {
+            grouped[item]++;
+        } else {
+            grouped[item] = 1;
         }
-    );
+    });
     return grouped;
 }
 
 function getGroupedGadgets() {
     const grouped = {};
-    gadgets.forEach(
-        function(item) {
-            if (
-                grouped[item]
-            ) {
-                grouped[item]++;
-            }
-            else {
-                grouped[item] = 1;
-            }
+    gadgets.forEach(function(item) {
+        if (grouped[item]) {
+            grouped[item]++;
+        } else {
+            grouped[item] = 1;
         }
-    );
+    });
     return grouped;
 }
 
@@ -405,168 +392,61 @@ function getGroupedGadgets() {
    MOSTRA CARRELLO
 ========================= */
 function showCart() {
-    const box =
-        document.getElementById(
-            "cart"
-        );
-    if (
-        cart.length === 0 && stickers.length === 0 && gadgets.length === 0
-    ) {
-        const language =
-            getLanguage();
-        box.innerHTML =
-            translations[
-                language
-            ].emptyCart;
+    const box = document.getElementById("cart");
+    if (cart.length === 0 && stickers.length === 0 && gadgets.length === 0) {
+        const language = getLanguage();
+        box.innerHTML = translations[language].emptyCart;
         return;
     }
-    const grouped =
-        getGroupedCart();
-    const groupedStickers =
-        getGroupedStickers();
-    const groupedGadgets =
-        getGroupedGadgets();
+    const grouped = getGroupedCart();
+    const groupedStickers = getGroupedStickers();
+    const groupedGadgets = getGroupedGadgets();
         
     box.innerHTML = "";
     
-    // Mostra prodotti classici
-    Object.keys(grouped)
-        .forEach(
-            function(product) {
-                const quantity =
-                    grouped[product];
-                box.innerHTML +=
-                    "• " +
-                    product +
-                    " × " +
-                    quantity +
-                    ' <button ' +
-                    'onclick="removeOneItem(\'' +
-                    product.replace(
-                        /'/g,
-                        "\\'"
-                    ) +
-                    '\')">' +
-                    "❌" +
-                    "</button>" +
-                    "<br><br>";
-            }
-        );
+    Object.keys(grouped).forEach(function(product) {
+        const quantity = grouped[product];
+        box.innerHTML += "• " + product + " × " + quantity + ' <button onclick="removeOneItem(\'' + product.replace(/'/g, "\\'") + '\')">❌</button><br><br>';
+    });
 
-    // Mostra stickers scelti
-    Object.keys(groupedStickers)
-        .forEach(
-            function(sticker) {
-                const quantity =
-                    groupedStickers[sticker];
-                box.innerHTML +=
-                    "• [STICKER] " +
-                    sticker +
-                    " × " +
-                    quantity +
-                    ' <button ' +
-                    'onclick="removeOneSticker(\'' +
-                    sticker.replace(
-                        /'/g,
-                        "\\'"
-                    ) +
-                    '\')">' +
-                    "❌" +
-                    "</button>" +
-                    "<br><br>";
-            }
-        );
+    Object.keys(groupedStickers).forEach(function(sticker) {
+        const quantity = groupedStickers[sticker];
+        box.innerHTML += "• [STICKER] " + sticker + " × " + quantity + ' <button onclick="removeOneSticker(\'' + sticker.replace(/'/g, "\\'") + '\')">❌</button><br><br>';
+    });
 
-    // Mostra gadget scelti
-    Object.keys(groupedGadgets)
-        .forEach(
-            function(gadget) {
-                const quantity =
-                    groupedGadgets[gadget];
-                box.innerHTML +=
-                    "• [GADGET] " +
-                    gadget +
-                    " × " +
-                    quantity +
-                    ' <button ' +
-                    'onclick="removeOneGadget(\'' +
-                    gadget.replace(
-                        /'/g,
-                        "\\'"
-                    ) +
-                    '\')">' +
-                    "❌" +
-                    "</button>" +
-                    "<br><br>";
-            }
-        );
+    Object.keys(groupedGadgets).forEach(function(gadget) {
+        const quantity = groupedGadgets[gadget];
+        box.innerHTML += "• [GADGET] " + gadget + " × " + quantity + ' <button onclick="removeOneGadget(\'' + gadget.replace(/'/g, "\\'") + '\')">❌</button><br><br>';
+    });
 }
+
 /* =========================
    RIMUOVI UNA UNITÀ
 ========================= */
-function removeOneItem(
-    product
-) {
-    const index =
-        cart.lastIndexOf(
-            product
-        );
-    if (
-        index !== -1
-    ) {
-        cart.splice(
-            index,
-            1
-        );
+function removeOneItem(product) {
+    const index = cart.lastIndexOf(product);
+    if (index !== -1) {
+        cart.splice(index, 1);
     }
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
+    localStorage.setItem("cart", JSON.stringify(cart));
     showCart();
 }
 
-function removeOneSticker(
-    sticker
-) {
-    const index =
-        stickers.lastIndexOf(
-            sticker
-        );
-    if (
-        index !== -1
-    ) {
-        stickers.splice(
-            index,
-            1
-        );
+function removeOneSticker(sticker) {
+    const index = stickers.lastIndexOf(sticker);
+    if (index !== -1) {
+        stickers.splice(index, 1);
     }
-    localStorage.setItem(
-        "stickers",
-        JSON.stringify(stickers)
-    );
+    localStorage.setItem("stickers", JSON.stringify(stickers));
     showCart();
 }
 
-function removeOneGadget(
-    gadget
-) {
-    const index =
-        gadgets.lastIndexOf(
-            gadget
-        );
-    if (
-        index !== -1
-    ) {
-        gadgets.splice(
-            index,
-            1
-        );
+function removeOneGadget(gadget) {
+    const index = gadgets.lastIndexOf(gadget);
+    if (index !== -1) {
+        gadgets.splice(index, 1);
     }
-    localStorage.setItem(
-        "gadgets",
-        JSON.stringify(gadgets)
-    );
+    localStorage.setItem("gadgets", JSON.stringify(gadgets));
     showCart();
 }
 
@@ -574,87 +454,44 @@ function removeOneGadget(
    INVIO ORDINE
 ========================= */
 function sendOrder() {
-    if (
-        cart.length === 0 && stickers.length === 0 && gadgets.length === 0
-    ) {
-        alert(
-            translations[
-                getLanguage()
-            ].emptyAlert
-        );
+    if (cart.length === 0 && stickers.length === 0 && gadgets.length === 0) {
+        alert(translations[getLanguage()].emptyAlert);
         return;
     }
-    const grouped =
-        getGroupedCart();
-    const groupedStickers =
-        getGroupedStickers();
-    const groupedGadgets =
-        getGroupedGadgets();
+    const grouped = getGroupedCart();
+    const groupedStickers = getGroupedStickers();
+    const groupedGadgets = getGroupedGadgets();
 
     let ordine = "";
-    Object.keys(grouped)
-        .forEach(
-            function(product) {
-                ordine +=
-                    product +
-                    " × " +
-                    grouped[product] +
-                    "\n";
-            }
-        );
+    Object.keys(grouped).forEach(function(product) {
+        ordine += product + " × " + grouped[product] + "\n";
+    });
 
     if (stickers.length > 0) {
         ordine += "\nSTICKERS:\n";
-        Object.keys(groupedStickers)
-            .forEach(
-                function(sticker) {
-                    ordine +=
-                        sticker +
-                        " × " +
-                        groupedStickers[sticker] +
-                        "\n";
-                }
-            );
+        Object.keys(groupedStickers).forEach(function(sticker) {
+            ordine += sticker + " × " + groupedStickers[sticker] + "\n";
+        });
     }
 
     if (gadgets.length > 0) {
         ordine += "\nGADGETS:\n";
-        Object.keys(groupedGadgets)
-            .forEach(
-                function(gadget) {
-                    ordine +=
-                        gadget +
-                        " × " +
-                        groupedGadgets[gadget] +
-                        "\n";
-                }
-            );
+        Object.keys(groupedGadgets).forEach(function(gadget) {
+            ordine += gadget + " × " + groupedGadgets[gadget] + "\n";
+        });
     }
 
-    const messaggio =
-        translations[
-            getLanguage()
-        ].orderMessage +
-        "\n\n" +
-        ordine;
-    const telegram =
-        "https://t.me/wordex17?text=" +
-        encodeURIComponent(
-            messaggio
-        );
-    window.location.href =
-        telegram;
+    const messaggio = translations[getLanguage()].orderMessage + "\n\n" + ordine;
+    const telegram = "https://t.me/wordex17?text=" + encodeURIComponent(messaggio);
+    window.location.href = telegram;
 }
 /* =========================
    AVVIO PAGINA
 ========================= */
-window.addEventListener(
-    "load",
-    function() {
-        translatePage();
-        showCart();
-    }
-);
+window.addEventListener("load", function() {
+    translatePage();
+    showCart();
+});
 </script>
 </body>
 </html>
