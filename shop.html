@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -13,13 +11,49 @@
         rel="stylesheet"
         href="style.css"
     >
+    <style>
+        .back-button {
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            z-index: 9999;
+        }
+        .back-button a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px 6px 6px;
+            border-radius: 999px;
+            background: rgba(18, 18, 18, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            backdrop-filter: blur(8px);
+        }
+        .back-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <!-- FRECCIA -->
     <div class="back-button">
         <a href="index.html">
-            ←
+            <span class="back-circle">←</span>
+            <span data-translate="backHome">TORNA ALLA HOME</span>
         </a>
     </div>
     <!-- WEED -->
@@ -214,6 +248,7 @@
 ========================= */
 const translations = {
     it: {
+        backHome: "TORNA ALLA HOME",
         weed: "WEED",
         frozen: "FROZEN",
         dry: "DRY",
@@ -234,6 +269,7 @@ const translations = {
             "Ciao Oasis del Sur, vorrei ordinare:"
     },
     en: {
+        backHome: "BACK TO HOME",
         weed: "WEED",
         frozen: "FROZEN",
         dry: "DRY",
@@ -254,6 +290,7 @@ const translations = {
             "Hello Oasis del Sur, I would like to order:"
     },
     es: {
+        backHome: "VOLVER AL INICIO",
         weed: "WEED",
         frozen: "FROZEN",
         dry: "DRY",
@@ -275,6 +312,7 @@ const translations = {
             "Hola Oasis del Sur, quisiera hacer un pedido:"
     },
     de: {
+        backHome: "ZUR STARTSEITE",
         weed: "WEED",
         frozen: "FROZEN",
         dry: "DRY",
