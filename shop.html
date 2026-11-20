@@ -1,3 +1,5 @@
+shop 
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -11,77 +13,15 @@
         rel="stylesheet"
         href="style.css"
     >
-    <style>
-        /* Pulsante Torna alla Home stile Glassmorphism */
-        .back-button {
-            position: fixed;
-            top: 16px;
-            left: 16px;
-            z-index: 1000;
-        }
-
-        .back-button a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(18, 18, 18, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 50px;
-            padding: 9px 18px 9px 14px;
-            text-decoration: none;
-            color: #f5f5f5;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .back-button svg {
-            width: 16px;
-            height: 16px;
-            stroke: #ffffff;
-            stroke-width: 2.2;
-            transition: transform 0.25s ease;
-        }
-
-        .back-button a:hover {
-            background: rgba(35, 35, 35, 0.85);
-            border-color: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
-            transform: translateY(-1px);
-        }
-
-        .back-button a:hover svg {
-            transform: translateX(-4px);
-        }
-
-        .back-button a:active {
-            transform: scale(0.96);
-        }
-
-        .container {
-            position: relative;
-            padding-top: 65px; /* Spazio per evitare sovrapposizioni col bottone in alto */
-        }
-    </style>
 </head>
 <body>
 <div class="container">
-    <!-- FRECCIA E SCRITTA TORNA ALLA HOME -->
+    <!-- FRECCIA -->
     <div class="back-button">
         <a href="index.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            <span data-translate="backHome">Torna alla home</span>
+            ←
         </a>
     </div>
-
     <!-- WEED -->
     <a
         href="weed.html"
@@ -101,7 +41,6 @@
             </div>
         </div>
     </a>
-
     <!-- FROZEN -->
     <a
         href="frozen.html"
@@ -121,7 +60,6 @@
             </div>
         </div>
     </a>
-
     <!-- DRY -->
     <a
         href="dry.html"
@@ -141,7 +79,6 @@
             </div>
         </div>
     </a>
-
     <!-- EXTRACT -->
     <a
         href="extract.html"
@@ -161,7 +98,6 @@
             </div>
         </div>
     </a>
-
     <!-- VAPE -->
     <a
         href="VAPE.html"
@@ -181,7 +117,6 @@
             </div>
         </div>
     </a>
-
     <!-- SIM -->
     <a
         href="sim.html"
@@ -201,7 +136,6 @@
             </div>
         </div>
     </a>
-
     <!-- STICKERS -->
     <a
         href="stickers.html"
@@ -221,7 +155,6 @@
             </div>
         </div>
     </a>
-
     <!-- GADGET -->
     <a
         href="gadget.html"
@@ -231,3 +164,499 @@
             <img
                 src="IMG_1721.jpeg"
                 class="category-image"
+                alt="Gadget"
+            >
+            <div
+                class="category-name"
+                data-translate="gadget"
+            >
+                🎁 Gadget
+            </div>
+        </div>
+    </a>
+</div>
+<!-- =========================
+     CARRELLO
+========================= -->
+<div class="cart">
+    <div
+        class="cart-title"
+        data-translate="cartTitle"
+    >
+        🛒 Carrello
+    </div>
+    <div id="cart">
+        <span data-translate="emptyCart">
+            Nessun prodotto
+        </span>
+    </div>
+    <!-- CONFERMA ORDINE -->
+    <button
+        class="checkout"
+        onclick="sendOrder()"
+        data-translate="confirmOrder"
+    >
+        📲 Conferma ordine
+    </button>
+    <!-- BITCOIN -->
+    <a href="bitcoin.html">
+        <button
+            class="checkout"
+            data-translate="payBitcoin"
+        >
+            ₿ Paga in Bitcoin
+        </button>
+    </a>
+</div>
+<script>
+/* =========================
+   TRADUZIONI
+========================= */
+const translations = {
+    it: {
+        weed: "WEED",
+        frozen: "FROZEN",
+        dry: "DRY",
+        extract: "EXTRACT",
+        vape: "VAPE",
+        sim: "SIM",
+        stickers: "STICKERS",
+        gadget: "GADGET",
+        cartTitle: "🛒 Carrello",
+        emptyCart: "Nessun prodotto",
+        confirmOrder:
+            "📲 Conferma ordine",
+        payBitcoin:
+            "₿ Paga in Bitcoin",
+        emptyAlert:
+            "Il carrello è vuoto",
+        orderMessage:
+            "Ciao Oasis del Sur, vorrei ordinare:"
+    },
+    en: {
+        weed: "WEED",
+        frozen: "FROZEN",
+        dry: "DRY",
+        extract: "EXTRACT",
+        vape: "VAPE",
+        sim: "SIM",
+        stickers: "STICKERS",
+        gadget: "GADGETS",
+        cartTitle: "🛒 Cart",
+        emptyCart: "No products",
+        confirmOrder:
+            "📲 Confirm order",
+        payBitcoin:
+            "₿ Pay with Bitcoin",
+        emptyAlert:
+            "The cart is empty",
+        orderMessage:
+            "Hello Oasis del Sur, I would like to order:"
+    },
+    es: {
+        weed: "WEED",
+        frozen: "FROZEN",
+        dry: "DRY",
+        extract: "EXTRACT",
+        vape: "VAPE",
+        sim: "SIM",
+        stickers: "STICKERS",
+        gadget: "GADGETS",
+        cartTitle: "🛒 Carrito",
+        emptyCart:
+            "Ningún producto",
+        confirmOrder:
+            "📲 Confirmar pedido",
+        payBitcoin:
+            "₿ Pagar con Bitcoin",
+        emptyAlert:
+            "El carrello está vacío",
+        orderMessage:
+            "Hola Oasis del Sur, quisiera hacer un pedido:"
+    },
+    de: {
+        weed: "WEED",
+        frozen: "FROZEN",
+        dry: "DRY",
+        extract: "EXTRAKTE",
+        vape: "VAPE",
+        sim: "SIM",
+        stickers: "STICKERS",
+        gadget: "GADGETS",
+        cartTitle:
+            "🛒 Warenkorb",
+        emptyCart:
+            "Keine Produkte",
+        confirmOrder:
+            "📲 Bestellung bestätigen",
+        payBitcoin:
+            "₿ Mit Bitcoin bezahlen",
+        emptyAlert:
+            "Der Warenkorb ist leer",
+        orderMessage:
+            "Hallo Oasis del Sur, ich möchte bestellen:"
+    }
+};
+/* =========================
+   LINGUA
+========================= */
+function getLanguage() {
+    return (
+        localStorage.getItem(
+            "language"
+        ) || "it"
+    );
+}
+function translatePage() {
+    const language =
+        getLanguage();
+    const texts =
+        translations[language];
+    document.documentElement.lang =
+        language;
+    document
+        .querySelectorAll(
+            "[data-translate]"
+        )
+        .forEach(
+            function(element) {
+                const key =
+                    element.getAttribute(
+                        "data-translate"
+                    );
+                if (texts[key]) {
+                    element.textContent =
+                        texts[key];
+                }
+            }
+        );
+}
+/* =========================
+   CARRELLO
+========================= */
+let cart =
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+
+let stickers =
+    JSON.parse(
+        localStorage.getItem("stickers")
+    ) || [];
+
+let gadgets =
+    JSON.parse(
+        localStorage.getItem("gadgets")
+    ) || [];
+
+/* =========================
+   CREA LISTA RAGGRUPPATA
+========================= */
+function getGroupedCart() {
+    const grouped = {};
+    cart.forEach(
+        function(item) {
+            if (
+                grouped[item]
+            ) {
+                grouped[item]++;
+            }
+            else {
+                grouped[item] = 1;
+            }
+        }
+    );
+    return grouped;
+}
+
+function getGroupedStickers() {
+    const grouped = {};
+    stickers.forEach(
+        function(item) {
+            if (
+                grouped[item]
+            ) {
+                grouped[item]++;
+            }
+            else {
+                grouped[item] = 1;
+            }
+        }
+    );
+    return grouped;
+}
+
+function getGroupedGadgets() {
+    const grouped = {};
+    gadgets.forEach(
+        function(item) {
+            if (
+                grouped[item]
+            ) {
+                grouped[item]++;
+            }
+            else {
+                grouped[item] = 1;
+            }
+        }
+    );
+    return grouped;
+}
+
+/* =========================
+   MOSTRA CARRELLO
+========================= */
+function showCart() {
+    const box =
+        document.getElementById(
+            "cart"
+        );
+    if (
+        cart.length === 0 && stickers.length === 0 && gadgets.length === 0
+    ) {
+        const language =
+            getLanguage();
+        box.innerHTML =
+            translations[
+                language
+            ].emptyCart;
+        return;
+    }
+    const grouped =
+        getGroupedCart();
+    const groupedStickers =
+        getGroupedStickers();
+    const groupedGadgets =
+        getGroupedGadgets();
+        
+    box.innerHTML = "";
+    
+    // Mostra prodotti classici
+    Object.keys(grouped)
+        .forEach(
+            function(product) {
+                const quantity =
+                    grouped[product];
+                box.innerHTML +=
+                    "• " +
+                    product +
+                    " × " +
+                    quantity +
+                    ' <button ' +
+                    'onclick="removeOneItem(\'' +
+                    product.replace(
+                        /'/g,
+                        "\\'"
+                    ) +
+                    '\')">' +
+                    "❌" +
+                    "</button>" +
+                    "<br><br>";
+            }
+        );
+
+    // Mostra stickers scelti
+    Object.keys(groupedStickers)
+        .forEach(
+            function(sticker) {
+                const quantity =
+                    groupedStickers[sticker];
+                box.innerHTML +=
+                    "• [STICKER] " +
+                    sticker +
+                    " × " +
+                    quantity +
+                    ' <button ' +
+                    'onclick="removeOneSticker(\'' +
+                    sticker.replace(
+                        /'/g,
+                        "\\'"
+                    ) +
+                    '\')">' +
+                    "❌" +
+                    "</button>" +
+                    "<br><br>";
+            }
+        );
+
+    // Mostra gadget scelti
+    Object.keys(groupedGadgets)
+        .forEach(
+            function(gadget) {
+                const quantity =
+                    groupedGadgets[gadget];
+                box.innerHTML +=
+                    "• [GADGET] " +
+                    gadget +
+                    " × " +
+                    quantity +
+                    ' <button ' +
+                    'onclick="removeOneGadget(\'' +
+                    gadget.replace(
+                        /'/g,
+                        "\\'"
+                    ) +
+                    '\')">' +
+                    "❌" +
+                    "</button>" +
+                    "<br><br>";
+            }
+        );
+}
+/* =========================
+   RIMUOVI UNA UNITÀ
+========================= */
+function removeOneItem(
+    product
+) {
+    const index =
+        cart.lastIndexOf(
+            product
+        );
+    if (
+        index !== -1
+    ) {
+        cart.splice(
+            index,
+            1
+        );
+    }
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+    showCart();
+}
+
+function removeOneSticker(
+    sticker
+) {
+    const index =
+        stickers.lastIndexOf(
+            sticker
+        );
+    if (
+        index !== -1
+    ) {
+        stickers.splice(
+            index,
+            1
+        );
+    }
+    localStorage.setItem(
+        "stickers",
+        JSON.stringify(stickers)
+    );
+    showCart();
+}
+
+function removeOneGadget(
+    gadget
+) {
+    const index =
+        gadgets.lastIndexOf(
+            gadget
+        );
+    if (
+        index !== -1
+    ) {
+        gadgets.splice(
+            index,
+            1
+        );
+    }
+    localStorage.setItem(
+        "gadgets",
+        JSON.stringify(gadgets)
+    );
+    showCart();
+}
+
+/* =========================
+   INVIO ORDINE
+========================= */
+function sendOrder() {
+    if (
+        cart.length === 0 && stickers.length === 0 && gadgets.length === 0
+    ) {
+        alert(
+            translations[
+                getLanguage()
+            ].emptyAlert
+        );
+        return;
+    }
+    const grouped =
+        getGroupedCart();
+    const groupedStickers =
+        getGroupedStickers();
+    const groupedGadgets =
+        getGroupedGadgets();
+
+    let ordine = "";
+    Object.keys(grouped)
+        .forEach(
+            function(product) {
+                ordine +=
+                    product +
+                    " × " +
+                    grouped[product] +
+                    "\n";
+            }
+        );
+
+    if (stickers.length > 0) {
+        ordine += "\nSTICKERS:\n";
+        Object.keys(groupedStickers)
+            .forEach(
+                function(sticker) {
+                    ordine +=
+                        sticker +
+                        " × " +
+                        groupedStickers[sticker] +
+                        "\n";
+                }
+            );
+    }
+
+    if (gadgets.length > 0) {
+        ordine += "\nGADGETS:\n";
+        Object.keys(groupedGadgets)
+            .forEach(
+                function(gadget) {
+                    ordine +=
+                        gadget +
+                        " × " +
+                        groupedGadgets[gadget] +
+                        "\n";
+                }
+            );
+    }
+
+    const messaggio =
+        translations[
+            getLanguage()
+        ].orderMessage +
+        "\n\n" +
+        ordine;
+    const telegram =
+        "https://t.me/wordex17?text=" +
+        encodeURIComponent(
+            messaggio
+        );
+    window.location.href =
+        telegram;
+}
+/* =========================
+   AVVIO PAGINA
+========================= */
+window.addEventListener(
+    "load",
+    function() {
+        translatePage();
+        showCart();
+    }
+);
+</script>
+</body>
+</html>
