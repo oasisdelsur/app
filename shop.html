@@ -135,7 +135,7 @@
             </div>
         </div>
     </a>
-    <!-- STICKERS -->
+    <!-- STICKERS -> STATIC -->
     <a
         href="stickers.html"
         class="category-link"
@@ -144,13 +144,13 @@
             <img
                 src="IMG_1531.jpeg"
                 class="category-image"
-                alt="Stickers"
+                alt="STATIC"
             >
             <div
                 class="category-name"
                 data-translate="stickers"
             >
-                🏷️ Stickers
+                STATIC
             </div>
         </div>
     </a>
@@ -220,7 +220,7 @@ const translations = {
         extract: "ICE - EXTRACT",
         vape: "VAPE",
         sim: "SIM",
-        stickers: "STICKERS",
+        stickers: "STATIC",
         gadget: "GADGET",
         cartTitle: "🛒 Carrello",
         emptyCart: "Nessun prodotto",
@@ -241,7 +241,7 @@ const translations = {
         extract: "ICE - EXTRACT",
         vape: "VAPE",
         sim: "SIM",
-        stickers: "STICKERS",
+        stickers: "STATIC",
         gadget: "GADGETS",
         cartTitle: "🛒 Cart",
         emptyCart: "No products",
@@ -262,7 +262,7 @@ const translations = {
         extract: "ICE - EXTRACT",
         vape: "VAPE",
         sim: "SIM",
-        stickers: "STICKERS",
+        stickers: "STATIC",
         gadget: "GADGETS",
         cartTitle: "🛒 Carrito",
         emptyCart:
@@ -284,7 +284,7 @@ const translations = {
         extract: "ICE - EXTRACT",
         vape: "VAPE",
         sim: "SIM",
-        stickers: "STICKERS",
+        stickers: "STATIC",
         gadget: "GADGETS",
         cartTitle:
             "🛒 Warenkorb",
@@ -462,7 +462,7 @@ function showCart() {
                 const quantity =
                     groupedStickers[sticker];
                 box.innerHTML +=
-                    "• [STICKER] " +
+                    "• [STATIC] " +
                     sticker +
                     " × " +
                     quantity +
@@ -606,7 +606,7 @@ function sendOrder() {
         );
 
     if (stickers.length > 0) {
-        ordine += "\nSTICKERS:\n";
+        ordine += "\nSTATIC:\n";
         Object.keys(groupedStickers)
             .forEach(
                 function(sticker) {
