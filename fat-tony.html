@@ -86,7 +86,7 @@
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 3px;
-    color: #ffd700; /* TESTO GIALLO ORO */
+    color: #ffd700;
     text-transform: uppercase;
     margin-top: 6px;
     border-top: 1px solid rgba(255, 215, 0, 0.3);
@@ -114,7 +114,6 @@
     width: 100%;
 }
 
-/* TITOLO CENTRATO CON DITO E STILE PREMIUM */
 .quantity-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
@@ -296,7 +295,7 @@
 </div>
 
 <div class="container">
-    <!-- TITOLO PREMIUM GIALLO ORO SENZA EMOJI -->
+    <!-- TITOLO PREMIUM GIALLO ORO -->
     <div class="section-title-container">
         <div class="title-header">
             <span class="section-title-text">FAT TONY</span>
@@ -305,10 +304,7 @@
     </div>
 
     <div class="product">
-        <!-- IMMAGINI AGGIORNATE -->
-        <img src="IMG_9798.png" class="product-image" alt="FAT TONY">
-        <img src="IMG_9800.png" class="product-image" alt="FAT TONY">
-        <img src="IMG_9801.png" class="product-image" alt="FAT TONY">
+        <!-- 7 FOTO -->
         <img src="IMG_4569.jpeg" class="product-image" alt="FAT TONY">
         <img src="IMG_4568.jpeg" class="product-image" alt="FAT TONY">
         <img src="IMG_4567.jpeg" class="product-image" alt="FAT TONY">
@@ -317,9 +313,9 @@
         <img src="IMG_4564.jpeg" class="product-image" alt="FAT TONY">
         <img src="IMG_4563.jpeg" class="product-image" alt="FAT TONY">
 
-        <!-- VIDEO AGGIORNATO -->
+        <!-- VIDEO -->
         <video class="product-video" controls autoplay loop muted playsinline>
-            <source src="IMG_8774.mov" type="video/quicktime">
+            <source src="IMG_4561.mov" type="video/quicktime">
         </video>
 
         <!-- SEZIONE FORMATI DISPONIBILI (1pz -> 100pz) -->
@@ -339,7 +335,7 @@
         </div>
     </div>
 
-    <!-- CARRELLO UNIFICATO (ID per scorrimento) -->
+    <!-- CARRELLO UNIFICATO -->
     <div class="cart-card" id="cart-section">
         <div class="cart-title-custom">
             <span data-translate="cartTitle">CARRELLO</span> <span>🛒</span>
@@ -426,7 +422,6 @@ function addToCart(product) {
     localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
     
-    // Scorre direttamente al carrello in fondo alla pagina quando si aggiunge un prodotto
     document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
     
     const lang = getLanguage();
