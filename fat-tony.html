@@ -6,30 +6,23 @@
 <title>FAT TONY - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 
-<!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-/* TITOLO ULTRA-PREMIUM (GIALLO ORO) */
 .section-title-container {
     width: 100%;
     max-width: 600px;
     margin: 15px auto 20px auto;
     padding: 18px 24px;
     box-sizing: border-box;
-    
-    /* GLASSMORPHISM SCURO CON BORDI E RIFLESSI GIALLI */
     background: linear-gradient(145deg, rgba(25, 20, 10, 0.9), rgba(15, 15, 8, 0.95));
     border: 1px solid rgba(255, 215, 0, 0.4);
     border-radius: 18px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
-    /* OMBRA LUSSUOSA E BAGLIORE GIALLO ORO */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 215, 0, 0.15);
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +32,6 @@
     overflow: hidden;
 }
 
-/* RIFLESSO DI LUCE DORATA SULLA SCHEDA */
 .section-title-container::before {
     content: '';
     position: absolute;
@@ -72,12 +64,9 @@
     font-size: 26px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    
-    /* SFUMATURA METALLICA GIALLO / ORO PREMIUM */
     background: linear-gradient(135deg, #ffffff 0%, #ffd700 40%, #ffae00 70%, #ff8c00 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
     filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.5));
 }
 
@@ -95,7 +84,6 @@
     text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
 }
 
-/* IMMAGINI E VIDEO */
 .product-image, .product-video {
     width: 100%;
     max-width: 600px;
@@ -107,7 +95,6 @@
     object-position: center;
 }
 
-/* SEZIONE QUANTITÀ COMPLETA E CENTRATA */
 .quantity-section {
     text-align: center;
     margin: 25px 0 20px 0;
@@ -130,7 +117,6 @@
     width: 100%;
 }
 
-/* BOTTONI QUANTITÀ IN COLONNA */
 .sizes {
     display: flex;
     flex-direction: column;
@@ -172,7 +158,6 @@
     box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
 }
 
-/* CARRELLO INTEGRATO E COMPATTO */
 .cart-card {
     background: rgba(10, 20, 12, 0.9);
     backdrop-filter: blur(16px);
@@ -233,7 +218,6 @@
     color: #ffffff;
 }
 
-/* BOTTONI INTEGRATI DENTRO LA SCHEDA CARRELLO */
 .cart-actions-integrated {
     display: flex;
     gap: 10px;
@@ -287,7 +271,6 @@
 </head>
 <body>
 
-<!-- COLLEGAMENTO A VAPE.html -->
 <div class="back-button">
     <a href="VAPE.html" id="back" data-translate="backToVape">
         ← Torna a Vape
@@ -295,7 +278,6 @@
 </div>
 
 <div class="container">
-    <!-- TITOLO PREMIUM GIALLO ORO -->
     <div class="section-title-container">
         <div class="title-header">
             <span class="section-title-text">FAT TONY</span>
@@ -304,7 +286,6 @@
     </div>
 
     <div class="product">
-        <!-- 7 FOTO -->
         <img src="IMG_4569.jpeg" class="product-image" alt="FAT TONY">
         <img src="IMG_4568.jpeg" class="product-image" alt="FAT TONY">
         <img src="IMG_4567.jpeg" class="product-image" alt="FAT TONY">
@@ -313,12 +294,10 @@
         <img src="IMG_4564.jpeg" class="product-image" alt="FAT TONY">
         <img src="IMG_4563.jpeg" class="product-image" alt="FAT TONY">
 
-        <!-- VIDEO -->
         <video class="product-video" controls autoplay loop muted playsinline>
             <source src="IMG_4561.mov" type="video/quicktime">
         </video>
 
-        <!-- SEZIONE FORMATI DISPONIBILI (1pz -> 100pz) -->
         <div class="quantity-section">
             <div class="quantity-title" id="choose" data-translate="chooseQuantity">
                 FORMATI DISPONIBILI 👇
@@ -335,7 +314,6 @@
         </div>
     </div>
 
-    <!-- CARRELLO UNIFICATO -->
     <div class="cart-card" id="cart-section">
         <div class="cart-title-custom">
             <span data-translate="cartTitle">CARRELLO</span> <span>🛒</span>
@@ -344,9 +322,8 @@
             <span data-translate="emptyCart">Carrello vuoto</span>
         </div>
 
-        <!-- BOTTONI AZIONE INTEGRATI NELLA SCHEDA -->
         <div class="cart-actions-integrated">
-            <a href="shop.html#cart" class="btn-action-int primary" id="goCart">
+            <a href="shop.html" class="btn-action-int primary" id="goCart">
                 <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
             </a>
             <a href="shop.html" class="btn-action-int" id="goMenu">
@@ -357,7 +334,6 @@
 </div>
 
 <script>
-/* TRADUZIONI INTEGRATE */
 const translations = {
     it: {
         backToVape: "← Torna a Vape",
@@ -405,7 +381,7 @@ function translatePage() {
     const lang = getLanguage();
     const texts = translations[lang] || translations.it;
     document.documentElement.lang = lang;
-    
+
     document.querySelectorAll("[data-translate]").forEach(function(el) {
         const key = el.getAttribute("data-translate");
         if (texts[key]) {
@@ -414,27 +390,28 @@ function translatePage() {
     });
 }
 
-/* GESTIONE CARRELLO */
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function addToCart(product) {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart.push(product);
     localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
-    
+
     document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
-    
+
     const lang = getLanguage();
     const t = translations[lang] || translations.it;
     alert("✅ " + product + " " + t.addedToCart);
 }
 
 function showMiniCart() {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
     const box = document.getElementById("mini-cart");
     if (!box) return;
     const lang = getLanguage();
     const t = translations[lang] || translations.it;
-    
+
     if (cart.length === 0) {
         box.innerHTML = t.emptyCart;
         return;
@@ -446,12 +423,18 @@ function showMiniCart() {
 }
 
 function removeItem(index) {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
 }
 
 window.addEventListener("load", function() {
+    translatePage();
+    showMiniCart();
+});
+
+window.addEventListener("pageshow", function() {
     translatePage();
     showMiniCart();
 });
