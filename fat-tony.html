@@ -84,78 +84,59 @@
     text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
 }
 
+.photo-block {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px auto;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: rgba(15, 22, 16, 0.78);
+    border: 1px solid rgba(76, 175, 80, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
 .product-image, .product-video {
     width: 100%;
     max-width: 600px;
     height: 350px;
     display: block;
-    margin: 0 auto 20px auto;
-    border-radius: 18px;
+    margin: 0 auto;
+    border-radius: 16px;
     object-fit: cover;
     object-position: center;
 }
 
-.quantity-section {
-    text-align: center;
-    margin: 25px 0 20px 0;
-    width: 100%;
+.product-video {
+    margin-bottom: 24px;
 }
 
-.quantity-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.photo-sizes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    width: 100%;
+    margin-top: 12px;
 }
 
-.sizes {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.sizes button {
-    width: 100%;
-    background: rgba(15, 30, 18, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(76, 175, 80, 0.4);
-    border-radius: 14px;
+.photo-sizes button {
+    background: rgba(15, 30, 18, 0.9);
+    border: 1px solid rgba(76, 175, 80, 0.45);
+    border-radius: 12px;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 800;
-    padding: 14px 18px;
-    text-align: left;
+    padding: 11px 8px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: all 0.2s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
 }
 
-.sizes button::after {
-    content: "＋";
-    font-size: 18px;
-    color: #4CAF50;
-}
-
-.sizes button:hover, .sizes button:active {
+.photo-sizes button:hover, .photo-sizes button:active {
     background: linear-gradient(135deg, #2e7d32, #1b5e20);
     border-color: #66bb6a;
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
 }
 
 .cart-card {
@@ -266,6 +247,10 @@
     .product-image, .product-video {
         height: 280px;
     }
+    .photo-sizes button {
+        font-size: 12px;
+        padding: 10px 4px;
+    }
 }
 </style>
 </head>
@@ -286,32 +271,101 @@
     </div>
 
     <div class="product">
-        <img src="IMG_4569.jpeg" class="product-image" alt="FAT TONY">
-        <img src="IMG_4568.jpeg" class="product-image" alt="FAT TONY">
-        <img src="IMG_4567.jpeg" class="product-image" alt="FAT TONY">
-        <img src="IMG_4566.jpeg" class="product-image" alt="FAT TONY">
-        <img src="IMG_4565.jpeg" class="product-image" alt="FAT TONY">
-        <img src="IMG_4564.jpeg" class="product-image" alt="FAT TONY">
-        <img src="IMG_4563.jpeg" class="product-image" alt="FAT TONY">
+        <!-- FOTO 1 -->
+        <div class="photo-block">
+            <img src="IMG_4569.jpeg" class="product-image" alt="FAT TONY 1">
+            <div class="photo-sizes">
+                <button onclick="addToCart('FAT TONY (Foto 1) - 1pz')">1pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 1) - 5pz')">5pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 1) - 10pz')">10pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 1) - 20pz')">20pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 1) - 50pz')">50pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 1) - 100pz')">100pz</button>
+            </div>
+        </div>
 
+        <!-- FOTO 2 -->
+        <div class="photo-block">
+            <img src="IMG_4568.jpeg" class="product-image" alt="FAT TONY 2">
+            <div class="photo-sizes">
+                <button onclick="addToCart('FAT TONY (Foto 2) - 1pz')">1pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 2) - 5pz')">5pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 2) - 10pz')">10pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 2) - 20pz')">20pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 2) - 50pz')">50pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 2) - 100pz')">100pz</button>
+            </div>
+        </div>
+
+        <!-- FOTO 3 -->
+        <div class="photo-block">
+            <img src="IMG_4567.jpeg" class="product-image" alt="FAT TONY 3">
+            <div class="photo-sizes">
+                <button onclick="addToCart('FAT TONY (Foto 3) - 1pz')">1pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 3) - 5pz')">5pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 3) - 10pz')">10pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 3) - 20pz')">20pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 3) - 50pz')">50pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 3) - 100pz')">100pz</button>
+            </div>
+        </div>
+
+        <!-- FOTO 4 -->
+        <div class="photo-block">
+            <img src="IMG_4566.jpeg" class="product-image" alt="FAT TONY 4">
+            <div class="photo-sizes">
+                <button onclick="addToCart('FAT TONY (Foto 4) - 1pz')">1pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 4) - 5pz')">5pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 4) - 10pz')">10pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 4) - 20pz')">20pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 4) - 50pz')">50pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 4) - 100pz')">100pz</button>
+            </div>
+        </div>
+
+        <!-- FOTO 5 -->
+        <div class="photo-block">
+            <img src="IMG_4565.jpeg" class="product-image" alt="FAT TONY 5">
+            <div class="photo-sizes">
+                <button onclick="addToCart('FAT TONY (Foto 5) - 1pz')">1pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 5) - 5pz')">5pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 5) - 10pz')">10pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 5) - 20pz')">20pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 5) - 50pz')">50pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 5) - 100pz')">100pz</button>
+            </div>
+        </div>
+
+        <!-- FOTO 6 -->
+        <div class="photo-block">
+            <img src="IMG_4564.jpeg" class="product-image" alt="FAT TONY 6">
+            <div class="photo-sizes">
+                <button onclick="addToCart('FAT TONY (Foto 6) - 1pz')">1pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 6) - 5pz')">5pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 6) - 10pz')">10pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 6) - 20pz')">20pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 6) - 50pz')">50pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 6) - 100pz')">100pz</button>
+            </div>
+        </div>
+
+        <!-- FOTO 7 -->
+        <div class="photo-block">
+            <img src="IMG_4563.jpeg" class="product-image" alt="FAT TONY 7">
+            <div class="photo-sizes">
+                <button onclick="addToCart('FAT TONY (Foto 7) - 1pz')">1pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 7) - 5pz')">5pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 7) - 10pz')">10pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 7) - 20pz')">20pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 7) - 50pz')">50pz</button>
+                <button onclick="addToCart('FAT TONY (Foto 7) - 100pz')">100pz</button>
+            </div>
+        </div>
+
+        <!-- VIDEO (SENZA BOTTONI QUANTITÀ SOTTO) -->
         <video class="product-video" controls autoplay loop muted playsinline>
             <source src="IMG_4561.mov" type="video/quicktime">
         </video>
-
-        <div class="quantity-section">
-            <div class="quantity-title" id="choose" data-translate="chooseQuantity">
-                FORMATI DISPONIBILI 👇
-            </div>
-            <div class="sizes">
-                <button onclick="addToCart('FAT TONY - 1pz')">1pz</button>
-                <button onclick="addToCart('FAT TONY - 2pz')">2pz</button>
-                <button onclick="addToCart('FAT TONY - 5pz')">5pz</button>
-                <button onclick="addToCart('FAT TONY - 10pz')">10pz</button>
-                <button onclick="addToCart('FAT TONY - 20pz')">20pz</button>
-                <button onclick="addToCart('FAT TONY - 50pz')">50pz</button>
-                <button onclick="addToCart('FAT TONY - 100pz')">100pz</button>
-            </div>
-        </div>
     </div>
 
     <div class="cart-card" id="cart-section">
@@ -337,7 +391,6 @@
 const translations = {
     it: {
         backToVape: "← Torna a Vape",
-        chooseQuantity: "FORMATI DISPONIBILI 👇",
         cartTitle: "CARRELLO",
         emptyCart: "Carrello vuoto",
         goToCart: "Vai al carrello",
@@ -346,7 +399,6 @@ const translations = {
     },
     en: {
         backToVape: "← Back to Vape",
-        chooseQuantity: "AVAILABLE SIZES 👇",
         cartTitle: "CART",
         emptyCart: "Empty cart",
         goToCart: "Go to cart",
@@ -355,7 +407,6 @@ const translations = {
     },
     es: {
         backToVape: "← Volver a Vape",
-        chooseQuantity: "FORMATOS DISPONIBLES 👇",
         cartTitle: "CARRITO",
         emptyCart: "Carrito vacío",
         goToCart: "Ir al carrito",
@@ -364,7 +415,6 @@ const translations = {
     },
     de: {
         backToVape: "← Zurück zu Vape",
-        chooseQuantity: "VERFÜGBARE GRÖSSEN 👇",
         cartTitle: "WARENKORB",
         emptyCart: "Warenkorb leer",
         goToCart: "Zum Warenkorb",
@@ -397,8 +447,6 @@ function addToCart(product) {
     cart.push(product);
     localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
-
-    document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
 
     const lang = getLanguage();
     const t = translations[lang] || translations.it;
