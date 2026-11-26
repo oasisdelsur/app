@@ -98,7 +98,7 @@
             </div>
         </div>
 
-        <form id="shippingForm" class="shipping-form" onsubmit="sendShippingOrder(event)">
+        <form id="shippingForm" class="shipping-form" onsubmit="goToBitcoinOrder(event)">
             <div class="field-group">
                 <label for="fullName" data-translate="labelName">Nome e Cognome *</label>
                 <input
@@ -162,9 +162,9 @@
             <button
                 type="submit"
                 class="checkout"
-                data-translate="sendButton"
+                data-translate="payBitcoinButton"
             >
-                📲 Invia ordine e spedizione
+                ₿ Paga in Bitcoin e invia ordine
             </button>
         </form>
     </div>
@@ -183,10 +183,9 @@ const translations = {
         labelCity: "Città *",
         labelCountry: "Paese *",
         labelNotes: "Note (opzionale)",
-        sendButton: "📲 Invia ordine e spedizione",
+        payBitcoinButton: "₿ Paga in Bitcoin e invia ordine",
         alertMissing: "Compila tutti i campi obbligatori (*).",
-        alertEmptyCart: "Il carrello è vuoto! Aggiungi prima i prodotti dallo shop.",
-        orderMessage: "Ciao Oasis del Sur, vorrei ordinare con spedizione:"
+        alertEmptyCart: "Il carrello è vuoto! Aggiungi prima i prodotti dallo shop."
     },
     en: {
         backShop: "BACK TO SHOP",
@@ -199,10 +198,9 @@ const translations = {
         labelCity: "City *",
         labelCountry: "Country *",
         labelNotes: "Notes (optional)",
-        sendButton: "📲 Send order & shipping",
+        payBitcoinButton: "₿ Pay with Bitcoin & send order",
         alertMissing: "Please fill in all required fields (*).",
-        alertEmptyCart: "Your cart is empty! Add products from the shop first.",
-        orderMessage: "Hello Oasis del Sur, I would like to order with shipping:"
+        alertEmptyCart: "Your cart is empty! Add products from the shop first."
     },
     es: {
         backShop: "VOLVER A LA TIENDA",
@@ -215,10 +213,9 @@ const translations = {
         labelCity: "Ciudad *",
         labelCountry: "País *",
         labelNotes: "Notas (opcional)",
-        sendButton: "📲 Enviar pedido y envío",
+        payBitcoinButton: "₿ Pagar con Bitcoin y enviar pedido",
         alertMissing: "Completa todos los campos obligatorios (*).",
-        alertEmptyCart: "¡El carrito está vacío! Añade productos desde la tienda primero.",
-        orderMessage: "Hola Oasis del Sur, quisiera hacer un pedido con envío:"
+        alertEmptyCart: "¡El carrito está vacío! Añade productos desde la tienda primero."
     },
     de: {
         backShop: "ZURÜCK ZUM SHOP",
@@ -231,10 +228,9 @@ const translations = {
         labelCity: "Stadt *",
         labelCountry: "Land *",
         labelNotes: "Hinweise (optional)",
-        sendButton: "📲 Bestellung & Versand senden",
+        payBitcoinButton: "₿ Mit Bitcoin bezahlen & Bestellung senden",
         alertMissing: "Bitte fülle alle Pflichtfelder (*) aus.",
-        alertEmptyCart: "Der Warenkorb ist leer! Füge zuerst Produkte im Shop hinzu.",
-        orderMessage: "Hallo Oasis del Sur, ich möchte mit Versand bestellen:"
+        alertEmptyCart: "Der Warenkorb ist leer! Füge zuerst Produkte im Shop hinzu."
     }
 };
 
@@ -314,7 +310,7 @@ function removeOne(type, name) {
     showCartRecap();
 }
 
-function sendShippingOrder(event) {
+function goToBitcoinOrder(event) {
     event.preventDefault();
     const lang = getLanguage();
 
@@ -335,45 +331,11 @@ function sendShippingOrder(event) {
         return;
     }
 
-    const grouped = groupItems(cart);
-    const groupedStickers = groupItems(stickers);
-    const groupedGadgets = groupItems(gadgets);
+    localStorage.setItem("shippingData", JSON.stringify({
+        fullName, address, zip, city, country, notes
+    }));
 
-    let ordine = "";
-    Object.keys(grouped).forEach(p => {
-        ordine += "• " + p + " × " + grouped[p] + "\n";
-    });
-
-    if (stickers.length > 0) {
-        ordine += "\nSTATIC:\n";
-        Object.keys(groupedStickers).forEach(s => {
-            ordine += "• " + s + " × " + groupedStickers[s] + "\n";
-        });
-    }
-
-    if (gadgets.length > 0) {
-        ordine += "\nGADGETS:\n";
-        Object.keys(groupedGadgets).forEach(g => {
-            ordine += "• " + g + " × " + groupedGadgets[g] + "\n";
-        });
-    }
-
-    let messaggio =
-        translations[lang].orderMessage + "\n\n" +
-        "🛒 ORDINE:\n" + ordine + "\n" +
-        "📦 DATI SPEDIZIONE:\n" +
-        "👤 Nome: " + fullName + "\n" +
-        "📍 Indirizzo: " + address + "\n" +
-        "📮 CAP: " + zip + "\n" +
-        "🏙️ Città: " + city + "\n" +
-        "🌍 Paese: " + country;
-
-    if (notes) {
-        messaggio += "\n📝 Note: " + notes;
-    }
-
-    const telegram = "https://t.me/wordex17?text=" + encodeURIComponent(messaggio);
-    window.location.href = telegram;
+    window.location.href = "bitcoin.html";
 }
 
 window.addEventListener("load", function() {
