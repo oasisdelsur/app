@@ -1,300 +1,96 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oasis del Sur - Bitcoin</title>
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        .btc-box {
-            background: rgba(0, 0, 0, 0.28);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 14px;
-            padding: 16px;
-            margin: 14px 0;
-            text-align: center;
-        }
-        .btc-address {
-            word-break: break-all;
-            font-size: 13px;
-            background: rgba(0, 0, 0, 0.35);
-            padding: 10px;
-            border-radius: 8px;
-            margin: 10px 0 12px 0;
-            user-select: all;
-        }
-        .qr-wrap {
-            margin: 14px auto;
-            display: flex;
-            justify-content: center;
-        }
-        .btc-qr {
-            width: 190px;
-            max-width: 65vw;
-            height: auto;
-            border-radius: 12px;
-            background: #ffffff;
-            padding: 8px;
-            display: block;
-        }
-        .summary-box {
-            background: rgba(0, 0, 0, 0.28);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            padding: 12px;
-            margin: 14px 0;
-            text-align: left;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        .summary-section {
-            margin-bottom: 10px;
-        }
-        .summary-section:last-child {
-            margin-bottom: 0;
-        }
-        .summary-title {
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .action-btn {
-            width: 100%;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <div class="header">
-        <img src="../IMG_9609.png" class="logo" alt="Oasis del Sur">
-    </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento Bitcoin - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-    <div class="back-button">
-        <a href="../shop.html">
-            <span class="back-circle">←</span>
-            <span class="back-label" data-translate="backShop">TORNA ALLO SHOP</span>
-        </a>
-    </div>
-
-    <div class="cart">
-        <div class="cart-title" data-translate="pageTitle">
-            ₿ Pagamento Bitcoin
-        </div>
-
-        <p data-translate="payInfo">
-            Invia il pagamento all'indirizzo BTC qui sotto o scansiona il QR, poi invia l'ordine completo su Telegram.
-        </p>
-
-        <div class="btc-box">
-            <div class="summary-title" data-translate="addressLabel">Indirizzo BTC:</div>
-            <div class="btc-address" id="btcAddress">bc1qmshchg5s33z7nm2ksgnq0d5388yazf8vqxp8ea</div>
-
-            <button type="button" class="checkout action-btn" onclick="copyBTC()" data-translate="copyBtn">
-                📋 Copia indirizzo BTC
-            </button>
-
-            <div class="qr-wrap">
-                <img src="../btc-qr.png" class="btc-qr" alt="QR Code Bitcoin">
-            </div>
-        </div>
-
-        <div class="summary-box" id="orderSummary"></div>
-
-        <p data-translate="confirmHint">
-            Ora puoi inviare l'ordine pagato con tutte le credenziali su Telegram.
-        </p>
-
-        <button type="button" class="checkout action-btn" onclick="sendTelegramOrder()" data-translate="sendTelegramBtn">
-            📲 Invia ordine su Telegram
-        </button>
-    </div>
-</div>
-
-<script>
-const BTC_ADDRESS = "bc1qmshchg5s33z7nm2ksgnq0d5388yazf8vqxp8ea";
-
-const translations = {
-    it: {
-        backShop: "TORNA ALLO SHOP",
-        pageTitle: "₿ Pagamento Bitcoin",
-        payInfo: "Invia il pagamento all'indirizzo BTC qui sotto o scansiona il QR, poi invia l'ordine completo su Telegram.",
-        addressLabel: "Indirizzo BTC:",
-        copyBtn: "📋 Copia indirizzo BTC",
-        copiedAlert: "Indirizzo Bitcoin copiato",
-        confirmHint: "Ora puoi inviare l'ordine pagato con tutte le credenziali su Telegram.",
-        sendTelegramBtn: "📲 Invia ordine su Telegram",
-        orderLabel: "🛒 Ordine:",
-        shippingLabel: "📦 Dati spedizione:",
-        noOrder: "Nessun prodotto salvato",
-        noShipping: "Nessun dato di spedizione salvato",
-        tgIntro: "Ciao Oasis del Sur, ho effettuato/avviato il pagamento in Bitcoin per questo ordine:"
-    },
-    en: {
-        backShop: "BACK TO SHOP",
-        pageTitle: "₿ Bitcoin Payment",
-        payInfo: "Send payment to the BTC address below or scan the QR code, then send the full order on Telegram.",
-        addressLabel: "BTC Address:",
-        copyBtn: "📋 Copy BTC address",
-        copiedAlert: "Bitcoin address copied",
-        confirmHint: "Now you can send your order and shipping details on Telegram.",
-        sendTelegramBtn: "📲 Send order on Telegram",
-        orderLabel: "🛒 Order:",
-        shippingLabel: "📦 Shipping details:",
-        noOrder: "No saved products",
-        noShipping: "No saved shipping details",
-        tgIntro: "Hello Oasis del Sur, I selected Bitcoin payment for this order:"
-    },
-    es: {
-        backShop: "VOLVER A LA TIENDA",
-        pageTitle: "₿ Pago con Bitcoin",
-        payInfo: "Envía el pago a la dirección BTC o escanea el QR y luego envía el pedido completo por Telegram.",
-        addressLabel: "Dirección BTC:",
-        copyBtn: "📋 Copiar dirección BTC",
-        copiedAlert: "Dirección Bitcoin copiada",
-        confirmHint: "Ahora puedes enviar tu pedido con todos los datos por Telegram.",
-        sendTelegramBtn: "📲 Enviar pedido por Telegram",
-        orderLabel: "🛒 Pedido:",
-        shippingLabel: "📦 Datos de envío:",
-        noOrder: "No hay productos guardados",
-        noShipping: "No hay datos de envío guardados",
-        tgIntro: "Hola Oasis del Sur, elegí pagar con Bitcoin para este pedido:"
-    },
-    de: {
-        backShop: "ZURÜCK ZUM SHOP",
-        pageTitle: "₿ Bitcoin-Zahlung",
-        payInfo: "Sende die Zahlung an die BTC-Adresse unten oder scanne den QR-Code und sende die Bestellung auf Telegram.",
-        addressLabel: "BTC-Adresse:",
-        copyBtn: "📋 BTC-Adresse kopieren",
-        copiedAlert: "Bitcoin-Adresse kopiert",
-        confirmHint: "Jetzt kannst du deine Bestellung inklusive Versanddaten auf Telegram senden.",
-        sendTelegramBtn: "📲 Bestellung auf Telegram senden",
-        orderLabel: "🛒 Bestellung:",
-        shippingLabel: "📦 Versanddaten:",
-        noOrder: "Keine gespeicherten Produkte",
-        noShipping: "Keine gespeicherten Versanddaten",
-        tgIntro: "Hallo Oasis del Sur, ich habe die Bitcoin-Zahlung für diese Bestellung gewählt:"
-    }
-};
-
-function getLanguage() {
-    const saved = localStorage.getItem("language") || "it";
-    return translations[saved] ? saved : "it";
+<style>
+* {
+    box-sizing: border-box;
 }
 
-function translatePage() {
-    const language = getLanguage();
-    const texts = translations[language];
-    document.documentElement.lang = language;
-
-    document.querySelectorAll("[data-translate]").forEach(function(element) {
-        const key = element.getAttribute("data-translate");
-        if (texts[key]) {
-            element.textContent = texts[key];
-        }
-    });
+body {
+    margin: 0;
+    padding: 75px 16px 40px 16px;
+    background: #070908;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
 }
 
-function copyBTC() {
-    navigator.clipboard.writeText(BTC_ADDRESS);
-    alert(translations[getLanguage()].copiedAlert);
+.back-arrow-fixed {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 18, 16, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 22px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65);
 }
 
-function groupItems(arr) {
-    const grouped = {};
-    arr.forEach(item => {
-        grouped[item] = (grouped[item] || 0) + 1;
-    });
-    return grouped;
+.btc-wrapper {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
-function getOrderLines() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const stickers = JSON.parse(localStorage.getItem("stickers")) || [];
-    const gadgets = JSON.parse(localStorage.getItem("gadgets")) || [];
-
-    const gCart = groupItems(cart);
-    const gStickers = groupItems(stickers);
-    const gGadgets = groupItems(gadgets);
-
-    let lines = [];
-    Object.keys(gCart).forEach(p => lines.push("• " + p + " × " + gCart[p]));
-
-    if (stickers.length > 0) {
-        lines.push("STATIC:");
-        Object.keys(gStickers).forEach(s => lines.push("• " + s + " × " + gStickers[s]));
-    }
-
-    if (gadgets.length > 0) {
-        lines.push("GADGETS:");
-        Object.keys(gGadgets).forEach(g => lines.push("• " + g + " × " + gGadgets[g]));
-    }
-
-    return lines;
+.btc-header {
+    text-align: center;
+    padding: 18px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(28, 22, 8, 0.92), rgba(12, 14, 13, 0.96));
+    border: 1px solid rgba(247, 147, 26, 0.45);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
 }
 
-function getShippingLines() {
-    const shipping = JSON.parse(localStorage.getItem("shippingData"));
-    if (!shipping) return [];
-
-    let lines = [
-        "👤 Nome: " + shipping.fullName,
-        "📍 Indirizzo: " + shipping.address,
-        "📮 CAP: " + shipping.zip,
-        "🏙️ Città: " + shipping.city,
-        "🌍 Paese: " + shipping.country
-    ];
-
-    if (shipping.notes) {
-        lines.push("📝 Note: " + shipping.notes);
-    }
-
-    return lines;
+.btc-title {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #f7931a;
+    margin: 0 0 6px 0;
 }
 
-function renderSummary() {
-    const lang = getLanguage();
-    const t = translations[lang];
-    const orderLines = getOrderLines();
-    const shippingLines = getShippingLines();
-
-    const orderHtml = orderLines.length
-        ? orderLines.map(l => l.replace(/</g, "&lt;")).join("<br>")
-        : t.noOrder;
-
-    const shippingHtml = shippingLines.length
-        ? shippingLines.map(l => l.replace(/</g, "&lt;")).join("<br>")
-        : t.noShipping;
-
-    document.getElementById("orderSummary").innerHTML =
-        '<div class="summary-section"><div class="summary-title">' + t.orderLabel + '</div>' + orderHtml + '</div>' +
-        '<div class="summary-section"><div class="summary-title">' + t.shippingLabel + '</div>' + shippingHtml + '</div>';
+.btc-sub {
+    font-size: 12px;
+    color: #cccccc;
+    margin: 0;
 }
 
-function sendTelegramOrder() {
-    const lang = getLanguage();
-    const t = translations[lang];
-    const orderLines = getOrderLines();
-    const shippingLines = getShippingLines();
-
-    let message = t.tgIntro + "\n\n";
-
-    if (orderLines.length > 0) {
-        message += "🛒 ORDINE:\n" + orderLines.join("\n") + "\n\n";
-    }
-
-    if (shippingLines.length > 0) {
-        message += "📦 DATI SPEDIZIONE:\n" + shippingLines.join("\n");
-    }
-
-    const telegramUrl = "https://t.me/wordex17?text=" + encodeURIComponent(message);
-    window.open(telegramUrl, "_blank");
-    window.location.href = "../shop.html";
+.btc-card {
+    background: rgba(15, 18, 16, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
 }
 
-window.addEventListener("load", function() {
-    translatePage();
-    renderSummary();
-});
-</script>
-</body>
-</html>
+.qr-box-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+#qrcode {
+    background: #ffffff;
+    padding: 14px;
