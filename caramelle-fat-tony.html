@@ -5,201 +5,339 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CARAMELLE FAT TONY - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-.section-title-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 15px auto 20px auto;
-    padding: 18px 24px;
-    box-sizing: border-box;
-    background: linear-gradient(145deg, rgba(25, 20, 10, 0.9), rgba(15, 15, 8, 0.95));
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    border-radius: 18px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 215, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.section-title-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
-    transition: 0.5s;
-    animation: shine 6s infinite;
-}
-
-@keyframes shine {
-    0% { left: -100%; }
-    20% { left: 100%; }
-    100% { left: 100%; }
-}
-
-.title-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-}
-
-.section-title-text {
-    font-family: 'Cinzel', serif;
-    font-weight: 900;
-    font-size: 26px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    background: linear-gradient(135deg, #ffffff 0%, #ffd700 40%, #ffae00 70%, #ff8c00 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.5));
-}
-
-.title-badge {
+body {
+    margin: 0;
+    padding: 20px 14px 40px 14px;
+    background: #070908;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
+}
+
+.top-back {
+    max-width: 600px;
+    margin: 0 auto 14px auto;
+}
+
+.top-back a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    text-decoration: none;
     font-weight: 800;
-    letter-spacing: 3px;
-    color: #ffd700;
-    text-transform: uppercase;
-    margin-top: 6px;
-    border-top: 1px solid rgba(255, 215, 0, 0.3);
-    padding-top: 4px;
-    width: 60%;
-    text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+    font-size: 13px;
 }
 
-.photo-block {
-    width: 100%;
+.wrap {
     max-width: 600px;
-    margin: 0 auto 24px auto;
-    padding: 12px;
-    box-sizing: border-box;
-    border-radius: 20px;
-    background: rgba(15, 22, 16, 0.78);
-    border: 1px solid rgba(76, 175, 80, 0.25);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-}
-
-.product-image, .product-video {
-    width: 100%;
-    max-width: 600px;
-    height: 350px;
-    display: block;
     margin: 0 auto;
-    border-radius: 16px;
-    object-fit: cover;
-    object-position: center;
 }
 
-.product-video {
+.title-box {
+    text-align: center;
+    padding: 18px;
     margin-bottom: 20px;
+    border-radius: 18px;
+    background: #14120b;
+    border: 1px solid rgba(255, 215, 0, 0.45);
 }
 
-.photo-sizes {
+.title-main {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffd700;
+    letter-spacing: 2px;
+}
+
+.title-sub {
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffd700;
+    letter-spacing: 2px;
+    margin-top: 6px;
+}
+
+.photo-card {
+    background: #101612;
+    border: 1px solid rgba(76, 175, 80, 0.35);
+    border-radius: 18px;
+    padding: 12px;
+    margin-bottom: 22px;
+}
+
+.media-item {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    background: #000000;
+}
+
+.video-item {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    margin-bottom: 20px;
+    background: #000000;
+}
+
+.sizes-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     margin-top: 12px;
 }
 
-.photo-sizes button {
-    background: rgba(15, 30, 18, 0.9);
-    border: 1px solid rgba(76, 175, 80, 0.45);
+.sizes-grid button {
+    padding: 11px 6px;
     border-radius: 12px;
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    background: #172b1b;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
     font-size: 13px;
-    font-weight: 800;
-    padding: 11px 8px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: center;
 }
 
-.photo-sizes button:hover, .photo-sizes button:active {
-    background: linear-gradient(135deg, #2e7d32, #1b5e20);
-    border-color: #66bb6a;
-    transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+.sizes-grid button:active {
+    background: #2e7d32;
 }
 
-.cart-card {
-    background: rgba(10, 20, 12, 0.9);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(50, 205, 50, 0.3);
-    border-radius: 22px;
-    padding: 20px;
-    margin: 25px 0 20px 0;
-    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15), inset 0 0 15px rgba(50, 205, 50, 0.05);
+.cart-box {
+    background: #101812;
+    border: 1px solid rgba(76, 175, 80, 0.4);
+    border-radius: 20px;
+    padding: 18px;
+    margin-top: 24px;
 }
 
-.cart-title-custom {
-    font-family: 'Montserrat', sans-serif;
+.cart-head {
     font-size: 15px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #4CAF50;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 10px;
+    font-weight: 900;
+    color: #4ade80;
+    margin-bottom: 12px;
 }
 
-#mini-cart {
-    font-size: 14px;
-    color: #e0e0e0;
-    margin-bottom: 16px;
-}
-
-.cart-item-row {
+.cart-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.04);
-    padding: 10px 14px;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 12px;
+    border-radius: 10px;
     margin-bottom: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 13px;
 }
 
-.cart-item-row button {
-    background: rgba(255, 59, 48, 0.15);
-    color: #ff453a;
-    border: 1px solid rgba(255, 59, 48, 0.3);
-    border-radius: 20px;
-    padding: 5px 12px;
+.cart-row button {
+    background: #dc2626;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
     font-size: 11px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
-.cart-item-row button:hover {
-    background: #ff3b30;
-    color: #ffffff;
-}
-
-.cart-actions-integrated {
+.cart-actions {
     display: flex;
     gap: 10px;
-    margin-top: 1
+    margin-top: 14px;
+}
+
+.cart-actions a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 10px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 13px;
+    color: #ffffff;
+    background: #1f2937;
+}
+
+.cart-actions a.go-cart {
+    background: #1b5e20;
+}
+</style>
+</head>
+<body>
+
+<div class="top-back">
+    <a href="VAPE.html" data-translate="backToVape">← Torna a Vape</a>
+</div>
+
+<div class="wrap">
+    <div class="title-box">
+        <div class="title-main">CARAMELLE FAT TONY</div>
+        <div class="title-sub">PREMIUM EDITION</div>
+    </div>
+
+    <div class="photo-card">
+        <img src="IMG_4574.jpeg" class="media-item" alt="CARAMELLE FAT TONY 1">
+        <div class="sizes-grid">
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 1pz')">1pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 5pz')">5pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 10pz')">10pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 20pz')">20pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 50pz')">50pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 100pz')">100pz</button>
+        </div>
+    </div>
+
+    <div class="photo-card">
+        <img src="IMG_4572.jpeg" class="media-item" alt="CARAMELLE FAT TONY 2">
+        <div class="sizes-grid">
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 1pz')">1pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 5pz')">5pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 10pz')">10pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 20pz')">20pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 50pz')">50pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 100pz')">100pz</button>
+        </div>
+    </div>
+
+    <div class="photo-card">
+        <img src="IMG_4570.jpeg" class="media-item" alt="CARAMELLE FAT TONY 3">
+        <div class="sizes-grid">
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 1pz')">1pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 5pz')">5pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 10pz')">10pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 20pz')">20pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 50pz')">50pz</button>
+            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 100pz')">100pz</button>
+        </div>
+    </div>
+
+    <video class="video-item" controls muted playsinline preload="metadata">
+        <source src="IMG_4571.mov" type="video/quicktime">
+    </video>
+    <video class="video-item" controls muted playsinline preload="metadata">
+        <source src="IMG_4573.mov" type="video/quicktime">
+    </video>
+    <video class="video-item" controls muted playsinline preload="metadata">
+        <source src="IMG_4575.mov" type="video/quicktime">
+    </video>
+
+    <div class="cart-box" id="cart-section">
+        <div class="cart-head" data-translate="cartTitle">🛒 CARRELLO</div>
+        <div id="mini-cart">Carrello vuoto</div>
+        <div class="cart-actions">
+            <a href="shop.html" class="go-cart" data-translate="goToCart">🛒 Vai al carrello</a>
+            <a href="shop.html" data-translate="backToMenu">🏠 Torna al menu</a>
+        </div>
+    </div>
+</div>
+
+<script>
+const translations = {
+    it: {
+        backToVape: "← Torna a Vape",
+        cartTitle: "🛒 CARRELLO",
+        emptyCart: "Carrello vuoto",
+        goToCart: "🛒 Vai al carrello",
+        backToMenu: "🏠 Torna al menu",
+        addedToCart: "aggiunto al carrello"
+    },
+    en: {
+        backToVape: "← Back to Vape",
+        cartTitle: "🛒 CART",
+        emptyCart: "Empty cart",
+        goToCart: "🛒 Go to cart",
+        backToMenu: "🏠 Back to menu",
+        addedToCart: "added to cart"
+    },
+    es: {
+        backToVape: "← Volver a Vape",
+        cartTitle: "🛒 CARRITO",
+        emptyCart: "Carrito vacío",
+        goToCart: "🛒 Ir al carrito",
+        backToMenu: "🏠 Volver al menú",
+        addedToCart: "añadido al carrito"
+    },
+    de: {
+        backToVape: "← Zurück zu Vape",
+        cartTitle: "🛒 WARENKORB",
+        emptyCart: "Warenkorb leer",
+        goToCart: "🛒 Zum Warenkorb",
+        backToMenu: "🏠 Zurück zum Menü",
+        addedToCart: "zum Warenkorb hinzugefügt"
+    }
+};
+
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
+
+function translatePage() {
+    const lang = getLanguage();
+    const texts = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+}
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(product) {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+    const lang = getLanguage();
+    const t = translations[lang] || translations.it;
+    alert("✅ " + product + " " + t.addedToCart);
+}
+
+function showMiniCart() {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const box = document.getElementById("mini-cart");
+    if (!box) return;
+    const lang = getLanguage();
+    const t = translations[lang] || translations.it;
+    if (cart.length === 0) {
+        box.innerHTML = t.emptyCart;
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML += '<div class="cart-row"><span>• ' + item + '</span><button onclick="removeItem(' + index + ')">❌ Rimuovi</button></div>';
+    });
+}
+
+function removeItem(index) {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+}
+
+window.addEventListener("load", function() {
+    translatePage();
+    showMiniCart();
+});
+
+window.addEventListener("pageshow", function() {
+    translatePage();
+    showMiniCart();
+});
+</script>
+</body>
+</html>
