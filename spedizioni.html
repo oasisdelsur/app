@@ -11,6 +11,67 @@
         rel="stylesheet"
         href="style.css"
     >
+    <style>
+        .order-recap {
+            background: rgba(0, 0, 0, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 12px 0 18px 0;
+            text-align: left;
+        }
+        .order-recap-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .shipping-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .field-group label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .field-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 10px;
+        }
+        .shipping-form input,
+        .shipping-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 11px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: rgba(0, 0, 0, 0.28);
+            color: #ffffff;
+            font-size: 15px;
+            font-family: inherit;
+        }
+        .shipping-form input::placeholder,
+        .shipping-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.55);
+        }
+        .shipping-form input:focus,
+        .shipping-form textarea:focus {
+            outline: none;
+            border-color: #e11d2e;
+        }
+        .shipping-form textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -18,60 +79,162 @@
     <div class="back-button">
         <a href="shop.html">
             <span class="back-circle">←</span>
-            <span class="back-label" data-translate="backHome">TORNA ALLA HOME</span>
+            <span class="back-label" data-translate="backShop">TORNA ALLO SHOP</span>
         </a>
     </div>
 
     <div class="cart">
         <div class="cart-title" data-translate="shippingTitle">
-            📦 Spedizioni
+            📦 Spedizione e Ordine
         </div>
 
-        <p data-translate="shippingText1">
-            Qui puoi inserire i dettagli sulle spedizioni: tempi di consegna, costi, aree coperte e modalità.
-        </p>
+        <!-- RIEPILOGO CARRELLO COLLEGATO -->
+        <div class="order-recap">
+            <div class="order-recap-title" data-translate="recapTitle">
+                🛒 Il tuo ordine attuale:
+            </div>
+            <div id="cartRecap">
+                <span data-translate="emptyCart">Nessun prodotto</span>
+            </div>
+        </div>
 
-        <p data-translate="shippingText2">
-            Per qualsiasi domanda o conferma puoi contattarci direttamente su Telegram.
-        </p>
+        <form id="shippingForm" class="shipping-form" onsubmit="sendShippingOrder(event)">
+            <div class="field-group">
+                <label for="fullName" data-translate="labelName">Nome e Cognome *</label>
+                <input
+                    type="text"
+                    id="fullName"
+                    required
+                    placeholder="Es. Marco Rossi"
+                >
+            </div>
 
-        <a href="https://t.me/wordex17" target="_blank">
-            <button class="checkout" data-translate="contactButton">
-                📲 Contatta su Telegram
+            <div class="field-group">
+                <label for="address" data-translate="labelAddress">Indirizzo (Via / Piazza e N°) *</label>
+                <input
+                    type="text"
+                    id="address"
+                    required
+                    placeholder="Es. Via Roma 12"
+                >
+            </div>
+
+            <div class="field-row">
+                <div class="field-group">
+                    <label for="zip" data-translate="labelZip">CAP *</label>
+                    <input
+                        type="text"
+                        id="zip"
+                        required
+                        placeholder="00100"
+                    >
+                </div>
+
+                <div class="field-group">
+                    <label for="city" data-translate="labelCity">Città *</label>
+                    <input
+                        type="text"
+                        id="city"
+                        required
+                        placeholder="Es. Roma"
+                    >
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="country" data-translate="labelCountry">Paese *</label>
+                <input
+                    type="text"
+                    id="country"
+                    required
+                    value="Italia"
+                >
+            </div>
+
+            <div class="field-group">
+                <label for="notes" data-translate="labelNotes">Note (opzionale)</label>
+                <textarea
+                    id="notes"
+                    placeholder="Citofono, scala, orari o altre info..."
+                ></textarea>
+            </div>
+
+            <button
+                type="submit"
+                class="checkout"
+                data-translate="sendButton"
+            >
+                📲 Invia ordine e spedizione
             </button>
-        </a>
+        </form>
     </div>
 </div>
 
 <script>
 const translations = {
     it: {
-        backHome: "TORNA ALLA HOME",
-        shippingTitle: "📦 Spedizioni",
-        shippingText1: "Qui puoi inserire i dettagli sulle spedizioni: tempi di consegna, costi, aree coperte e modalità.",
-        shippingText2: "Per qualsiasi domanda o conferma puoi contattarci direttamente su Telegram.",
-        contactButton: "📲 Contatta su Telegram"
+        backShop: "TORNA ALLO SHOP",
+        shippingTitle: "📦 Spedizione e Ordine",
+        recapTitle: "🛒 Il tuo ordine attuale:",
+        emptyCart: "Nessun prodotto nel carrello",
+        labelName: "Nome e Cognome *",
+        labelAddress: "Indirizzo (Via / Piazza e N°) *",
+        labelZip: "CAP *",
+        labelCity: "Città *",
+        labelCountry: "Paese *",
+        labelNotes: "Note (opzionale)",
+        sendButton: "📲 Invia ordine e spedizione",
+        alertMissing: "Compila tutti i campi obbligatori (*).",
+        alertEmptyCart: "Il carrello è vuoto! Aggiungi prima i prodotti dallo shop.",
+        orderMessage: "Ciao Oasis del Sur, vorrei ordinare con spedizione:"
     },
     en: {
-        backHome: "BACK TO HOME",
-        shippingTitle: "📦 Shipping",
-        shippingText1: "Here you can add shipping details: delivery times, costs, covered areas, and methods.",
-        shippingText2: "For any questions or confirmation, you can contact us directly on Telegram.",
-        contactButton: "📲 Contact on Telegram"
+        backShop: "BACK TO SHOP",
+        shippingTitle: "📦 Shipping & Order",
+        recapTitle: "🛒 Your current order:",
+        emptyCart: "No products in cart",
+        labelName: "Full Name *",
+        labelAddress: "Street Address & Number *",
+        labelZip: "ZIP / Postal Code *",
+        labelCity: "City *",
+        labelCountry: "Country *",
+        labelNotes: "Notes (optional)",
+        sendButton: "📲 Send order & shipping",
+        alertMissing: "Please fill in all required fields (*).",
+        alertEmptyCart: "Your cart is empty! Add products from the shop first.",
+        orderMessage: "Hello Oasis del Sur, I would like to order with shipping:"
     },
     es: {
-        backHome: "VOLVER AL INICIO",
-        shippingTitle: "📦 Envíos",
-        shippingText1: "Aquí puedes añadir los detalles de envío: plazos de entrega, costes, zonas y modalidades.",
-        shippingText2: "Para cualquier duda o confirmación puedes contactarnos directamente por Telegram.",
-        contactButton: "📲 Contactar por Telegram"
+        backShop: "VOLVER A LA TIENDA",
+        shippingTitle: "📦 Envío y Pedido",
+        recapTitle: "🛒 Tu pedido actual:",
+        emptyCart: "Ningún producto en el carrito",
+        labelName: "Nombre y Apellidos *",
+        labelAddress: "Dirección y Número *",
+        labelZip: "Código Postal *",
+        labelCity: "Ciudad *",
+        labelCountry: "País *",
+        labelNotes: "Notas (opcional)",
+        sendButton: "📲 Enviar pedido y envío",
+        alertMissing: "Completa todos los campos obligatorios (*).",
+        alertEmptyCart: "¡El carrito está vacío! Añade productos desde la tienda primero.",
+        orderMessage: "Hola Oasis del Sur, quisiera hacer un pedido con envío:"
     },
     de: {
-        backHome: "ZUR STARTSEITE",
-        shippingTitle: "📦 Versand",
-        shippingText1: "Hier kannst du Versanddetails einfügen: Lieferzeiten, Kosten, Gebiete und Versandarten.",
-        shippingText2: "Bei Fragen oder zur Bestätigung kannst du uns direkt über Telegram kontaktieren.",
-        contactButton: "📲 Auf Telegram kontaktieren"
+        backShop: "ZURÜCK ZUM SHOP",
+        shippingTitle: "📦 Versand & Bestellung",
+        recapTitle: "🛒 Deine aktuelle Bestellung:",
+        emptyCart: "Keine Produkte im Warenkorb",
+        labelName: "Vor- und Nachname *",
+        labelAddress: "Straße und Hausnummer *",
+        labelZip: "PLZ *",
+        labelCity: "Stadt *",
+        labelCountry: "Land *",
+        labelNotes: "Hinweise (optional)",
+        sendButton: "📲 Bestellung & Versand senden",
+        alertMissing: "Bitte fülle alle Pflichtfelder (*) aus.",
+        alertEmptyCart: "Der Warenkorb ist leer! Füge zuerst Produkte im Shop hinzu.",
+        orderMessage: "Hallo Oasis del Sur, ich möchte mit Versand bestellen:"
     }
 };
 
@@ -93,8 +256,129 @@ function translatePage() {
     });
 }
 
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
+let gadgets = JSON.parse(localStorage.getItem("gadgets")) || [];
+
+function groupItems(arr) {
+    const grouped = {};
+    arr.forEach(item => {
+        grouped[item] = (grouped[item] || 0) + 1;
+    });
+    return grouped;
+}
+
+function showCartRecap() {
+    const box = document.getElementById("cartRecap");
+    if (cart.length === 0 && stickers.length === 0 && gadgets.length === 0) {
+        box.innerHTML = translations[getLanguage()].emptyCart;
+        return;
+    }
+
+    const grouped = groupItems(cart);
+    const groupedStickers = groupItems(stickers);
+    const groupedGadgets = groupItems(gadgets);
+
+    box.innerHTML = "";
+
+    Object.keys(grouped).forEach(product => {
+        box.innerHTML += "• " + product + " × " + grouped[product] +
+            ' <button type="button" onclick="removeOne(\'cart\', \'' + product.replace(/'/g, "\\'") + '\')">❌</button><br>';
+    });
+
+    Object.keys(groupedStickers).forEach(sticker => {
+        box.innerHTML += "• [STATIC] " + sticker + " × " + groupedStickers[sticker] +
+            ' <button type="button" onclick="removeOne(\'stickers\', \'' + sticker.replace(/'/g, "\\'") + '\')">❌</button><br>';
+    });
+
+    Object.keys(groupedGadgets).forEach(gadget => {
+        box.innerHTML += "• [GADGET] " + gadget + " × " + groupedGadgets[gadget] +
+            ' <button type="button" onclick="removeOne(\'gadgets\', \'' + gadget.replace(/'/g, "\\'") + '\')">❌</button><br>';
+    });
+}
+
+function removeOne(type, name) {
+    if (type === "cart") {
+        const idx = cart.lastIndexOf(name);
+        if (idx !== -1) cart.splice(idx, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+    } else if (type === "stickers") {
+        const idx = stickers.lastIndexOf(name);
+        if (idx !== -1) stickers.splice(idx, 1);
+        localStorage.setItem("stickers", JSON.stringify(stickers));
+    } else if (type === "gadgets") {
+        const idx = gadgets.lastIndexOf(name);
+        if (idx !== -1) gadgets.splice(idx, 1);
+        localStorage.setItem("gadgets", JSON.stringify(gadgets));
+    }
+    showCartRecap();
+}
+
+function sendShippingOrder(event) {
+    event.preventDefault();
+    const lang = getLanguage();
+
+    if (cart.length === 0 && stickers.length === 0 && gadgets.length === 0) {
+        alert(translations[lang].alertEmptyCart);
+        return;
+    }
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const zip = document.getElementById("zip").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const country = document.getElementById("country").value.trim();
+    const notes = document.getElementById("notes").value.trim();
+
+    if (!fullName || !address || !zip || !city || !country) {
+        alert(translations[lang].alertMissing);
+        return;
+    }
+
+    const grouped = groupItems(cart);
+    const groupedStickers = groupItems(stickers);
+    const groupedGadgets = groupItems(gadgets);
+
+    let ordine = "";
+    Object.keys(grouped).forEach(p => {
+        ordine += "• " + p + " × " + grouped[p] + "\n";
+    });
+
+    if (stickers.length > 0) {
+        ordine += "\nSTATIC:\n";
+        Object.keys(groupedStickers).forEach(s => {
+            ordine += "• " + s + " × " + groupedStickers[s] + "\n";
+        });
+    }
+
+    if (gadgets.length > 0) {
+        ordine += "\nGADGETS:\n";
+        Object.keys(groupedGadgets).forEach(g => {
+            ordine += "• " + g + " × " + groupedGadgets[g] + "\n";
+        });
+    }
+
+    let messaggio =
+        translations[lang].orderMessage + "\n\n" +
+        "🛒 ORDINE:\n" + ordine + "\n" +
+        "📦 DATI SPEDIZIONE:\n" +
+        "👤 Nome: " + fullName + "\n" +
+        "📍 Indirizzo: " + address + "\n" +
+        "📮 CAP: " + zip + "\n" +
+        "🏙️ Città: " + city + "\n" +
+        "🌍 Paese: " + country;
+
+    if (notes) {
+        messaggio += "\n📝 Note: " + notes;
+    }
+
+    const telegram = "https://t.me/wordex17?text=" + encodeURIComponent(messaggio);
+    window.location.href = telegram;
+}
+
 window.addEventListener("load", function() {
     translatePage();
+    showCartRecap();
 });
 </script>
 </body>
