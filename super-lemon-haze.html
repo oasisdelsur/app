@@ -6,30 +6,23 @@
 <title>SUPER LEMON HAZE - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 
-<!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-/* TITOLO ULTRA-PREMIUM (STESSA LARGHEZZA ESATTA DELL'IMMAGINE) */
 .section-title-container {
     width: 100%;
     max-width: 600px;
     margin: 15px auto 20px auto;
     padding: 18px 24px;
     box-sizing: border-box;
-    
-    /* GLASSMORPHISM SCURO CON BORDI E RIFLESSI GIALLO/ORO */
     background: linear-gradient(145deg, rgba(25, 25, 10, 0.9), rgba(15, 15, 8, 0.95));
     border: 1px solid rgba(255, 215, 0, 0.4);
     border-radius: 18px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
-    /* OMBRA LUSSUOSA E BAGLIORE PROFONDO GIALLO */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 235, 59, 0.15);
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +32,6 @@
     overflow: hidden;
 }
 
-/* RIFLESSO DI LUCE PREMIUM SULLA SCHEDA */
 .section-title-container::before {
     content: '';
     position: absolute;
@@ -72,12 +64,9 @@
     font-size: 26px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    
-    /* SFUMATURA METALLICA GIALLO / LIMONE / ORO */
     background: linear-gradient(135deg, #ffffff 0%, #ffeb3b 40%, #fbc02d 70%, #ffd700 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
     filter: drop-shadow(0 2px 8px rgba(255, 235, 59, 0.5));
 }
 
@@ -94,31 +83,12 @@
     width: 60%;
 }
 
-.section-title-container .emoji-icon {
-    font-size: 22px;
-    filter: drop-shadow(0 0 8px rgba(255, 235, 59, 0.6));
-}
-
-/* IMMAGINI E VIDEO */
-.product-image, .product-video {
-    width: 100%;
-    max-width: 600px;
-    height: 350px;
-    display: block;
-    margin: 0 auto 20px auto;
-    border-radius: 18px;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* SEZIONE QUANTITÀ COMPLETA E CENTRATA */
 .quantity-section {
     text-align: center;
     margin: 25px 0 20px 0;
     width: 100%;
 }
 
-/* TITOLO CENTRATO CON DITO E STILE PREMIUM */
 .quantity-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
@@ -135,7 +105,6 @@
     width: 100%;
 }
 
-/* BOTTONI QUANTITÀ IN COLONNA */
 .sizes {
     display: flex;
     flex-direction: column;
@@ -177,7 +146,6 @@
     box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
 }
 
-/* CARRELLO INTEGRATO E COMPATTO */
 .cart-card {
     background: rgba(10, 20, 12, 0.9);
     backdrop-filter: blur(16px);
@@ -238,7 +206,6 @@
     color: #ffffff;
 }
 
-/* BOTTONI INTEGRATI DENTRO LA SCHEDA CARRELLO */
 .cart-actions-integrated {
     display: flex;
     gap: 10px;
@@ -284,9 +251,6 @@
         font-size: 20px;
         letter-spacing: 2px;
     }
-    .product-image, .product-video {
-        height: 280px;
-    }
 }
 </style>
 </head>
@@ -299,7 +263,6 @@
 </div>
 
 <div class="container">
-    <!-- TITOLO PREMIUM STYLE IN TONI GIALLO/LIMONE -->
     <div class="section-title-container">
         <div class="title-header">
             <span class="section-title-text">SUPER LEMON HAZE</span>
@@ -308,17 +271,6 @@
     </div>
 
     <div class="product">
-        <!-- IMMAGINI SPECIFICHE -->
-        <img src="IMG_2316.png" class="product-image" alt="SUPER LEMON HAZE">
-        <img src="IMG_2317.png" class="product-image" alt="SUPER LEMON HAZE">
-        <img src="IMG_2318.png" class="product-image" alt="SUPER LEMON HAZE">
-
-        <!-- VIDEO SPECIFICO -->
-        <video class="product-video" controls autoplay loop muted playsinline>
-            <source src="IMG_2291.mov" type="video/quicktime">
-        </video>
-
-        <!-- SEZIONE FORMATI DISPONIBILI CENTRATA CON DITO -->
         <div class="quantity-section">
             <div class="quantity-title" id="choose" data-translate="chooseQuantity">
                 FORMATI DISPONIBILI 👇
@@ -333,8 +285,7 @@
         </div>
     </div>
 
-    <!-- CARRELLO UNIFICATO -->
-    <div class="cart-card">
+    <div class="cart-card" id="cart-section">
         <div class="cart-title-custom">
             <span data-translate="cartTitle">CARRELLO</span> <span>🛒</span>
         </div>
@@ -342,9 +293,8 @@
             <span data-translate="emptyCart">Carrello vuoto</span>
         </div>
 
-        <!-- BOTTONI AZIONE INTEGRATI NELLA SCHEDA -->
         <div class="cart-actions-integrated">
-            <a href="shop.html#cart" class="btn-action-int primary" id="goCart">
+            <a href="shop.html" class="btn-action-int primary" id="goCart">
                 <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
             </a>
             <a href="shop.html" class="btn-action-int" id="goMenu">
@@ -355,101 +305,7 @@
 </div>
 
 <script>
-/* TRADUZIONI INTEGRATE */
 const translations = {
     it: {
         backToWeed: "← Torna a Weed",
-        chooseQuantity: "FORMATI DISPONIBILI 👇",
-        cartTitle: "CARRELLO",
-        emptyCart: "Carrello vuoto",
-        goToCart: "Vai al carrello",
-        backToMenu: "Torna al menu",
-        addedToCart: "aggiunto al carrello"
-    },
-    en: {
-        backToWeed: "← Back to Weed",
-        chooseQuantity: "AVAILABLE SIZES 👇",
-        cartTitle: "CART",
-        emptyCart: "Empty cart",
-        goToCart: "Go to cart",
-        backToMenu: "Back to menu",
-        addedToCart: "added to cart"
-    },
-    es: {
-        backToWeed: "← Volver a Weed",
-        chooseQuantity: "FORMATOS DISPONIBLES 👇",
-        cartTitle: "CARRITO",
-        emptyCart: "Carrito vacío",
-        goToCart: "Ir al carrito",
-        backToMenu: "Volver al menú",
-        addedToCart: "añadido al carrito"
-    },
-    de: {
-        backToWeed: "← Zurück zu Weed",
-        chooseQuantity: "VERFÜGBARE GRÖSSEN 👇",
-        cartTitle: "WARENKORB",
-        emptyCart: "Warenkorb leer",
-        goToCart: "Zum Warenkorb",
-        backToMenu: "Zurück zum Menü",
-        addedToCart: "zum Warenkorb hinzugefügt"
-    }
-};
-
-function getLanguage() {
-    return localStorage.getItem("language") || "it";
-}
-
-function translatePage() {
-    const lang = getLanguage();
-    const texts = translations[lang] || translations.it;
-    document.documentElement.lang = lang;
-    
-    document.querySelectorAll("[data-translate]").forEach(function(el) {
-        const key = el.getAttribute("data-translate");
-        if (texts[key]) {
-            el.textContent = texts[key];
-        }
-    });
-}
-
-/* GESTIONE CARRELLO */
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function addToCart(product) {
-    cart.push(product);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    showMiniCart();
-    const lang = getLanguage();
-    const t = translations[lang] || translations.it;
-    alert("✅ " + product + " " + t.addedToCart);
-}
-
-function showMiniCart() {
-    const box = document.getElementById("mini-cart");
-    if (!box) return;
-    const lang = getLanguage();
-    const t = translations[lang] || translations.it;
-    
-    if (cart.length === 0) {
-        box.innerHTML = t.emptyCart;
-        return;
-    }
-    box.innerHTML = "";
-    cart.forEach(function(item, index) {
-        box.innerHTML += '<div class="cart-item-row"><span>• ' + item + '</span><button onclick="removeItem(' + index + ')">❌ Rimuovi</button></div>';
-    });
-}
-
-function removeItem(index) {
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    showMiniCart();
-}
-
-window.addEventListener("load", function() {
-    translatePage();
-    showMiniCart();
-});
-</script>
-</body>
-</html>
+        chooseQuantity:
