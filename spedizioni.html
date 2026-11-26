@@ -75,7 +75,6 @@
 </head>
 <body>
 <div class="container">
-    <!-- FRECCIA -->
     <div class="back-button">
         <a href="shop.html">
             <span class="back-circle">←</span>
@@ -88,7 +87,6 @@
             📦 Spedizione e Ordine
         </div>
 
-        <!-- RIEPILOGO CARRELLO COLLEGATO -->
         <div class="order-recap">
             <div class="order-recap-title" data-translate="recapTitle">
                 🛒 Il tuo ordine attuale:
@@ -101,69 +99,37 @@
         <form id="shippingForm" class="shipping-form" onsubmit="goToBitcoinOrder(event)">
             <div class="field-group">
                 <label for="fullName" data-translate="labelName">Nome e Cognome *</label>
-                <input
-                    type="text"
-                    id="fullName"
-                    required
-                    placeholder="Es. Marco Rossi"
-                >
+                <input type="text" id="fullName" required placeholder="Es. Marco Rossi">
             </div>
 
             <div class="field-group">
                 <label for="address" data-translate="labelAddress">Indirizzo (Via / Piazza e N°) *</label>
-                <input
-                    type="text"
-                    id="address"
-                    required
-                    placeholder="Es. Via Roma 12"
-                >
+                <input type="text" id="address" required placeholder="Es. Via Roma 12">
             </div>
 
             <div class="field-row">
                 <div class="field-group">
                     <label for="zip" data-translate="labelZip">CAP *</label>
-                    <input
-                        type="text"
-                        id="zip"
-                        required
-                        placeholder="00100"
-                    >
+                    <input type="text" id="zip" required placeholder="00100">
                 </div>
 
                 <div class="field-group">
                     <label for="city" data-translate="labelCity">Città *</label>
-                    <input
-                        type="text"
-                        id="city"
-                        required
-                        placeholder="Es. Roma"
-                    >
+                    <input type="text" id="city" required placeholder="Es. Roma">
                 </div>
             </div>
 
             <div class="field-group">
                 <label for="country" data-translate="labelCountry">Paese *</label>
-                <input
-                    type="text"
-                    id="country"
-                    required
-                    value="Italia"
-                >
+                <input type="text" id="country" required value="Italia">
             </div>
 
             <div class="field-group">
                 <label for="notes" data-translate="labelNotes">Note (opzionale)</label>
-                <textarea
-                    id="notes"
-                    placeholder="Citofono, scala, orari o altre info..."
-                ></textarea>
+                <textarea id="notes" placeholder="Citofono, scala, orari o altre info..."></textarea>
             </div>
 
-            <button
-                type="submit"
-                class="checkout"
-                data-translate="payBitcoinButton"
-            >
+            <button type="submit" class="checkout" data-translate="payBitcoinButton">
                 ₿ Paga in Bitcoin e invia ordine
             </button>
         </form>
@@ -252,9 +218,15 @@ function translatePage() {
     });
 }
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
-let gadgets = JSON.parse(localStorage.getItem("gadgets")) || [];
+let cart = [];
+let stickers = [];
+let gadgets = [];
+
+function syncStorage() {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    stickers = JSON.parse(localStorage.getItem("stickers")) || [];
+    gadgets = JSON.parse(localStorage.getItem("gadgets")) || [];
+}
 
 function groupItems(arr) {
     const grouped = {};
@@ -265,6 +237,7 @@ function groupItems(arr) {
 }
 
 function showCartRecap() {
+    syncStorage();
     const box = document.getElementById("cartRecap");
     if (cart.length === 0 && stickers.length === 0 && gadgets.length === 0) {
         box.innerHTML = translations[getLanguage()].emptyCart;
@@ -294,6 +267,7 @@ function showCartRecap() {
 }
 
 function removeOne(type, name) {
+    syncStorage();
     if (type === "cart") {
         const idx = cart.lastIndexOf(name);
         if (idx !== -1) cart.splice(idx, 1);
@@ -312,6 +286,7 @@ function removeOne(type, name) {
 
 function goToBitcoinOrder(event) {
     event.preventDefault();
+    syncStorage();
     const lang = getLanguage();
 
     if (cart.length === 0 && stickers.length === 0 && gadgets.length === 0) {
@@ -339,6 +314,11 @@ function goToBitcoinOrder(event) {
 }
 
 window.addEventListener("load", function() {
+    translatePage();
+    showCartRecap();
+});
+
+window.addEventListener("pageshow", function() {
     translatePage();
     showCartRecap();
 });
