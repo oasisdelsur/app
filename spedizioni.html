@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Spedizioni - Oasis del Sur</title>
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+<body>
+<div class="container">
+    <!-- FRECCIA -->
+    <div class="back-button">
+        <a href="index.html">
+            <span class="back-circle">←</span>
+            <span class="back-label" data-translate="backHome">TORNA ALLA HOME</span>
+        </a>
+    </div>
+
+    <div class="cart">
+        <div class="cart-title" data-translate="shippingTitle">
+            📦 Spedizioni
+        </div>
+
+        <p data-translate="shippingText1">
+            Qui puoi inserire i dettagli sulle spedizioni: tempi di consegna, costi, aree coperte e modalità.
+        </p>
+
+        <p data-translate="shippingText2">
+            Per qualsiasi domanda o conferma puoi contattarci direttamente su Telegram.
+        </p>
+
+        <a href="https://t.me/wordex17" target="_blank">
+            <button class="checkout" data-translate="contactButton">
+                📲 Contatta su Telegram
+            </button>
+        </a>
+    </div>
+</div>
+
+<script>
+const translations = {
+    it: {
+        backHome: "TORNA ALLA HOME",
+        shippingTitle: "📦 Spedizioni",
+        shippingText1: "Qui puoi inserire i dettagli sulle spedizioni: tempi di consegna, costi, aree coperte e modalità.",
+        shippingText2: "Per qualsiasi domanda o conferma puoi contattarci direttamente su Telegram.",
+        contactButton: "📲 Contatta su Telegram"
+    },
+    en: {
+        backHome: "BACK TO HOME",
+        shippingTitle: "📦 Shipping",
+        shippingText1: "Here you can add shipping details: delivery times, costs, covered areas, and methods.",
+        shippingText2: "For any questions or confirmation, you can contact us directly on Telegram.",
+        contactButton: "📲 Contact on Telegram"
+    },
+    es: {
+        backHome: "VOLVER AL INICIO",
+        shippingTitle: "📦 Envíos",
+        shippingText1: "Aquí puedes añadir los detalles de envío: plazos de entrega, costes, zonas y modalidades.",
+        shippingText2: "Para cualquier duda o confirmación puedes contactarnos directamente por Telegram.",
+        contactButton: "📲 Contactar por Telegram"
+    },
+    de: {
+        backHome: "ZUR STARTSEITE",
+        shippingTitle: "📦 Versand",
+        shippingText1: "Hier kannst du Versanddetails einfügen: Lieferzeiten, Kosten, Gebiete und Versandarten.",
+        shippingText2: "Bei Fragen oder zur Bestätigung kannst du uns direkt über Telegram kontaktieren.",
+        contactButton: "📲 Auf Telegram kontaktieren"
+    }
+};
+
+function getLanguage() {
+    const saved = localStorage.getItem("language") || "it";
+    return translations[saved] ? saved : "it";
+}
+
+function translatePage() {
+    const language = getLanguage();
+    const texts = translations[language];
+    document.documentElement.lang = language;
+
+    document.querySelectorAll("[data-translate]").forEach(function(element) {
+        const key = element.getAttribute("data-translate");
+        if (texts[key]) {
+            element.textContent = texts[key];
+        }
+    });
+}
+
+window.addEventListener("load", function() {
+    translatePage();
+});
+</script>
+</body>
+</html>
