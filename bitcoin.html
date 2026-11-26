@@ -15,12 +15,14 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 75px 16px 40px 16px;
-    background: #070908;
-    color: #ffffff;
+    background: #070908 !important;
+    background-color: #070908 !important;
+    color: #ffffff !important;
     font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
 }
 
 .back-arrow-fixed {
@@ -30,17 +32,15 @@ body {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(15, 18, 16, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    background: rgba(15, 18, 16, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff !important;
     font-size: 22px;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 99999;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65);
 }
 
 .btc-wrapper {
@@ -56,9 +56,9 @@ body {
     text-align: center;
     padding: 18px;
     border-radius: 20px;
-    background: linear-gradient(145deg, rgba(28, 22, 8, 0.92), rgba(12, 14, 13, 0.96));
-    border: 1px solid rgba(247, 147, 26, 0.45);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+    background: #141109 !important;
+    border: 1px solid rgba(247, 147, 26, 0.5);
+    color: #ffffff !important;
 }
 
 .btc-title {
@@ -66,22 +66,22 @@ body {
     font-size: 22px;
     font-weight: 900;
     letter-spacing: 2px;
-    color: #f7931a;
+    color: #f7931a !important;
     margin: 0 0 6px 0;
 }
 
 .btc-sub {
     font-size: 12px;
-    color: #cccccc;
+    color: #e5e7eb !important;
     margin: 0;
 }
 
 .btc-card {
-    background: rgba(15, 18, 16, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #0f1310 !important;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
+    color: #ffffff !important;
 }
 
 .qr-box-wrap {
@@ -92,5 +92,258 @@ body {
 }
 
 #qrcode {
-    background: #ffffff;
+    background: #ffffff !important;
     padding: 14px;
+    border-radius: 16px;
+}
+
+#qrcode img, #qrcode canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+.btc-address-box {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: #050706 !important;
+    border: 1px solid rgba(247, 147, 26, 0.45);
+    color: #ffd28a !important;
+    font-size: 12px;
+    word-break: break-all;
+    text-align: center;
+    font-weight: 700;
+}
+
+.btn-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.btc-btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 13px 14px;
+    border-radius: 14px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff !important;
+}
+
+.btn-gold {
+    background: #f7931a !important;
+    color: #000000 !important;
+}
+
+.btn-dark {
+    background: #1f2937 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-green {
+    width: 100%;
+    background: #15803d !important;
+    color: #ffffff !important;
+    margin-top: 12px;
+}
+
+.section-label {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4ade80 !important;
+    margin-bottom: 10px;
+}
+
+.recap-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ffffff !important;
+    white-space: pre-line;
+}
+
+.copy-feedback {
+    font-size: 12px;
+    color: #4ade80 !important;
+    font-weight: 700;
+    min-height: 16px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<a href="shop.html" class="back-arrow-fixed" aria-label="Torna allo shop">←</a>
+
+<div class="btc-wrapper">
+    <div class="btc-header">
+        <h1 class="btc-title">₿ PAGAMENTO BITCOIN</h1>
+        <p class="btc-sub">Scannerizza il QR o copia l'indirizzo BTC per inviare il pagamento</p>
+    </div>
+
+    <div class="btc-card qr-box-wrap">
+        <div id="qrcode"></div>
+        <div class="btc-address-box" id="btcAddressText"></div>
+        <div class="copy-feedback" id="copyFeedback"></div>
+
+        <div class="btn-row">
+            <button type="button" class="btc-btn btn-gold" onclick="copyBtcAddress()">
+                📋 Copia indirizzo BTC
+            </button>
+            <a id="btcWalletLink" href="#" class="btc-btn btn-dark">
+                📲 Apri wallet BTC
+            </a>
+        </div>
+    </div>
+
+    <div class="btc-card">
+        <div class="section-label">🛒 Riepilogo Ordine</div>
+        <div class="recap-text" id="orderSummary">Caricamento...</div>
+    </div>
+
+    <div class="btc-card">
+        <div class="section-label">📦 Dati Spedizione</div>
+        <div class="recap-text" id="shippingSummary">Nessun dato inserito</div>
+
+        <button type="button" class="btc-btn btn-green" onclick="sendBitcoinOrderTelegram()">
+            ✅ Ho pagato — Invia ordine su Telegram
+        </button>
+    </div>
+</div>
+
+<script>
+const BTC_ADDRESS = "bc1qmshchg5s33z7nm2ksgnq0d5388yazf8vqxp8ea";
+
+function safeParse(key, fallback) {
+    try {
+        const val = localStorage.getItem(key);
+        return val ? JSON.parse(val) : fallback;
+    } catch (e) {
+        return fallback;
+    }
+}
+
+function getItems() {
+    return {
+        cart: safeParse("cart", []),
+        stickers: safeParse("stickers", []),
+        gadgets: safeParse("gadgets", []),
+        shipping: safeParse("shippingData", null)
+    };
+}
+
+function groupArr(arr) {
+    const map = {};
+    if (!Array.isArray(arr)) return map;
+    arr.forEach(item => {
+        map[item] = (map[item] || 0) + 1;
+    });
+    return map;
+}
+
+function buildOrderText() {
+    const { cart, stickers, gadgets } = getItems();
+    const gCart = groupArr(cart);
+    const gStickers = groupArr(stickers);
+    const gGadgets = groupArr(gadgets);
+
+    let lines = [];
+    Object.keys(gCart).forEach(k => lines.push("• " + k + " × " + gCart[k]));
+    Object.keys(gStickers).forEach(k => lines.push("• [STATIC] " + k + " × " + gStickers[k]));
+    Object.keys(gGadgets).forEach(k => lines.push("• [GADGET] " + k + " × " + gGadgets[k]));
+
+    return lines.length ? lines.join("\n") : "Nessun prodotto nel carrello";
+}
+
+function renderAll() {
+    document.getElementById("btcAddressText").textContent = BTC_ADDRESS;
+    document.getElementById("btcWalletLink").href = "bitcoin:" + encodeURIComponent(BTC_ADDRESS);
+
+    const qrContainer = document.getElementById("qrcode");
+    qrContainer.innerHTML = "";
+    if (typeof QRCode !== "undefined") {
+        new QRCode(qrContainer, {
+            text: "bitcoin:" + BTC_ADDRESS,
+            width: 190,
+            height: 190,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    }
+
+    document.getElementById("orderSummary").textContent = buildOrderText();
+
+    const { shipping } = getItems();
+    const shipBox = document.getElementById("shippingSummary");
+    if (shipping && shipping.fullName) {
+        shipBox.textContent =
+            "Nome: " + shipping.fullName + "\n" +
+            "Indirizzo: " + shipping.address + "\n" +
+            "CAP / Città: " + shipping.zip + " " + shipping.city + "\n" +
+            "Paese: " + shipping.country +
+            (shipping.notes ? "\nNote: " + shipping.notes : "");
+    } else {
+        shipBox.textContent = "Nessun dato di spedizione salvato (puoi compilarli in Spedizioni).";
+    }
+}
+
+function copyBtcAddress() {
+    const fb = document.getElementById("copyFeedback");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(BTC_ADDRESS).then(() => {
+            fb.textContent = "✅ Indirizzo BTC copiato!";
+        }).catch(() => {
+            fallbackCopy(BTC_ADDRESS, fb);
+        });
+    } else {
+        fallbackCopy(BTC_ADDRESS, fb);
+    }
+}
+
+function fallbackCopy(text, fb) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    fb.textContent = "✅ Indirizzo BTC copiato!";
+}
+
+function sendBitcoinOrderTelegram() {
+    const { cart, stickers, gadgets, shipping } = getItems();
+    if (cart.length === 0 && stickers.length === 0 && gadgets.length === 0) {
+        alert("Il carrello è vuoto!");
+        return;
+    }
+
+    let msg = "Ciao Oasis del Sur, ordine con pagamento BITCOIN:\n\n";
+    msg += buildOrderText() + "\n\n";
+    msg += "Indirizzo BTC: " + BTC_ADDRESS + "\n";
+
+    if (shipping && shipping.fullName) {
+        msg += "\nSPEDIZIONE:\n";
+        msg += "Nome: " + shipping.fullName + "\n";
+        msg += "Indirizzo: " + shipping.address + "\n";
+        msg += "Città: " + shipping.zip + " " + shipping.city + " (" + shipping.country + ")\n";
+        if (shipping.notes) msg += "Note: " + shipping.notes + "\n";
+    }
+
+    window.location.href = "https://t.me/wordex17?text=" + encodeURIComponent(msg);
+}
+
+window.addEventListener("load", renderAll);
+window.addEventListener("pageshow", renderAll);
+</script>
+</body>
+</html>
