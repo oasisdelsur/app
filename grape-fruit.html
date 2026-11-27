@@ -211,4 +211,113 @@
     border-radius: 22px;
     padding: 20px;
     margin: 25px 0 20px 0;
-    box-shadow: 0 0
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15), inset 0 0 15px rgba(50, 205, 50, 0.05);
+}
+
+.cart-title-custom {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #4CAF50;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+#mini-cart {
+    font-size: 14px;
+    color: #e0e0e0;
+    margin-bottom: 16px;
+}
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cart-item-row button {
+    background: rgba(255, 59, 48, 0.15);
+    color: #ff453a;
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cart-item-row button:hover {
+    background: #ff3b30;
+    color: #ffffff;
+}
+
+/* BOTTONI INTEGRATI DENTRO LA SCHEDA CARRELLO */
+.cart-actions-integrated {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-action-int {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px 8px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-action-int.primary {
+    background: linear-gradient(135deg, #1e7e34, #155724);
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.25);
+}
+
+.btn-action-int:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-action-int.primary:hover {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+}
+
+@media (max-width: 500px) {
+    .section-title-text {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    .product-image, .product-video, .media-placeholder {
+        height: 160px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="back-button">
+    <a href="dry.html" id="back" data-translate="backToDry">
+        ← Torna a Dry
+    </a>
