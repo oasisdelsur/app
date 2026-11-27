@@ -12,44 +12,48 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-/* PULSANTE INDIETRO CIRCOLARE FISSO SULLO SCHERMO */
-.back-button-circle {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    width: 38px;
-    height: 38px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 20px 14px 40px 14px;
+    background: #070908 !important;
+    background-color: #070908 !important;
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+}
+
+/* FRECCIA IN ALTO IN LINEA CON LE ALTRE PAGINE */
+.top-back {
+    max-width: 600px;
+    margin: 0 auto 14px auto;
+}
+
+.top-back a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #ffffff !important;
     text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-weight: 800;
+    font-size: 13px;
 }
 
 /* TITOLO ULTRA-PREMIUM (AZZURRO CRISTALLO) */
 .section-title-container {
     width: 100%;
     max-width: 600px;
-    margin: 50px auto 20px auto;
+    margin: 15px auto 20px auto;
     padding: 18px 24px;
-    box-sizing: border-box;
-    
-    background: linear-gradient(145deg, rgba(10, 20, 30, 0.9), rgba(8, 15, 25, 0.95));
-    border: 1px solid rgba(0, 212, 255, 0.4);
+    background: linear-gradient(145deg, rgba(10, 20, 30, 0.95), rgba(8, 15, 25, 0.98)) !important;
+    border: 1px solid rgba(0, 212, 255, 0.45);
     border-radius: 18px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 212, 255, 0.15);
-    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 0 15px rgba(0, 212, 255, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,10 +95,10 @@
     font-size: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    color: #00d4ff !important;
     background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0088ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.5));
 }
 
 .title-badge {
@@ -102,72 +106,92 @@
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 2px;
-    color: #00d4ff;
+    color: #00d4ff !important;
     text-transform: uppercase;
     margin-top: 6px;
     border-top: 1px solid rgba(0, 212, 255, 0.3);
     padding-top: 6px;
     width: 80%;
-    text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
 }
 
 /* STILI DELLA SEZIONE SCHEDE E CARRELLO IN BASSO */
 .sticker-cart {
-    background: rgba(15, 25, 18, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 18px;
-    margin: 30px auto 20px auto;
-    max-width: 500px;
+    background: rgba(10, 20, 12, 0.95) !important;
+    border: 1px solid rgba(50, 205, 50, 0.35);
+    border-radius: 22px;
+    padding: 20px;
+    margin: 28px auto 20px auto;
+    max-width: 600px;
+    color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15);
 }
 
 .cart-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 18px;
-    color: #fff;
+    font-size: 16px;
+    color: #4CAF50 !important;
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
 }
 
 .sticker-cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
-    color: #fff;
+    padding: 10px 14px;
+    color: #ffffff !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .remove-sticker-btn {
-    width: 18px;
-    height: 18px;
-    background-color: #ff3b30;
-    border-radius: 50%;
-    border: none;
+    background: rgba(255, 59, 48, 0.2) !important;
+    color: #ff6961 !important;
+    border: 1px solid rgba(255, 59, 48, 0.4);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 0 6px rgba(255, 59, 48, 0.6);
 }
 
-.navigation-box {
-    display: block;
-    background: rgba(15, 25, 18, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 22px;
-    margin: 15px auto;
-    max-width: 500px;
-    text-align: center;
-    text-decoration: none;
-    color: #ffffff;
+.cart-actions-integrated {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-action-int {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 12px 8px;
+    color: #ffffff !important;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    backdrop-filter: blur(10px);
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.btn-action-int.primary {
+    background: linear-gradient(135deg, #1e7e34, #155724) !important;
+    border: 1px solid rgba(76, 175, 80, 0.55);
 }
 
 .category-image {
@@ -189,10 +213,10 @@
 </head>
 <body>
 
-<!-- PULSANTE FRECCIA FISSO CHE SEGUE LO SCROLL -->
-<a href="shop.html" class="back-button-circle" id="back">
-    ←
-</a>
+<!-- FRECCIA IN LINEA CON LE ALTRE PAGINE -->
+<div class="top-back">
+    <a href="shop.html" id="back" data-translate="backToShop">← Torna allo Shop</a>
+</div>
 
 <div class="container">
     <!-- TITOLO SUPERIORE CON CONTEGGIO -->
@@ -206,114 +230,125 @@
     <div class="product">
         <div class="products">
             <div class="category" onclick="addSticker('N1')">
-                <img src="IMG_0529.JPG" class="category-image">
+                <img src="IMG_0529.JPG" class="category-image" alt="Sticker N1">
                 <div class="category-name">N1 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N2')">
-                <img src="IMG_0530.JPG" class="category-image">
+                <img src="IMG_0530.JPG" class="category-image" alt="Sticker N2">
                 <div class="category-name">N2 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N3')">
-                <img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="category-image">
+                <img src="52e363fc-1d16-4231-b897-f19689b83cb2.JPG" class="category-image" alt="Sticker N3">
                 <div class="category-name">N3 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N4')">
-                <img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="category-image">
+                <img src="1B7F7660-E8BE-465E-862B-9C09FB0A9995.JPG" class="category-image" alt="Sticker N4">
                 <div class="category-name">N4 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N5')">
-                <img src="IMG_1658.jpeg" class="category-image">
+                <img src="IMG_1658.jpeg" class="category-image" alt="Sticker N5">
                 <div class="category-name">N5 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N6')">
-                <img src="IMG_1659.jpeg" class="category-image">
+                <img src="IMG_1659.jpeg" class="category-image" alt="Sticker N6">
                 <div class="category-name">N6 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N7')">
-                <img src="IMG_1667.jpeg" class="category-image">
+                <img src="IMG_1667.jpeg" class="category-image" alt="Sticker N7">
                 <div class="category-name">N7 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N8')">
-                <img src="IMG_1669.jpeg" class="category-image">
+                <img src="IMG_1669.jpeg" class="category-image" alt="Sticker N8">
                 <div class="category-name">N8 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N9')">
-                <img src="IMG_1665.jpeg" class="category-image">
+                <img src="IMG_1665.jpeg" class="category-image" alt="Sticker N9">
                 <div class="category-name">N9 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N10')">
-                <img src="IMG_1663.jpeg" class="category-image">
+                <img src="IMG_1663.jpeg" class="category-image" alt="Sticker N10">
                 <div class="category-name">N10 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N11')">
-                <img src="IMG_1664.jpeg" class="category-image">
+                <img src="IMG_1664.jpeg" class="category-image" alt="Sticker N11">
                 <div class="category-name">N11 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N12')">
-                <img src="IMG_1668.jpeg" class="category-image">
+                <img src="IMG_1668.jpeg" class="category-image" alt="Sticker N12">
                 <div class="category-name">N12 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N13')">
-                <img src="IMG_1657.jpeg" class="category-image">
+                <img src="IMG_1657.jpeg" class="category-image" alt="Sticker N13">
                 <div class="category-name">N13 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N14')">
-                <img src="IMG_1670.jpeg" class="category-image">
+                <img src="IMG_1670.jpeg" class="category-image" alt="Sticker N14">
                 <div class="category-name">N14 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N15')">
-                <img src="IMG_1671.jpeg" class="category-image">
+                <img src="IMG_1671.jpeg" class="category-image" alt="Sticker N15">
                 <div class="category-name">N15 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N16')">
-                <img src="IMG_1673.jpeg" class="category-image">
+                <img src="IMG_1673.jpeg" class="category-image" alt="Sticker N16">
                 <div class="category-name">N16 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N17')">
-                <img src="IMG_1672.jpeg" class="category-image">
+                <img src="IMG_1672.jpeg" class="category-image" alt="Sticker N17">
                 <div class="category-name">N17 + AGGIUNGI</div>
             </div>
             <div class="category" onclick="addSticker('N18')">
-                <img src="IMG_1662.jpeg" class="category-image">
+                <img src="IMG_1662.jpeg" class="category-image" alt="Sticker N18">
                 <div class="category-name">N18 + AGGIUNGI</div>
             </div>
         </div>
 
-        <!-- CARRELLO IN BASSO STILE SCREENSHOT -->
+        <!-- CARRELLO IN BASSO -->
         <div class="sticker-cart">
             <div class="cart-title">
-                🛒🛒 <span id="cartText">Carrello</span>
+                🛒 <span id="cartText" data-translate="cartTitle">CARRELLO</span>
             </div>
             <div id="stickerCart">
                 Nessuno sticker selezionato
             </div>
-        </div>
 
-        <!-- BOTTONI GRANDI DI NAVIGAZIONE -->
-        <a href="cart.html" class="navigation-box" id="goCart">
-            🛒 Vai al carrello
-        </a>
-        <a href="shop.html" class="navigation-box" id="goMenu">
-            🏠 Torna al menu
-        </a>
+            <div class="cart-actions-integrated">
+                <a href="shop.html" class="btn-action-int primary" id="goCart">
+                    <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
+                </a>
+                <a href="shop.html" class="btn-action-int" id="goMenu">
+                    <span>🏠</span> <span data-translate="backToMenu">Torna al menu</span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
 <script src="language.js"></script>
 <script>
 const MAX_STICKERS = 5;
-let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
+let stickers = [];
+let cart = [];
+
+function syncStorage() {
+    stickers = JSON.parse(localStorage.getItem("stickers")) || [];
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+}
 
 function addSticker(numeroSticker) {
+    syncStorage();
     if (stickers.length >= MAX_STICKERS) {
         alert("Hai esaurito i tuoi stickers 🎁");
         return;
     }
-    
-    stickers.push("Sticker " + numeroSticker);
+
+    const label = "Sticker " + numeroSticker;
+    stickers.push(label);
+    cart.push("[STATIC] " + label);
     localStorage.setItem("stickers", JSON.stringify(stickers));
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateStickerPage();
-    
+
     const rimasti = MAX_STICKERS - stickers.length;
     if (rimasti === 0) {
         alert("Hai esaurito i tuoi stickers 🎁");
@@ -325,39 +360,67 @@ function addSticker(numeroSticker) {
 }
 
 function removeSticker(index) {
+    syncStorage();
+    const removed = stickers[index];
     stickers.splice(index, 1);
+
+    if (removed) {
+        const cartIdx = cart.lastIndexOf("[STATIC] " + removed);
+        if (cartIdx !== -1) cart.splice(cartIdx, 1);
+    }
+
     localStorage.setItem("stickers", JSON.stringify(stickers));
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateStickerPage();
 }
 
 function updateStickerPage() {
-    document.getElementById("counter").innerHTML = "Hai scelto " + stickers.length + " / " + MAX_STICKERS + " stickers";
+    syncStorage();
+    const counterEl = document.getElementById("counter");
+    if (counterEl) {
+        counterEl.textContent = "Hai scelto " + stickers.length + " / " + MAX_STICKERS + " stickers";
+    }
+
     const box = document.getElementById("stickerCart");
-    
+    if (!box) return;
+
     if (stickers.length === 0) {
         box.innerHTML = "<span style='color:#aaa;'>Nessuno sticker selezionato</span>";
         return;
     }
-    
+
     box.innerHTML = "";
     stickers.forEach(function(sticker, index) {
         box.innerHTML +=
             '<div class="sticker-cart-item">' +
                 '<span>• ' + sticker + '</span>' +
-                '<button class="remove-sticker-btn" onclick="removeSticker(' + index + ')"></button>' +
+                '<button class="remove-sticker-btn" onclick="removeSticker(' + index + ')">❌ Rimuovi</button>' +
             '</div>';
     });
 }
 
-window.addEventListener("load", function() {
+function applyTranslations() {
     const lang = localStorage.getItem("language") || "it";
     const t = window.translations ? (translations[lang] || translations.it) : {};
     document.documentElement.lang = lang;
-    
-    if (t.cart) document.getElementById("cartText").innerHTML = t.cart;
-    if (t.goCart) document.getElementById("goCart").innerHTML = t.goCart;
-    if (t.goMenu) document.getElementById("goMenu").innerHTML = t.goMenu;
-    
+
+    const backEl = document.getElementById("back");
+    if (backEl) {
+        backEl.textContent = t.backToShop || "← Torna allo Shop";
+    }
+    const cartTitleEl = document.getElementById("cartText");
+    if (cartTitleEl) {
+        cartTitleEl.textContent = t.cart || "CARRELLO";
+    }
+}
+
+window.addEventListener("load", function() {
+    applyTranslations();
+    updateStickerPage();
+});
+
+window.addEventListener("pageshow", function() {
+    applyTranslations();
     updateStickerPage();
 });
 </script>
