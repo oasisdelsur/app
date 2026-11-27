@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eggs 120U - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
 
+<!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* SCHEDE CARTELLE EGGS 120U */
+.frozen-folders {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 25px 0;
+}
+
+.frozen-folder-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    background: rgba(20, 30, 20, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.frozen-folder-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.frozen-folder-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.frozen-folder-arrow {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 800;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="back-button">
+        <a href="frozen.html" id="back" data-translate="back">
+            ← Indietro
+        </a>
+    </div>
+
+    <!-- VOCI DENTRO EGGS 120U -->
+    <div class="frozen-folders">
+        <a href="eggs-calippo-120u.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 EGGS CALIPPO 120U</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="water-lemonade.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 WATER LEMONADE</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="orange-scank.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 ORANGE SCANK</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="rainbow.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 RAINBOW</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="zwapanga.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 ZWAPANGA</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="el-mencho.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 EL MENCHO</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="el-mencho-frozen.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 EL MENCHO FROZEN</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="candy-juice.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 CANDY JUICE</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+    </div>
+</div>
+
+<script>
+/* TRADUZIONI INTEGRATE */
+const translations = {
+    it: {
+        back: "← Indietro"
+    },
+    en: {
+        back: "← Back"
+    },
+    es: {
+        back: "← Atrás"
+    },
+    de: {
+        back: "← Zurück"
+    }
+};
+
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
+
+function translatePage() {
+    const lang = getLanguage();
+    const texts = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+}
+
+window.addEventListener("load", translatePage);
+window.addEventListener("pageshow", translatePage);
+</script>
+</body>
+</html>
