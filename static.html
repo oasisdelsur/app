@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mountain Giants - Oasis del Sur</title>
+<title>Static - Oasis del Sur</title>
 <link rel="stylesheet" href="style.css">
 
+<!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
@@ -17,227 +18,178 @@
     margin: 15px auto 20px auto;
     padding: 18px 24px;
     box-sizing: border-box;
-    background: linear-gradient(145deg, rgba(10, 20, 30, 0.9), rgba(8, 15, 25, 0.95));
-    border: 1px solid rgba(0, 212, 255, 0.4);
+
+    background: linear-gradient(145deg, rgba(20, 25, 20, 0.95), rgba(10, 15, 10, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 18px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 212, 255, 0.15);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.05);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-title-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    transition: 0.5s;
+    animation: shine 6s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
 }
 
 .section-title-text {
     font-family: 'Cinzel', serif;
     font-weight: 900;
-    font-size: 22px;
-    letter-spacing: 2px;
+    font-size: 26px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0088ff 100%);
+
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #888888 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.2));
 }
 
 .title-badge {
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: #00d4ff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
-    margin-top: 6px;
-    border-top: 1px solid rgba(0, 212, 255, 0.3);
-    padding-top: 5px;
-    width: 70%;
+    margin-top: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 4px;
+    width: 60%;
 }
 
-.media-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+.static-folders {
     max-width: 600px;
-    margin: 0 auto 25px auto;
-}
-
-.media-card {
-    background: rgba(15, 25, 18, 0.9);
-    border: 1px solid rgba(0, 255, 120, 0.25);
-    border-radius: 18px;
-    padding: 10px;
+    margin: 25px auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
 }
 
-.media-card img,
-.media-card video {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 12px;
-    display: block;
-}
-
-.sizes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-}
-
-.sizes-grid button {
-    padding: 8px 4px;
-    border-radius: 10px;
-    border: 1px solid rgba(76, 175, 80, 0.5);
-    background: #172b1b;
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 11px;
-    cursor: pointer;
-}
-
-.cart-card {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 18px;
-    border-radius: 20px;
-    background: rgba(15, 25, 18, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.cart-title-custom {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 16px;
-    color: #4CAF50;
-    margin-bottom: 12px;
-}
-
-.cart-item-row {
+.static-folder-card {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    margin-bottom: 8px;
-    font-size: 13px;
-}
-
-.cart-item-row button {
-    background: rgba(255, 59, 48, 0.25);
-    color: #ff6961;
-    border: 1px solid rgba(255, 59, 48, 0.4);
-    border-radius: 16px;
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.navigation-box {
-    display: block;
-    background: rgba(15, 25, 18, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 16px;
-    margin: 12px auto 0 auto;
-    text-align: center;
+    justify-content: space-between;
     text-decoration: none;
-    color: #ffffff;
+    background: rgba(20, 30, 20, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.static-folder-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.static-folder-title {
     font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
     font-weight: 800;
-    font-size: 14px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.static-folder-arrow {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 800;
+}
+
+@media (max-width: 500px) {
+    .section-title-text {
+        font-size: 22px;
+    }
 }
 </style>
 </head>
 <body>
 
-<div class="back-button">
-    <a href="static.html" id="back">
-        <span class="back-circle">←</span>
-        <span class="back-label">Indietro</span>
-    </a>
-</div>
-
 <div class="container">
+    <div class="back-button">
+        <a href="shop.html" id="back" data-translate="back">
+            ← Indietro
+        </a>
+    </div>
+
+    <!-- TITOLO STATIC STYLE -->
     <div class="section-title-container">
-        <span class="section-title-text">MOUNTAIN GIANTS</span>
-        <div class="title-badge">STATIC EDITION</div>
+        <span class="section-title-text">STATIC</span>
+        <div class="title-badge">OASIS DEL SUR</div>
     </div>
 
-    <!-- QUI METTIAMO FOTO E VIDEO -->
-    <div class="media-grid" id="mediaGrid">
-        <!-- Esempio scheda:
-        <div class="media-card">
-            <img src="NOME_FOTO.jpeg" alt="Mountain Giants">
-            <div class="sizes-grid">
-                <button onclick="addStatic('MOUNTAIN GIANTS - 1pz')">1pz</button>
-                <button onclick="addStatic('MOUNTAIN GIANTS - 5pz')">5pz</button>
-                <button onclick="addStatic('MOUNTAIN GIANTS - 10pz')">10pz</button>
-            </div>
-        </div>
-        -->
-    </div>
-
-    <div class="cart-card">
-        <div class="cart-title-custom">🛒 CARRELLO</div>
-        <div id="mini-cart">Carrello vuoto</div>
-        <a href="shop.html" class="navigation-box">🛒 Vai al carrello</a>
+    <!-- VOCE MOUNTAIN GIANTS -->
+    <div class="static-folders">
+        <a href="mountain-giants.html" class="static-folder-card">
+            <span class="static-folder-title">📁 MOUNTAIN GIANTS</span>
+            <span class="static-folder-arrow">›</span>
+        </a>
     </div>
 </div>
 
-<script src="language.js"></script>
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function syncCart() {
-    cart = JSON.parse(localStorage.getItem("cart")) || [];
-}
-
-function addStatic(item) {
-    syncCart();
-    cart.push("[STATIC] " + item);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
-    alert("✅ " + item + " aggiunto al carrello");
-}
-
-function removeStatic(index) {
-    syncCart();
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
-}
-
-function renderCart() {
-    syncCart();
-    const box = document.getElementById("mini-cart");
-    const staticItems = cart
-        .map((item, idx) => ({ item, idx }))
-        .filter(entry => entry.item.startsWith("[STATIC] "));
-
-    if (staticItems.length === 0) {
-        box.innerHTML = "<span style='color:#aaa;'>Carrello vuoto</span>";
-        return;
+const translations = {
+    it: {
+        back: "← Indietro"
+    },
+    en: {
+        back: "← Back"
+    },
+    es: {
+        back: "← Atrás"
+    },
+    de: {
+        back: "← Zurück"
     }
+};
 
-    box.innerHTML = "";
-    staticItems.forEach(entry => {
-        const cleanName = entry.item.replace("[STATIC] ", "");
-        box.innerHTML +=
-            '<div class="cart-item-row">' +
-                '<span>• ' + cleanName + '</span>' +
-                '<button onclick="removeStatic(' + entry.idx + ')">❌ Rimuovi</button>' +
-            '</div>';
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
+
+function translatePage() {
+    const lang = getLanguage();
+    const texts = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
     });
 }
 
-window.addEventListener("load", renderCart);
-window.addEventListener("pageshow", renderCart);
+window.addEventListener("load", translatePage);
+window.addEventListener("pageshow", translatePage);
 </script>
 </body>
 </html>
