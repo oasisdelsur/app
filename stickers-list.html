@@ -16,32 +16,33 @@
     box-sizing: border-box;
 }
 
-html, body {
+body {
     margin: 0;
     padding: 20px 14px 40px 14px;
-    background: #070908 !important;
-    background-color: #070908 !important;
-    color: #ffffff !important;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
 }
 
-/* FRECCIA IN ALTO IN LINEA CON LE ALTRE PAGINE */
+/* BOTTONE INDIETRO A PILLOLA IDENTICO A QUELLO VAPE */
 .top-back {
     max-width: 600px;
-    margin: 0 auto 14px auto;
+    margin: 0 auto 18px auto;
 }
 
-.top-back a {
-    display: inline-block;
-    padding: 10px 16px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    color: #ffffff !important;
+.back-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: rgba(12, 24, 15, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 800;
-    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 /* TITOLO ULTRA-PREMIUM (AZZURRO CRISTALLO) */
@@ -50,10 +51,12 @@ html, body {
     max-width: 600px;
     margin: 15px auto 20px auto;
     padding: 18px 24px;
-    background: linear-gradient(145deg, rgba(10, 20, 30, 0.95), rgba(8, 15, 25, 0.98)) !important;
-    border: 1px solid rgba(0, 212, 255, 0.45);
+    background: linear-gradient(145deg, rgba(10, 20, 30, 0.92), rgba(8, 15, 25, 0.95));
+    border: 1px solid rgba(0, 212, 255, 0.4);
     border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 0 15px rgba(0, 212, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), inset 0 0 15px rgba(0, 212, 255, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,10 +98,10 @@ html, body {
     font-size: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #00d4ff !important;
     background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0088ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 212, 255, 0.5));
 }
 
 .title-badge {
@@ -106,92 +109,72 @@ html, body {
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 2px;
-    color: #00d4ff !important;
+    color: #00d4ff;
     text-transform: uppercase;
     margin-top: 6px;
     border-top: 1px solid rgba(0, 212, 255, 0.3);
     padding-top: 6px;
     width: 80%;
+    text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
 }
 
 /* STILI DELLA SEZIONE SCHEDE E CARRELLO IN BASSO */
 .sticker-cart {
-    background: rgba(10, 20, 12, 0.95) !important;
-    border: 1px solid rgba(50, 205, 50, 0.35);
-    border-radius: 22px;
-    padding: 20px;
-    margin: 28px auto 20px auto;
-    max-width: 600px;
-    color: #ffffff !important;
-    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15);
+    background: rgba(15, 25, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 18px;
+    margin: 30px auto 20px auto;
+    max-width: 500px;
 }
 
 .cart-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 16px;
-    color: #4CAF50 !important;
+    font-size: 18px;
+    color: #fff;
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 10px;
 }
 
 .sticker-cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 14px;
-    color: #ffffff !important;
+    padding: 8px 0;
+    color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px;
-    margin-bottom: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .remove-sticker-btn {
-    background: rgba(255, 59, 48, 0.2) !important;
-    color: #ff6961 !important;
-    border: 1px solid rgba(255, 59, 48, 0.4);
-    border-radius: 20px;
-    padding: 5px 12px;
-    font-size: 11px;
-    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    background-color: #ff3b30;
+    border-radius: 50%;
+    border: none;
     cursor: pointer;
+    box-shadow: 0 0 6px rgba(255, 59, 48, 0.6);
 }
 
-.cart-actions-integrated {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.btn-action-int {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 14px;
-    padding: 12px 8px;
-    color: #ffffff !important;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 13px;
+.navigation-box {
+    display: block;
+    background: rgba(15, 25, 18, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 22px;
+    margin: 15px auto;
+    max-width: 500px;
+    text-align: center;
     text-decoration: none;
-}
-
-.btn-action-int.primary {
-    background: linear-gradient(135deg, #1e7e34, #155724) !important;
-    border: 1px solid rgba(76, 175, 80, 0.55);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    backdrop-filter: blur(10px);
 }
 
 .category-image {
@@ -213,13 +196,11 @@ html, body {
 </head>
 <body>
 
-<!-- FRECCIA IN LINEA CON LE ALTRE PAGINE -->
 <div class="top-back">
-    <a href="shop.html" id="back" data-translate="backToShop">← Torna allo Shop</a>
+    <a href="shop.html" class="back-pill" id="back">← Indietro</a>
 </div>
 
 <div class="container">
-    <!-- TITOLO SUPERIORE CON CONTEGGIO -->
     <div class="section-title-container">
         <div class="title-header">
             <span class="section-title-text">SELEZIONA I TUOI STICKERS</span>
@@ -303,32 +284,29 @@ html, body {
             </div>
         </div>
 
-        <!-- CARRELLO IN BASSO -->
         <div class="sticker-cart">
             <div class="cart-title">
-                🛒 <span id="cartText" data-translate="cartTitle">CARRELLO</span>
+                🛒🛒 <span id="cartText">Carrello</span>
             </div>
             <div id="stickerCart">
                 Nessuno sticker selezionato
             </div>
-
-            <div class="cart-actions-integrated">
-                <a href="shop.html" class="btn-action-int primary" id="goCart">
-                    <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
-                </a>
-                <a href="shop.html" class="btn-action-int" id="goMenu">
-                    <span>🏠</span> <span data-translate="backToMenu">Torna al menu</span>
-                </a>
-            </div>
         </div>
+
+        <a href="shop.html" class="navigation-box" id="goCart">
+            🛒 Vai al carrello
+        </a>
+        <a href="shop.html" class="navigation-box" id="goMenu">
+            🏠 Torna al menu
+        </a>
     </div>
 </div>
 
 <script src="language.js"></script>
 <script>
 const MAX_STICKERS = 5;
-let stickers = [];
-let cart = [];
+let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function syncStorage() {
     stickers = JSON.parse(localStorage.getItem("stickers")) || [];
@@ -376,13 +354,8 @@ function removeSticker(index) {
 
 function updateStickerPage() {
     syncStorage();
-    const counterEl = document.getElementById("counter");
-    if (counterEl) {
-        counterEl.textContent = "Hai scelto " + stickers.length + " / " + MAX_STICKERS + " stickers";
-    }
-
+    document.getElementById("counter").innerHTML = "Hai scelto " + stickers.length + " / " + MAX_STICKERS + " stickers";
     const box = document.getElementById("stickerCart");
-    if (!box) return;
 
     if (stickers.length === 0) {
         box.innerHTML = "<span style='color:#aaa;'>Nessuno sticker selezionato</span>";
@@ -394,33 +367,33 @@ function updateStickerPage() {
         box.innerHTML +=
             '<div class="sticker-cart-item">' +
                 '<span>• ' + sticker + '</span>' +
-                '<button class="remove-sticker-btn" onclick="removeSticker(' + index + ')">❌ Rimuovi</button>' +
+                '<button class="remove-sticker-btn" onclick="removeSticker(' + index + ')"></button>' +
             '</div>';
     });
 }
 
-function applyTranslations() {
+window.addEventListener("load", function() {
+    const backBtn = document.getElementById("back");
+    if (backBtn) {
+        backBtn.setAttribute("href", "shop.html");
+        backBtn.onclick = function(e) {
+            e.preventDefault();
+            window.location.href = "shop.html";
+        };
+    }
+
     const lang = localStorage.getItem("language") || "it";
     const t = window.translations ? (translations[lang] || translations.it) : {};
     document.documentElement.lang = lang;
 
-    const backEl = document.getElementById("back");
-    if (backEl) {
-        backEl.textContent = t.backToShop || "← Torna allo Shop";
-    }
-    const cartTitleEl = document.getElementById("cartText");
-    if (cartTitleEl) {
-        cartTitleEl.textContent = t.cart || "CARRELLO";
-    }
-}
+    if (t.cart) document.getElementById("cartText").innerHTML = t.cart;
+    if (t.goCart) document.getElementById("goCart").innerHTML = t.goCart;
+    if (t.goMenu) document.getElementById("goMenu").innerHTML = t.goMenu;
 
-window.addEventListener("load", function() {
-    applyTranslations();
     updateStickerPage();
 });
 
 window.addEventListener("pageshow", function() {
-    applyTranslations();
     updateStickerPage();
 });
 </script>
