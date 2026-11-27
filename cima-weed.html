@@ -1,147 +1,431 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cima Weed - Oasis del Sur</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cima Weed - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
 
-    <style>
-        .product-image, .product-video {
-            width: 100%;
-            max-width: 600px;
-            height: 350px;
-            display: block;
-            margin: 0 auto 20px auto;
-            border-radius: 18px;
-            object-fit: cover;
-            object-position: center;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
-        #mini-cart {
-            margin-top: 15px;
-            font-size: 16px;
-            line-height: 1.8;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        #mini-cart button {
-            background: #e50914;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-        }
+html, body {
+    margin: 0;
+    padding: 20px 14px 40px 14px;
+    background: #070908 !important;
+    background-color: #070908 !important;
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+}
 
-        @media (max-width: 500px) {
-            .product-image, .product-video {
-                width: 100%;
-                max-width: 100%;
-                height: 280px;
-                object-fit: cover;
-            }
-        }
-    </style>
+.top-back {
+    max-width: 600px;
+    margin: 0 auto 14px auto;
+}
+
+.top-back a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.wrap {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section-title-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 15px auto 20px auto;
+    padding: 18px 24px;
+    background: linear-gradient(145deg, rgba(25, 20, 10, 0.95), rgba(15, 15, 8, 0.98)) !important;
+    border: 1px solid rgba(255, 215, 0, 0.45);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 0 15px rgba(255, 215, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.section-title-text {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffd700 !important;
+    background: linear-gradient(135deg, #ffffff 0%, #ffd700 40%, #ffae00 70%, #ff8c00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ffd700 !important;
+    text-transform: uppercase;
+    margin-top: 6px;
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+    padding-top: 4px;
+    width: 60%;
+}
+
+.photo-block {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 22px auto;
+    padding: 12px;
+    border-radius: 20px;
+    background: rgba(15, 22, 16, 0.92) !important;
+    border: 1px solid rgba(76, 175, 80, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.product-image, .product-video {
+    width: 100%;
+    max-width: 600px;
+    height: 340px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center;
+    background: #111412 !important;
+}
+
+.product-video {
+    margin-bottom: 22px;
+}
+
+.single-gadget-btn {
+    width: 100%;
+    margin-top: 12px;
+    background: rgba(15, 30, 18, 0.92) !important;
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    border-radius: 14px;
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.single-gadget-btn::after {
+    content: "＋";
+    font-size: 18px;
+    color: #4CAF50;
+}
+
+.single-gadget-btn:hover, .single-gadget-btn:active {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20) !important;
+    border-color: #66bb6a;
+}
+
+.cart-card {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(10, 20, 12, 0.95) !important;
+    border: 1px solid rgba(50, 205, 50, 0.35);
+    border-radius: 22px;
+    padding: 20px;
+    margin: 25px auto 20px auto;
+    color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15);
+}
+
+.cart-title-custom {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #4CAF50 !important;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+#mini-cart {
+    font-size: 14px;
+    color: #e0e0e0 !important;
+    margin-bottom: 16px;
+}
+
+.cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cart-item-row button {
+    background: rgba(255, 59, 48, 0.2) !important;
+    color: #ff6961 !important;
+    border: 1px solid rgba(255, 59, 48, 0.4);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cart-actions-integrated {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-action-int {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 12px 8px;
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.btn-action-int.primary {
+    background: linear-gradient(135deg, #1e7e34, #155724) !important;
+    border: 1px solid rgba(76, 175, 80, 0.55);
+}
+
+@media (max-width: 500px) {
+    .section-title-text {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    .product-image, .product-video {
+        height: 280px;
+    }
+}
+</style>
 </head>
-
 <body>
 
-<div class="back-button">
-    <a href="gadget.html" id="back">
-        ← Torna ai Gadget
-    </a>
+<div class="top-back">
+    <a href="gadget.html" id="back" data-translate="backToGadget">← Torna ai Gadget</a>
 </div>
 
-<div class="container">
-
-    <div class="section-title">
-         CIMA WEED
-    </div>
-
-    <div class="product">
-        <!-- IMMAGINI E VIDEO A SCENDERE -->
-        <img src="IMG_1780.png" class="product-image" alt="Cima Weed 1">
-        <img src="IMG_1781.png" class="product-image" alt="Cima Weed 2">
-        <img src="IMG_1782.png" class="product-image" alt="Cima Weed 3">
-
-        <video class="product-video" controls autoplay loop muted playsinline>
-            <source src="IMG_1688.mov" type="video/quicktime">
-            <source src="IMG_1688.mov" type="video/mp4">
-        </video>
-
-        <h2 id="choose">
-            Scegli quantità
-        </h2>
-
-        <!-- UNICA OPZIONE DISPONIBILE -->
-        <div class="sizes">
-            <button onclick="addGadget('CIMA WEED - 1pz')">1pz</button>
+<div class="wrap">
+    <div class="section-title-container">
+        <div class="title-header">
+            <span class="section-title-text">CIMA WEED</span>
         </div>
+        <div class="title-badge">GADGET EDITION</div>
     </div>
 
-    <div class="cart">
-        <div class="cart-title">
-            🛒 <span id="cartText">Il tuo ordine</span>
+    <div class="photo-block">
+        <img src="IMG_1780.png" class="product-image" alt="Cima Weed 1">
+        <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 1) - 1 solo gadget disponibile')">
+            <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
+        </button>
+    </div>
+
+    <div class="photo-block">
+        <img src="IMG_1781.png" class="product-image" alt="Cima Weed 2">
+        <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 2) - 1 solo gadget disponibile')">
+            <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
+        </button>
+    </div>
+
+    <div class="photo-block">
+        <img src="IMG_1782.png" class="product-image" alt="Cima Weed 3">
+        <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 3) - 1 solo gadget disponibile')">
+            <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
+        </button>
+    </div>
+
+    <video class="product-video" controls muted playsinline preload="metadata">
+        <source src="IMG_1688.mov" type="video/mp4">
+        <source src="IMG_1688.mov" type="video/quicktime">
+    </video>
+
+    <div class="cart-card" id="cart-section">
+        <div class="cart-title-custom">
+            <span id="cartText" data-translate="cartTitle">CARRELLO</span> <span>🛒</span>
         </div>
         <div id="mini-cart">
-            Carrello vuoto
+            <span data-translate="emptyCart">Carrello vuoto</span>
+        </div>
+
+        <div class="cart-actions-integrated">
+            <a href="shop.html" class="btn-action-int primary" id="goCart">
+                <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
+            </a>
+            <a href="shop.html" class="btn-action-int" id="goMenu">
+                <span>🏠</span> <span data-translate="backToMenu">Torna al menu</span>
+            </a>
         </div>
     </div>
-
-    <a href="shop.html" class="category-link">
-        <div class="category" id="goCart">
-            🛒 Vai al carrello
-        </div>
-    </a>
-
-    <a href="shop.html" class="category-link">
-        <div class="category" id="goMenu">
-            🏠 Torna al menu
-        </div>
-    </a>
-
 </div>
 
 <script src="language.js"></script>
 
 <script>
-let gadgets = JSON.parse(localStorage.getItem("gadgets")) || [];
+const translations = {
+    it: {
+        backToGadget: "← Torna ai Gadget",
+        onlyOneGadget: "1 solo gadget disponibile",
+        cartTitle: "CARRELLO",
+        emptyCart: "Carrello vuoto",
+        goToCart: "Vai al carrello",
+        backToMenu: "Torna al menu",
+        addedToCart: "aggiunto al carrello"
+    },
+    en: {
+        backToGadget: "← Back to Gadgets",
+        onlyOneGadget: "1 gadget only available",
+        cartTitle: "CART",
+        emptyCart: "Empty cart",
+        goToCart: "Go to cart",
+        backToMenu: "Back to menu",
+        addedToCart: "added to cart"
+    },
+    es: {
+        backToGadget: "← Volver a Gadgets",
+        onlyOneGadget: "1 solo gadget disponible",
+        cartTitle: "CARRITO",
+        emptyCart: "Carrito vacío",
+        goToCart: "Ir al carrito",
+        backToMenu: "Volver al menú",
+        addedToCart: "añadido al carrito"
+    },
+    de: {
+        backToGadget: "← Zurück zu Gadgets",
+        onlyOneGadget: "Nur 1 Gadget verfügbar",
+        cartTitle: "WARENKORB",
+        emptyCart: "Warenkorb leer",
+        goToCart: "Zum Warenkorb",
+        backToMenu: "Zurück zum Menü",
+        addedToCart: "zum Warenkorb hinzugefügt"
+    }
+};
+
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
+
+function translatePage() {
+    const lang = getLanguage();
+    const texts = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+}
+
+let gadgets = [];
+let cart = [];
+
+function syncStorage() {
+    gadgets = JSON.parse(localStorage.getItem("gadgets")) || [];
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+}
 
 function addGadget(product) {
+    syncStorage();
     gadgets.push(product);
+    cart.push("[GADGET] " + product);
     localStorage.setItem("gadgets", JSON.stringify(gadgets));
+    localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
-    alert("✅ " + product + " aggiunto al carrello");
+
+    const lang = getLanguage();
+    const t = translations[lang] || translations.it;
+    alert("✅ " + product + " " + t.addedToCart);
 }
 
 function showMiniCart() {
+    syncStorage();
     const box = document.getElementById("mini-cart");
     if (!box) return;
 
+    const lang = getLanguage();
+    const t = translations[lang] || translations.it;
+
     if (gadgets.length === 0) {
-        box.innerHTML = "Carrello vuoto";
+        box.innerHTML = t.emptyCart;
         return;
     }
 
     box.innerHTML = "";
     gadgets.forEach(function(item, index) {
-        box.innerHTML += "• " + item + ' <button onclick="removeItem(' + index + ')">❌</button><br><br>';
+        box.innerHTML +=
+            '<div class="cart-item-row"><span>• ' + item + '</span>' +
+            '<button onclick="removeItem(' + index + ')">❌ Rimuovi</button></div>';
     });
 }
 
 function removeItem(index) {
+    syncStorage();
+    const removed = gadgets[index];
     gadgets.splice(index, 1);
+
+    if (removed) {
+        const cartIdx = cart.lastIndexOf("[GADGET] " + removed);
+        if (cartIdx !== -1) cart.splice(cartIdx, 1);
+    }
+
     localStorage.setItem("gadgets", JSON.stringify(gadgets));
+    localStorage.setItem("cart", JSON.stringify(cart));
     showMiniCart();
 }
 
 window.addEventListener("load", function() {
+    translatePage();
+    showMiniCart();
+});
+
+window.addEventListener("pageshow", function() {
+    translatePage();
     showMiniCart();
 });
 </script>
 
 </body>
-
 </html>
