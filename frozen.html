@@ -82,7 +82,7 @@
     width: 60%;
 }
 
-/* LISTA VOCI FROZEN */
+/* VOCI FROZEN IN STILE NEUTRO / ARGENTO */
 .frozen-list {
     max-width: 600px;
     margin: 20px auto;
@@ -97,17 +97,18 @@
     justify-content: space-between;
     text-decoration: none;
     color: #ffffff;
-    background: rgba(15, 25, 18, 0.9);
-    border: 1px solid rgba(76, 175, 80, 0.35);
+    background: rgba(20, 25, 20, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 18px;
     padding: 20px 22px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .frozen-folder-link:hover {
     transform: translateY(-2px);
-    border-color: rgba(76, 175, 80, 0.7);
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(28, 34, 28, 0.92);
 }
 
 .frozen-folder-left {
@@ -117,26 +118,27 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 16px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    color: #f0f0f0;
 }
 
 .frozen-folder-arrow {
     font-size: 18px;
-    color: #4CAF50;
+    color: rgba(255, 255, 255, 0.75);
     font-weight: 900;
 }
 
 /* CARRELLO INTEGRATO E COMPATTO */
 .cart-card {
     max-width: 600px;
-    background: rgba(10, 20, 12, 0.9);
+    background: rgba(15, 20, 16, 0.9);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(50, 205, 50, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 22px;
     padding: 20px;
     margin: 25px auto 20px auto;
-    box-shadow: 0 0 20px rgba(50, 205, 50, 0.15), inset 0 0 15px rgba(50, 205, 50, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
 }
 
 .cart-title-custom {
@@ -144,7 +146,7 @@
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 1px;
-    color: #4CAF50;
+    color: #ffffff;
     text-transform: uppercase;
     display: flex;
     align-items: center;
@@ -183,4 +185,193 @@
     transition: all 0.2s ease;
 }
 
-.cart-item
+.cart-item-row button:hover {
+    background: #ff3b30;
+    color: #ffffff;
+}
+
+/* BOTTONI AZIONE INTEGRATI */
+.cart-actions-integrated {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-action-int {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 12px 8px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-action-int.primary {
+    background: linear-gradient(135deg, #2b302c, #181c19);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.btn-action-int:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 500px) {
+    .section-title-text {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="back-button">
+    <a href="shop.html" id="back">
+        <span class="back-circle">←</span>
+        <span class="back-label" data-translate="backLabel">Indietro</span>
+    </a>
+</div>
+
+<div class="container">
+    <!-- TITOLO FROZEN STYLE -->
+    <div class="section-title-container">
+        <span class="section-title-text">FROZEN</span>
+        <div class="title-badge">OASIS DEL SUR</div>
+    </div>
+
+    <!-- VOCI FROZEN -->
+    <div class="frozen-list">
+        <a href="eggs-120u.html" class="frozen-folder-link">
+            <span class="frozen-folder-left">
+                <span>📁</span>
+                <span>EGGS 120U</span>
+            </span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+
+        <a href="frozen-no-farm.html" class="frozen-folder-link">
+            <span class="frozen-folder-left">
+                <span>📁</span>
+                <span>FROZEN NO FARM</span>
+            </span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+    </div>
+
+    <!-- CARRELLO INTEGRATO E TRADOTTO -->
+    <div class="cart-card">
+        <div class="cart-title-custom">
+            <span data-translate="cartTitle">CARRELLO</span> <span>🛒</span>
+        </div>
+        <div id="mini-cart">
+            <span data-translate="emptyCart">Carrello vuoto</span>
+        </div>
+
+        <div class="cart-actions-integrated">
+            <a href="shop.html#cart" class="btn-action-int primary" id="goCart">
+                <span>🛒</span> <span data-translate="goToCart">Vai al carrello</span>
+            </a>
+            <a href="shop.html" class="btn-action-int" id="goMenu">
+                <span>🏠</span> <span data-translate="backToMenu">Torna al menu</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="language.js"></script>
+<script>
+const pageTranslations = {
+    it: {
+        backLabel: "Indietro",
+        cartTitle: "CARRELLO",
+        emptyCart: "Carrello vuoto",
+        goToCart: "Vai al carrello",
+        backToMenu: "Torna al menu"
+    },
+    en: {
+        backLabel: "Back",
+        cartTitle: "CART",
+        emptyCart: "Empty cart",
+        goToCart: "Go to cart",
+        backToMenu: "Back to menu"
+    },
+    es: {
+        backLabel: "Atrás",
+        cartTitle: "CARRITO",
+        emptyCart: "Carrito vacío",
+        goToCart: "Ir al carrito",
+        backToMenu: "Volver al menú"
+    },
+    de: {
+        backLabel: "Zurück",
+        cartTitle: "WARENKORB",
+        emptyCart: "Warenkorb leer",
+        goToCart: "Zum Warenkorb",
+        backToMenu: "Zurück zum Menü"
+    }
+};
+
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
+
+function translatePage() {
+    const lang = getLanguage();
+    const texts = pageTranslations[lang] || pageTranslations.it;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+}
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function showMiniCart() {
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const box = document.getElementById("mini-cart");
+    if (!box) return;
+    const lang = getLanguage();
+    const t = pageTranslations[lang] || pageTranslations.it;
+
+    if (cart.length === 0) {
+        box.innerHTML = t.emptyCart;
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML += '<div class="cart-item-row"><span>• ' + item + '</span><button onclick="removeItem(' + index + ')">❌ Rimuovi</button></div>';
+    });
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+}
+
+window.addEventListener("load", function() {
+    translatePage();
+    showMiniCart();
+});
+
+window.addEventListener("pageshow", function() {
+    translatePage();
+    showMiniCart();
+});
+</script>
+</body>
+</html>
