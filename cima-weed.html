@@ -85,54 +85,57 @@ body {
     width: 60%;
 }
 
-.photo-block {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 22px auto;
-    padding: 12px;
-    border-radius: 20px;
+.media-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.media-card {
+    padding: 10px;
+    border-radius: 18px;
     background: rgba(15, 22, 16, 0.88);
     border: 1px solid rgba(76, 175, 80, 0.35);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-image, .product-video {
     width: 100%;
-    max-width: 600px;
-    height: 340px;
+    height: 210px;
     display: block;
-    margin: 0 auto;
-    border-radius: 16px;
+    border-radius: 14px;
     object-fit: cover;
     object-position: center;
 }
 
-.product-video {
-    margin-bottom: 22px;
-}
-
 .single-gadget-btn {
     width: 100%;
-    margin-top: 12px;
+    margin-top: 10px;
     background: rgba(15, 30, 18, 0.9);
     border: 1px solid rgba(76, 175, 80, 0.5);
-    border-radius: 14px;
+    border-radius: 12px;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 800;
-    padding: 14px 16px;
+    padding: 11px 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 6px;
     transition: all 0.2s ease;
 }
 
 .single-gadget-btn::after {
     content: "＋";
-    font-size: 18px;
+    font-size: 16px;
     color: #4CAF50;
+    flex-shrink: 0;
 }
 
 .single-gadget-btn:hover, .single-gadget-btn:active {
@@ -231,7 +234,11 @@ body {
         letter-spacing: 2px;
     }
     .product-image, .product-video {
-        height: 280px;
+        height: 170px;
+    }
+    .single-gadget-btn {
+        font-size: 11px;
+        padding: 10px 8px;
     }
 }
 </style>
@@ -250,31 +257,38 @@ body {
         <div class="title-badge">GADGET EDITION</div>
     </div>
 
-    <div class="photo-block">
-        <img src="IMG_1780.png" class="product-image" alt="Cima Weed 1">
-        <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 1) - 1 solo gadget disponibile')">
-            <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
-        </button>
-    </div>
+    <div class="media-grid-2">
+        <div class="media-card">
+            <img src="IMG_1780.png" class="product-image" alt="Cima Weed 1">
+            <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 1) - 1 solo gadget disponibile')">
+                <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
+            </button>
+        </div>
 
-    <div class="photo-block">
-        <img src="IMG_1781.png" class="product-image" alt="Cima Weed 2">
-        <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 2) - 1 solo gadget disponibile')">
-            <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
-        </button>
-    </div>
+        <div class="media-card">
+            <img src="IMG_1781.png" class="product-image" alt="Cima Weed 2">
+            <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 2) - 1 solo gadget disponibile')">
+                <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
+            </button>
+        </div>
 
-    <div class="photo-block">
-        <img src="IMG_1782.png" class="product-image" alt="Cima Weed 3">
-        <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 3) - 1 solo gadget disponibile')">
-            <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
-        </button>
-    </div>
+        <div class="media-card">
+            <img src="IMG_1782.png" class="product-image" alt="Cima Weed 3">
+            <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Foto 3) - 1 solo gadget disponibile')">
+                <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
+            </button>
+        </div>
 
-    <video class="product-video" controls muted playsinline preload="metadata">
-        <source src="IMG_1688.mov" type="video/mp4">
-        <source src="IMG_1688.mov" type="video/quicktime">
-    </video>
+        <div class="media-card">
+            <video class="product-video" controls muted playsinline preload="metadata">
+                <source src="IMG_1688.mov" type="video/mp4">
+                <source src="IMG_1688.mov" type="video/quicktime">
+            </video>
+            <button type="button" class="single-gadget-btn" onclick="addGadget('CIMA WEED (Video) - 1 solo gadget disponibile')">
+                <span data-translate="onlyOneGadget">1 solo gadget disponibile</span>
+            </button>
+        </div>
+    </div>
 
     <div class="cart-card" id="cart-section">
         <div class="cart-title-custom">
