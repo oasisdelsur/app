@@ -10,10 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 20px 14px 40px 14px;
-    background: #070908;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
 }
@@ -27,7 +30,8 @@ body {
     display: inline-block;
     padding: 10px 16px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(15, 25, 18, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     color: #ffffff;
     text-decoration: none;
     font-weight: 800;
@@ -64,49 +68,62 @@ body {
     margin-top: 6px;
 }
 
+.media-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
 .photo-card {
     background: #101612;
     border: 1px solid rgba(76, 175, 80, 0.35);
     border-radius: 18px;
-    padding: 12px;
-    margin-bottom: 22px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.media-item {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 14px;
-    display: block;
-    background: #000000;
-}
-
+.media-item,
 .video-item {
     width: 100%;
-    height: 320px;
+    height: 190px;
     object-fit: cover;
     border-radius: 14px;
     display: block;
-    margin-bottom: 20px;
     background: #000000;
+}
+
+.video-label {
+    margin-top: 10px;
+    padding: 9px 8px;
+    border-radius: 12px;
+    background: #172b1b;
+    border: 1px solid rgba(76, 175, 80, 0.35);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.5px;
 }
 
 .sizes-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 12px;
+    gap: 6px;
+    margin-top: 10px;
 }
 
 .sizes-grid button {
-    padding: 11px 6px;
-    border-radius: 12px;
+    padding: 8px 4px;
+    border-radius: 10px;
     border: 1px solid rgba(76, 175, 80, 0.5);
     background: #172b1b;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 13px;
+    font-size: 11px;
     cursor: pointer;
 }
 
@@ -172,172 +189,19 @@ body {
 .cart-actions a.go-cart {
     background: #1b5e20;
 }
+
+@media (max-width: 500px) {
+    .media-item,
+    .video-item {
+        height: 160px;
+    }
+    .sizes-grid button {
+        font-size: 10px;
+        padding: 7px 2px;
+    }
+}
 </style>
 </head>
 <body>
 
-<div class="top-back">
-    <a href="VAPE.html" data-translate="backToVape">← Torna a Vape</a>
-</div>
-
-<div class="wrap">
-    <div class="title-box">
-        <div class="title-main">CARAMELLE FAT TONY</div>
-        <div class="title-sub">PREMIUM EDITION</div>
-    </div>
-
-    <div class="photo-card">
-        <img src="IMG_4574.jpeg" class="media-item" alt="CARAMELLE FAT TONY 1">
-        <div class="sizes-grid">
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 1pz')">1pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 5pz')">5pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 10pz')">10pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 20pz')">20pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 50pz')">50pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 1) - 100pz')">100pz</button>
-        </div>
-    </div>
-
-    <div class="photo-card">
-        <img src="IMG_4572.jpeg" class="media-item" alt="CARAMELLE FAT TONY 2">
-        <div class="sizes-grid">
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 1pz')">1pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 5pz')">5pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 10pz')">10pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 20pz')">20pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 50pz')">50pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 2) - 100pz')">100pz</button>
-        </div>
-    </div>
-
-    <div class="photo-card">
-        <img src="IMG_4570.jpeg" class="media-item" alt="CARAMELLE FAT TONY 3">
-        <div class="sizes-grid">
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 1pz')">1pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 5pz')">5pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 10pz')">10pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 20pz')">20pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 50pz')">50pz</button>
-            <button onclick="addToCart('CARAMELLE FAT TONY (Foto 3) - 100pz')">100pz</button>
-        </div>
-    </div>
-
-    <video class="video-item" controls muted playsinline preload="metadata">
-        <source src="IMG_4571.mov" type="video/quicktime">
-    </video>
-    <video class="video-item" controls muted playsinline preload="metadata">
-        <source src="IMG_4573.mov" type="video/quicktime">
-    </video>
-    <video class="video-item" controls muted playsinline preload="metadata">
-        <source src="IMG_4575.mov" type="video/quicktime">
-    </video>
-
-    <div class="cart-box" id="cart-section">
-        <div class="cart-head" data-translate="cartTitle">🛒 CARRELLO</div>
-        <div id="mini-cart">Carrello vuoto</div>
-        <div class="cart-actions">
-            <a href="shop.html" class="go-cart" data-translate="goToCart">🛒 Vai al carrello</a>
-            <a href="shop.html" data-translate="backToMenu">🏠 Torna al menu</a>
-        </div>
-    </div>
-</div>
-
-<script>
-const translations = {
-    it: {
-        backToVape: "← Torna a Vape",
-        cartTitle: "🛒 CARRELLO",
-        emptyCart: "Carrello vuoto",
-        goToCart: "🛒 Vai al carrello",
-        backToMenu: "🏠 Torna al menu",
-        addedToCart: "aggiunto al carrello"
-    },
-    en: {
-        backToVape: "← Back to Vape",
-        cartTitle: "🛒 CART",
-        emptyCart: "Empty cart",
-        goToCart: "🛒 Go to cart",
-        backToMenu: "🏠 Back to menu",
-        addedToCart: "added to cart"
-    },
-    es: {
-        backToVape: "← Volver a Vape",
-        cartTitle: "🛒 CARRITO",
-        emptyCart: "Carrito vacío",
-        goToCart: "🛒 Ir al carrito",
-        backToMenu: "🏠 Volver al menú",
-        addedToCart: "añadido al carrito"
-    },
-    de: {
-        backToVape: "← Zurück zu Vape",
-        cartTitle: "🛒 WARENKORB",
-        emptyCart: "Warenkorb leer",
-        goToCart: "🛒 Zum Warenkorb",
-        backToMenu: "🏠 Zurück zum Menü",
-        addedToCart: "zum Warenkorb hinzugefügt"
-    }
-};
-
-function getLanguage() {
-    return localStorage.getItem("language") || "it";
-}
-
-function translatePage() {
-    const lang = getLanguage();
-    const texts = translations[lang] || translations.it;
-    document.documentElement.lang = lang;
-    document.querySelectorAll("[data-translate]").forEach(function(el) {
-        const key = el.getAttribute("data-translate");
-        if (texts[key]) {
-            el.textContent = texts[key];
-        }
-    });
-}
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function addToCart(product) {
-    cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(product);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    showMiniCart();
-    const lang = getLanguage();
-    const t = translations[lang] || translations.it;
-    alert("✅ " + product + " " + t.addedToCart);
-}
-
-function showMiniCart() {
-    cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const box = document.getElementById("mini-cart");
-    if (!box) return;
-    const lang = getLanguage();
-    const t = translations[lang] || translations.it;
-    if (cart.length === 0) {
-        box.innerHTML = t.emptyCart;
-        return;
-    }
-    box.innerHTML = "";
-    cart.forEach(function(item, index) {
-        box.innerHTML += '<div class="cart-row"><span>• ' + item + '</span><button onclick="removeItem(' + index + ')">❌ Rimuovi</button></div>';
-    });
-}
-
-function removeItem(index) {
-    cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    showMiniCart();
-}
-
-window.addEventListener("load", function() {
-    translatePage();
-    showMiniCart();
-});
-
-window.addEventListener("pageshow", function() {
-    translatePage();
-    showMiniCart();
-});
-</script>
-</body>
-</html>
+<div class="
