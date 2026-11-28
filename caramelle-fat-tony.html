@@ -204,4 +204,58 @@ body {
 </head>
 <body>
 
-<div class="
+<div class="top-back">
+    <a href="shop.html">← Indietro</a>
+</div>
+
+<div class="wrap">
+    <div class="title-box">
+        <div class="title-main">CARAMELLE FAT TONY</div>
+        <div class="title-sub">OASIS DEL SUR</div>
+    </div>
+
+    <div class="media-grid-2" id="mediaGrid"></div>
+
+    <div class="cart-box" id="cart-section">
+        <div class="cart-head">CARRELLO 🛒</div>
+        <div id="mini-cart">Carrello vuoto</div>
+        <div class="cart-actions">
+            <a href="shop.html#cart" class="go-cart">🛒 Vai al carrello</a>
+            <a href="shop.html">🏠 Torna al menu</a>
+        </div>
+    </div>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(product) {
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+}
+
+function showMiniCart() {
+    const box = document.getElementById("mini-cart");
+    if (!box) return;
+    if (cart.length === 0) {
+        box.innerHTML = "Carrello vuoto";
+        return;
+    }
+    box.innerHTML = "";
+    cart.forEach(function(item, index) {
+        box.innerHTML += '<div class="cart-row"><span>• ' + item + '</span><button onclick="removeItem(' + index + ')">❌ Rimuovi</button></div>';
+    });
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showMiniCart();
+}
+
+window.addEventListener("load", showMiniCart);
+window.addEventListener("pageshow", showMiniCart);
+</script>
+</body>
+</html>
