@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Higlandterps 90U - Oasis del Sur</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- FONT LUXURY & PREMIUM FROM GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+.frozen-folders {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 25px 0;
+}
+
+.frozen-folder-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    background: rgba(20, 30, 20, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.frozen-folder-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.frozen-folder-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.frozen-folder-arrow {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 800;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="back-button">
+        <a href="frozen.html" id="back" data-translate="back">
+            ← Indietro
+        </a>
+    </div>
+
+    <!-- VOCI DENTRO HIGLANDTERPS 90U -->
+    <div class="frozen-folders">
+        <a href="forbi-x-galic.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 FORBI X GALIC</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="zunzet.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 ZUNZET</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+        <a href="dulce-de-uva.html" class="frozen-folder-card">
+            <span class="frozen-folder-title">📁 DULCE DE UVA</span>
+            <span class="frozen-folder-arrow">›</span>
+        </a>
+    </div>
+</div>
+
+<script>
+const translations = {
+    it: {
+        back: "← Indietro"
+    },
+    en: {
+        back: "← Back"
+    },
+    es: {
+        back: "← Atrás"
+    },
+    de: {
+        back: "← Zurück"
+    }
+};
+
+function getLanguage() {
+    return localStorage.getItem("language") || "it";
+}
+
+function translatePage() {
+    const lang = getLanguage();
+    const texts = translations[lang] || translations.it;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-translate]").forEach(function(el) {
+        const key = el.getAttribute("data-translate");
+        if (texts[key]) {
+            el.textContent = texts[key];
+        }
+    });
+}
+
+window.addEventListener("load", translatePage);
+window.addEventListener("pageshow", translatePage);
+</script>
+</body>
+</html>
